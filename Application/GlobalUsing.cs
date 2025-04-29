@@ -1,7 +1,1 @@
-﻿namespace Application
-{
-    public class GlobalUsing
-    {
-
-    }
-}
+﻿global using Application.Common.Resource;

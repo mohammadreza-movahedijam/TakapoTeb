@@ -1,6 +1,6 @@
 ﻿using Application.Common;
 using Application.Contract;
-using Domain.Entities;
+using Domain.Entities.Identity;
 using Infrastructure.Configuration.Context;
 using Infrastructure.Implement;
 using Microsoft.AspNetCore.Identity;

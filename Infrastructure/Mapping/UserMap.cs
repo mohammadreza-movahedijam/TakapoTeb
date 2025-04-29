@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Domain.Entities;
+using Domain.Entities.Identity;
 namespace Infrastructure.Mapping;
 
 internal sealed class UserMap :

@@ -192,15 +192,6 @@
   <data name="RequiredNationalCode" xml:space="preserve">
     <value>کد ملی الزامی است</value>
   </data>
-  <data name="RequiredPassportNumber" xml:space="preserve">
-    <value>شماره گذر نامه الزامی است</value>
-  </data>
-  <data name="RequiredPassword" xml:space="preserve">
-    <value>گذر واژه الزامی است</value>
-  </data>
-  <data name="RequiredPeriodType" xml:space="preserve">
-    <value>دوره پرداخت الزامی است</value>
-  </data>
   <data name="RequiredPersianName" xml:space="preserve">
     <value>نام فارسی الزامی است.</value>
   </data>

@@ -1,0 +1,20 @@
+﻿@page
+
+@model WebUI.Areas.Admin.Pages.Role.CreateModel
+@{
+}
+@{
+    var breadcrumbItems = new List<BreadcrumbItem>
+    {
+        new BreadcrumbItem { Area="Admin",Folder="Dashboard",Page="Index", Text = "پیشخوان" },
+        new BreadcrumbItem { Area="Admin",Folder="Role",Page="Index", Text = "نقش ها" },
+        new BreadcrumbItem {  Text = "داده", IsActive = true }
+    };
+}
+
+<adminbreadcrumb items="breadcrumbItems"></adminbreadcrumb>
+
+
+<div class="row">
+
+</div>
