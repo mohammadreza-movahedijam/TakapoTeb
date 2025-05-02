@@ -1,4 +1,5 @@
-﻿using Domain.Entities.Identity;
+﻿using Application.Common.CustomException;
+using Domain.Entities.Identity;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using System;
@@ -18,11 +19,21 @@ internal sealed class InsertRoleHandler : IRequestHandler<InsertRoleCommand>
     }
     public async Task Handle(InsertRoleCommand request, CancellationToken cancellationToken)
     {
+      
         RoleEntity role = new()
         {
-            Name=request.Role.Name,
-            PersianName=request.Role.PersianName
+            Name = request.Role.Name,
+            PersianName = request.Role.PersianName
         };
-        await _roleManager.CreateAsync(role);
+        IdentityResult createRoleResult = await _roleManager.CreateAsync(role);
+        if (createRoleResult.Succeeded is false)
+        {
+            StringBuilder errors = new();
+            foreach (IdentityError error in createRoleResult.Errors)
+            {
+                errors.AppendLine(error.Description+"\n");
+            }
+            throw new InternalException(errors.ToString());
+        }
     }
 }

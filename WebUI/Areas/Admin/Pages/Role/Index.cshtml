@@ -1,4 +1,71 @@
 ﻿@page
 @model WebUI.Areas.Admin.Pages.Role.IndexModel
-@{
+
+@section Script {
+    <script src="~/js/rest.js"></script>
+    <script src="~/admin/js/pagination.js"></script>
+    <script src="~/admin/js/page/role/index.js"></script>
+
 }
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header ">
+            <h5 class="heading-color">لیست نقش های کاربری</h5>
+            <a asp-area="Admin" asp-page="/Role/Create" class="btn btn-sm btn-success text-white">ایجاد نقش جدید</a>
+           <form class="w-25 mt-3" method="get">
+                    <div class="input-group">
+                        <input type="text" name="keyword" class="form-control form-control-sm"
+                               value="@ViewData["Search"]"
+                        placeholder="عبارت را جستجو کنید" />
+                        <button class="btn btn-primary btn-sm" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        <a asp-area="Admin" asp-page="/Role/Index" class="btn btn-warning text-white btn-sm"><i class="fa-solid fa-rotate-right"></i></a>
+                    </div>
+
+           </form>
+        </div>
+            <div class="card-body">
+                <div class="table-responsive text-nowrap">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>نام</th>
+                                <th>نام سیستمی</th>
+                                <th>عملیات</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-border-bottom-0">
+                            @if (Model!.PageModel!.List!.Any())
+                            {
+                                @foreach (var item in Model!.PageModel!.List!)
+                                {
+                                    <tr>
+                                        <td>@item.PersianName</td>
+                                        <td>@item.Name</td>
+                                        <td>
+                                            <a asp-area="Admin" asp-page="Edit" asp-route-Id="@item.Id"
+                                         class="btn btn-sm btn-warning text-white">ویرایش</a>
+                                            <a class="btn btn-sm btn-danger text-white">حذف</a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer">
+                @if (Model.PageModel.TotalPage > 1)
+                {
+                    <div id="pagination-body"
+                         data-page-index="@Model.PageModel.CurentPage"
+                         data-total-pages="@Model.PageModel.TotalPage"
+                         data-search="@ViewData["Search"]"
+                         data-path="/Admin/Role/Index">
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

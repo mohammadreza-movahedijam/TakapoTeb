@@ -51,5 +51,6 @@
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
     <partial name="/Areas/Admin/Pages/Shared/Partial/_AdminScript.cshtml" />
+    @await RenderSectionAsync("Script", false)
 </body>
 </html>
