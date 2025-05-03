@@ -69,40 +69,28 @@ rest.post = (url, body, callback = null) => {
 rest.postAsync = async (url, params, body, callback = null) => {
     var headers = new Headers();
     headers.append("Content-Type", "application/json");
-
     var requestOptions = {
         method: 'POST',
-        headers: headers,
         redirect: 'follow'
     };
-
-    // اضافه کردن پارامترها به URL در صورت وجود آنها  
-    if (params) {
-        url = url + "?" + new URLSearchParams(params);
-    }
-
-    // اضافه کردن بدنه به درخواست در صورت وجود آن  
+    if (params)
+        url = url + "?" + new URLSearchParams(params)
     if (body) {
         requestOptions.body = JSON.stringify(body);
     }
 
-    try {
-        var request = await fetch(url, requestOptions);
+    requestOptions.headers = headers;
+    var request = await fetch(url, requestOptions);
+    var response = await request.json();
+    if (request.status != 200)
+        return callback(false, '');
 
-        // بررسی وضعیت پاسخ  
-        var response = await request.json();
 
-        // استفاده از callback برای نتایج  
-        if (callback) {
-            return callback(request.ok, request.ok ? response : request.statusText);
-        }
+    if (callback != null)
+        return callback(true, response);
 
-        return request.ok ? response : null;
-    } catch (error) {
-        // در صورتی که خطایی پیش بیاید  
-        if (callback) {
-            return callback(false, error.message);
-        }
-        throw error; // در غیر این صورت خطا را پرتاب کنید  
-    }
+
+
+
+    return callback(request.ok, response);
 }

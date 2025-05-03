@@ -3,10 +3,22 @@
 
 @section Script {
     <script src="~/js/rest.js"></script>
+    <script src="~/js/sweetalert.js"></script>
     <script src="~/admin/js/pagination.js"></script>
     <script src="~/admin/js/page/role/index.js"></script>
 
 }
+
+@{
+    var breadcrumbItems = new List<BreadcrumbItem>
+    {
+        new BreadcrumbItem { Area="Admin",Folder="Dashboard",Page="Index", Text = "پیشخوان" },
+        new BreadcrumbItem {  Text = "نقش ها", IsActive = true }
+    };
+}
+
+<adminbreadcrumb items="breadcrumbItems"></adminbreadcrumb>
+
 
 <div class="row">
     <div class="col-12">
@@ -40,13 +52,13 @@
                             {
                                 @foreach (var item in Model!.PageModel!.List!)
                                 {
-                                    <tr>
+                                    <tr id="item_@item.Id">
                                         <td>@item.PersianName</td>
                                         <td>@item.Name</td>
                                         <td>
                                             <a asp-area="Admin" asp-page="Edit" asp-route-Id="@item.Id"
                                          class="btn btn-sm btn-warning text-white">ویرایش</a>
-                                            <a class="btn btn-sm btn-danger text-white">حذف</a>
+                                            <a onclick="Delete('@item.Id')" class="btn btn-sm btn-danger text-white">حذف</a>
                                         </td>
                                     </tr>
                                 }
