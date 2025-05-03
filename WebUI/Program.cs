@@ -6,12 +6,7 @@ using WebUI.Middlewares;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddRazorPages()
-        .AddRazorPagesOptions(options =>
-        {
-            options.Conventions
-                   .ConfigureFilter(new IgnoreAntiforgeryTokenAttribute());
-        });
+builder.Services.AddRazorPages();
 
 
 builder.Services.Application(builder.Configuration);

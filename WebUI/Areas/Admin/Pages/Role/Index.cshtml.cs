@@ -25,7 +25,7 @@ public class IndexModel(IMediator mediator) : PageModel
         }
         PageModel = await _mediator.Send(new GetRolesQuery(pagination));
     }
-    public async Task<JsonResult> OnPostDeleteAsync(InputModel input)
+    public async Task<JsonResult> OnPostDeleteAsync([FromBody]InputModel input)
     {
         try
         {
