@@ -27,115 +27,127 @@ internal sealed class UpdateUserHandler :
 
     public async Task Handle(UpdateUserCommand request, CancellationToken cancellationToken)
     {
-        using (IDbContextTransaction transaction = await _context.BeginTransactionAsync())
+        try
         {
-            try
+            IExecutionStrategy strategy = _context.CreateExecutionStrategy();
+            await strategy.ExecuteAsync(async () =>
+
             {
-                UserEntity? user = await _userManager.Users
-                    .FirstOrDefaultAsync(f => f.Id == request.User.Id, cancellationToken);
-
-                if (user == null)
+                using (IDbContextTransaction transaction = await _context.BeginTransactionAsync())
                 {
-                    throw new InternalException(Message.NotFoundOnDb, 404);
-                }
-                request.User.Adapt(user);
-
-
-                IdentityResult updateUserResult =
-                    await _userManager.CreateAsync(user);
-                if (updateUserResult.Succeeded is false)
-                {
-                    StringBuilder message = new();
-                    foreach (IdentityError item in updateUserResult.Errors)
+                    try
                     {
-                        message.AppendLine(item.Description + "/");
+                        UserEntity? user = await _userManager.Users
+                            .FirstOrDefaultAsync(f => f.Id == request.User.Id, cancellationToken);
+
+                        if (user == null)
+                        {
+                            throw new InternalException(Message.NotFoundOnDb, 404);
+                        }
+                        request.User.Adapt(user);
+
+
+                        IdentityResult updateUserResult =
+                            await _userManager.CreateAsync(user);
+                        if (updateUserResult.Succeeded is false)
+                        {
+                            StringBuilder message = new();
+                            foreach (IdentityError item in updateUserResult.Errors)
+                            {
+                                message.AppendLine(item.Description + "/");
+                            }
+                            throw new InternalException(message.ToString(), 400);
+                        }
+
+
+
+                        IList<string> oldRoles = await _userManager.GetRolesAsync(user);
+                        if (!oldRoles.Any())
+                        {
+                            await transaction.RollbackAsync();
+                            throw new InternalException(Message.InternalError, 500);
+                        }
+
+                        IdentityResult removeOldRoles = await _userManager.RemoveFromRolesAsync(user, oldRoles);
+
+                        if (removeOldRoles.Succeeded is false)
+                        {
+                            await transaction.RollbackAsync();
+                            StringBuilder message = new();
+                            foreach (IdentityError item in removeOldRoles.Errors)
+                            {
+                                message.AppendLine(item.Description + "/");
+                            }
+                            throw new InternalException(message.ToString(), 400);
+                        }
+
+                        IdentityResult insertRoleResult =
+                            await _userManager.AddToRoleAsync(user, request.User.Role!);
+
+                        if (insertRoleResult.Succeeded is false)
+                        {
+                            await transaction.RollbackAsync();
+                            StringBuilder message = new();
+                            foreach (IdentityError item in insertRoleResult.Errors)
+                            {
+                                message.AppendLine(item.Description + "/");
+                            }
+                            throw new InternalException(message.ToString(), 400);
+                        }
+
+
+                        if (!string.IsNullOrEmpty(request.User.Password))
+                        {
+
+                            StringBuilder textError = new StringBuilder();
+                            IdentityResult resultRemoveOldUserPassword = await _userManager.RemovePasswordAsync(user);
+                            if (!resultRemoveOldUserPassword.Succeeded)
+                            {
+                                await transaction.RollbackAsync();
+
+                                foreach (var error in resultRemoveOldUserPassword.Errors)
+                                {
+                                    textError.AppendLine(error.Description);
+                                }
+                                throw new InternalException(textError.ToString(), 400);
+                            }
+
+
+
+
+
+
+
+                            IdentityResult insertPasswordResult =
+                            await _userManager.AddPasswordAsync(user, request.User.Password!);
+                            if (insertPasswordResult.Succeeded is false)
+                            {
+                                await transaction.RollbackAsync();
+                                StringBuilder message = new();
+                                foreach (IdentityError item in insertPasswordResult.Errors)
+                                {
+                                    message.AppendLine(item.Description + "/");
+                                }
+                                throw new InternalException(message.ToString(), 400);
+                            }
+
+                        }
+
+
+
+                        await transaction.CommitAsync();
                     }
-                    throw new InternalException(message.ToString(), 400);
-                }
-
-
-
-                IList<string> oldRoles = await _userManager.GetRolesAsync(user);
-                if (!oldRoles.Any())
-                {
-                    await transaction.RollbackAsync();
-                    throw new InternalException(Message.InternalError, 500);
-                }
-
-                IdentityResult removeOldRoles = await _userManager.RemoveFromRolesAsync(user, oldRoles);
-
-                if (removeOldRoles.Succeeded is false)
-                {
-                    await transaction.RollbackAsync();
-                    StringBuilder message = new();
-                    foreach (IdentityError item in removeOldRoles.Errors)
-                    {
-                        message.AppendLine(item.Description + "/");
-                    }
-                    throw new InternalException(message.ToString(), 400);
-                }
-
-                IdentityResult insertRoleResult =
-                    await _userManager.AddToRoleAsync(user, request.User.Role!);
-
-                if (insertRoleResult.Succeeded is false)
-                {
-                    await transaction.RollbackAsync();
-                    StringBuilder message = new();
-                    foreach (IdentityError item in insertRoleResult.Errors)
-                    {
-                        message.AppendLine(item.Description + "/");
-                    }
-                    throw new InternalException(message.ToString(), 400);
-                }
-
-
-                if (!string.IsNullOrEmpty(request.User.Password))
-                {
-
-                    StringBuilder textError = new StringBuilder();
-                    IdentityResult resultRemoveOldUserPassword = await _userManager.RemovePasswordAsync(user);
-                    if (!resultRemoveOldUserPassword.Succeeded)
+                    catch (Exception ex)
                     {
                         await transaction.RollbackAsync();
-
-                        foreach (var error in resultRemoveOldUserPassword.Errors)
-                        {
-                            textError.AppendLine(error.Description);
-                        }
-                        throw new InternalException(textError.ToString(), 400);
+                        throw ex;
                     }
-
-
-
-
-
-
-
-                    IdentityResult insertPasswordResult =
-                    await _userManager.AddPasswordAsync(user, request.User.Password!);
-                    if (insertPasswordResult.Succeeded is false)
-                    {
-                        await transaction.RollbackAsync();
-                        StringBuilder message = new();
-                        foreach (IdentityError item in insertPasswordResult.Errors)
-                        {
-                            message.AppendLine(item.Description + "/");
-                        }
-                        throw new InternalException(message.ToString(), 400);
-                    }
-
                 }
-
-
-
-                await transaction.CommitAsync();
-            }
-            catch (Exception ex)
-            {
-                await transaction.RollbackAsync();
-                throw ex;
-            }
+            });
+        }
+        catch (Exception ex)
+        {
+            throw ex;
         }
     }
 }

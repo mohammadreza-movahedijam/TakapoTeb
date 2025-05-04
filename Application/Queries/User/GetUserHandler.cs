@@ -5,7 +5,7 @@ using Domain.Entities.Identity;
 using Mapster;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-
+using MediatR;
 namespace Application.Queries.User;
 
 internal sealed class GetUserHandler :

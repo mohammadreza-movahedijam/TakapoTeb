@@ -4,6 +4,7 @@ using Domain.Entities.Identity;
 using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
@@ -30,61 +31,74 @@ internal sealed class InsertUserHandler :
     public async Task Handle(InsertUserCommand request,
         CancellationToken cancellationToken)
     {
-        using (IDbContextTransaction transaction = await _context.BeginTransactionAsync())
+        try
         {
-            try
+            IExecutionStrategy strategy = _context.CreateExecutionStrategy();
+            await strategy.ExecuteAsync(async () =>
+
             {
-                UserEntity user = request.User.Adapt<UserEntity>();
-                
-                IdentityResult insertUserResult =
-                    await _userManager.CreateAsync(user);
-                if (insertUserResult.Succeeded is false)
+                using (IDbContextTransaction transaction = await _context.BeginTransactionAsync())
                 {
-                    StringBuilder message = new();
-                    foreach (IdentityError item in insertUserResult.Errors)
+                    try
                     {
-                        message.AppendLine(item.Description + "/");
+                        UserEntity user = request.User.Adapt<UserEntity>();
+
+                        IdentityResult insertUserResult =
+                            await _userManager.CreateAsync(user);
+                        if (insertUserResult.Succeeded is false)
+                        {
+                            StringBuilder message = new();
+                            foreach (IdentityError item in insertUserResult.Errors)
+                            {
+                                message.AppendLine(item.Description + "\n");
+                            }
+                            throw new InternalException(message.ToString());
+                        }
+
+
+
+                        IdentityResult insertRoleResult =
+                            await _userManager.AddToRoleAsync(user, request.User.Role!);
+
+                        if (insertRoleResult.Succeeded is false)
+                        {
+                            await transaction.RollbackAsync();
+                            StringBuilder message = new();
+                            foreach (IdentityError item in insertRoleResult.Errors)
+                            {
+                                message.AppendLine(item.Description + "\n");
+                            }
+                            throw new InternalException(message.ToString());
+                        }
+
+
+                        IdentityResult insertPasswordResult =
+                            await _userManager.AddPasswordAsync(user, request.User.Password!);
+                        if (insertPasswordResult.Succeeded is false)
+                        {
+                            await transaction.RollbackAsync();
+                            StringBuilder message = new();
+                            foreach (IdentityError item in insertPasswordResult.Errors)
+                            {
+                                message.AppendLine(item.Description + "\n");
+                            }
+                            throw new InternalException(message.ToString());
+                        }
+
+                        await transaction.CommitAsync();
                     }
-                    throw new InternalException(message.ToString(), 400);
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+
                 }
 
-                
-
-                IdentityResult insertRoleResult =
-                    await _userManager.AddToRoleAsync(user, request.User.Role!);
-
-                if (insertRoleResult.Succeeded is false)
-                {
-                    await transaction.RollbackAsync();
-                    StringBuilder message = new();
-                    foreach (IdentityError item in insertRoleResult.Errors)
-                    {
-                        message.AppendLine(item.Description + "/");
-                    }
-                    throw new InternalException(message.ToString(), 400);
-                }
-
-
-                IdentityResult insertPasswordResult =
-                    await _userManager.AddPasswordAsync(user, request.User.Password!);
-                if (insertPasswordResult.Succeeded is false)
-                {
-                    await transaction.RollbackAsync();
-                    StringBuilder message = new();
-                    foreach (IdentityError item in insertPasswordResult.Errors)
-                    {
-                        message.AppendLine(item.Description + "/");
-                    }
-                    throw new InternalException(message.ToString(), 400);
-                }
-
-                await transaction.CommitAsync();
-            }
-            catch (Exception ex)
-            {
-                await transaction.RollbackAsync();
-                throw ex;
-            }
+            });
+        }
+        catch (Exception ex)
+        {
+            throw ex;
         }
     }
 }

@@ -8,6 +8,6 @@ using System.Threading.Tasks;
 
 namespace Application.Queries.Role;
 
-public sealed record GetRoleItemQuery:IRequest<List<ItemGeneric<Guid, string>>>
+public sealed record GetRoleItemQuery:IRequest<List<ItemGeneric<string, string>>>
 {
 }
