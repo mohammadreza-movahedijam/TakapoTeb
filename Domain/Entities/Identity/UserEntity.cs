@@ -9,7 +9,6 @@ namespace Domain.Entities.Identity;
 
 public class UserEntity : IdentityUser<Guid>, IDelete
 {
-    public string? Avatar { get; set; }
     public string? FirstName { get; set; }
     public string? LastName { get; set; }
     public bool IsDeleted { get; set; } = false;
