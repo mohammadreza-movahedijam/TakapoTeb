@@ -1,0 +1,82 @@
+﻿@model Application.Commands.ProductCategory.ProductCategoryDto
+@{
+    ViewData["Title"] = "ایجاد دسته بندی";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@section Script {
+    <script src="~/assets/js/upload.js"></script>
+    <partial name="_ValidationScriptsPartial.cshtml" />
+}
+<nav aria-label="breadcrumb">
+    <ol class="lh-1-85 breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/Admin">پیشخوان</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a href="/Admin/ProductCategory/Index">لیست دسته بندی ها</a>
+        </li>
+
+        <li class="breadcrumb-item active">ایجاد دسته بندی </li>
+    </ol>
+</nav>
+<div class="row">
+    <div class="col-4 offset-4">
+        <div class="card mb-4">
+            <h5 class="card-header heading-color">ایجاد دسته بندی</h5>
+            <form asp-area="Admin" asp-controller="ProductCategory"
+                  enctype="multipart/form-data"
+            asp-action="Create" method="post" class="card-body">
+             
+                <div>
+                    <img id="imagePath_1" width="100" height="80" src="~/Gallery/default.jpg" />
+                </div>
+                <div>
+                    <label  class="form-label">تصویر</label>
+                    <input asp-for="ImageFile" onchange="ChangeImage(this,1)" class="form-control" type="file" />
+                </div>
+                <div>
+                    <label class="form-label">عنوان فارسی </label>
+                    <input asp-for="TitleFa" type="text" class="form-control" />
+                    <span class="text-danger" asp-validation-for="TitleFa"></span>
+                </div>
+              
+                <div>
+                    <label  class="form-label">توضیحات فارسی</label>
+                    <textarea class="form-control" asp-for="DescriptionFa" rows="3"></textarea>
+                    <span class="text-danger" asp-validation-for="DescriptionFa"></span>
+                </div>
+                <div>
+                    <label class="form-label">عنوان انگلیسی </label>
+                    <input asp-for="TitleEn" type="text" class="form-control" />
+                    <span class="text-danger" asp-validation-for="TitleEn"></span>
+                </div>
+                <div>
+                    <label  class="form-label">توضیحات انگلیسی</label>
+                    <textarea class="form-control" asp-for="DescriptionEn" rows="3"></textarea>
+                    <span class="text-danger" asp-validation-for="DescriptionEn"></span>
+                </div>
+                <div >
+                    <label class="form-label">انتخاب دسته بندی</label>
+                    <select class="form-select" asp-for="ParentProductCategoryId">
+                        <option  disabled="" selected="">یک گزینه انتخاب کنید</option>
+                        @if (ViewBag.Parents != null)
+                        {
+                            foreach (var item in ViewBag.Parents as List<ItemGeneric<Guid, string>>)
+                            {
+                                <option value="@item.Id">@item.Title</option>
+                            }
+                        }
+                     
+                    </select>
+                </div>
+                <div class="mt-3">
+                    <button type="submit" class="btn btn-sm text-white btn-success">ثبت</button>
+                    <a asp-area="Admin" asp-controller="ProductCategory" asp-action="Index" class="btn btn-sm text-white btn-warning">بازگشت</a>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

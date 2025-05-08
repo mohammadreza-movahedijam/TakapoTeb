@@ -32,7 +32,7 @@ public static class FileProcessing
         if (file is not null)
         {
             string fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
-            string folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Gallery", folder);
+            string folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "gallery", folder);
             if (!Directory.Exists(folderPath))
             {
                 Directory.CreateDirectory(folderPath);
@@ -59,7 +59,7 @@ public static class FileProcessing
         }
 
         string folderPath = Path.Combine(Directory.GetCurrentDirectory(),
-            "wwwroot", "Gallery", folder);
+            "wwwroot", "gallery", folder);
 
         string path = Path.Combine(folderPath, fileName);
 
@@ -83,7 +83,7 @@ public static class FileProcessing
             await file.CopyToAsync(memoryStream);
             byte[] fileBytes = memoryStream.ToArray();
             string fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
-            string folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Files", folder);
+            string folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "files", folder);
             byte[] fileSignature = fileBytes.Take(4).ToArray();
             string extension = Path.GetExtension(fileName).ToLower();
 

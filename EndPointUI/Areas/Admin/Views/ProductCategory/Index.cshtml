@@ -1,0 +1,108 @@
+﻿@model PaginatedList<Application.Queries.ProductCategory.ProductCategoryViewModel>
+@{
+    ViewData["Title"] = "لیست دسته بندی ها";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section Script {
+
+    <script src="~/js/rest.js"></script>
+    <script src="~/js/sweetalert.js"></script>
+    <script src="~/js/pagination.js"></script>
+    <script src="~/assets/js/productCategory/Index.js"></script>
+
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="lh-1-85 breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/Admin">پیشخوان</a>
+        </li>
+
+        <li class="breadcrumb-item active">لیست دسته بندی ها</li>
+    </ol>
+</nav>
+<div class="row">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="heading-color">لیست دسته بندی ها</h5>
+            <a asp-area="Admin" asp-controller="ProductCategory" asp-action="Create" class="btn btn-sm btn-success text-white">
+                ایجاد دسته بندی
+            </a>
+            <form asp-area="Admin" asp-controller="ProductCategory" asp-action="Index" method="get" class="input-group mt-3 w-25">
+                <input class="form-control form-control-sm" name="keyword" type="search"
+                       placeholder="یک عبارت جستجو کنید" value="@ViewBag.Search" />
+                <button class="btn btn-sm btn-primary" type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <a asp-area="Admin" asp-controller="ProductCategory" asp-action="Index"
+                   class="btn btn-sm btn-warning text-white"><i class="fa-solid fa-rotate-right"></i></a>
+            </form>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive text-nowrap">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>تصویر</th>
+                            <th>عنوان</th>
+                            <th>دسته بندی والد</th>
+                            <th>عملیات</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        @if (Model != null && Model.List!.Any())
+                        {
+                            @foreach (var item in Model.List!)
+                            {
+                                <tr id="item_@item.Id">
+                                    <td>
+                                        @if (item.ImagePath == "default.jpg")
+                                        {
+                                            <img src="~/gallery/default.jpg" width="150" height="80"/>
+                                        }
+                                        else{
+                                            <img src="~/gallery/productCategory/@item.ImagePath" width="150" height="80" />
+                                            
+                                            }
+                                        </td>
+                                    <td>@item.Title</td>
+                                    <td>
+                                        @if (string.IsNullOrEmpty(item.ParentTitle))
+                                        {
+                                            <span class="badge bg-primary">بدون والد</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-success">@item.ParentTitle</span>
+                                        }
+                                    </td>
+
+                                    <td>
+                                        <a asp-area="Admin" asp-controller="ProductCategory" asp-action="Edit"
+                                           asp-route-id="@item.Id"
+                                           class="btn btn-sm btn-warning text-white">ویرایش</a>
+                                        <a onclick="Delete('@item.Id')"
+                                           class="btn btn-sm btn-danger text-white">حذف</a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer">
+
+            @if (Model!.TotalPage > 1)
+            {
+                <div id="pagination-body"
+                     data-page-index="@Model.CurentPage"
+                     data-total-pages="@Model.TotalPage"
+                     data-search="@ViewBag.Search"
+                     data-path="/Admin/ProductCategory/Inbox">
+                </div>
+            }
+        </div>
+    </div>
+</div>
