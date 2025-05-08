@@ -72,18 +72,6 @@ internal sealed class InsertUserHandler :
                         }
 
 
-                        IdentityResult insertPasswordResult =
-                            await _userManager.AddPasswordAsync(user, request.User.Password!);
-                        if (insertPasswordResult.Succeeded is false)
-                        {
-                            await transaction.RollbackAsync();
-                            StringBuilder message = new();
-                            foreach (IdentityError item in insertPasswordResult.Errors)
-                            {
-                                message.AppendLine(item.Description + "\n");
-                            }
-                            throw new InternalException(message.ToString());
-                        }
 
                         await transaction.CommitAsync();
                     }

@@ -65,6 +65,9 @@
                                     <td>@item.PhoneNumber</td>
                                     <td>@item.Email</td>
                                     <td>
+                                        <a onclick="SetPassword('@item.Id')" class="btn btn-sm btn-primary text-white">
+                                            تنظیم گذرواژه
+                                        </a>
                                         <a asp-area="Admin" asp-controller="User" asp-action="Edit"
                                            asp-route-id="@item.Id"
                                            class="btn btn-sm btn-warning text-white">ویرایش</a>

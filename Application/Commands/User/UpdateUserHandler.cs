@@ -48,7 +48,7 @@ internal sealed class UpdateUserHandler :
 
 
                         IdentityResult updateUserResult =
-                            await _userManager.CreateAsync(user);
+                            await _userManager.UpdateAsync(user);
                         if (updateUserResult.Succeeded is false)
                         {
                             StringBuilder message = new();
@@ -94,45 +94,6 @@ internal sealed class UpdateUserHandler :
                             }
                             throw new InternalException(message.ToString(), 400);
                         }
-
-
-                        if (!string.IsNullOrEmpty(request.User.Password))
-                        {
-
-                            StringBuilder textError = new StringBuilder();
-                            IdentityResult resultRemoveOldUserPassword = await _userManager.RemovePasswordAsync(user);
-                            if (!resultRemoveOldUserPassword.Succeeded)
-                            {
-                                await transaction.RollbackAsync();
-
-                                foreach (var error in resultRemoveOldUserPassword.Errors)
-                                {
-                                    textError.AppendLine(error.Description);
-                                }
-                                throw new InternalException(textError.ToString(), 400);
-                            }
-
-
-
-
-
-
-
-                            IdentityResult insertPasswordResult =
-                            await _userManager.AddPasswordAsync(user, request.User.Password!);
-                            if (insertPasswordResult.Succeeded is false)
-                            {
-                                await transaction.RollbackAsync();
-                                StringBuilder message = new();
-                                foreach (IdentityError item in insertPasswordResult.Errors)
-                                {
-                                    message.AppendLine(item.Description + "/");
-                                }
-                                throw new InternalException(message.ToString(), 400);
-                            }
-
-                        }
-
 
 
                         await transaction.CommitAsync();

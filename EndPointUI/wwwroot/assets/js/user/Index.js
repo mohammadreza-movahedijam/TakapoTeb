@@ -38,3 +38,50 @@
     });
    
 }
+function SetPassword(id) {
+    Swal.fire({
+        title: "تنظیم گذرواژه",
+        text: "گذرواژه را وارد کنید",
+        input: "password",
+        inputAttributes: {
+            autocapitalize: "off"
+        },
+        showCancelButton: true,
+        cancelButtonText: "انصراف",
+        confirmButtonText: "ثبت",
+        showLoaderOnConfirm: true,
+        preConfirm: (password) => {
+            if (!password || password.length < 6) {
+                Swal.showValidationMessage("گذرواژه نمیتواند خالی باشد و حداقل باید ۶ کاراکتر داشته باشد");
+                return false;
+            }
+           
+            let body = {
+                UserId: id,
+                Password: password
+            };
+           
+            rest.postAsync("/Admin/User/SetPassword", null, body, function (isSuccess, response) {
+                if (response.isSuccess) {
+
+                    Swal.fire({
+                        title: "گذرواژه با موفقیت تنظیم شد",
+                        icon: "success",
+                        confirmButtonText: "متوجه شدم"
+                    });
+                  
+                } else {
+
+                    Swal.fire({
+                        title: "عملیات ناموفق",
+                        text: response.message,
+                        icon: "warning",
+                        confirmButtonText: "متوجه شدم"
+                    });
+                }
+            })
+
+        },
+        allowOutsideClick: () => !Swal.isLoading()
+    });
+}

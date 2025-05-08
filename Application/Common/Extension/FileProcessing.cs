@@ -1,4 +1,5 @@
-﻿using Application.Common.Resource;
+﻿using Application.Common.CustomException;
+using Application.Common.Resource;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using SixLabors.ImageSharp;
@@ -19,13 +20,14 @@ public static class FileProcessing
     static string ImagePathNotFound { set; get; } = "تصویر یافت نشد";
     static string ExceptionUpload { set; get; } = "خطای بارگذاری رخ داده است";
     static string NotValidFile { set; get; } = "فایل نامعتبر است";
+    static string PathError { set; get; } = "مسیر حذف تصویر یافت نشد";
     #endregion
 
     #region Image
-    public static BaseResult<string> UploadImage
+    public static string UploadImage
         (this IFormFile file,
         string folder,
-        string? defualt = null)
+        string? defualt = "default.jpg")
     {
         if (file is not null)
         {
@@ -40,16 +42,12 @@ public static class FileProcessing
             var save = image.SaveAsWebpAsync(filePath);
             if (save.IsCompleted)
             {
-                return BaseResult<string>.Success(fileName);
+                return fileName;
             }
         }
-        if (!string.IsNullOrEmpty(defualt))
-        {
-            return BaseResult<string>.Success(defualt);
-        }
-        return BaseResult<string>.Fail(ExceptionUpload);
+           return defualt! ;
     }
-    public static void RemoveImage(this string fileName, string folder, ILogger logger, string? defualt = null)
+    public static void RemoveImage(this string fileName, string folder, string? defualt = null)
     {
         if (fileName == "default.jpg" || fileName == "notFound.jpg")
         {
@@ -72,14 +70,12 @@ public static class FileProcessing
         }
         else
         {
-            ILogger _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-            _logger.LogWarning(Message.ErrorRemoveOldImage+$" => {fileName}");
-            return;
+            throw new InternalException(PathError);
         }
     }
     #endregion
 
-    public async static Task<BaseResult> UploadFileAsync(this IFormFile file, string folder)
+    public async static Task<string> UploadFileAsync(this IFormFile file, string folder)
     {
         try
         {
@@ -112,7 +108,7 @@ public static class FileProcessing
             }
             if (IsValid == false)
             {
-                return BaseResult.Fail(NotValidFile);
+                throw new InternalException(NotValidFile);
             }
 
 
@@ -126,14 +122,17 @@ public static class FileProcessing
             string filePath = Path.Combine(folderPath, fileName);
             if (!_allowedExtensions.Contains(extension))
             {
-                return BaseResult.Fail(NotValidFile);
+                throw new InternalException(NotValidFile);
+
             }
             await File.WriteAllBytesAsync(filePath, fileBytes);
-            return BaseResult.Success(fileName);
+            return fileName;
         }
         catch (Exception ex)
         {
-            return BaseResult.Fail(ExceptionUpload);
+            throw new InternalException(ExceptionUpload);
+
+          
         }
     }
 }

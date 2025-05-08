@@ -20,8 +20,7 @@ public sealed record UserDto
     public string? PhoneNumber { set; get; }
     [Required(ErrorMessage = "کدملی الزامی است")]
     public string? UserName { set; get; }
-    [Required(ErrorMessage = "گذر واژه الزامی است")]
-    public string? Password { set; get; }
+
     [Required(ErrorMessage = "نقش الزامی است")]
     public string? Role { set; get; }
 }
