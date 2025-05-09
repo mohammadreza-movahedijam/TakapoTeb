@@ -13,14 +13,14 @@ namespace Application.Commands.ProductCategory;
 internal sealed class DeleteProductCategoryHandler :
     IRequestHandler<DeleteProductCategoryCommand>
 {
-    readonly IRepository<ProductCategoryEntity> _repository;
-    public DeleteProductCategoryHandler(IRepository<ProductCategoryEntity> repository)
+    readonly IRepository<CategoryEntity> _repository;
+    public DeleteProductCategoryHandler(IRepository<CategoryEntity> repository)
     {
         _repository = repository;
     }
     public async Task Handle(DeleteProductCategoryCommand request, CancellationToken cancellationToken)
     {
-        ProductCategoryEntity? productCategory =
+        CategoryEntity? productCategory =
             await _repository.GetAsync(g => g.Id == request.Id, cancellationToken);
         if (productCategory == null)
         {

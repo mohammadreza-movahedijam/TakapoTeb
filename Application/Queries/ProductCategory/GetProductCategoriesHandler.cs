@@ -19,9 +19,9 @@ namespace Application.Queries.ProductCategory;
 internal sealed class GetProductCategoriesHandler :
     IRequestHandler<GetProductCategoriesQuery, PaginatedList<ProductCategoryViewModel>>
 {
-    readonly IRepository<ProductCategoryEntity> _repository;
+    readonly IRepository<CategoryEntity> _repository;
     public GetProductCategoriesHandler
-        (IRepository<ProductCategoryEntity> repository)
+        (IRepository<CategoryEntity> repository)
     {
         _repository = repository;
     }
@@ -29,18 +29,18 @@ internal sealed class GetProductCategoriesHandler :
         CancellationToken cancellationToken)
     {
         TypeAdapterConfig config = new();
-        config.NewConfig<ProductCategoryEntity, ProductCategoryViewModel>()
+        config.NewConfig<CategoryEntity, ProductCategoryViewModel>()
             .Map(d => d.Id, s => s.Id)
             .Map(d => d.ParentTitle, s =>
-                s.ParentProductCategory != null ?
-                    $"{s.ParentProductCategory.TitleFa} {s.ParentProductCategory.TitleEn}" : "")
+                s.ParentCategory != null ?
+                    $"{s.ParentCategory.TitleFa} {s.ParentCategory.TitleEn}" : "")
             .Map(d => d.Title, s =>
                 s != null && !string.IsNullOrEmpty(s.TitleFa) && !string.IsNullOrEmpty(s.TitleEn) ?
                     $"{s.TitleFa} {s.TitleEn}" : "")
             .Compile();
 
-        IQueryable<ProductCategoryEntity> query = _repository.GetByQuery();
-        query = query.Include(i => i.ParentProductCategory);
+        IQueryable<CategoryEntity> query = _repository.GetByQuery();
+        query = query.Include(i => i.ParentCategory);
         PaginatedList<ProductCategoryViewModel> model = new();
         if (!string.IsNullOrEmpty(request!.Pagination!.keyword))
         {
@@ -51,7 +51,7 @@ internal sealed class GetProductCategoriesHandler :
         int count = query.Count().PageCount(request!.Pagination!.pageSize); ;
         int total = query.Count();
 
-        model = await query.MappingedAsync<ProductCategoryEntity, ProductCategoryViewModel>
+        model = await query.MappingedAsync<CategoryEntity, ProductCategoryViewModel>
                 (request!.Pagination!.curentPage,
                 request!.Pagination!.pageSize, count, total,config);
         return model;

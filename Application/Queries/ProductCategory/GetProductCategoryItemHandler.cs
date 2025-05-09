@@ -9,15 +9,15 @@ namespace Application.Queries.ProductCategory;
 internal sealed class GetProductCategoryItemHandler :
     IRequestHandler<GetProductCategoryItemQuery, IReadOnlyList<ItemGeneric<Guid, string>>>
 {
-    readonly IRepository<ProductCategoryEntity> _repository;
-    public GetProductCategoryItemHandler(IRepository<ProductCategoryEntity> repository)
+    readonly IRepository<CategoryEntity> _repository;
+    public GetProductCategoryItemHandler(IRepository<CategoryEntity> repository)
     {
         _repository = repository;
     }
     public async Task<IReadOnlyList<ItemGeneric<Guid, string>>>
         Handle(GetProductCategoryItemQuery request, CancellationToken cancellationToken)
     {
-        IQueryable<ProductCategoryEntity> query = _repository.GetByQuery();
+        IQueryable<CategoryEntity> query = _repository.GetByQuery();
         return await query
             .Where(w=>w.ParentProductCategoryId==null)
             .Select(s => new ItemGeneric<Guid, string>

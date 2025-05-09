@@ -10,15 +10,15 @@ namespace Application.Commands.ProductCategory;
 internal sealed class UpdateProductCategoryHandler :
     IRequestHandler<UpdateProductCategoryCommand>
 {
-    readonly IRepository<ProductCategoryEntity> _repository;
-    public UpdateProductCategoryHandler(IRepository<ProductCategoryEntity> repository)
+    readonly IRepository<CategoryEntity> _repository;
+    public UpdateProductCategoryHandler(IRepository<CategoryEntity> repository)
     {
         _repository = repository;
     }
     public async Task Handle(UpdateProductCategoryCommand request,
         CancellationToken cancellationToken)
     {
-        ProductCategoryEntity? productCategory=
+        CategoryEntity? productCategory=
             await _repository.GetAsync(g=>g.Id==request.ProductCategory.Id,cancellationToken);
         if (productCategory == null) 
         {

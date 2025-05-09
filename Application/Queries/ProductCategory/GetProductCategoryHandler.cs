@@ -9,8 +9,8 @@ namespace Application.Queries.ProductCategory;
 internal sealed class GetProductCategoryHandler :
     IRequestHandler<GetProductCategoryQuery, ProductCategoryDto>
 {
-    readonly IRepository<ProductCategoryEntity> _repository;
-    public GetProductCategoryHandler(IRepository<ProductCategoryEntity>
+    readonly IRepository<CategoryEntity> _repository;
+    public GetProductCategoryHandler(IRepository<CategoryEntity>
         repository)
     {
         _repository = repository;

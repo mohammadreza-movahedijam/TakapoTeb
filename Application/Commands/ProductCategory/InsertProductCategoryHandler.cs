@@ -9,17 +9,17 @@ namespace Application.Commands.ProductCategory;
 internal sealed class InsertProductCategoryHandler :
     IRequestHandler<InsertProductCategoryCommand>
 {
-    readonly IRepository<ProductCategoryEntity> _repository;
+    readonly IRepository<CategoryEntity> _repository;
     public InsertProductCategoryHandler
-        (IRepository<ProductCategoryEntity> repository)
+        (IRepository<CategoryEntity> repository)
     {
         _repository = repository;
     }
     public async Task Handle(InsertProductCategoryCommand
         request, CancellationToken cancellationToken)
     {
-        ProductCategoryEntity productCategory =
-            request.ProductCategory.Adapt<ProductCategoryEntity>();
+        CategoryEntity productCategory =
+            request.ProductCategory.Adapt<CategoryEntity>();
    
             productCategory.ImagePath = request.ProductCategory!.ImageFile!.
                 UploadImage("ProductCategory");

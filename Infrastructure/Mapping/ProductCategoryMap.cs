@@ -11,17 +11,17 @@ using static Dapper.SqlMapper;
 namespace Infrastructure.Mapping;
 
 internal sealed class ProductCategoryMap :
-    IEntityTypeConfiguration<ProductCategoryEntity>
+    IEntityTypeConfiguration<CategoryEntity>
 {
-    public void Configure(EntityTypeBuilder<ProductCategoryEntity> builder)
+    public void Configure(EntityTypeBuilder<CategoryEntity> builder)
     {
         builder.ToTable("Category", "Product");
         builder.Property(p => p.TitleEn).HasMaxLength(500);
         builder.Property(p => p.TitleFa).HasMaxLength(500);
         builder.Property(p => p.DescriptionEn).HasMaxLength(6000);
         builder.Property(p => p.DescriptionFa).HasMaxLength(6000);
-        builder.HasOne(x => x.ParentProductCategory)
-              .WithMany(x => x.SubProductCategories)
+        builder.HasOne(x => x.ParentCategory)
+              .WithMany(x => x.SubCategories)
               .HasForeignKey(x => x.ParentProductCategoryId)
               .IsRequired(false)
               .OnDelete(DeleteBehavior.Restrict);

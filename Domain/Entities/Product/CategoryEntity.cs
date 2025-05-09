@@ -1,6 +1,6 @@
 ﻿namespace Domain.Entities.Product;
 
-public class ProductCategoryEntity : BaseEntity,IDelete
+public class CategoryEntity : BaseEntity,IDelete
 {
     public string? ImagePath { get; set; }
     public string? TitleFa { get; set; }
@@ -10,10 +10,10 @@ public class ProductCategoryEntity : BaseEntity,IDelete
     public string? DescriptionEn { get; set; }
 
     #region Relation 
-    public ProductCategoryEntity? ParentProductCategory { get; set; }
+    public CategoryEntity? ParentCategory { get; set; }
     public Guid? ParentProductCategoryId { get; set; }
 
-    public ICollection<ProductCategoryEntity>? SubProductCategories { get; } 
+    public ICollection<CategoryEntity>? SubCategories { get; } 
     #endregion
 
     public bool IsDeleted { get; set; }
