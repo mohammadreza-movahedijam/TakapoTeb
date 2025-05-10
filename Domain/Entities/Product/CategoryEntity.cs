@@ -12,7 +12,7 @@ public class CategoryEntity : BaseEntity,IDelete
     #region Relation 
     public CategoryEntity? ParentCategory { get; set; }
     public Guid? ParentProductCategoryId { get; set; }
-
+    public ICollection<ProductEntity>?Products { get; set; } 
     public ICollection<CategoryEntity>? SubCategories { get; } 
     #endregion
 

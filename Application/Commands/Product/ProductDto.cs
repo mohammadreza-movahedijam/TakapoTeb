@@ -1,16 +1,17 @@
-﻿namespace Domain.Entities.Product;
+﻿using Microsoft.AspNetCore.Http;
 
-public class ProductEntity : BaseEntity,IDelete
+namespace Application.Commands.Product;
+
+public sealed record ProductDto
 {
+    public Guid? Id { get; set; }
     public string? ImagePath { get; set; }
+    public IFormFile? ImageFile { get; set; }
     public string? TitleFa { get; set; }
     public string? DescrptionFa { get; set; }
     public string? TitleEn { get; set; }
     public string? DescrptionEn { get; set; }
     public string? VideoLink { get; set; }
-    #region Relation
-    public CategoryEntity? Category { get; set; }
+    public string? CategoryTitleFa { get; set; }
     public Guid? CategoryId { get; set; }
-    #endregion
-    public bool IsDeleted { get ; set ; }=false;
 }

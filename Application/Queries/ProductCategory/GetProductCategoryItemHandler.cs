@@ -18,9 +18,20 @@ internal sealed class GetProductCategoryItemHandler :
         Handle(GetProductCategoryItemQuery request, CancellationToken cancellationToken)
     {
         IQueryable<CategoryEntity> query = _repository.GetByQuery();
-        return await query
-            .Where(w=>w.ParentProductCategoryId==null)
-            .Select(s => new ItemGeneric<Guid, string>
+
+        
+        if (!string.IsNullOrEmpty(request.Search))
+        {
+            query = query.Where(w => w.TitleFa!.Contains(request.Search) ||
+            w.TitleEn!.Contains(request.Search));
+        }
+        else
+        {
+            query = query.Where(w => w.ParentProductCategoryId == null);
+        }
+
+
+        return await query.Select(s => new ItemGeneric<Guid, string>
         {
             Id = s.Id,
             Title = s.TitleFa + "-" + s.TitleEn

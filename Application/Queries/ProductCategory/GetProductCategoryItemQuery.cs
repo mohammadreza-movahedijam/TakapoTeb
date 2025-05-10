@@ -11,4 +11,5 @@ namespace Application.Queries.ProductCategory;
 public sealed record GetProductCategoryItemQuery
     :IRequest<IReadOnlyList<ItemGeneric<Guid,string>>>
 {
+    public string? Search {  get; set; }    
 }
