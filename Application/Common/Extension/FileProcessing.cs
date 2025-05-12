@@ -116,8 +116,7 @@ public static class FileProcessing
             {
                 Directory.CreateDirectory(folderPath);
             }
-            if (!Directory.Exists(folderPath))
-                Directory.CreateDirectory(folderPath);
+          
 
             string filePath = Path.Combine(folderPath, fileName);
             if (!_allowedExtensions.Contains(extension))

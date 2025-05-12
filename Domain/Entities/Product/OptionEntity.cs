@@ -1,21 +1,21 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Commands.ProductOption;
+namespace Domain.Entities.Product;
 
-public sealed record ProductOptionDto
+public class OptionEntity:BaseEntity,IDelete
 {
-    public Guid Id { get; set; }
     public string? TitleFa { set; get; }
-    public string? DescriptionFa { set; get; }
+    public string? DescriptionFa { set; get; }   
     public string? TitleEn { set; get; }
     public string? DescriptionEn { set; get; }
     public string? ImagePath { set; get; }
-    public IFormFile? ImageFile { set; get; }   
+    #region Relation 
     public Guid ProductId { set; get; }
-    public string? ProductTitleFa { set; get;}
+    public ProductEntity? Product { set; get; }
+    #endregion
+    public bool IsDeleted { get; set; }=false;
 }

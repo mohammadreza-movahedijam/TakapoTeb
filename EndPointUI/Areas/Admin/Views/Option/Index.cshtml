@@ -1,16 +1,15 @@
-﻿@model Application.Common.PaginatedList<Application.Queries.User.ViewModel.UserViewModel>
+﻿@model PaginatedList<Application.Queries.Option.OptionViewModel>
+
 @{
-    ViewData["Title"] = "لیست کاربران";
+    ViewData["Title"] = "لیست ویژگی ها";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
-
-
 @section Script {
 
     <script src="~/js/rest.js"></script>
     <script src="~/js/sweetalert.js"></script>
     <script src="~/js/pagination.js"></script>
-    <script src="~/assets/js/user/Index.js"></script>
+    <script src="~/assets/js/option/Index.js"></script>
 
 }
 <nav aria-label="breadcrumb">
@@ -18,26 +17,31 @@
         <li class="breadcrumb-item">
             <a href="/Admin">پیشخوان</a>
         </li>
+        <li  class="breadcrumb-item">
+            <a asp-area="Admin" asp-controller="Product" asp-action="Index">لیست محصولات</a>
+        </li>
 
-        <li class="breadcrumb-item active">لیست کاربران</li>
+        <li class="breadcrumb-item active">لیست ویژگی ها</li>
     </ol>
 </nav>
 <div class="row">
     <div class="card">
         <div class="card-header">
-            <h5 class="heading-color">لیست کاربران</h5>
-            <a asp-area="Admin" asp-controller="User" asp-action="Create" 
+            <h5 class="heading-color">لیست ویژگی ها</h5>
+            <a asp-area="Admin" asp-controller="Option"
+               asp-action="Create" asp-route-ProductId="@ViewBag.ProductId"
             class="btn btn-sm btn-success text-white">
-                ایجاد کاربر
+                ایجاد ویژگی
             </a>
-            <form asp-area="Admin" asp-controller="User" asp-action="Index"
-            method="get" class="input-group mt-3 w-25">
+            <form asp-area="Admin" asp-controller="Option" asp-action="Index" method="get" class="input-group mt-3 w-25">
                 <input class="form-control form-control-sm" name="keyword" type="search"
                        placeholder="یک عبارت جستجو کنید" value="@ViewBag.Search" />
+                <input type="hidden" name="ProductId" value="@ViewBag.ProductId"/>
                 <button class="btn btn-sm btn-primary" type="submit">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
-                <a asp-area="Admin" asp-controller="User" asp-action="Index"
+                <a asp-area="Admin" asp-controller="Option" asp-action="Index"
+                   asp-route-ProductId="@ViewBag.ProductId"
                    class="btn btn-sm btn-warning text-white"><i class="fa-solid fa-rotate-right"></i></a>
             </form>
         </div>
@@ -46,11 +50,9 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>نام و نام خانوادگی</th>
-                            <th>کدملی</th>
-                            <th>شماره موبایل</th>
-                            <th>پست الکترونیک</th>
-                         
+                            <th>تصویر</th>
+                            <th>عنوان فارسی</th>
+                            <th>عنوان انگلیسی</th>
                             <th>عملیات</th>
                         </tr>
                     </thead>
@@ -60,15 +62,23 @@
                             @foreach (var item in Model.List!)
                             {
                                 <tr id="item_@item.Id">
-                                    <td>@item.FirstName @item.LastName</td>
-                                    <td>@item.UserName</td>
-                                    <td>@item.PhoneNumber</td>
-                                    <td>@item.Email</td>
                                     <td>
-                                        <a onclick="SetPassword('@item.Id')" class="btn btn-sm btn-primary text-white">
-                                            تنظیم گذرواژه
-                                        </a>
-                                        <a asp-area="Admin" asp-controller="User" asp-action="Edit"
+                                        @if (item.ImagePath == "default.jpg")
+                                        {
+                                            <img src="~/gallery/default.jpg" width="150" height="80" />
+                                        }
+                                        else
+                                        {
+                                            <img src="~/gallery/product/@item.ImagePath" width="150" height="80" />
+
+                                        }
+                                    </td>
+                                    <td>@item.TitleFa</td>
+                                    <td>@item.TitleEn</td>
+                                  
+
+                                    <td>
+                                        <a asp-area="Admin" asp-controller="Option" asp-action="Edit"
                                            asp-route-id="@item.Id"
                                            class="btn btn-sm btn-warning text-white">ویرایش</a>
                                         <a onclick="Delete('@item.Id')"
@@ -89,7 +99,7 @@
                      data-page-index="@Model.CurentPage"
                      data-total-pages="@Model.TotalPage"
                      data-search="@ViewBag.Search"
-                     data-path="/Admin/User/Index">
+                     data-path="/Admin/Option/Index">
                 </div>
             }
         </div>

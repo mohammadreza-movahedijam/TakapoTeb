@@ -72,7 +72,21 @@
                                     <td>@item.Title</td>
                                     <td>@item.CategoryTitle</td>
                                     <td>
-                                       
+                                        <a class="btn btn-sm btn-info text-white"
+                                            asp-area="Admin"
+                                           asp-controller="Option"
+                                           asp-action="Index" asp-route-ProductId="@item.Id">
+                                           ویژگی ها
+                                       </a>
+
+                                        <a class="btn btn-sm btn-primary text-white"
+                                           asp-area="Admin"
+                                           asp-controller="Document"
+                                           asp-action="Index" asp-route-ProductId="@item.Id">
+                                           مستندات
+                                        </a>
+
+
                                         <a asp-area="Admin" asp-controller="Product" asp-action="Edit"
                                            asp-route-id="@item.Id"
                                            class="btn btn-sm btn-warning text-white">ویرایش</a>
@@ -94,7 +108,7 @@
                      data-page-index="@Model.CurentPage"
                      data-total-pages="@Model.TotalPage"
                      data-search="@ViewBag.Search"
-                     data-path="/Admin/Product/Inbox">
+                     data-path="/Admin/Product/Index">
                 </div>
             }
         </div>

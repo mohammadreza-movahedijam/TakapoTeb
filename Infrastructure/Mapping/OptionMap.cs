@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Mapping;
 
-internal sealed class ProductOptionMap : IEntityTypeConfiguration<ProductOptionEntity>
+internal sealed class OptionMap : IEntityTypeConfiguration<OptionEntity>
 {
-    public void Configure(EntityTypeBuilder<ProductOptionEntity> builder)
+    public void Configure(EntityTypeBuilder<OptionEntity> builder)
     {
-        builder.ToTable("ProductOption", "Product");
+        builder.ToTable("Option", "Product");
         builder.HasOne(o => o.Product)
-            .WithMany(m => m.ProductOptions)
+            .WithMany(m => m.Options)
             .HasForeignKey(f => f.ProductId);
 
 

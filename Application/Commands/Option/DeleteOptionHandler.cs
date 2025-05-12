@@ -9,19 +9,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Commands.ProductOption;
+namespace Application.Commands.Option;
 
-internal sealed class DeleteProductOptionHandler :
-    IRequestHandler<DeleteProductOptionCommand>
+internal sealed class DeleteOptionHandler :
+    IRequestHandler<DeleteOptionCommand>
 {
-    readonly IRepository<ProductOptionEntity> _repository;
-    public DeleteProductOptionHandler(IRepository<ProductOptionEntity> repository)
+    readonly IRepository<OptionEntity> _repository;
+    public DeleteOptionHandler(IRepository<OptionEntity> repository)
     {
         _repository = repository;
     }
-    public async Task Handle(DeleteProductOptionCommand request, CancellationToken cancellationToken)
+    public async Task Handle(DeleteOptionCommand request, CancellationToken cancellationToken)
     {
-        ProductOptionEntity? productOptionEntity =
+        OptionEntity? productOptionEntity =
           await _repository.GetAsync(g=>g.Id==request.Id, cancellationToken);
 
         if (productOptionEntity == null)

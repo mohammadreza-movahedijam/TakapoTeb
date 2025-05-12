@@ -9,20 +9,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Commands.ProductOption;
+namespace Application.Commands.Option;
 
 internal sealed class UpdateProductOptionHandler :
-    IRequestHandler<UpdateProductOptionCommand>
+    IRequestHandler<UpdateOptionCommand>
 {
-    readonly IRepository<ProductOptionEntity> _repository;
-    public UpdateProductOptionHandler(IRepository<ProductOptionEntity> repository)
+    readonly IRepository<OptionEntity> _repository;
+    public UpdateProductOptionHandler(IRepository<OptionEntity> repository)
     {
         _repository = repository;
     }
-    public async Task Handle(UpdateProductOptionCommand request, CancellationToken cancellationToken)
+    public async Task Handle(UpdateOptionCommand request, CancellationToken cancellationToken)
     {
-        ProductOptionEntity? productOptionEntity =
-          await _repository.GetAsync(g => g.Id == request.Id, cancellationToken);
+        OptionEntity? productOptionEntity =
+          await _repository.GetAsync(g => g.Id == request.ProductOption.Id, cancellationToken);
 
 
         if (productOptionEntity == null)
