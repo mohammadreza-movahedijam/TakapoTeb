@@ -1,0 +1,123 @@
+﻿@model Application.Commands.Article.ArticleDto
+
+@{
+    ViewData["Title"] = "ویرایش مقاله";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@section Style {
+    <script src="~/ckeditor/ckeditor.js"></script>
+}
+@section Script {
+
+    <script src="~/assets/js/upload.js"></script>
+    <script src="~/assets/js/article/edit.js"></script>
+    <partial name="_ValidationScriptsPartial.cshtml" />
+}
+<nav aria-label="breadcrumb">
+    <ol class="lh-1-85 breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/Admin">پیشخوان</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a href="/Admin/Article/Index">لیست مقالات</a>
+        </li>
+
+        <li class="breadcrumb-item active">ایجاد مقاله </li>
+    </ol>
+</nav>
+
+<div class="row">
+    <div class="col-8 offset-2">
+        <div class="card mb-4">
+            <div class="card-header">
+
+                <h5 class=" heading-color">ایجاد مقاله</h5>
+                @if (ViewBag.ErrorMessage != null)
+                {
+                    <div class="alert alert-danger">
+                        @ViewBag.ErrorMessage
+                    </div>
+                }
+            </div>
+            <form asp-area="Admin" asp-controller="Article" asp-action="Edit"
+                  method="post" class="card-body" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-12">
+                        @if (Model.ImagePath == "default.jpg")
+                        {
+                            <img id="imagePath_1" width="100" height="80"
+                                 src="~/Gallery/default.jpg" />
+                        }
+                        else
+                        {
+
+
+
+                            <img id="imagePath_1" width="100" height="80"
+                                 src="~/Gallery/Article/@Model.ImagePath " />
+                        }
+                    </div>
+                    <div class="col-3">
+                        <label class="form-label">تصویر</label>
+                        <input asp-for="ImageFile" onchange="ChangeImage(this,1)" class="form-control" type="file" />
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-6">
+                        <label class="form-label">نام فارسی</label>
+                        <input asp-for="TitleFa" type="text" class="form-control" />
+                        <span class="text-danger" asp-validation-for="TitleFa"></span>
+                    </div>
+
+                    <div class="col-6">
+                        <label class="form-label">نام انگلیسی</label>
+                        <input asp-for="TitleEn" type="text" class="form-control" />
+                        <span class="text-danger" asp-validation-for="TitleEn"></span>
+                    </div>
+
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">انتخاب دسته بندی</label>
+                    <select asp-for="CategoryId" class="form-select" asp-items="@ViewBag.Categories">
+                    </select>
+                    <span class="text-danger" asp-validation-for="CategoryId"></span>
+
+                </div>
+
+
+                <div class="col-12">
+                    <label class="form-label">متن فارسی</label>
+                    <textarea asp-for="TextFa" id="TextFa"
+                              type="text" class="form-control" rows="7">
+                                                  </textarea>
+                    <span class="text-danger" asp-validation-for="TextFa"></span>
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label">متن انگلیسی</label>
+                    <textarea asp-for="TextEn" id="TextEn"
+                              type="text" class="form-control" rows="7">
+                                                  </textarea>
+                    <span class="text-danger" asp-validation-for="TextEn"></span>
+                </div>
+
+                <input type="hidden" asp-for="Id"/>
+                <input type="hidden" asp-for="ImagePath"/>
+
+
+
+
+
+                <div class="mt-3">
+                    <button type="submit" class="btn btn-sm text-white btn-success">ثبت</button>
+                    <a asp-area="Admin" asp-controller="Article" asp-action="Index" class="btn btn-sm text-white btn-warning">بازگشت</a>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

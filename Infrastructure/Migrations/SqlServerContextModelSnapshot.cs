@@ -27,6 +27,60 @@ namespace Infrastructure.Migrations
                 .IncrementsBy(2)
                 .HasMax(9223372036854775807L);
 
+            modelBuilder.Entity("Domain.Entities.Blog.ArticleEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CategoryId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("TextEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TextFa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleFa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("Article", "Blog");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Blog.CategoryEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("TitleEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleFa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Category", "Blog");
+                });
+
             modelBuilder.Entity("Domain.Entities.Identity.RoleEntity", b =>
                 {
                     b.Property<Guid>("Id")
@@ -366,6 +420,17 @@ namespace Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("Domain.Entities.Blog.ArticleEntity", b =>
+                {
+                    b.HasOne("Domain.Entities.Blog.CategoryEntity", "Category")
+                        .WithMany("Articles")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+                });
+
             modelBuilder.Entity("Domain.Entities.Product.CategoryEntity", b =>
                 {
                     b.HasOne("Domain.Entities.Product.CategoryEntity", "ParentCategory")
@@ -456,6 +521,11 @@ namespace Infrastructure.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Domain.Entities.Blog.CategoryEntity", b =>
+                {
+                    b.Navigation("Articles");
                 });
 
             modelBuilder.Entity("Domain.Entities.Product.CategoryEntity", b =>

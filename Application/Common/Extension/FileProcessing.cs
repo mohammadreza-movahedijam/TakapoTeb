@@ -13,7 +13,8 @@ public static class FileProcessing
 
     
     #region Format
-    static string[] _allowedExtensions = { ".pdf", ".txt", ".doc", ".docx", ".xlsx" };
+    static string[] _allowedExtensions 
+        = { ".pdf", ".txt", ".doc", ".docx", ".xlsx" };
     #endregion
 
     #region Message
@@ -87,29 +88,29 @@ public static class FileProcessing
             byte[] fileSignature = fileBytes.Take(4).ToArray();
             string extension = Path.GetExtension(fileName).ToLower();
 
-            bool IsValid = false;
-            switch (extension)
-            {
-                case ".pdf":
-                    IsValid = fileSignature.SequenceEqual(new byte[] { 0x25, 0x50, 0x44, 0x46 });
-                    break;
-                case ".txt":
-                    IsValid = true;
-                    break;
-                case ".doc":
-                    IsValid = fileSignature.SequenceEqual(new byte[] { 0xD0, 0xCF, 0x11, 0xE0 });
-                    break;
-                case ".docx":
-                    IsValid = fileSignature.SequenceEqual(new byte[] { 0xD0, 0xCF, 0x11, 0xE0 });
-                    break;
-                case ".xlsx":
-                    IsValid = fileSignature.SequenceEqual(new byte[] { 0x50, 0x4B, 0x03, 0x04 });
-                    break;
-            }
-            if (IsValid == false)
-            {
-                throw new InternalException(NotValidFile);
-            }
+            //bool IsValid = false;
+            //switch (extension)
+            //{
+            //    case ".pdf":
+            //        IsValid = fileSignature.SequenceEqual(new byte[] { 0x25, 0x50, 0x44, 0x46 });
+            //        break;
+            //    case ".txt":
+            //        IsValid = true;
+            //        break;
+            //    case ".doc":
+            //        IsValid = fileSignature.SequenceEqual(new byte[] { 0xD0, 0xCF, 0x11, 0xE0 });
+            //        break;
+            //    case ".docx":
+            //        IsValid = fileSignature.SequenceEqual(new byte[] { 0xD0, 0xCF, 0x11, 0xE0 });
+            //        break;
+            //    case ".xlsx":
+            //        IsValid = fileSignature.SequenceEqual(new byte[] { 0x50, 0x4B, 0x03, 0x04 });
+            //        break;
+            //}
+            //if (IsValid == false)
+            //{
+            //    throw new InternalException(NotValidFile);
+            //}
 
 
             if (!Directory.Exists(folderPath))
