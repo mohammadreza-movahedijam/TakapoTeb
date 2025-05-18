@@ -15,7 +15,7 @@ internal sealed class DeleteSliderHandler :
     public async Task Handle(DeleteSliderCommand request, CancellationToken cancellationToken)
     {
         SliderEntity? slider = await _sliderRepository
-            .GetAsync(g => g.Id == request.Slider.Id, cancellationToken);
+            .GetAsync(g => g.Id == request.Id, cancellationToken);
         if (slider == null)
         {
             throw new InternalException(Message.NotFoundOnDb);

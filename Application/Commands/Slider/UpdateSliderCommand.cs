@@ -2,11 +2,11 @@
 
 namespace Application.Commands.Slider;
 
-public sealed record DeleteSliderCommand :
+public sealed record UpdateSliderCommand :
     IRequest
 {
     public SliderDto Slider { get; set; }
-    public DeleteSliderCommand(SliderDto Slider)
+    public UpdateSliderCommand(SliderDto Slider)
     {
         this.Slider = Slider;
     }

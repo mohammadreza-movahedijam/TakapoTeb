@@ -1,8 +1,54 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@await Component.InvokeAsync("SliderComponent")
+<div class="banner-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    <div>
+                        <img src="~/assetsUi/img/emergency-case.png" alt="Emergency Care" />
+                    </div>
+                    <div class="care-text">
+                        <h2>Emergency Care</h2>
+                        <p>Lorem ipsum dolor sit amet sectetur adipisicing elit.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div>
+                        <img src="~/assetsUi/img/emergency1-case.png" alt="Qualified Doctors" />
+                    </div>
+                    <div class="care-text">
+                        <h2>Qualified Doctors</h2>
+                        <p>Lorem ipsum dolor sit amet sectetur adipisicing elit.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div>
+                        <img src="~/assetsUi/img/qualified-doctors.png" alt="Qualified Doctors" />
+                    </div>
+                    <div class="care-text">
+                        <h2>Support</h2>
+                        <p>How can we help you?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div>
+                        <img src="~/assetsUi/img/services.png" alt="Services" />
+                    </div>
+                    <div class="care-text">
+                        <h2>24/7 Contact Us                        </h2>
+                        <p>Find a sales rep or dealer near you</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

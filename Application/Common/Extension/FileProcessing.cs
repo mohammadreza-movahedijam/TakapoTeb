@@ -50,7 +50,7 @@ public static class FileProcessing
     }
     public static void RemoveImage(this string fileName, string folder, string? defualt = null)
     {
-        if (fileName == "default.jpg" || fileName == "notFound.jpg")
+        if (fileName == "default.jpg" || fileName == "notFound.jpg" || fileName==string.Empty)
         {
             return ;
         }

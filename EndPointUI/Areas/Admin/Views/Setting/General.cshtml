@@ -1,0 +1,173 @@
+﻿@model Application.Commands.Setting.SettingDto
+
+@{
+    ViewData["Title"] = "تنظیمات";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+@section Style {
+    <script src="~/ckeditor/ckeditor.js"></script>
+}
+@section Script {
+    <script src="~/assets/js/upload.js"></script>
+    <script src="~/assets/js/setting/general.js"></script>
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="lh-1-85 breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/Admin">پیشخوان</a>
+        </li>
+       
+
+        <li class="breadcrumb-item active">تنظیمات</li>
+        <li class="breadcrumb-item active">عمومی</li>
+    </ol>
+</nav>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card mb-4">
+            <div class="card-header">
+
+                <h5 class=" heading-color">تنظیمات</h5>
+                @if (ViewBag.ErrorMessage != null)
+                {
+                    <div class="alert alert-danger">
+                        @ViewBag.ErrorMessage
+                    </div>
+                }
+            </div>
+            <form asp-area="Admin" asp-controller="Setting" asp-action="General" method="post" class="card-body" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-6">
+                        @if (Model.TopLogoPath == "default.jpg" || string.IsNullOrEmpty(Model.TopLogoPath))
+                        {
+                            <img id="imagePath_1" width="100" height="80"
+                                 src="~/Gallery/default.jpg" />
+                        }
+                        else
+                        {
+
+
+
+                            <img id="imagePath_1" width="100" height="80"
+                                 src="~/Gallery/Setting/@Model.TopLogoPath " />
+                        }
+                        <br />
+                        <label class="form-label mt-2">لوگو سربرگ</label>
+                        <input asp-for="TopLogoFile" onchange="ChangeImage(this,1)" class="form-control" type="file" />
+                    </div><div class="col-6">
+                        @if (Model.BottomLogoPath == "default.jpg" || string.IsNullOrEmpty(Model.BottomLogoPath))
+                        {
+                            <img id="imagePath_2" width="100" height="80"
+                                 src="~/Gallery/default.jpg" />
+                        }
+                        else
+                        {
+
+                            <img id="imagePath_2" width="100" height="80"
+                                 src="~/Gallery/Setting/@Model.BottomLogoPath " />
+                        }
+                  <br/>
+                        <label class="form-label mt-2">لوگو پابرگ</label>
+                        <input asp-for="BottomLogoFile" onchange="ChangeImage(this,2)" class="form-control" type="file" />
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-3">
+                        <label class="form-label">لینکدین</label>
+                        <input asp-for="Linkedin" type="text" class="form-control" />
+                    </div>
+
+                  <div class="col-3">
+                        <label class="form-label">اینستاگرام</label>
+                        <input asp-for="Instagram" type="text" class="form-control" />
+                    </div>
+
+                  <div class="col-3">
+                        <label class="form-label">واتساپ</label>
+                        <input asp-for="WhatsApp" type="text" class="form-control" />
+                    </div>
+
+                  <div class="col-3">
+                        <label class="form-label">تلگرام</label>
+                        <input asp-for="Telegram" type="text" class="form-control" />
+                    </div>
+                    <div class="col-4">
+                        <label class="form-label">لینک ویدئو آپارات</label>
+                        <input asp-for="Telegram" type="text" class="form-control" />
+                    </div>
+                    <div class="col-4">
+                        <label class="form-label">شماره تماس</label>
+                        <input asp-for="ContactNumber" type="text" class="form-control" />
+                    </div>
+                      <div class="col-4">
+                        <label class="form-label">سابقه</label>
+                        <input asp-for="YearsExperience" type="text" class="form-control" />
+                    </div>
+                    <div class="col-6">
+                        <label class="form-label">نشانی</label>
+                        <textarea asp-for="Location"
+                                  type="text" class="form-control" rows="7">
+                                                  </textarea>
+                    </div>
+
+                    <div class="col-6">
+                        <label class="form-label">توضیحات پابرگ</label>
+                        <textarea asp-for="Description"
+                                  type="text" class="form-control" rows="7">
+                                                  </textarea>
+                    </div>
+
+
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12">
+                        @if (Model.AboutImagePath == "default.jpg" || string.IsNullOrEmpty(Model.AboutImagePath))
+                        {
+                            <img id="imagePath_3" width="100" height="80"
+                                 src="~/Gallery/default.jpg" />
+                        }
+                        else
+                        {
+
+
+
+                            <img id="imagePath_3" width="100" height="80"
+                                 src="~/Gallery/Setting/@Model.AboutImagePath " />
+                        }
+                    </div>
+                    <div class="col-4">
+                        <label class="form-label mt-2">تصویر درباره ما</label>
+                        <input asp-for="AboutImageFile" onchange="ChangeImage(this,3)" class="form-control" type="file" />
+                    </div>
+                </div>
+
+                
+              
+
+                <div class="col-12">
+                    <label class="form-label">درباره ما</label>
+                    <textarea asp-for="About" id="About"
+                              type="text" class="form-control" rows="7">
+                                                  </textarea>
+                    <span class="text-danger" asp-validation-for="About"></span>
+                </div>
+
+               
+
+
+
+
+
+
+                <div class="mt-3">
+                    <button type="submit" class="btn btn-sm text-white btn-success">ثبت</button>
+                    <a asp-area="Admin" asp-controller="Article" asp-action="Index" class="btn btn-sm text-white btn-warning">بازگشت</a>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

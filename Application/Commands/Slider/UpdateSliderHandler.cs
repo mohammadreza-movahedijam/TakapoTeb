@@ -12,14 +12,14 @@ using System.Threading.Tasks;
 namespace Application.Commands.Slider;
 
 internal sealed class UpdateSliderHandler :
-    IRequestHandler<DeleteSliderCommand>
+    IRequestHandler<UpdateSliderCommand>
 {
     readonly IRepository<SliderEntity> _sliderRepository;
     public UpdateSliderHandler(IRepository<SliderEntity> sliderRepository)
     {
         _sliderRepository = sliderRepository;
     }
-    public async Task Handle(DeleteSliderCommand request,
+    public async Task Handle(UpdateSliderCommand request,
         CancellationToken cancellationToken)
     {
         SliderEntity? slider = await _sliderRepository
