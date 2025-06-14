@@ -1,19 +1,19 @@
 ﻿@model IReadOnlyList<Application.Queries.Slider.SliderViewModel>
 
 
-<section class="section">
-    <div class="container-fluid mt-3 mb-3">
+<section class="section zindex" style="position:relative;">
+    <div class="mb-3 zindex">
 
 
-<div class="swiper mySwiper">
-    <div class="swiper-wrapper">
+        <div class="swiper mySwiper zindex">
+            <div class="swiper-wrapper zindex">
         @if (Model is not null)
         {
             @foreach (Application.Queries.Slider.SliderViewModel item in Model)
             {
-                <div class="swiper-slide">
-                    <a href="@item.Link">
-                        <img alt="@@item.Alt" title="@item.Title"
+                        <div class="swiper-slide zindex">
+                            <a href="@item.Link">
+                                <img class="zindex" alt="@@item.Alt" title="@item.Title"
                              style="width: 100%;" src="~/gallery/Slider/@item.ImagePath">
                     </a>
                 </div>
@@ -21,37 +21,9 @@
 
         }
 
-        <!-- می‌توانید اسلایدهای بیشتری اضافه کنید -->
     </div>
-    <!-- خدمات اضافه مثل navigation و pagination -->
-    <div class="swiper-pagination"></div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
+           <div class="swiper-pagination zindex-1"></div>
+            @*    <div class="swiper-button-next zindex-1"></div> *@
+    @* <div class="swiper-button-prev zindex-1" ></div> *@
 </div>
 </div></section>
-<style>
-    .swiper-slide img {
-        width: auto; /* عرض بر اساس اندازه تصویر */
-        height: auto; /* ارتفاع بر اساس اندازه تصویر */
-        max-width: 100%; /* حداکثر عرض برابر با عرض اسلایدر */
-        display: block; /* برای حذف فاصله‌های اضافی */
-    }
-</style>
-
-<script>
-    var swiper = new Swiper('.mySwiper', {
-        loop: true,
-        autoplay: {
-            delay: 3000, // زمان توقف هر اسلاید به میلی‌ثانیه (اینجا 3 ثانیه)
-            disableOnInteraction: false, // اجازه می‌دهد اسلایدر هنگام کلیک یا حرکت کاربر متوقف نشود
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-    });
-</script>

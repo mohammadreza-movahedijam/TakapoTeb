@@ -14,4 +14,6 @@ public sealed record ProductDto
     public string? VideoLink { get; set; }
     public string? CategoryTitleFa { get; set; }
     public Guid? CategoryId { get; set; }
+    public Guid? OldCategoryId { get; set; }
+    public List<Guid>? RelatedProducts { get; set; }
 }

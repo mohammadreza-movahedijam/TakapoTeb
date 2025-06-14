@@ -1,5 +1,6 @@
 ﻿using Application.Commands.Product;
 using Application.Queries.Product;
+using Application.Queries.Product.ViewModels;
 using Application.Queries.ProductCategory;
 using EndPointUI.Areas.Admin.Models;
 using MediatR;
@@ -21,7 +22,7 @@ public class ProductController(IMediator mediator) : Controller
     [HttpGet]
     public async Task<IActionResult> Create()
     {
-      
+
         return View();
     }
 
@@ -34,7 +35,7 @@ public class ProductController(IMediator mediator) : Controller
     [HttpGet]
     public async Task<IActionResult> Edit(Guid Id)
     {
-    
+
         ProductDto Product = await _mediator.Send(new GetProductQuery(Id));
         return View(Product);
     }
@@ -83,5 +84,51 @@ public class ProductController(IMediator mediator) : Controller
             })
         });
     }
+    [HttpGet]
+    public async Task<IActionResult> GetRelatedProducts(string search, string? Id = null)
+    {
+        Guid ProductId = Guid.Empty;
+        if (Id != null)
+        {
+            ProductId = Guid.Parse(Id!);
+        }
+        var items = await _mediator.Send(new GetRelatedProductsQuery()
+        {
+            ProductName = search,
+            ProductId = ProductId
+        });
+
+        return Json(new
+        {
+            items = items.Select(i => new
+            {
+                id = i.Id,
+                text = i.Title
+            })
+        });
+    }
+
+
+    [HttpGet]
+    public async Task<IActionResult> GetRelateds(string? Id = null)
+    {
+       
+        var items = await _mediator.Send(new GetRelatedProductQuery()
+        {
+           Id = Guid.Parse(Id!)
+        });
+
+        return Json(new
+        {
+            items = items.Select(i => new
+            {
+                id = i.Id,
+                text = i.Title
+            })
+        });
+    }
+
+
+
 
 }

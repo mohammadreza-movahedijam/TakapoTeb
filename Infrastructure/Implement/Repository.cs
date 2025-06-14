@@ -73,6 +73,8 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEnti
     public IQueryable<TEntity> GetByQuery()
     {
         return _context.Set<TEntity>().AsQueryable();
+
+
     }
 
 

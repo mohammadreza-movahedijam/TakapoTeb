@@ -1,9 +1,22 @@
 using Application;
+using EndPointUI.Hubs;
 using Infrastructure;
+using Microsoft.AspNetCore.Localization;
+using System.Globalization;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+
+// Add services to the container.
+builder.Services.AddControllersWithViews()
+    .AddViewLocalization(Microsoft.AspNetCore.Mvc.Razor.
+    LanguageViewLocationExpanderFormat.Suffix);
+
+builder.Services.AddSignalR();
+builder.Services.AddLocalization(option =>
+{
+    option.ResourcesPath = "Resources";
+});
 builder.Services.Application(builder.Configuration);
 builder.Services.Infrastructure(builder.Configuration);
 var app = builder.Build();
@@ -20,7 +33,24 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+var supportedCultures = new List<CultureInfo>()
+            {
+                new CultureInfo("en-US"),
+        new CultureInfo("fa-IR"),
+            };
+var options = new RequestLocalizationOptions()
+{
+    DefaultRequestCulture = new RequestCulture("fa-IR"),
+    SupportedCultures = supportedCultures,
+    SupportedUICultures = supportedCultures,
+    RequestCultureProviders = new List<IRequestCultureProvider>()
+                {
+                    new QueryStringRequestCultureProvider(),
+                    new CookieRequestCultureProvider()
+                }
+};
+app.UseRequestLocalization(options);
+app.UseAuthentication();
 app.UseAuthorization();
 
 
@@ -31,4 +61,6 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+app.MapHub<ChatHub>("/ChatHub");
+app.MapHub<SupportHub>("/SupportHub");
 app.Run();

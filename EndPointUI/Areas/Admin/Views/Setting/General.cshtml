@@ -5,11 +5,45 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 @section Style {
+    <style>
+        #map {
+            width: 100%;
+            height: 400px;
+        }
+    </style>
+    <link rel="stylesheet" href="~/map/leaflet.css" />  
     <script src="~/ckeditor/ckeditor.js"></script>
+    <script src="~/map/leaflet.js"></script>
 }
 @section Script {
     <script src="~/assets/js/upload.js"></script>
     <script src="~/assets/js/setting/general.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var selectedLat = parseFloat(document.getElementById('lat').value);
+            var selectedLng = parseFloat(document.getElementById('lng').value);
+
+            var map = L.map('map').setView([selectedLat, selectedLng], 13);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19
+            }).addTo(map);
+
+            map.on('click', function (e) {
+                document.getElementById('lat').value = e.latlng.lat;
+                document.getElementById('lng').value = e.latlng.lng;
+            });
+
+            var marker = L.marker([selectedLat, selectedLng], {
+                draggable: true
+            }).addTo(map);
+
+            marker.on('dragend', function (e) {
+                document.getElementById('lat').value = e.target.getLatLng().lat;
+                document.getElementById('lng').value = e.target.getLatLng().lng;
+            });
+        });
+    </script>
 }
 
 <nav aria-label="breadcrumb">
@@ -37,7 +71,8 @@
                     </div>
                 }
             </div>
-            <form asp-area="Admin" asp-controller="Setting" asp-action="General" method="post" class="card-body" enctype="multipart/form-data">
+            <form asp-area="Admin" asp-controller="Setting" asp-action="General"
+            method="post" class="card-body" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-6">
                         @if (Model.TopLogoPath == "default.jpg" || string.IsNullOrEmpty(Model.TopLogoPath))
@@ -75,6 +110,18 @@
                 </div>
                 <div class="row">
 
+                    <div class="col-6">
+                        <label class="form-label">ساعت کاری (فارسی)</label>
+                        <input asp-for="WorkingHoursFa" type="text" class="form-control" />
+                    </div>
+
+                  <div class="col-6">
+                        <label class="form-label">ساعت کاری (انگلیسی)</label>
+                        <input asp-for="WorkingHoursEn" type="text" class="form-control" />
+                    </div>  
+                    
+                    
+                    
                     <div class="col-3">
                         <label class="form-label">لینکدین</label>
                         <input asp-for="Linkedin" type="text" class="form-control" />
@@ -94,28 +141,45 @@
                         <label class="form-label">تلگرام</label>
                         <input asp-for="Telegram" type="text" class="form-control" />
                     </div>
-                    <div class="col-4">
+                    <div class="col-3">
                         <label class="form-label">لینک ویدئو آپارات</label>
-                        <input asp-for="Telegram" type="text" class="form-control" />
+                        <input asp-for="Video" type="text" class="form-control" />
                     </div>
-                    <div class="col-4">
+                    <div class="col-3">
+                        <label class="form-label">پست الکترونیک</label>
+                        <input asp-for="Email" type="text" class="form-control" />
+                    </div>
+                    <div class="col-3">
                         <label class="form-label">شماره تماس</label>
                         <input asp-for="ContactNumber" type="text" class="form-control" />
                     </div>
-                      <div class="col-4">
+                      <div class="col-3">
                         <label class="form-label">سابقه</label>
                         <input asp-for="YearsExperience" type="text" class="form-control" />
                     </div>
+                   
                     <div class="col-6">
-                        <label class="form-label">نشانی</label>
-                        <textarea asp-for="Location"
-                                  type="text" class="form-control" rows="7">
+                        <label class="form-label">نشانی (فارسی)</label>
+                        <textarea asp-for="LocationFa"
+                                  type="text" class="form-control" rows="4">
+                                                  </textarea>
+                    </div> <div class="col-6">
+                        <label class="form-label">نشانی (انگلیسی)</label>
+                        <textarea asp-for="LocationEn"
+                                  type="text" class="form-control" rows="4">
                                                   </textarea>
                     </div>
 
                     <div class="col-6">
-                        <label class="form-label">توضیحات پابرگ</label>
-                        <textarea asp-for="Description"
+                        <label class="form-label">توضیحات پابرگ(فارسی)</label>
+                        <textarea asp-for="DescriptionFa"
+                                  type="text" class="form-control" rows="7">
+                                                  </textarea>
+                    </div>
+
+                      <div class="col-6">
+                        <label class="form-label">توضیحات پابرگ(انگلیسی)</label>
+                        <textarea asp-for="DescriptionEn"
                                   type="text" class="form-control" rows="7">
                                                   </textarea>
                     </div>
@@ -145,17 +209,32 @@
                 </div>
 
                 
-              
-
                 <div class="col-12">
-                    <label class="form-label">درباره ما</label>
-                    <textarea asp-for="About" id="About"
+                    <label class="form-label">درباره ما (فارسی)</label>
+                    <textarea asp-for="AboutFa" id="AboutFa"
                               type="text" class="form-control" rows="7">
                                                   </textarea>
-                    <span class="text-danger" asp-validation-for="About"></span>
                 </div>
 
-               
+                <div class="col-12">
+                    <label class="form-label">درباره ما (انگلیسی)</label>
+                    <textarea asp-for="AboutEn" id="AboutEn"
+                              type="text" class="form-control" rows="7">
+                                                  </textarea>
+                </div>
+                <div class="col-12">
+                    <div class="form-group ">
+                        <div style="z-index:0" id="map"></div>
+                        <input type="hidden" asp-for="Latitude" class="form-control" id="lat">
+                        <input type="hidden" asp-for="Longitude" class="form-control" id="lng">
+                    </div>
+                </div>
+
+               <input type="hidden" asp-for="Longitude" id="lan"/>
+                <input type="hidden" asp-for="Latitude" id="lat" />
+               <input type="hidden" asp-for="AboutImagePath"/>
+               <input type="hidden" asp-for="BottomLogoPath"/>
+               <input type="hidden" asp-for="TopLogoPath"/>
 
 
 

@@ -1,5 +1,6 @@
 ﻿using Application.Common;
 using Application.Contract;
+using Application.Queries.ProductCategory.ViewModels;
 using MediatR;
 using System;
 using System.Collections.Generic;

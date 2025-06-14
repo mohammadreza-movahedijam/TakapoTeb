@@ -65,7 +65,15 @@ public static class Time
 
 
 
-
+    public static string PersianDate(this DateOnly date)
+    {
+        PersianCalendar persianCalendar = new PersianCalendar();
+        DateTime dateTime = date.ToDateTime(TimeOnly.MinValue);
+        int year = persianCalendar.GetYear(dateTime);
+        int month = persianCalendar.GetMonth(dateTime);
+        int day = persianCalendar.GetDayOfMonth(dateTime);
+        return $"{year}/{month}/{day}";
+    }
 
 
 

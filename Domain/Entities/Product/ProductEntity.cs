@@ -9,8 +9,10 @@ public class ProductEntity : BaseEntity,IDelete
     public string? DescrptionEn { get; set; }
     public string? VideoLink { get; set; }
     #region Relation
+    public virtual ICollection<ImageEntity>? Images {  get; set; }
     public virtual ICollection<DocumentEntity>? Documents {  get; set; }
     public virtual ICollection<OptionEntity>? Options { get; set; }
+    public virtual ICollection<RelatedEntity>? Relateds { get; set; }
     public CategoryEntity? Category { get; set; }
     public Guid? CategoryId { get; set; }
     #endregion

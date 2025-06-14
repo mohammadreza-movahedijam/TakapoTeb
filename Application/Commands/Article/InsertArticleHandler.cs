@@ -28,6 +28,7 @@ internal sealed class InsertArticleHandler :
         {
             article.ImagePath = request.Article.ImageFile.UploadImage("Article");
         }
+        article.PublishDate = DateOnly.FromDateTime(DateTime.Now);
         await _repository.InsertAsync(article,cancellationToken);
     }
 }

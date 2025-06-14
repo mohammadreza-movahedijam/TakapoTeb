@@ -1,5 +1,5 @@
-﻿function ChangeImage(input, id) {
-
+﻿
+function ChangeImage(input, id) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
 
@@ -10,6 +10,9 @@
         reader.readAsDataURL(input.files[0]);
     }
 }
-$("#image_" + id).change(function () {
-    readURL(this);
+
+// Attach change handler dynamically if needed
+$(document).on('change', 'input[type="file"]', function () {
+    var id = $(this).data('id');  // get the id from data attribute
+    ChangeImage(this, id);
 });

@@ -1,0 +1,77 @@
+﻿@model PaginatedList<Application.Queries.Product.ViewModels.ProductViewModel>
+@{
+    var categories = ViewBag.Pattern as List<Guid>;
+    string title = CultureInfo.CurrentUICulture.Name! == "en-US" ? "Products" : "محصولات  " ;
+    string align = CultureInfo.CurrentUICulture.Name! == "en-US" ? "ltr" : "rtl"!;
+    ViewData["Title"] = title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (categories.Any())
+{
+    
+@await Component.InvokeAsync("ProductCategoryHeaderComponent",categories!.First())
+}
+<div class="container mt-5">
+    <div class="row" style="direction:@align;">
+        <div class="col-md-12 col-lg-4 col-xl-3 theiaStickySidebar">
+            <div class="card search-filter">
+                <div class="card-header">
+                    <h4 class="card-title mb-0"> @Localizer["FilterTitle"]</h4>
+                </div>
+                <form class="card-body" asp-controller="Product" asp-action="ProductCategory">
+                    <div class="filter-widget">
+
+                        <input type="text" name="keyword" class="form-control " />
+
+                    </div>
+                    @await Component.InvokeAsync("ProductFilterComponent")
+                 
+                    <div class="btn-search">
+                        <button type="submit" class="btn w-100">@Localizer["Button"]</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-7 col-lg-8 col-xl-9">
+            <div class="row row-grid">
+                @foreach(var product in Model.List)
+                {
+                    <div class="col-md-6 col-lg-4 col-xl-4">
+                        <div class="profile-widget product-card">
+                            <div class="doc-img">
+                                <a asp-controller="Product" asp-action="Detail" asp-route-pattern="@product.Id">
+                                    @if (product.ImagePath == "default.jpg")
+                                    {
+                                        <img class="img-fluid"  src="~/Gallery/default.jpg">
+                                    }
+                                    else
+                                    {
+                                        <img class="img-fluid"  src="~/Gallery/Product/@product.ImagePath">
+                                    }
+                                </a>
+
+                            </div>
+                            <div class="pro-content">
+                                <h3 class="title">
+                                    <a asp-controller="Product" asp-action="Detail" asp-route-pattern="@product.Id" class="product-title">
+                                        @if (CultureInfo.CurrentUICulture.Name == "en-US")
+                                        {
+                                            @product.TitleEn
+                                        }
+                                        else
+                                        {
+                                            @product.Title
+                                        }
+                                    </a>
+
+                                </h3>
+                               
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

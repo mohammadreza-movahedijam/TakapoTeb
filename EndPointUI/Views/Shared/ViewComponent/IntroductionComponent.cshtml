@@ -1,0 +1,32 @@
+﻿@model Application.Queries.Setting.ViewModels.IntroductionVieModel
+<section class="watch-video">
+    <div class="video-title">
+        <h2 class="section-title"> @Localizer["Title"] </h2>
+        <p>@Localizer["Description"] </p>
+    </div>
+    <div class="video-main">
+        <div class="container">
+            <div class="video-bg-img video-sec text-center videoSize">
+                @Html.Raw(Model.LinkVideo)
+            </div>
+            <div class="row counts">
+                <div class="col-sm-6 col-md-3">
+                    <h3>25000</h3>
+                    <h4>Happy Patients</h4>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <h3>180</h3>
+                    <h4>Experienced Doctors</h4>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <h3>1500</h3>
+                    <h4>Successful Operations</h4>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <h3>2800</h3>
+                    <h4>Number of Beds</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,4 +1,4 @@
-﻿@model Application.Common.PaginatedList<Application.Queries.Product.ProductViewModel>
+﻿@model Application.Common.PaginatedList<Application.Queries.Product.ViewModels.ProductViewModel>
 
 @{
     ViewData["Title"] = "لیست محصولات";
@@ -27,7 +27,7 @@
             <h5 class="heading-color">لیست محصولات</h5>
             <a asp-area="Admin" asp-controller="Product" asp-action="Create"
                class="btn btn-sm btn-success text-white">
-                ایجاد کاربر
+                ایجاد محصول
             </a>
             <form asp-area="Admin" asp-controller="Product" asp-action="Index"
                   method="get" class="input-group mt-3 w-25">
@@ -84,6 +84,12 @@
                                            asp-controller="Document"
                                            asp-action="Index" asp-route-ProductId="@item.Id">
                                            مستندات
+                                        </a>
+                                         <a class="btn btn-sm btn-success text-white"
+                                           asp-area="Admin"
+                                           asp-controller="ProductImage"
+                                           asp-action="Index" asp-route-ProductId="@item.Id">
+                                           تصاویر
                                         </a>
 
 

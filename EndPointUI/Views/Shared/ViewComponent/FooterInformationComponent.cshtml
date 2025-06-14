@@ -1,0 +1,44 @@
+﻿@model Application.Queries.Setting.ViewModels.FooterInformationViewModel
+<div class="footer-widget footer-about">
+    <div class="footer-logo">
+        <img src="~/gallery/setting/@Model.BottomLogoPath" alt="logo">
+    </div>
+    <div class="footer-about-content">
+
+        @if (CultureInfo.CurrentUICulture.Name == "fa-IR")
+        {
+            <p>@Model.DescriptionFa
+            </p>
+        }
+        else
+        { <p>@Model.DescriptionEn
+            </p>
+            
+        }
+
+        <div class="social-icon">
+            <ul>
+                <li class="mx-1">
+                    <a href="@Model.WhatsApp" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </li>
+                <li class="mx-1">
+                    <a href="@Model.Linkedin" target="_blank">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </li>
+                <li class="mx-1">
+                    <a href="@Model.Instagram" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </li>
+                <li class="mx-1">
+                    <a href="@Model.Telegram" target="_blank">
+                        <i class="fab fa-telegram"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

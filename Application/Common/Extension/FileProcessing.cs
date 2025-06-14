@@ -30,27 +30,38 @@ public static class FileProcessing
         string folder,
         string? defualt = "default.jpg")
     {
-        if (file is not null)
+        if (file is null)
+            return defualt!;
+
+        try
         {
             string fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
             string folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "gallery", folder);
+
             if (!Directory.Exists(folderPath))
             {
                 Directory.CreateDirectory(folderPath);
             }
+
             string filePath = Path.Combine(folderPath, fileName);
-            var image = Image.Load(file.OpenReadStream());
-            var save = image.SaveAsWebpAsync(filePath);
-            if (save.IsCompleted)
+
+            using (var stream = file.OpenReadStream())
+            using (var image = Image.Load(stream))
             {
-                return fileName;
+                image.SaveAsWebp(filePath);
             }
+
+            return fileName;
         }
-           return defualt! ;
+        catch (Exception ex)
+        {
+            // Log or handle exception as needed
+            throw; // Rethrow the original exception
+        }
     }
     public static void RemoveImage(this string fileName, string folder, string? defualt = null)
     {
-        if (fileName == "default.jpg" || fileName == "notFound.jpg" || fileName==string.Empty)
+        if (fileName == "default.jpg" || fileName == "notFound.jpg" || string.IsNullOrEmpty(fileName))
         {
             return ;
         }

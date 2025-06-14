@@ -1,0 +1,154 @@
+﻿@{
+    ViewData["Title"] = "گفتگوی آنلاین";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+@section Style {
+    <link rel="stylesheet" href="~/assets/vendor/css/pages/app-chat.css">
+ 
+}
+@section Script {
+    <script src="~/assets/js/app-chat.js"></script>
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="lh-1-85 breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/Admin">پیشخوان</a>
+        </li>
+
+        <li class="breadcrumb-item active">گفتگوی آنلاین</li>
+    </ol>
+</nav>
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="app-chat card overflow-hidden">
+        <div class="row g-0">
+
+            <!-- Chat & Contacts -->
+            <div class="col app-chat-contacts app-sidebar flex-grow-0 overflow-hidden border-end" id="app-chat-contacts">
+
+                <div class="sidebar-body ps ps__rtl ps--active-y">
+                    <!-- Chats -->
+                    <ul class="list-unstyled chat-contact-list">
+                        <li class="chat-contact-list-item chat-contact-list-item-title">
+                            <h5 class="text-primary mb-0 secondary-font">گفتگوها</h5>
+                        </li>
+                    </ul>
+                    <ul class="list-unstyled chat-contact-list" id="chat-list">
+                    </ul>
+                </div>
+            </div>
+            <!-- /Chat contacts -->
+            <!-- Chat History -->
+            <div class="col app-chat-history bg-body">
+                <div class="chat-history-wrapper">
+                    <div class="chat-history-header border-bottom">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex overflow-hidden align-items-center">
+                                <i class="bx bx-menu bx-sm cursor-pointer d-lg-none d-block me-2" data-bs-toggle="sidebar" data-overlay="" data-target="#app-chat-contacts"></i>
+
+                                <div class="chat-contact-info flex-grow-1 ms-3">
+                                    <h6 class="m-0">گفتگوی آنلاین</h6>
+                                   
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="chat-history-body bg-body ps ps__rtl ps--active-y">
+                        <ul class="list-unstyled chat-history mb-0" id="chat-messages">
+                        </ul>
+
+
+                        <div class="ps__rail-x" style="left: 0px; bottom: 1px;">
+                            <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                        </div>
+                        <div class="ps__rail-y" style="top: 575px; height: 599px; right: 1031px;">
+                            <div class="ps__thumb-y" tabindex="0" style="top: 294px; height: 305px;">
+                            </div></div>
+                        </div>
+                        <!-- Chat message form -->
+                        <div class="chat-history-footer shadow-sm">
+                            <div class="form-send-message d-flex justify-content-between align-items-center">
+                                <input class="form-control message-input border-0 me-3 shadow-none"
+                                   id="textNewMessage"
+                                placeholder="پیام خود را اینجا بنویسید">
+                                <div class="message-actions d-flex align-items-center">
+                                   
+                                    <button onclick="NewMessage()" class="btn btn-primary d-flex send-msg-btn">
+                                        <i class="bx bx-paper-plane me-md-1 me-0"></i>
+                                        <span class="align-middle d-md-inline-block d-none">ارسال</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Chat History -->
+                <!-- Sidebar Right -->
+                <div class="col app-chat-sidebar-right app-sidebar overflow-hidden" id="app-chat-sidebar-right">
+                    <div class="sidebar-header d-flex flex-column justify-content-center align-items-center flex-wrap px-4 pt-5">
+                        <div class="avatar avatar-xl avatar-online">
+                            <img src="../../assets/img/avatars/2.png" alt="آواتار" class="rounded-circle">
+                        </div>
+                        <h6 class="mt-2 mb-0">دیوید بکهام</h6>
+                        <span>توسعه دهنده NextJS</span>
+                        <i class="bx bx-x bx-sm cursor-pointer close-sidebar d-block" data-bs-toggle="sidebar" data-overlay="" data-target="#app-chat-sidebar-right"></i>
+                    </div>
+                    <div class="sidebar-body px-4 pb-4 ps ps__rtl">
+                        <div class="my-4">
+                            <p class="text-muted text-uppercase">درباره</p>
+                            <p class="mb-0 mt-3">
+                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و
+                            </p>
+                        </div>
+                        <div class="my-4">
+                            <p class="text-muted text-uppercase">اطلاعات شخصی</p>
+                            <ul class="list-unstyled d-grid gap-2 mt-3">
+                                <li class="d-flex align-items-center">
+                                    <i class="bx bx-envelope"></i>
+                                    <span class="align-middle ms-2">لورم ایپسوم متن ساختگی</span>
+                                </li>
+                                <li class="d-flex align-items-center">
+                                    <i class="bx bx-phone-call"></i>
+                                    <span class="align-middle ms-2">+1(123) 456 - 7890</span>
+                                </li>
+                                <li class="d-flex align-items-center">
+                                    <i class="bx bx-time-five"></i>
+                                    <span class="align-middle ms-2">شنبه الی پنجشنبه - 10صبح الی 8 شب</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-4">
+                            <p class="text-muted text-uppercase">گزینه&zwnj;ها</p>
+                            <ul class="list-unstyled d-grid gap-2 mt-3">
+                                <li class="cursor-pointer d-flex align-items-center">
+                                    <i class="bx bx-tag"></i>
+                                    <span class="align-middle ms-2">افزودن برچسب</span>
+                                </li>
+                                <li class="cursor-pointer d-flex align-items-center">
+                                    <i class="bx bx-star"></i>
+                                    <span class="align-middle ms-2">درون&zwnj;ریزی مخاطب</span>
+                                </li>
+                                <li class="cursor-pointer d-flex align-items-center">
+                                    <i class="bx bx-image"></i>
+                                    <span class="align-middle ms-2">به اشتراک گذاری رسانه</span>
+                                </li>
+                                <li class="cursor-pointer d-flex align-items-center">
+                                    <i class="bx bx-trash"></i>
+                                    <span class="align-middle ms-2">حذف مخاطب</span>
+                                </li>
+                                <li class="cursor-pointer d-flex align-items-center">
+                                    <i class="bx bx-block"></i>
+                                    <span class="align-middle ms-2">مسدود کردن مخاطب</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 323px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div>
+                    </div>
+                </div>
+                <!-- /Sidebar Right -->
+
+                <div class="app-overlay"></div>
+            </div>
+        </div>
+    </div>

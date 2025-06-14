@@ -1,40 +1,12 @@
-﻿<footer class="footer">
+﻿@{
+    string direction = CultureInfo.CurrentUICulture.Name == "en-US" ? "ltr" : "rtl";
+}
+<footer class="footer" style="direction:@direction;">
     <div class="footer-top">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-6">
-                    <div class="footer-widget footer-about">
-                        <div class="footer-logo">
-                            <img src="~/assetsUi/img/logo-white.png" alt="logo">
-                        </div>
-                        <div class="footer-about-content">
-                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </p>
-                            <div class="social-icon">
-                                <ul>
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="fab fa-facebook-f"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="fab fa-google-plus-g"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="fab fa-instagram"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="fab fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    @await Component.InvokeAsync("FooterInformationComponent")
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-widget footer-menu">
@@ -98,7 +70,17 @@
     <div class="footer-bottom">
         <div class="container">
             <div class="row d-flex col-md-12">
-                <p>کپی رایت © 1401 | تمامی حقوق محفوظ است </p>
+                <p>
+                    @if (CultureInfo.CurrentUICulture.Name == "en-US")
+                    {
+                        <strong>©Copyright @(DateTime.Now.Year)</strong>
+                    }
+
+                    @Localizer["CopyRight1"]
+                <a class="text-white" href="https://darnogroup.com/">
+                        @Localizer["CopyRight2"]
+                </a>
+                </p>
             </div>
         </div>
     </div>

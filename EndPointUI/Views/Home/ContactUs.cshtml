@@ -1,0 +1,177 @@
+﻿@model Application.Queries.Setting.ViewModels.ContactUsViewModel
+@{
+    string align = CultureInfo.CurrentUICulture.Name! == "en-US" ? "ltr" : "rtl"!;
+
+    ViewData["Title"] = Localizer["PageTitle"];
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Style{
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+}
+@section Script{
+    
+    <script src="~/map/leaflet.js"></script>
+    <script src="~/js/contactus.js"></script>
+}
+<div class="d-flex flex-column align-items-center mt-5 text-center">
+    <h1>@Localizer["PageTitle"]</h1>
+    <p>
+        @Localizer["Text"]
+    </p>
+</div>
+<div class="row p-5 ">
+
+    <div class="col-md-12">
+        <div class="card schedule-widget mb-0">
+            <div class="schedule-header">
+                <div class="schedule-nav">
+                    <ul class="nav nav-tabs nav-justified" style="direction:@align;">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-bs-toggle="tab" href="#tab2">@Localizer["Tab2"]</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#tab1">@Localizer["Tab1"]</a>
+                        </li>
+                   
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#tab3">@Localizer["Tab3"]</a>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </div>
+            <div class="tab-content schedule-cont">
+                <div id="tab2" class="tab-pane show active">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4 d-flex">
+                                <div class="contact-box w-100 d-flex flex-wrap">
+                                    <div class="infor-img">
+                                        <div class="image-circle">
+                                            <i class="fas fa-phone"></i>
+                                        </div>
+                                    </div>
+                                    <div class="infor-details text-center">
+                                        <label>@Localizer["PhoneNumber"]</label>
+                                        <p>
+                                            @Model.ContactNumber
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 d-flex">
+                                <div class="contact-box w-100 d-flex flex-wrap">
+                                    <div class="infor-img">
+                                        <div class="image-circle bg-primary">
+                                            <i class="fas fa-envelope"></i>
+                                        </div>
+                                    </div>
+                                    <div class="infor-details text-center">
+                                        <label>@Localizer["Email"]</label>
+                                        <p>
+                                            <a href="mailto:@Model.Email">@Model.Email</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 d-flex">
+                                <div class="contact-box w-100 d-flex flex-wrap">
+                                    <div class="infor-img">
+                                        <div class="image-circle">
+                                            <i class="fas fa-map-marker-alt"></i> 
+                                        </div>
+                                    </div>
+                                    <div class="infor-details text-center">
+                                        <label>@Localizer["Location"]</label>
+                                        <p>
+                                            @if (CultureInfo.CurrentUICulture.Name == "en")
+                                            {
+                                                @Model.LocationEn
+                                            }
+                                            else
+                                            {
+                                                @Model.LocationFa
+                                            }
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="border-radius:20px;box-shadow:0px 0px 4px 3px #E5F1FB" class="mt-5" id="contact-map">
+                                </div>
+                                <input type="hidden" value="@Model.Latitude" id="lat"/>
+                                <input type="hidden" value="@Model.Longitude" id="lon"/>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div id="tab1" class="tab-pane fade ">
+                    <div class="container">
+                        <div class="section-header text-center" style="direction:@align;">
+                            <h2>  @Localizer["FormTitle"]</h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12" style="direction:@align;">
+                                <div class="shadow p-3 rounded-3">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Localizer["FieldName"] <span>*</span>
+                                                </label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Localizer["FieldEmail"] <span>*</span>
+                                                </label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Localizer["FieldPhoneNumber"] <span>*</span>
+                                                </label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>@Localizer["FieldSubject"]</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Localizer["FieldMessage"] <span>*</span>
+                                                </label>
+                                                <textarea class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="btn bg-primary text-white">  @Localizer["FormBtn"] </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="slot_tuesday" class="tab-pane fade">
+                    <h4 class="card-title d-flex justify-content-between">
+                        <span>Time Slots</span>
+                        <a class="edit-link" data-bs-toggle="modal" href="#add_time_slot">
+                            <i class="fa fa-plus-circle"></i> Add Slot
+                        </a>
+                    </h4>
+                    <p class="text-muted mb-0">Not Available</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -16,9 +16,9 @@ public class SettingController (IMediator mediator): Controller
         return View(Setting);
     }
     [HttpPost]
-    public IActionResult General(SettingDto Setting)
+    public async Task<IActionResult> General(SettingDto Setting)
     {
-        _mediator.Send(new ChangeSettingCommand(Setting));
-        return View(Setting);
+      await  _mediator.Send(new ChangeSettingCommand(Setting));
+        return RedirectToAction("General");
     }
 }

@@ -1,0 +1,79 @@
+﻿@model IReadOnlyList<Application.Queries.ProductCategory.ViewModels.CategoryDetailViewModel>
+@{
+    string align = CultureInfo.CurrentUICulture.Name! == "en-US" ? "ltr" : "rtl"!;
+}
+<div class="container">
+    <div class="row mt-3 mb-3">
+        @if (Model != null && Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                bool isEnglish = CultureInfo.CurrentUICulture.Name == "en-US";
+
+                @if (isEnglish)
+                {
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                        <div class="card mb-3 card-suncategory" style="overflow: hidden; ">
+                            <div class="row g-0 parent-subcategory">
+                              
+                               <div class="col-md-6 col-sm-12 image-box-category"> 
+                                   <a asp-controller="Product" asp-action="ProductCategory" asp-route-patterns="@item.Id">
+                                   <img src="~/gallery/ProductCategory/@item.ImagePath" 
+                                   class="img-fluid rounded-start subcategory-image " />
+                               </a>
+                                </div>
+                                    <div class="col-md-6 bg-subcategory" style="direction:@align">
+                                    <div class="card-body body-subcategory">
+                                        <a class="link-sub-category" asp-controller="Product" asp-action="ProductCategory" asp-route-patterns="@item.Id">
+                                  
+                                            <h5 class="card-title">@item.TitleEn</h5>
+                                            <p class="card-text limited-text">@item.DescriptionEn</p>
+                                            <p class="card-text">
+                                                <small class="text-body-secondary">
+                                                    Product   <i class="fas fa-arrow-right"></i>
+                                                </small>
+                                            </p>
+                                        </a>
+                                        </div>
+                                    </div>
+                            
+                            </div>
+                        </div>
+                    </div>
+
+                }
+                else
+                {
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                        <div class="card mb-3 card-suncategory" style="overflow: hidden;">
+                            <div class="row g-0 parent-subcategory">
+                                 
+                                <div class="col-md-6 col-sm-12">
+                                    <a asp-controller="Product" asp-action="ProductCategory" asp-route-patterns="@item.Id">
+                                    <img src="~/gallery/ProductCategory/@item.ImagePath"
+                                             class="img-fluid rounded-start subcategory-image " />
+                                    </a>
+                                </div>
+                                <div class="col-md-6 bg-subcategory">
+
+                                    <div class="card-body body-subcategory" style="direction:@align">
+                                        <a class="link-sub-category" asp-controller="Product" asp-action="ProductCategory" asp-route-patterns="@item.Id">
+                               
+                                        <h5 class="card-title">@item.TitleFa</h5>
+                                        <p class="card-text limited-text">@item.DescriptionFa</p>
+                                        <p class="card-text">
+                                            <small class="text-body-secondary">
+                                                <i class="fas fa-arrow-right"></i> محصولات
+                                            </small>
+                                        </p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        }
+    </div>
+</div>

@@ -1,6 +1,7 @@
 ﻿using Application.Common;
 using Application.Common.Extension;
 using Application.Contract;
+using Application.Queries.ProductCategory.ViewModels;
 using Application.Queries.Role.ViewModel;
 using Domain.Entities.Identity;
 using Domain.Entities.Product;

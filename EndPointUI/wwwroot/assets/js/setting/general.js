@@ -1,4 +1,5 @@
 ﻿$(document).ready(function () {
-    CKEDITOR.replace('About');
+    CKEDITOR.replace('AboutEn');
+    CKEDITOR.replace('AboutFa');
  
 });

@@ -1,0 +1,24 @@
+﻿@model IReadOnlyList<Application.Queries.Image.ImageViewModel>
+<div class="row justify-content-center">
+    <div class="feature-col-list">
+        @foreach (var item in Model)
+        {
+            <div class="feature-col">
+                <div class="feature-subox d-flex flex-wrap justify-content-center">
+                    <img src="~/gallery/ProductImage/@item.Path"
+                        class="img-fluid" alt="Features">
+                    <h4>
+                        @if (CultureInfo.CurrentUICulture.Name == "en-US")
+                        {
+                            @item.TitleEn
+                        }
+                        else
+                        {
+                            @item.TitleFa
+                        }
+                    </h4>
+                </div>
+            </div>
+        }
+    </div>
+</div>

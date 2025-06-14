@@ -1,0 +1,82 @@
+﻿@model IReadOnlyList<Application.Queries.Image.ImageViewModel>
+@{
+    ViewData["Title"] = "تصاویر محصول";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+@section Script {
+    <script src="~/assets/js/productImage/Index.js"></script>
+
+    <script src="~/js/rest.js"></script>
+    <script src="~/js/sweetalert.js"></script>
+}<nav aria-label="breadcrumb">
+    <ol class="lh-1-85 breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/Admin">پیشخوان</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a asp-area="Admin" asp-controller="Product" asp-action="Index">لیست محصولات</a>
+        </li>
+
+        <li class="breadcrumb-item active">تصاویر محصول</li>
+    </ol>
+</nav>
+<div class="row">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="heading-color">تصاویر محصول</h5>
+            <a asp-area="Admin" asp-controller="ProductImage"
+               asp-action="Create" asp-route-ProductId="@ViewBag.ProductId"
+               class="btn btn-sm btn-success text-white">
+                ایجاد تصویر
+            </a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive text-nowrap">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>تصویر</th>
+                            <th>عنوان فارسی</th>
+                            <th>عنوان انگلیسی</th>
+                            <th>عملیات</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        @if (Model != null && Model!.Any())
+                        {
+                            @foreach (var item in Model!)
+                            {
+                                <tr id="item_@item.Id">
+                                    <td>
+                                        @if (item.Path == "default.jpg")
+                                        {
+                                            <img src="~/gallery/default.jpg" width="150" height="80" />
+                                        }
+                                        else
+                                        {
+                                            <img src="~/gallery/ProductImage/@item.Path" width="150" height="80" />
+
+                                        }
+                                    </td>
+                                    <td>@item.TitleFa</td>
+                                    <td>@item.TitleEn</td>
+
+
+                                    <td>
+                                    
+                                        <a onclick="Delete('@item.Id')"
+                                           class="btn btn-sm btn-danger text-white">حذف</a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer">
+
+         
+        </div>
+    </div>
+</div>

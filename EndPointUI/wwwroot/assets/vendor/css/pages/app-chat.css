@@ -12,6 +12,10 @@
     z-index: 4;
   }
 }
+.bg-newchat {
+    background-color: red !important;
+    color: white !important;
+}
 .app-chat .app-sidebar .sidebar-header {
   position: relative;
 }

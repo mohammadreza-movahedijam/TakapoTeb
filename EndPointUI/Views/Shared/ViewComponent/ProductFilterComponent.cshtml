@@ -1,0 +1,43 @@
+﻿@model IReadOnlyList<Application.Queries.ProductCategory.ViewModels.CategoryDetailViewModel>
+@{
+    string align = CultureInfo.CurrentUICulture.Name! == "en-US" ? "ltr" : "rtl"!;
+    var categories = ViewBag.Pattern as List<Guid>;
+}
+<div class="filter-widget">
+    @foreach(var item in Model)
+    {
+        @if (CultureInfo.CurrentUICulture.Name == "en-US")
+        {
+            <div>
+                <label class="custom_check">
+                    @if (categories!.Contains(item.Id))
+                    {
+                        <input type="checkbox" class="custom_checkinputEn" checked="checked" name="patterns" value="@item.Id">
+                    }
+                    else
+                    {
+                        <input type="checkbox" class="custom_checkinputEn" name="patterns" value="@item.Id">
+                    }
+                    <span class="titlecheckboxEn">@item.TitleEn</span>
+                     
+                </label>
+            </div>
+        }
+        else
+        {
+            <div>
+                <label class="custom_check">
+                    @item.TitleFa
+                    @if (categories!.Contains(item.Id))
+                    {
+                        <input class="custom_checkinputFa" type="checkbox" checked="checked" name="patterns" value="@item.Id">
+                    }
+                    else
+                    {
+                        <input class="custom_checkinputFa" type="checkbox" name="patterns" value="@item.Id">
+                    }
+                </label>
+            </div>
+        }
+    }
+</div>

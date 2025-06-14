@@ -23,4 +23,10 @@ public sealed record ArticleDto
     public string? TextEn { get; set; }
     [Required(ErrorMessage = "انتخاب دسته بندی الزامی است")]
     public Guid CategoryId { get; set; }
+
+    [Required(ErrorMessage = "خلاصه انگلیسی الزامی است")]
+    public string? SummaryEn { get; set; }
+    [Required(ErrorMessage = "خلاصه فارسی الزامی است")]
+
+    public string? SummaryFa { get; set; }
 }

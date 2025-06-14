@@ -1,5 +1,6 @@
 ﻿using Application.Common;
 using Application.Contract;
+using Application.Queries.Article.ViewModels;
 using MediatR;
 
 namespace Application.Queries.Article;

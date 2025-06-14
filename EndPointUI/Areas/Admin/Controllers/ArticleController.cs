@@ -1,5 +1,6 @@
 ﻿using Application.Commands.Article;
 using Application.Queries.Article;
+using Application.Queries.Article.ViewModels;
 using Application.Queries.BlogCategory;
 using Application.Queries.ProductCategory;
 using EndPointUI.Areas.Admin.Models;

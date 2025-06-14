@@ -19,15 +19,16 @@ internal sealed class GetProductHandler : IRequestHandler<GetProductQuery, Produ
         IQueryable<ProductEntity> query =
            _repository.GetByQuery();
 
-        ProductEntity? ProductEntity=await query.
-            Include(i=>i.Category).SingleOrDefaultAsync
-            (s=>s.Id == request.Id,cancellationToken);
+        ProductEntity? ProductEntity = await query.
+            Include(i => i.Category).SingleOrDefaultAsync
+            (s => s.Id == request.Id, cancellationToken);
 
-        if(ProductEntity is null)
+        if (ProductEntity is null)
         {
             throw new InternalException(Message.NotFoundOnDb);
         }
-        ProductDto product= ProductEntity.Adapt<ProductDto>();
+        ProductDto product = ProductEntity.Adapt<ProductDto>();
+        
         return product;
     }
 }

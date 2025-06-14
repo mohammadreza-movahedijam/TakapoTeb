@@ -1,5 +1,6 @@
 ﻿using Application.Commands.ProductCategory;
 using Application.Queries.ProductCategory;
+using Application.Queries.ProductCategory.ViewModels;
 using EndPointUI.Areas.Admin.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

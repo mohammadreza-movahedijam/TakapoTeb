@@ -1,6 +1,7 @@
 ﻿using Application.Common;
 using Application.Common.Extension;
 using Application.Contract;
+using Application.Queries.Product.ViewModels;
 using Domain.Entities.Product;
 using Mapster;
 using MediatR;

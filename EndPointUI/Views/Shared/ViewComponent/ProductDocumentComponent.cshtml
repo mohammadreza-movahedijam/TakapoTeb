@@ -1,0 +1,36 @@
+﻿@model IReadOnlyList<Application.Queries.Document.DocumentViewModel> 
+<div class="row justify-content-center">
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-3 mb-3 mb-sm-0">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                        @if (CultureInfo.CurrentUICulture.Name == "en-US")
+                        {
+                            @item.TitleEn
+                        }
+                        else
+                        {
+                            @item.TitleFa
+                        }
+                        </h5>
+                        
+                        @if (CultureInfo.CurrentUICulture.Name == "en-US")
+                        {
+                        <a href="~/files/Product/@item.FilePath" class="btn btn-primary">
+                            Download
+                        </a>
+                        }
+                        else
+                        {
+                        <a href="~/files/Product/@item.FilePath" class="btn btn-primary">
+                            دانلود
+                        </a>
+                        }
+                   
+                    </div>
+                </div>
+            </div>
+        }
+</div>

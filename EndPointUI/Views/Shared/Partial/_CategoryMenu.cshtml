@@ -1,0 +1,47 @@
+﻿@model IReadOnlyList<Application.Queries.ProductCategory.ViewModels.CategoryMenuViewModel>
+
+<ul class="submenu">
+    @if (CultureInfo.CurrentUICulture.Name == "en-US")
+    {
+        @foreach (var category in Model)
+        {
+
+            <li class="@(category.SubCategories!.Any() ? "has-submenu" : "")">
+                <a asp-controller="Category" asp-action="Detail" asp-route-pattern="@category.Id">
+                    @category.TitleEn
+                    @if (category.SubCategories!.Any())
+                    {
+                        <i class="fas fa-chevron-down"></i>
+                    }
+                </a>
+
+                @if (category.SubCategories.Any())
+                {
+                    @await Html.PartialAsync("Partial/_CategoryMenu", category.SubCategories)
+                }
+            </li>
+        }
+    }
+    else
+    {
+        @foreach (var category in Model)
+        {
+
+            <li class="@(category.SubCategories!.Any() ? "has-submenu" : "")">
+                <a asp-controller="Category" asp-action="Detail" asp-route-pattern="@category.Id">
+                    @category.TitleFa
+                    @if (category.SubCategories.Any())
+                    {
+                        <i class="fas fa-chevron-down"></i>
+                    }
+                </a>
+
+                @if (category.SubCategories.Any())
+                {
+                    @await Html.PartialAsync("Partial/_CategoryMenu", category.SubCategories)
+                }
+            </li>
+        }
+    }
+   
+</ul>

@@ -1,0 +1,21 @@
+﻿@model IReadOnlyList<Application.Queries.Partner.PartnerViewModel>
+
+<!-- اضافه کردن کلاس استاندارد swiper -->
+<section>
+    <div class="swiper mySwiperPartner">
+        <div class="swiper-wrapper">
+            @foreach (var item in Model)
+            {
+                <!-- استفاده از کلاس استاندارد swiper-slide -->
+                <div class="swiper-slide-partner swiper-slide">
+                    <img src="~/gallery/partner/@item.LogoPath" alt="Partner Logo" />
+                </div>
+            }
+        </div>
+        <!-- Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Navigation arrows (اختیاری) -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+</section>

@@ -14,5 +14,5 @@ public sealed record RoleDto
     public string? Name { get; set; }
     [Required(ErrorMessage = "نام الزامی است")]
     public string? PersianName { get; set; }
-
+    public bool IsDefault { get; set; }
 }

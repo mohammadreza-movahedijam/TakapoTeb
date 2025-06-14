@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Application.Commands.Role;
 
@@ -20,6 +21,7 @@ internal sealed class UpdateRoleHandler : IRequestHandler<UpdateRoleCommand>
     }
     public async Task Handle(UpdateRoleCommand request, CancellationToken cancellationToken)
     {
+        IQueryable<RoleEntity> query = _roleManager.Roles.AsQueryable();
         RoleEntity? role =
             await _roleManager.Roles.SingleOrDefaultAsync(s => s.Id == request.Role.Id, cancellationToken);
 
@@ -29,6 +31,11 @@ internal sealed class UpdateRoleHandler : IRequestHandler<UpdateRoleCommand>
         }
         role.PersianName = request.Role.PersianName;
         role.Name = request.Role.Name;
+        role.IsDefault = request.Role.IsDefault;
+        if (request.Role.IsDefault)
+        {
+            query.ExecuteUpdate(p => p.SetProperty(p => p.IsDefault, false));
+        }
         await _roleManager.UpdateAsync(role);
     }
 }

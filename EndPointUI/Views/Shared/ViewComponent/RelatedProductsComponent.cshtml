@@ -1,0 +1,57 @@
+﻿@model IReadOnlyList<Application.Queries.Product.ViewModels.ProductViewModel>
+
+<!-- اضافه کردن کلاس استاندارد swiper -->
+<div class="row">
+    <div class="swiper mySwiperPartner">
+        <div class="swiper-wrapper">
+            @foreach (var item in Model)
+            {
+                <!-- استفاده از کلاس استاندارد swiper-slide -->
+                <div class="swiper-slide-partner swiper-slide">
+
+                    @foreach (var product in Model)
+                    {
+                        <div class="col-md-6 col-lg-4 col-xl-4">
+                            <div class="profile-widget product-card">
+                                <div class="doc-img">
+                                    <a asp-controller="Product" asp-action="Detail" asp-route-pattern="@product.Id">
+                                        @if (product.ImagePath == "default.jpg")
+                                        {
+                                            <img class="img-fluid"  src="~/Gallery/default.jpg">
+                                        }
+                                        else
+                                        {
+                                            <img class="img-fluid"  src="~/Gallery/Product/@product.ImagePath">
+                                        }
+                                    </a>
+
+                                </div>
+                                <div class="pro-content">
+                                    <h3 class="title">
+                                        <a asp-controller="Product" asp-action="Detail" asp-route-pattern="@product.Id" class="product-title">
+                                            @if (CultureInfo.CurrentUICulture.Name == "en-US")
+                                            {
+                                                @product.TitleEn
+                                            }
+                                            else
+                                            {
+                                                @product.Title
+                                            }
+                                        </a>
+
+                                    </h3>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+        <!-- Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Navigation arrows (اختیاری) -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+</div>

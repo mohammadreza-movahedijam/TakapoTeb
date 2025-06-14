@@ -18,8 +18,10 @@ internal sealed class ChangeSettingHandler :
     public async Task Handle(ChangeSettingCommand request,
         CancellationToken cancellationToken)
     {
+
         IQueryable<SettingEntity> query = _settingRepository.GetByQuery();
         SettingEntity? setting = await query.FirstOrDefaultAsync();
+
         request.Setting.Adapt(setting);
         if (request.Setting.BottomLogoFile != null) 
         {
@@ -35,7 +37,7 @@ internal sealed class ChangeSettingHandler :
         
         if (request.Setting.AboutImageFile != null)
         {
-            setting!.TopLogoPath = request.Setting.AboutImageFile.UploadImage("setting");
+            setting!.AboutImagePath = request.Setting.AboutImageFile.UploadImage("setting");
             request.Setting.AboutImagePath!.RemoveImage("setting");
         }
 

@@ -11,5 +11,5 @@ public sealed record RoleViewModel
     public Guid Id { get; set; }
     public string? Name { get; set; }
     public string? PersianName { get; set; }
-
+    public bool IsDefault { get; set; }
 }

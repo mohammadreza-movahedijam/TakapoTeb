@@ -1,0 +1,47 @@
+﻿@model IReadOnlyList<Application.Queries.ProductCategory.ViewModels.CategoryMenuViewModel>
+
+@if (Model.Any())
+{
+    if (CultureInfo.CurrentUICulture.Name == "en-US")
+    {
+        @foreach (Application.Queries.ProductCategory.ViewModels.CategoryMenuViewModel item in Model
+       .Where(w=>w.ParentProductCategoryId==null))
+        {
+            <li class="has-submenu mx-3">
+                <a asp-controller="Category" asp-action="Detail" asp-route-pattern="@item.Id">
+                    @item.TitleEn
+                    @if (item.SubCategories != null && item.SubCategories!.Any())
+                    {
+                        <i class="fas fa-chevron-down"></i>
+                    }
+                </a>
+                @if (item.SubCategories!=null && item.SubCategories!.Any())
+                {
+                    @await Html.PartialAsync("Partial/_CategoryMenu", item.SubCategories)
+                }
+            </li>
+        }
+    }
+    else
+    {
+        @foreach (Application.Queries.ProductCategory.ViewModels.CategoryMenuViewModel item in Model
+       .Where(w => w.ParentProductCategoryId == null))
+        {
+            <li class="has-submenu mx-3">
+                <a asp-controller="Category" asp-action="Detail" asp-route-pattern="@item.Id">
+                    @item.TitleFa  @if (item.SubCategories != null && item.SubCategories!.Any())
+                    {
+                        <i class="fas fa-chevron-down"></i>
+                    }
+                </a>
+                @if (item.SubCategories != null && item.SubCategories!.Any())
+                {
+                    @await Html.PartialAsync("Partial/_CategoryMenu", item.SubCategories)
+                }
+            </li>
+        }
+    }
+  
+}
+
+

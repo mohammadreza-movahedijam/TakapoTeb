@@ -26,3 +26,37 @@
 }).on('select2:open', function () {
     $(this).data('select2').dropdown.$search.attr('placeholder', 'جستجو...');
 });
+
+
+
+
+
+
+
+
+$('#RelatedProduct').select2({
+    ajax: {
+        delay: 1000,
+        url: '/Admin/Product/GetRelatedProducts',
+        data: function (params) {
+            return {
+                search: params.term,Id:null
+            };
+        },
+        processResults: function (data) {
+            return {
+                results: data.items || []
+            };
+        }
+    },
+    minimumInputLength: 1,
+    placeholder: "محصول مورد نظر را جستجو کنید",
+    language: "fa",
+    escapeMarkup: function (markup) { return markup; },
+    templateResult: function (data) {
+        return data.text || '';
+    },
+    templateSelection: function (data) {
+        return data.text || '';
+    }
+});

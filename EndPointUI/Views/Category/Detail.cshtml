@@ -1,0 +1,34 @@
+﻿@model Application.Queries.ProductCategory.ViewModels.CategoryDetailViewModel
+@{
+    string title = CultureInfo.CurrentUICulture.Name! == "en-US" ? Model.TitleEn! : Model.TitleFa!;
+    string align = CultureInfo.CurrentUICulture.Name! == "en-US" ? "ltr" : "rtl"!;
+    ViewData["Title"] = title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row row-Category">
+    <div class="col-lg-6 col-xl-6 col-md-12 col-sm-12 col-without-space">
+        <img class="category-image" src="~/gallery/ProductCategory/@Model.ImagePath" />
+    </div>
+
+    <div class="col-lg-6 col-xl-6 col-md-12 col-sm-12 bg-category col-without-space" style="direction:@align">
+
+        @if (CultureInfo.CurrentUICulture.Name == "en-US")
+        {
+            <h2 class="text-white">@Model.TitleEn</h2>
+
+            <br />
+            <h4 class="text-white">@Model.DescriptionEn</h4>
+        }
+        else
+        {
+            <h2 class="text-white">@Model.TitleFa</h2>
+
+            <br />
+            <h4 class="text-white">@Model.DescriptionFa</h4>
+        }
+        <div>
+        </div>
+    </div>
+</div>
+
+@await Component.InvokeAsync("SubCategoriesComponent", Model.Id)

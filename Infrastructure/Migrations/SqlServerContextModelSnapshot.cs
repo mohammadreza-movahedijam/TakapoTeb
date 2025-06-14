@@ -42,6 +42,15 @@ namespace Infrastructure.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<DateOnly>("PublishDate")
+                        .HasColumnType("date");
+
+                    b.Property<string>("SummaryEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SummaryFa")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("TextEn")
                         .HasColumnType("nvarchar(max)");
 
@@ -90,6 +99,9 @@ namespace Infrastructure.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDefault")
+                        .HasColumnType("bit");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -240,6 +252,34 @@ namespace Infrastructure.Migrations
                     b.ToTable("Document", "Product");
                 });
 
+            modelBuilder.Entity("Domain.Entities.Product.ImageEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Path")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("TitleEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleFa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Image", "Product");
+                });
+
             modelBuilder.Entity("Domain.Entities.Product.OptionEntity", b =>
                 {
                     b.Property<Guid>("Id")
@@ -317,6 +357,73 @@ namespace Infrastructure.Migrations
                     b.ToTable("Product", "Product");
                 });
 
+            modelBuilder.Entity("Domain.Entities.Product.RelatedEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("RelatedId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Related", "Product");
+                });
+
+            modelBuilder.Entity("Domain.Entities.System.ChatGroupEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ConnectionId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("IPAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ChatGroup", (string)null);
+                });
+
+            modelBuilder.Entity("Domain.Entities.System.ChatMessageEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ChatGroupId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreateAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("IPAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserType")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ChatGroupId");
+
+                    b.ToTable("ChatMessage");
+                });
+
             modelBuilder.Entity("Domain.Entities.System.PartnerEntity", b =>
                 {
                     b.Property<Guid>("Id")
@@ -343,7 +450,10 @@ namespace Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("About")
+                    b.Property<string>("AboutEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AboutFa")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("AboutImagePath")
@@ -355,16 +465,31 @@ namespace Infrastructure.Migrations
                     b.Property<string>("ContactNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("DescriptionEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DescriptionFa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Instagram")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Latitude")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Linkedin")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Location")
+                    b.Property<string>("LocationEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LocationFa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Longitude")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Telegram")
@@ -379,6 +504,12 @@ namespace Infrastructure.Migrations
                     b.Property<string>("WhatsApp")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("WorkingHoursEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("WorkingHoursFa")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("YearsExperience")
                         .HasColumnType("int");
 
@@ -390,18 +521,23 @@ namespace Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("b6a6e1eb-8ef7-45ea-aef9-f199b96f92a9"),
-                            About = "",
+                            AboutEn = "",
+                            AboutFa = "",
                             AboutImagePath = "",
                             BottomLogoPath = "",
                             ContactNumber = "",
-                            Description = "",
+                            DescriptionEn = "",
+                            DescriptionFa = "",
                             Instagram = "",
                             Linkedin = "",
-                            Location = "",
+                            LocationEn = "",
+                            LocationFa = "",
                             Telegram = "",
                             TopLogoPath = "",
                             Video = "",
                             WhatsApp = "",
+                            WorkingHoursEn = "",
+                            WorkingHoursFa = "",
                             YearsExperience = 0
                         });
                 });
@@ -567,6 +703,17 @@ namespace Infrastructure.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("Domain.Entities.Product.ImageEntity", b =>
+                {
+                    b.HasOne("Domain.Entities.Product.ProductEntity", "Product")
+                        .WithMany("Images")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("Domain.Entities.Product.OptionEntity", b =>
                 {
                     b.HasOne("Domain.Entities.Product.ProductEntity", "Product")
@@ -585,6 +732,28 @@ namespace Infrastructure.Migrations
                         .HasForeignKey("CategoryId");
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Product.RelatedEntity", b =>
+                {
+                    b.HasOne("Domain.Entities.Product.ProductEntity", "Product")
+                        .WithMany("Relateds")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("Domain.Entities.System.ChatMessageEntity", b =>
+                {
+                    b.HasOne("Domain.Entities.System.ChatGroupEntity", "ChatGroup")
+                        .WithMany("chatMessages")
+                        .HasForeignKey("ChatGroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ChatGroup");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -654,7 +823,16 @@ namespace Infrastructure.Migrations
                 {
                     b.Navigation("Documents");
 
+                    b.Navigation("Images");
+
                     b.Navigation("Options");
+
+                    b.Navigation("Relateds");
+                });
+
+            modelBuilder.Entity("Domain.Entities.System.ChatGroupEntity", b =>
+                {
+                    b.Navigation("chatMessages");
                 });
 #pragma warning restore 612, 618
         }

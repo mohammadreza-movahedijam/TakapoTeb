@@ -10,6 +10,7 @@
 
 }
 @section Script {
+    <script src="~/js/rest.js"></script>
     <script src="~/assets/js/upload.js"></script>
     <script src="~/assets/vendor/libs/select2/select2.js"></script>
     <script src="~/assets/js/product/edit.js"></script>
@@ -87,6 +88,11 @@
                         </select>
                     </div>
                     <div class="col-12">
+                        <label class="form-label">انتخاب محصولات مرتبط</label>
+                        <select name="RelatedProducts" id="RelatedProduct" multiple="multiple" class="select2 form-select">
+                        </select>
+                    </div>
+                    <div class="col-12">
                         <label class="form-label">توضیحات فارسی</label>
                         <textarea class="form-control" asp-for="DescrptionFa" rows="5"></textarea>
 
@@ -100,8 +106,11 @@
 
                     </div>
 
-                    <input type="hidden" id="CategorySelected" key="@Model.CategoryId" value="@Model.CategoryTitleFa"/>
-                    <input type="hidden" asp-for="Id"/>
+                    <input type="hidden" id="CategorySelected"
+                        key="@Model.CategoryId" value="@Model.CategoryTitleFa"/>
+                    <input type="hidden" asp-for="OldCategoryId" 
+                    value="@Model.CategoryId"/>
+                    <input type="hidden" asp-for="Id" id="ProductId"/>
                     <input type="hidden" asp-for="ImagePath"/>
                 </div>
 

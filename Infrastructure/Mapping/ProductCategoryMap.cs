@@ -15,6 +15,7 @@ internal sealed class ProductCategoryMap :
 {
     public void Configure(EntityTypeBuilder<CategoryEntity> builder)
     {
+        builder.HasQueryFilter(f=>f.IsDeleted==false);
         builder.ToTable("Category", "Product");
         builder.Property(p => p.TitleEn).HasMaxLength(500);
         builder.Property(p => p.TitleFa).HasMaxLength(500);

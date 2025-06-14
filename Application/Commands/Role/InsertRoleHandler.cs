@@ -2,6 +2,8 @@
 using Domain.Entities.Identity;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Polly;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,12 +21,20 @@ internal sealed class InsertRoleHandler : IRequestHandler<InsertRoleCommand>
     }
     public async Task Handle(InsertRoleCommand request, CancellationToken cancellationToken)
     {
+        IQueryable<RoleEntity> query=_roleManager.Roles.AsQueryable();
       
         RoleEntity role = new()
         {
             Name = request.Role.Name,
-            PersianName = request.Role.PersianName
+            PersianName = request.Role.PersianName,
+            IsDefault = request.Role.IsDefault
         };
+
+        if (request.Role.IsDefault) {
+            query.ExecuteUpdate(p => p.SetProperty(p => p.IsDefault, false));
+        }
+
+
         IdentityResult createRoleResult = await _roleManager.CreateAsync(role);
         if (createRoleResult.Succeeded is false)
         {

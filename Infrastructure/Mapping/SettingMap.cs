@@ -23,13 +23,19 @@ internal sealed class SettingMap : IEntityTypeConfiguration<SettingEntity>
             Instagram = string.Empty,
             WhatsApp = string.Empty,
             Telegram = string.Empty,
-            Location = string.Empty,
+            LocationFa = string.Empty,
+            LocationEn = string.Empty,
             ContactNumber = string.Empty,
             Video = string.Empty,
-            Description = string.Empty,
-            About = string.Empty,
+            DescriptionEn = string.Empty,
+            DescriptionFa = string.Empty,
+            AboutEn = string.Empty,
+            AboutFa = string.Empty,
             AboutImagePath = string.Empty,
             YearsExperience = 0,
+            WorkingHoursEn=string.Empty,
+            WorkingHoursFa=string.Empty,
+
         });
     }
 }
