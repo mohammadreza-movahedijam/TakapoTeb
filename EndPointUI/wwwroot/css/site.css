@@ -298,8 +298,17 @@
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
 }
-
-.product-card {
+.product-card-related {
+    height: auto;
+    border-width: 0 0 2px 0;
+    border-style: none none solid none;
+    border-color: #303580;
+    background-color: #ededed;
+}
+    .product-card-related:hover {
+        border: solid 2px #303580;
+    }
+    .product-card {
     height: auto;
     border-width: 0 0 2px 0;
     border-style: none none solid none;

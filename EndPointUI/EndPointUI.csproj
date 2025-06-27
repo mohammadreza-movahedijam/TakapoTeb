@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\js\productDetail.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\js\productDetail.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.11">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -25,6 +33,10 @@
     <Folder Include="Areas\User\Data\" />
     <Folder Include="Areas\User\Models\" />
     <Folder Include="wwwroot\files\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\js\productDetail.js" />
   </ItemGroup>
 
 </Project>

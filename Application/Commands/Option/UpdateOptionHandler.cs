@@ -23,8 +23,6 @@ internal sealed class UpdateProductOptionHandler :
     {
         OptionEntity? productOptionEntity =
           await _repository.GetAsync(g => g.Id == request.ProductOption.Id, cancellationToken);
-
-
         if (productOptionEntity == null)
         {
             throw new InternalException(Message.NotFoundOnDb);

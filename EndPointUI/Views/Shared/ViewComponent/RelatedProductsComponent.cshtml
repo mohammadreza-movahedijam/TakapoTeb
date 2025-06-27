@@ -1,27 +1,47 @@
 ﻿@model IReadOnlyList<Application.Queries.Product.ViewModels.ProductViewModel>
 
-<!-- اضافه کردن کلاس استاندارد swiper -->
-<div class="row">
-    <div class="swiper mySwiperPartner">
-        <div class="swiper-wrapper">
-            @foreach (var item in Model)
+
+<div class="row p-5 mb-5 text-center">
+
+
+    <div class="card author-widget clearfix">
+        <div class="card-header">
+
+            @if (CultureInfo.CurrentUICulture.Name == "en-US")
             {
-                <!-- استفاده از کلاس استاندارد swiper-slide -->
-                <div class="swiper-slide-partner swiper-slide">
+                <h2 class="card-title">
+                    Related products
+                </h2>
+            }
+            else
+            {
+                <h2 class="card-title">
+                    محصولات مرتبط
+                </h2>
+            }
+
+        </div>
+        <div class="card-body">
+            <div class="swiper mySwiperRelated">
+                <div class="swiper-wrapper">
+
+
 
                     @foreach (var product in Model)
                     {
-                        <div class="col-md-6 col-lg-4 col-xl-4">
-                            <div class="profile-widget product-card">
+                        <!-- استفاده از کلاس استاندارد swiper-slide -->
+                        <div class="swiper-slide-partner swiper-slide mx-3 p-3">
+                            <div style="width:100%;" class="profile-widget product-card-related">
+
                                 <div class="doc-img">
                                     <a asp-controller="Product" asp-action="Detail" asp-route-pattern="@product.Id">
                                         @if (product.ImagePath == "default.jpg")
                                         {
-                                            <img class="img-fluid"  src="~/Gallery/default.jpg">
+                                            <img style="height:100px;width:100%;" class="img-fluid" src="~/Gallery/default.jpg">
                                         }
                                         else
                                         {
-                                            <img class="img-fluid"  src="~/Gallery/Product/@product.ImagePath">
+                                            <img style="height:100px;width:100%;" class="img-fluid" height="50" src="~/Gallery/Product/@product.ImagePath">
                                         }
                                     </a>
 
@@ -45,13 +65,24 @@
                             </div>
                         </div>
                     }
+
+
                 </div>
-            }
+                <!-- Pagination -->
+                <div class="swiper-pagination"></div>
+                <!-- Navigation arrows (اختیاری) -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
         </div>
-        <!-- Pagination -->
-        <div class="swiper-pagination"></div>
-        <!-- Navigation arrows (اختیاری) -->
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
     </div>
+
+
+
+
+
+
+
+
+
 </div>

@@ -13,6 +13,7 @@ public class ProductEntity : BaseEntity,IDelete
     public virtual ICollection<DocumentEntity>? Documents {  get; set; }
     public virtual ICollection<OptionEntity>? Options { get; set; }
     public virtual ICollection<RelatedEntity>? Relateds { get; set; }
+    public virtual ICollection<TreatmentCenterEntity>? TreatmentCenters { get; set; }
     public CategoryEntity? Category { get; set; }
     public Guid? CategoryId { get; set; }
     #endregion
