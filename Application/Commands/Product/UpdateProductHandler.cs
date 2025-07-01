@@ -45,7 +45,7 @@ internal sealed class UpdateProductHandler :
                     GetAsync(g => g.Id == request.Product.Id, cancellationToken);
                     if (product == null)
                     {
-                        throw new InternalException(Message.InternalError);
+                        throw new InternalException(CustomMessage.InternalError);
                     }
                     request.Product.Adapt(product);
                     if (product.CategoryId is null)

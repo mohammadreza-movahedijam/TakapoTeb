@@ -22,7 +22,7 @@ internal sealed class UpdateProductCategoryHandler :
             await _repository.GetAsync(g=>g.Id==request.ProductCategory.Id,cancellationToken);
         if (productCategory == null) 
         {
-            throw new InternalException(Message.NotFoundOnDb);
+            throw new InternalException(CustomMessage.NotFoundOnDb);
         }
         request.ProductCategory.Adapt(productCategory);
         if (request.ProductCategory.ImageFile != null)

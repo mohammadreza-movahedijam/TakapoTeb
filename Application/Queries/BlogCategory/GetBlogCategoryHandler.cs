@@ -28,7 +28,7 @@ internal sealed class GetBlogCategoryHandler :
                    cancellationToken);
         if (category == null)
         {
-            throw new InternalException(Message.NotFoundOnDb);
+            throw new InternalException(CustomMessage.NotFoundOnDb);
         }
         return category;
     }

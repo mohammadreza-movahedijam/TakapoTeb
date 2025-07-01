@@ -16,7 +16,7 @@ internal sealed class DeleteProductHandler : IRequestHandler<DeleteProductComman
         ProductEntity? product = await _repository.GetAsync(g => g.Id == request.Id, cancellationToken);
         if (product == null)
         {
-            throw new InternalException(Message.InternalError);
+            throw new InternalException(    CustomMessage.InternalError);
         }
         product.IsDeleted = true;
         await _repository.UpdateAsync(product, cancellationToken);

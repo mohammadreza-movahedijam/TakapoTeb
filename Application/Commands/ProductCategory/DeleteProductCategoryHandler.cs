@@ -24,7 +24,7 @@ internal sealed class DeleteProductCategoryHandler :
             await _repository.GetAsync(g => g.Id == request.Id, cancellationToken);
         if (productCategory == null)
         {
-            throw new InternalException(Message.NotFoundOnDb);
+            throw new InternalException(CustomMessage.NotFoundOnDb);
         }
         productCategory.IsDeleted = true;
         await _repository.UpdateAsync(productCategory,cancellationToken);

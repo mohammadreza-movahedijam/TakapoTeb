@@ -30,7 +30,7 @@ internal sealed class GetUserHandler :
         UserEntity? User =await _userManager.Users.FirstOrDefaultAsync(f=>f.Id == request.Id,cancellationToken);
         if (User == null) 
         {
-            throw new InternalException(Message.NotFoundOnDb, 404);
+            throw new InternalException(CustomMessage.NotFoundOnDb, 404);
         }
         userDto =User.Adapt<UserDto>(config);
         var roles=(List<string>)await _userManager.GetRolesAsync(User);

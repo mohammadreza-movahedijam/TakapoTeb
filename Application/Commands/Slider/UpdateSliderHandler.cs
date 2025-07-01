@@ -26,7 +26,7 @@ internal sealed class UpdateSliderHandler :
             .GetAsync(g => g.Id == request.Slider.Id, cancellationToken);
         if (slider == null) 
         {
-            throw new InternalException(Message.NotFoundOnDb);
+            throw new InternalException(CustomMessage.NotFoundOnDb);
         }
         request.Slider.Adapt(slider);
         if (request.Slider.File is not null) 

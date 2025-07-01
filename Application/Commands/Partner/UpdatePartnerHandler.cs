@@ -20,7 +20,7 @@ internal sealed class UpdatePartnerHandler :
             .GetAsync(g => g.Id == request.Partner.Id, cancellationToken);
         if (partner == null)
         {
-            throw new InternalException(Message.NotFoundOnDb);
+            throw new InternalException(CustomMessage.NotFoundOnDb);
         }
         partner.Link = request.Partner.Link;
         if (request.Partner.File is not null)

@@ -1,0 +1,37 @@
+﻿@model IReadOnlyList<Application.Queries.Departement.DepartementViewModel>
+<div class="row">
+@foreach (var item in Model)
+{
+  <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+            <div class="card shadow">
+                <div class="card-header text-center bg-info">
+                    <h3 class="text-white">
+                        @if (CultureInfo.CurrentUICulture.Name == "en-US")
+                        {
+                            @item.NameEn
+                        }
+                        else
+                        {
+                            @item.NameFa
+                        }
+                    </h3>
+                </div>
+                <div class="card-body text-center ">
+                    <h4 class="text-dark">
+                        @if (CultureInfo.CurrentUICulture.Name == "en-US")
+                        {
+                            @item.PhoneNumberEn
+                        }
+                        else
+                        {
+                            @item.PhoneNumberFa 
+                        }
+                    </h4>
+                </div>
+            </div>
+        </div>
+
+
+}
+   
+</div>

@@ -25,7 +25,7 @@ internal sealed class GetSliderHandler :
             GetAsync<SliderDto>(g=>g.Id==request.Id,null,cancellationToken);
         if (slider == null)
         {
-            throw new InternalException(Message.NotFoundOnDb);
+            throw new InternalException(CustomMessage.NotFoundOnDb);
         }
         return slider;
     }

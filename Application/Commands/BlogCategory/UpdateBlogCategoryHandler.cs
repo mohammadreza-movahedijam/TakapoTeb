@@ -26,7 +26,7 @@ internal sealed class UpdateBlogCategoryHandler :
                    GetAsync(g => g.Id == request.BlogCategory.Id, cancellationToken);
         if (category == null) 
         {
-            throw new InternalException(Message.NotFoundOnDb);
+            throw new InternalException(CustomMessage.NotFoundOnDb);
         }
 
         request.BlogCategory.Adapt(category);

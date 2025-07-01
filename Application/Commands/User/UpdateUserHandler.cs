@@ -42,7 +42,7 @@ internal sealed class UpdateUserHandler :
 
                         if (user == null)
                         {
-                            throw new InternalException(Message.NotFoundOnDb, 404);
+                            throw new InternalException(    CustomMessage.NotFoundOnDb, 404);
                         }
                         request.User.Adapt(user);
 
@@ -65,7 +65,7 @@ internal sealed class UpdateUserHandler :
                         if (!oldRoles.Any())
                         {
                             await transaction.RollbackAsync();
-                            throw new InternalException(Message.InternalError, 500);
+                            throw new InternalException(CustomMessage.InternalError, 500);
                         }
 
                         IdentityResult removeOldRoles = await _userManager.RemoveFromRolesAsync(user, oldRoles);

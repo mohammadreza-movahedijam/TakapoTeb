@@ -1,0 +1,35 @@
+﻿@model IReadOnlyList<Application.Queries.TreatmentCenter.TreatmentCenterViewModel>
+
+@if(Model!=null && Model.Any())
+{
+    <h3>مراکز تجهیز شده</h3>
+    <div id="mapid" class="rounded shadow p-3 card" style="height: 400px;"></div>
+}
+
+<script>
+    var map = L.map('mapid').setView([35.6892, 51.3890], 11);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+    var markers = [];
+
+    @foreach (var item in Model)
+    {
+        var lat = item.Latitude;
+        var lng = item.Longitude;
+
+        <text>
+            markers.push({
+                coordinates: [@lat, @lng],
+                content: '@item.Id' // محتوای مربوط به نشانگر
+            });
+        </text>
+    }
+
+        markers.forEach(function (marker) {
+            L.marker(marker.coordinates).addTo(map).on('click', function (e) {
+
+                DoctorModal(marker.content);
+            });
+        });
+</script>

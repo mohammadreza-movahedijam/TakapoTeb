@@ -22,7 +22,7 @@ internal sealed class SetPasswordHandler
                            cancellationToken);
         if (user == null)
         {
-            throw new InternalException(Message.NotFoundOnDb);
+            throw new InternalException(CustomMessage.NotFoundOnDb);
         }
 
         bool ExistPassword = await _userManager.HasPasswordAsync(user);

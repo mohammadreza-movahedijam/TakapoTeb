@@ -27,7 +27,7 @@ internal sealed class UpdateRoleHandler : IRequestHandler<UpdateRoleCommand>
 
         if (role is null)
         {
-            throw new NullReferenceException(Message.NotFoundOnDb);
+            throw new NullReferenceException(CustomMessage.NotFoundOnDb);
         }
         role.PersianName = request.Role.PersianName;
         role.Name = request.Role.Name;

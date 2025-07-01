@@ -21,7 +21,7 @@ internal sealed class GetOptionHandler :
             (g=>g.Id==request.Id,null,cancellationToken);
         if (productOptionDto is null) 
         {
-            throw new InternalException(Message.NotFoundOnDb);
+            throw new InternalException(CustomMessage.NotFoundOnDb);
         }
 
         return productOptionDto;

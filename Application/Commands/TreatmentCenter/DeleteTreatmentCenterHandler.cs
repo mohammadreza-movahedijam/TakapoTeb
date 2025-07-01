@@ -18,7 +18,7 @@ internal sealed class DeleteTreatmentCenterHandler
           .GetAsync(g => g.Id == request.Id, cancellationToken);
         if (treatmentCenter == null)
         {
-            throw new InternalException(Message.NotFoundOnDb);
+            throw new InternalException(CustomMessage.NotFoundOnDb);
         }
         treatmentCenter.IsDeleted = true;
         await _treatmentCenterRepository.UpdateAsync(treatmentCenter, cancellationToken);

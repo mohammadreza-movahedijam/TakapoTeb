@@ -464,6 +464,61 @@ namespace Infrastructure.Migrations
                     b.ToTable("ChatMessage");
                 });
 
+            modelBuilder.Entity("Domain.Entities.System.DepartementEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("NameEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NameFa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumberEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumberFa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Departement", (string)null);
+                });
+
+            modelBuilder.Entity("Domain.Entities.System.MessageEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Subject")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Text")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Message", (string)null);
+                });
+
             modelBuilder.Entity("Domain.Entities.System.PartnerEntity", b =>
                 {
                     b.Property<Guid>("Id")

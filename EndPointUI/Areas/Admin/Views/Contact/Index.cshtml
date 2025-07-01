@@ -1,0 +1,126 @@
+﻿@model Application.Common.PaginatedList<Application.Queries.Message.MessageViewModel>
+
+@{
+    ViewData["Title"] = "پیام‌ها";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section Script {
+    <script src="~/assets/js/ui-modals.js"></script>
+
+    <script src="~/js/rest.js"></script>
+    <script src="~/js/sweetalert.js"></script>
+    <script src="~/js/pagination.js"></script>
+    <script src="~/assets/js/contactus/Index.js"></script>
+
+}
+<nav aria-label="breadcrumb">
+    <ol class="lh-1-85 breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/Admin">پیشخوان</a>
+        </li>
+
+        <li class="breadcrumb-item active">پیام‌ها‌</li>
+    </ol>
+</nav>
+
+
+
+
+<div class="row">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="heading-color">پیام‌ها‌</h5>
+            
+            <form asp-area="Admin" asp-controller="Contact"
+                  asp-action="Index"
+                  method="get" class="input-group mt-3 w-25">
+                <input class="form-control form-control-sm"
+                       name="keyword" type="search"
+                       placeholder="یک عبارت جستجو کنید" value="@ViewBag.Search" />
+                <button class="btn btn-sm btn-primary" type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <a asp-area="Admin" asp-controller="Contact"
+                   asp-action="Index"
+                   class="btn btn-sm btn-warning text-white">
+                    <i class="fa-solid fa-rotate-right"></i>
+                </a>
+            </form>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive text-nowrap">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>عنوان</th>
+                            <th>نام و نام خانوادگی</th>
+                            <th>شماره تماس</th>
+
+                            <th>ایمیل</th>
+                           
+
+                            <th>عملیات</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        @if (Model != null && Model.List!.Any())
+                        {
+                            @foreach (var item in Model.List!)
+                            {
+                                <tr id="item_@item.Id">
+
+
+                                    <td>@item.Subject</td>
+                                    <td>@item.FullName</td>
+                                    <td>@item.PhoneNumber</td>
+                                    <td>@item.Email</td>
+                                    <td>
+
+                                        <a
+                                            class="btn btn-info btn-sm text-white" 
+                                            data-bs-toggle="modal" data-bs-target="#modalCenter_@item.Id">
+                                            نمایش پیام
+                                        </a>
+                                        <div class="modal fade " id="modalCenter_@item.Id" tabindex="-1" aria-modal="true" role="dialog">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title secondary-font" id="modalCenterTitle">مشاهده پیام</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        @item.Text
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
+                                                            بستن
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a onclick="Delete('@item.Id')"
+                                           class="btn btn-sm btn-danger text-white">حذف</a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer">
+
+            @if (Model!.TotalPage > 1)
+            {
+                <div id="pagination-body"
+                     data-page-index="@Model.CurentPage"
+                     data-total-pages="@Model.TotalPage"
+                     data-search="@ViewBag.Search"
+                     data-path="/Admin/Contact/Index">
+                </div>
+            }
+        </div>
+    </div>
+</div>

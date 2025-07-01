@@ -22,24 +22,24 @@ namespace Application.Common.Resource {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Message {
+    internal class CustomMessage {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Message() {
+        internal CustomMessage() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Application.Common.Resource.Message", typeof(Message).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Application.Common.Resource.CustomMessage", typeof(CustomMessage).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace Application.Common.Resource {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace Application.Common.Resource {
         /// <summary>
         ///   Looks up a localized string similar to پاسخ نامه خالی است.
         /// </summary>
-        public static string AnswerInsurancePolicies {
+        internal static string AnswerInsurancePolicies {
             get {
                 return ResourceManager.GetString("AnswerInsurancePolicies", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace Application.Common.Resource {
         /// <summary>
         ///   Looks up a localized string similar to حساب کاربری شما مسدود است.
         /// </summary>
-        public static string BlockUserAccount {
+        internal static string BlockUserAccount {
             get {
                 return ResourceManager.GetString("BlockUserAccount", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace Application.Common.Resource {
         /// <summary>
         ///   Looks up a localized string similar to نقش پیش فرض یافت نشد.
         /// </summary>
-        public static string DefaultRoleNotFound {
+        internal static string DefaultRoleNotFound {
             get {
                 return ResourceManager.GetString("DefaultRoleNotFound", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace Application.Common.Resource {
         /// <summary>
         ///   Looks up a localized string similar to حذف تصویر با خطا مو.اجه شد.
         /// </summary>
-        public static string ErrorRemoveOldImage {
+        internal static string ErrorRemoveOldImage {
             get {
                 return ResourceManager.GetString("ErrorRemoveOldImage", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace Application.Common.Resource {
         /// <summary>
         ///   Looks up a localized string similar to کد اعتبار سنجی منقضی شده است.
         /// </summary>
-        public static string ExpiryRegisterCode {
+        internal static string ExpiryRegisterCode {
             get {
                 return ResourceManager.GetString("ExpiryRegisterCode", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace Application.Common.Resource {
         /// <summary>
         ///   Looks up a localized string similar to آیتم تکراری است..
         /// </summary>
-        public static string ExsitOnDateBase {
+        internal static string ExsitOnDateBase {
             get {
                 return ResourceManager.GetString("ExsitOnDateBase", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace Application.Common.Resource {
         /// <summary>
         ///   Looks up a localized string similar to خطای داخلی رخ داده است.
         /// </summary>
-        public static string InternalError {
+        internal static string InternalError {
             get {
                 return ResourceManager.GetString("InternalError", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace Application.Common.Resource {
         /// <summary>
         ///   Looks up a localized string similar to کاربر با کدملی قبلا ثبت نام شده است.
         /// </summary>
-        public static string NationalCodeExist {
+        internal static string NationalCodeExist {
             get {
                 return ResourceManager.GetString("NationalCodeExist", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace Application.Common.Resource {
         /// <summary>
         ///   Looks up a localized string similar to در دیتابیس موجودیت یافت نشد.
         /// </summary>
-        public static string NotFoundOnDb {
+        internal static string NotFoundOnDb {
             get {
                 return ResourceManager.GetString("NotFoundOnDb", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace Application.Common.Resource {
         /// <summary>
         ///   Looks up a localized string similar to کد اعتبارسنجی نامعتبر است.
         /// </summary>
-        public static string OtpCodeNotValide {
+        internal static string OtpCodeNotValide {
             get {
                 return ResourceManager.GetString("OtpCodeNotValide", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace Application.Common.Resource {
         /// <summary>
         ///   Looks up a localized string similar to خطای ثبت نام کاربر رخ داده است.
         /// </summary>
-        public static string RegisterError {
+        internal static string RegisterError {
             get {
                 return ResourceManager.GetString("RegisterError", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace Application.Common.Resource {
         /// <summary>
         ///   Looks up a localized string similar to دسته بندی الزامی است.
         /// </summary>
-        public static string RequiredCategory {
+        internal static string RequiredCategory {
             get {
                 return ResourceManager.GetString("RequiredCategory", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace Application.Common.Resource {
         /// <summary>
         ///   Looks up a localized string similar to انتخاب شهر الزامی است.
         /// </summary>
-        public static string RequiredCityId {
+        internal static string RequiredCityId {
             get {
                 return ResourceManager.GetString("RequiredCityId", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace Application.Common.Resource {
         /// <summary>
         ///   Looks up a localized string similar to انتخاب شرکت بیمه الزامی است.
         /// </summary>
-        public static string RequiredCompany {
+        internal static string RequiredCompany {
             get {
                 return ResourceManager.GetString("RequiredCompany", resourceCulture);
             }
@@ -189,7 +189,7 @@ namespace Application.Common.Resource {
         /// <summary>
         ///   Looks up a localized string similar to انتخاب تاریخ الزامی است.
         /// </summary>
-        public static string RequiredDateTime {
+        internal static string RequiredDateTime {
             get {
                 return ResourceManager.GetString("RequiredDateTime", resourceCulture);
             }
@@ -198,7 +198,7 @@ namespace Application.Common.Resource {
         /// <summary>
         ///   Looks up a localized string similar to روز الزامی است.
         /// </summary>
-        public static string RequiredDay {
+        internal static string RequiredDay {
             get {
                 return ResourceManager.GetString("RequiredDay", resourceCulture);
             }
@@ -207,7 +207,7 @@ namespace Application.Common.Resource {
         /// <summary>
         ///   Looks up a localized string similar to توضیحات الزامی است.
         /// </summary>
-        public static string RequiredDescription {
+        internal static string RequiredDescription {
             get {
                 return ResourceManager.GetString("RequiredDescription", resourceCulture);
             }
@@ -216,7 +216,7 @@ namespace Application.Common.Resource {
         /// <summary>
         ///   Looks up a localized string similar to نام الزامی است.
         /// </summary>
-        public static string RequiredFirstName {
+        internal static string RequiredFirstName {
             get {
                 return ResourceManager.GetString("RequiredFirstName", resourceCulture);
             }
@@ -225,7 +225,7 @@ namespace Application.Common.Resource {
         /// <summary>
         ///   Looks up a localized string similar to نام انگلیسی الزامی است.
         /// </summary>
-        public static string RequiredFirstNameEn {
+        internal static string RequiredFirstNameEn {
             get {
                 return ResourceManager.GetString("RequiredFirstNameEn", resourceCulture);
             }
@@ -234,7 +234,7 @@ namespace Application.Common.Resource {
         /// <summary>
         ///   Looks up a localized string similar to جنسیت الزامی است.
         /// </summary>
-        public static string RequiredGender {
+        internal static string RequiredGender {
             get {
                 return ResourceManager.GetString("RequiredGender", resourceCulture);
             }
@@ -243,7 +243,7 @@ namespace Application.Common.Resource {
         /// <summary>
         ///   Looks up a localized string similar to نوع فیلد الزامی است.
         /// </summary>
-        public static string RequiredInputType {
+        internal static string RequiredInputType {
             get {
                 return ResourceManager.GetString("RequiredInputType", resourceCulture);
             }
@@ -252,7 +252,7 @@ namespace Application.Common.Resource {
         /// <summary>
         ///   Looks up a localized string similar to نام خانوادگی الزامی است.
         /// </summary>
-        public static string RequiredLastName {
+        internal static string RequiredLastName {
             get {
                 return ResourceManager.GetString("RequiredLastName", resourceCulture);
             }
@@ -261,7 +261,7 @@ namespace Application.Common.Resource {
         /// <summary>
         ///   Looks up a localized string similar to نام فارسی الزامی است.
         /// </summary>
-        public static string RequiredLastNameEn {
+        internal static string RequiredLastNameEn {
             get {
                 return ResourceManager.GetString("RequiredLastNameEn", resourceCulture);
             }
@@ -270,7 +270,7 @@ namespace Application.Common.Resource {
         /// <summary>
         ///   Looks up a localized string similar to شماره پلاک الزامی است.
         /// </summary>
-        public static string RequiredLicensePlateNumber {
+        internal static string RequiredLicensePlateNumber {
             get {
                 return ResourceManager.GetString("RequiredLicensePlateNumber", resourceCulture);
             }
@@ -279,7 +279,7 @@ namespace Application.Common.Resource {
         /// <summary>
         ///   Looks up a localized string similar to ماه الزامی است.
         /// </summary>
-        public static string RequiredMonth {
+        internal static string RequiredMonth {
             get {
                 return ResourceManager.GetString("RequiredMonth", resourceCulture);
             }
@@ -288,7 +288,7 @@ namespace Application.Common.Resource {
         /// <summary>
         ///   Looks up a localized string similar to نام الزامی است..
         /// </summary>
-        public static string RequiredName {
+        internal static string RequiredName {
             get {
                 return ResourceManager.GetString("RequiredName", resourceCulture);
             }
@@ -297,43 +297,16 @@ namespace Application.Common.Resource {
         /// <summary>
         ///   Looks up a localized string similar to کد ملی الزامی است.
         /// </summary>
-        public static string RequiredNationalCode {
+        internal static string RequiredNationalCode {
             get {
                 return ResourceManager.GetString("RequiredNationalCode", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to شماره گذر نامه الزامی است.
-        /// </summary>
-        public static string RequiredPassportNumber {
-            get {
-                return ResourceManager.GetString("RequiredPassportNumber", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to گذر واژه الزامی است.
-        /// </summary>
-        public static string RequiredPassword {
-            get {
-                return ResourceManager.GetString("RequiredPassword", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to دوره پرداخت الزامی است.
-        /// </summary>
-        public static string RequiredPeriodType {
-            get {
-                return ResourceManager.GetString("RequiredPeriodType", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to نام فارسی الزامی است..
         /// </summary>
-        public static string RequiredPersianName {
+        internal static string RequiredPersianName {
             get {
                 return ResourceManager.GetString("RequiredPersianName", resourceCulture);
             }
@@ -342,7 +315,7 @@ namespace Application.Common.Resource {
         /// <summary>
         ///   Looks up a localized string similar to شماره همراه الزامی است.
         /// </summary>
-        public static string RequiredPhoneNumber {
+        internal static string RequiredPhoneNumber {
             get {
                 return ResourceManager.GetString("RequiredPhoneNumber", resourceCulture);
             }
@@ -351,7 +324,7 @@ namespace Application.Common.Resource {
         /// <summary>
         ///   Looks up a localized string similar to انتخاب استان الزامی است.
         /// </summary>
-        public static string RequiredProvinceId {
+        internal static string RequiredProvinceId {
             get {
                 return ResourceManager.GetString("RequiredProvinceId", resourceCulture);
             }
@@ -360,7 +333,7 @@ namespace Application.Common.Resource {
         /// <summary>
         ///   Looks up a localized string similar to شناسه فیلد الزامی است.
         /// </summary>
-        public static string RequiredQuestionId {
+        internal static string RequiredQuestionId {
             get {
                 return ResourceManager.GetString("RequiredQuestionId", resourceCulture);
             }
@@ -369,7 +342,7 @@ namespace Application.Common.Resource {
         /// <summary>
         ///   Looks up a localized string similar to عنوان الزامی است.
         /// </summary>
-        public static string RequiredTitle {
+        internal static string RequiredTitle {
             get {
                 return ResourceManager.GetString("RequiredTitle", resourceCulture);
             }
@@ -378,7 +351,7 @@ namespace Application.Common.Resource {
         /// <summary>
         ///   Looks up a localized string similar to انتخاب نوع بیمه الزامی است.
         /// </summary>
-        public static string RequiredType {
+        internal static string RequiredType {
             get {
                 return ResourceManager.GetString("RequiredType", resourceCulture);
             }
@@ -387,7 +360,7 @@ namespace Application.Common.Resource {
         /// <summary>
         ///   Looks up a localized string similar to شناسه کاربر الزامی است.
         /// </summary>
-        public static string RequiredUserId {
+        internal static string RequiredUserId {
             get {
                 return ResourceManager.GetString("RequiredUserId", resourceCulture);
             }
@@ -396,7 +369,7 @@ namespace Application.Common.Resource {
         /// <summary>
         ///   Looks up a localized string similar to سال الزامی است.
         /// </summary>
-        public static string RequiredYear {
+        internal static string RequiredYear {
             get {
                 return ResourceManager.GetString("RequiredYear", resourceCulture);
             }
@@ -405,7 +378,7 @@ namespace Application.Common.Resource {
         /// <summary>
         ///   Looks up a localized string similar to یک یا چند نقش به کاربر اختصاص دهید.
         /// </summary>
-        public static string RolesForUser {
+        internal static string RolesForUser {
             get {
                 return ResourceManager.GetString("RolesForUser", resourceCulture);
             }
@@ -414,7 +387,7 @@ namespace Application.Common.Resource {
         /// <summary>
         ///   Looks up a localized string similar to عملیات با موفقیت انجام شد.
         /// </summary>
-        public static string SuccessAction {
+        internal static string SuccessAction {
             get {
                 return ResourceManager.GetString("SuccessAction", resourceCulture);
             }
@@ -423,7 +396,7 @@ namespace Application.Common.Resource {
         /// <summary>
         ///   Looks up a localized string similar to شما مجوز دسترسی را ندارید.
         /// </summary>
-        public static string Unauthorized {
+        internal static string Unauthorized {
             get {
                 return ResourceManager.GetString("Unauthorized", resourceCulture);
             }
@@ -432,7 +405,7 @@ namespace Application.Common.Resource {
         /// <summary>
         ///   Looks up a localized string similar to حساب کاربری یافت نشد.
         /// </summary>
-        public static string UserNotFound {
+        internal static string UserNotFound {
             get {
                 return ResourceManager.GetString("UserNotFound", resourceCulture);
             }

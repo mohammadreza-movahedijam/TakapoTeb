@@ -21,7 +21,7 @@ internal sealed class GetArticleHandler :
             (g=>g.Id==request.Id,null,cancellationToken);
         if(article is null)
         {
-            throw new InternalException(Message.NotFoundOnDb);
+            throw new InternalException(CustomMessage.NotFoundOnDb);
         }
         return article;
     }

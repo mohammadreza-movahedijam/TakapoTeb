@@ -22,7 +22,7 @@ internal sealed class GetPartnerHandler :
             null,cancellationToken);
         if(partner==null)
         {
-            throw new InternalException(Message.NotFoundOnDb);
+            throw new InternalException(CustomMessage.NotFoundOnDb);
         }
         return partner;
     }

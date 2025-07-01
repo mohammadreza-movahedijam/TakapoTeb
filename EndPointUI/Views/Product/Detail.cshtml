@@ -7,6 +7,10 @@
     string align = CultureInfo.CurrentUICulture.Name! == "en-US" ? "ltr" : "rtl"!;
 
 }
+@section Style{
+    <link rel="stylesheet" href="~/map/leaflet.css" />
+    <script src="~/map/leaflet.js"></script>
+}
 @section Script{
     <script src="~/js/productDetail.js"></script>
 }
@@ -90,4 +94,12 @@
     </div>
 </div>
 
+
+
 @await Component.InvokeAsync("RelatedProductsComponent", Model.Id)
+<div class="row mt-4">
+  <div class="container p-5 text-center">
+      
+        @await Component.InvokeAsync("ProductTreatmentCenterComponent", Model.Id)
+  </div>
+</div>

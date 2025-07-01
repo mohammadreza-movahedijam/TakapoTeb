@@ -156,6 +156,9 @@
   <data name="Tab2" xml:space="preserve">
     <value>Contact Information</value>
   </data>
+  <data name="Tab3" xml:space="preserve">
+    <value>Departements</value>
+  </data>
   <data name="Text" xml:space="preserve">
     <value>Our support team is always here for you; feel free to contact us with any questions or concerns.</value>
   </data>

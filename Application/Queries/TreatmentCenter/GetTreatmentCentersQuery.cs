@@ -12,5 +12,6 @@ namespace Application.Queries.TreatmentCenter;
 public sealed record GetTreatmentCentersQuery:
     IRequest<PaginatedList<TreatmentCenterViewModel>>
 {
+    public Guid ProductId { get; set; }
     public IPagination Pagination { get; set; }
 }

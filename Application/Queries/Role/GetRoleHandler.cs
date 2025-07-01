@@ -26,7 +26,7 @@ internal sealed class GetRoleHandler : IRequestHandler<GetRoleQuery, RoleDto>
 
         if(role == null)
         {
-            throw new NullReferenceException(Message.NotFoundOnDb);
+            throw new NullReferenceException(   CustomMessage.NotFoundOnDb);
         }
         RoleDto roleDto = new()
         {

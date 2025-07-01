@@ -1,0 +1,106 @@
+﻿@model Application.Common.PaginatedList<Application.Queries.Departement.DepartementViewModel>
+
+
+@{
+    ViewData["Title"] = "واحد‌های اداری";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section Script {
+
+    <script src="~/js/rest.js"></script>
+    <script src="~/js/sweetalert.js"></script>
+    <script src="~/js/pagination.js"></script>
+    <script src="~/assets/js/Departement/Index.js"></script>
+
+}
+<nav aria-label="breadcrumb">
+    <ol class="lh-1-85 breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/Admin">پیشخوان</a>
+        </li>
+
+        <li class="breadcrumb-item active">واحد‌های اداری</li>
+    </ol>
+</nav>
+<div class="row">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="heading-color">واحد‌های اداری</h5>
+            <a asp-area="Admin" asp-controller="Departement" asp-action="Create"
+               class="btn btn-sm btn-success text-white">
+                ایجاد واحد اداری
+            </a>
+            <form asp-area="Admin" asp-controller="Departement" 
+            asp-action="Index"
+                  method="get" class="input-group mt-3 w-25">
+                <input class="form-control form-control-sm"
+                name="keyword" type="search"
+                       placeholder="یک عبارت جستجو کنید" value="@ViewBag.Search" />
+                <button class="btn btn-sm btn-primary" type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <a asp-area="Admin" asp-controller="Departement" 
+                asp-action="Index"
+                   class="btn btn-sm btn-warning text-white">
+                   <i class="fa-solid fa-rotate-right"></i></a>
+            </form>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive text-nowrap">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                           
+                            <th>نام فارسی</th>
+                            <th>نام انگلیسی</th>
+                           
+                            <th>شماره تماس فارسی</th>
+                            <th>شماره تماس انگلیسی</th>
+
+                            <th>عملیات</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        @if (Model != null && Model.List!.Any())
+                        {
+                            @foreach (var item in Model.List!)
+                            {
+                                <tr id="item_@item.Id">
+                                  
+
+                                    <td>@item.NameFa</td>
+                                    <td>@item.NameEn</td>
+                                    <td>@item.PhoneNumberFa</td>
+                                    <td>@item.PhoneNumberEn</td>
+                                    <td>
+
+
+                                        <a asp-area="Admin" asp-controller="Departement" asp-action="Edit"
+                                           asp-route-id="@item.Id"
+                                           class="btn btn-sm btn-warning text-white">ویرایش</a>
+                                        <a onclick="Delete('@item.Id')"
+                                           class="btn btn-sm btn-danger text-white">حذف</a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer">
+
+            @if (Model!.TotalPage > 1)
+            {
+                <div id="pagination-body"
+                     data-page-index="@Model.CurentPage"
+                     data-total-pages="@Model.TotalPage"
+                     data-search="@ViewBag.Search"
+                     data-path="/Admin/Departement/Index">
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

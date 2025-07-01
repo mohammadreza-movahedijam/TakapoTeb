@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AnswerInsurancePolicies" xml:space="preserve">
+    <value>پاسخ نامه خالی است</value>
+  </data>
   <data name="BlockUserAccount" xml:space="preserve">
     <value>حساب کاربری شما مسدود است</value>
+  </data>
+  <data name="DefaultRoleNotFound" xml:space="preserve">
+    <value>نقش پیش فرض یافت نشد</value>
   </data>
   <data name="ErrorRemoveOldImage" xml:space="preserve">
     <value>حذف تصویر با خطا مو.اجه شد</value>
@@ -150,6 +156,9 @@
   <data name="RequiredCityId" xml:space="preserve">
     <value>انتخاب شهر الزامی است</value>
   </data>
+  <data name="RequiredCompany" xml:space="preserve">
+    <value>انتخاب شرکت بیمه الزامی است</value>
+  </data>
   <data name="RequiredDateTime" xml:space="preserve">
     <value>انتخاب تاریخ الزامی است</value>
   </data>
@@ -158,9 +167,6 @@
   </data>
   <data name="RequiredDescription" xml:space="preserve">
     <value>توضیحات الزامی است</value>
-  </data>
-  <data name="RequiredQuestionId" xml:space="preserve">
-    <value>شناسه فیلد الزامی است</value>
   </data>
   <data name="RequiredFirstName" xml:space="preserve">
     <value>نام الزامی است</value>
@@ -201,6 +207,9 @@
   <data name="RequiredProvinceId" xml:space="preserve">
     <value>انتخاب استان الزامی است</value>
   </data>
+  <data name="RequiredQuestionId" xml:space="preserve">
+    <value>شناسه فیلد الزامی است</value>
+  </data>
   <data name="RequiredTitle" xml:space="preserve">
     <value>عنوان الزامی است</value>
   </data>
@@ -213,6 +222,9 @@
   <data name="RequiredYear" xml:space="preserve">
     <value>سال الزامی است</value>
   </data>
+  <data name="RolesForUser" xml:space="preserve">
+    <value>یک یا چند نقش به کاربر اختصاص دهید</value>
+  </data>
   <data name="SuccessAction" xml:space="preserve">
     <value>عملیات با موفقیت انجام شد</value>
   </data>
@@ -221,17 +233,5 @@
   </data>
   <data name="UserNotFound" xml:space="preserve">
     <value>حساب کاربری یافت نشد</value>
-  </data>
-  <data name="AnswerInsurancePolicies" xml:space="preserve">
-    <value>پاسخ نامه خالی است</value>
-  </data>
-  <data name="RequiredCompany" xml:space="preserve">
-    <value>انتخاب شرکت بیمه الزامی است</value>
-  </data>
-  <data name="DefaultRoleNotFound" xml:space="preserve">
-    <value>نقش پیش فرض یافت نشد</value>
-  </data>
-  <data name="RolesForUser" xml:space="preserve">
-    <value>یک یا چند نقش به کاربر اختصاص دهید</value>
   </data>
 </root>

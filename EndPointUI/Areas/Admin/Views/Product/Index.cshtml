@@ -91,6 +91,10 @@
                                            asp-action="Index" asp-route-ProductId="@item.Id">
                                            تصاویر
                                         </a>
+                                        <a asp-area="Admin"
+                                           asp-controller="TreatmentCenter"
+                                           asp-action="Index" asp-route-ProductId="@item.Id" 
+                                           class="btn  btn-sm btn-secondary">مراکز</a>
 
 
                                         <a asp-area="Admin" asp-controller="Product" asp-action="Edit"

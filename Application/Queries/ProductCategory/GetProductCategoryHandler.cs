@@ -23,7 +23,7 @@ internal sealed class GetProductCategoryHandler :
             (g => g.Id == request.Id, null, cancellationToken);
         if (ProductCategory == null)
         {
-            throw new InternalException(Message.NotFoundOnDb);
+            throw new InternalException(CustomMessage.NotFoundOnDb);
         }
         return ProductCategory;
     }

@@ -26,7 +26,7 @@ internal sealed class DeleteRoleHandler :
 
         if (role is null)
         {
-            throw new NullReferenceException(Message.NotFoundOnDb);
+            throw new NullReferenceException(CustomMessage.NotFoundOnDb);
         }
         role.IsDeleted = true;
         await _roleManager.UpdateAsync(role);

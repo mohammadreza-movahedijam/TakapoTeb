@@ -8,7 +8,7 @@ public class InternalException : Exception
   
 
    readonly static string ExceptionMessage
-        = Application.Common.Resource.Message.InternalError;
+        = Application.Common.Resource.CustomMessage.InternalError;
 
     public InternalException() : base(ExceptionMessage)
     {

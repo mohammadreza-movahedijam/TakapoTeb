@@ -7,7 +7,7 @@
         {
 
             <li class="@(category.SubCategories!.Any() ? "has-submenu" : "")">
-                <a asp-controller="Category" asp-action="Detail" asp-route-pattern="@category.Id">
+                <a asp-controller="Product" asp-action="ProductCategory" asp-route-patterns="@category.Id">
                     @category.TitleEn
                     @if (category.SubCategories!.Any())
                     {
@@ -28,7 +28,7 @@
         {
 
             <li class="@(category.SubCategories!.Any() ? "has-submenu" : "")">
-                <a asp-controller="Category" asp-action="Detail" asp-route-pattern="@category.Id">
+                <a asp-controller="Product" asp-action="ProductCategory" asp-route-patterns="@category.Id">
                     @category.TitleFa
                     @if (category.SubCategories.Any())
                     {

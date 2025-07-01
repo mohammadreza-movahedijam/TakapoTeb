@@ -19,7 +19,7 @@ internal sealed class GetTreatmentCentersHandler :
         (GetTreatmentCentersQuery request, CancellationToken cancellationToken)
     {
         IQueryable<TreatmentCenterEntity> query = _repository.GetByQuery();
-
+        query=query.Where(w=>w.ProductId == request.ProductId);
         PaginatedList<TreatmentCenterViewModel> model = new();
         if (!string.IsNullOrEmpty(request!.Pagination!.keyword))
         {

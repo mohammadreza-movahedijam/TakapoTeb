@@ -156,6 +156,9 @@
   <data name="Tab2" xml:space="preserve">
     <value>اطلاعات تماس</value>
   </data>
+  <data name="Tab3" xml:space="preserve">
+    <value>واحد‌های اداری</value>
+  </data>
   <data name="Text" xml:space="preserve">
     <value>تیم پشتیبانی ما همواره در کنارتان است؛ برای هر سوال یا مشکل، با ما تماس بگیرید.</value>
   </data>

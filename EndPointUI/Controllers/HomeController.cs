@@ -1,3 +1,4 @@
+using Application.Commands.Message;
 using Application.Queries.Setting;
 using Application.Queries.Setting.ViewModels;
 using EndPointUI.Models;
@@ -25,7 +26,7 @@ public class HomeController : Controller
     {
         return View();
     }
-
+    [Route("ContactUs")]
     public async Task<IActionResult> ContactUs()
     {
         ContactUsViewModel? contactUs =
@@ -33,7 +34,22 @@ public class HomeController : Controller
         return View(contactUs);
     }
 
+    [HttpPost]
+    [Route("AddMessage")]
+    public async Task<IActionResult> AddMessage([FromBody]MessageDto message)
+    {
 
+
+        await _mediator.Send(new InsertMessageCommand()
+        {
+            Message = message
+        });
+        return new JsonResult(new
+        {
+            IsSuccess = true,
+            Message = string.Empty,
+        });
+    }
 
 
 

@@ -25,7 +25,7 @@ internal sealed class UpdateProductOptionHandler :
           await _repository.GetAsync(g => g.Id == request.ProductOption.Id, cancellationToken);
         if (productOptionEntity == null)
         {
-            throw new InternalException(Message.NotFoundOnDb);
+            throw new InternalException(CustomMessage.NotFoundOnDb);
         }
         request.ProductOption.Adapt(productOptionEntity);
         if(request.ProductOption.ImageFile is not null)

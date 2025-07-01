@@ -25,7 +25,7 @@ internal sealed class DeletePartnerHandler :
            .GetAsync(g => g.Id == request.Id, cancellationToken);
         if (partner == null)
         {
-            throw new InternalException(Message.NotFoundOnDb);
+            throw new InternalException(CustomMessage.NotFoundOnDb);
         }
         partner.IsDeleted = true;
         await _partnerRepository.UpdateAsync(partner, cancellationToken);

@@ -21,7 +21,7 @@ internal sealed class UpdateArticleHandler :
             cancellationToken);
         if (article == null) 
         {
-            throw new InternalException(Message.NotFoundOnDb);
+            throw new InternalException(CustomMessage.NotFoundOnDb);
         }
         if (request.Article.ImageFile != null)
         {

@@ -18,7 +18,7 @@ internal sealed class DeleteSliderHandler :
             .GetAsync(g => g.Id == request.Id, cancellationToken);
         if (slider == null)
         {
-            throw new InternalException(Message.NotFoundOnDb);
+            throw new InternalException(CustomMessage.NotFoundOnDb);
         }
         slider.IsDeleted = true;
         await _sliderRepository.UpdateAsync(slider, cancellationToken);

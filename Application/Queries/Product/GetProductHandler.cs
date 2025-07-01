@@ -25,7 +25,7 @@ internal sealed class GetProductHandler : IRequestHandler<GetProductQuery, Produ
 
         if (ProductEntity is null)
         {
-            throw new InternalException(Message.NotFoundOnDb);
+            throw new InternalException(CustomMessage.NotFoundOnDb);
         }
         ProductDto product = ProductEntity.Adapt<ProductDto>();
         

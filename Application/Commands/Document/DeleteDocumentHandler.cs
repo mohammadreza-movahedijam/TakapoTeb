@@ -22,7 +22,7 @@ internal sealed class DeleteDocumentHandler :
         DocumentEntity? document=await _repository.GetAsync(g=>g.Id==request.Id,cancellationToken);
         if (document == null) 
         {
-            throw new InternalException(Message.NotFoundOnDb);
+            throw new InternalException(CustomMessage.NotFoundOnDb);
         }
         document.IsDeleted = true;
         await _repository.UpdateAsync(document,cancellationToken);

@@ -27,7 +27,7 @@ internal sealed class GetTreatmentCenterHandler :
             (g=>g.Id == request.Id,null,cancellationToken);
         if(TreatmentCenter is null)
         {
-            throw new InternalException(Message.NotFoundOnDb);
+            throw new InternalException(CustomMessage.NotFoundOnDb);
         }
         return TreatmentCenter;
     }

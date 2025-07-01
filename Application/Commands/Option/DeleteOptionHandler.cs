@@ -26,7 +26,7 @@ internal sealed class DeleteOptionHandler :
 
         if (productOptionEntity == null)
         {
-            throw new InternalException(Message.NotFoundOnDb);
+            throw new InternalException(CustomMessage.NotFoundOnDb);
         }
         productOptionEntity.IsDeleted = true;
          await _repository.UpdateAsync(productOptionEntity, cancellationToken);

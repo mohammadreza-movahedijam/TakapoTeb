@@ -25,7 +25,7 @@ internal sealed class DeleteArticleHandler :
            cancellationToken);
         if (article == null)
         {
-            throw new InternalException(Message.NotFoundOnDb);
+            throw new InternalException(CustomMessage.NotFoundOnDb);
         }
         article.IsDeleted = true;
          await _repository.UpdateAsync(article, cancellationToken);

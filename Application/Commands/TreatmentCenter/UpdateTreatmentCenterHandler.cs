@@ -28,7 +28,7 @@ internal sealed class UpdateTreatmentCenterHandler :
 
         if (treatmentCenter == null) 
         {
-            throw new InternalException(Message.NotFoundOnDb);
+            throw new InternalException(CustomMessage.NotFoundOnDb);
         }
         request.TreatmentCenter.Adapt(treatmentCenter);
         await _treatmentCenterRepository.UpdateAsync(treatmentCenter, cancellationToken);

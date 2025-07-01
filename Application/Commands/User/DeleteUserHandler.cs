@@ -23,7 +23,7 @@ internal sealed class DeleteUserHandler :
 
         if (user == null)
         {
-            throw new InternalException(Message.NotFoundOnDb, 404);
+            throw new InternalException(CustomMessage.NotFoundOnDb, 404);
         }
         user.IsDeleted = true;
         await _userManager.UpdateAsync(user);

@@ -10,6 +10,7 @@ public sealed record TreatmentCenterDto
     public string? TitleEn { get; set; }
     public string? DescriptionEn { get; set; }
     public string? PhoneNumber { get; set; }
+
     public Guid ProductId { get; set; }
 
 
