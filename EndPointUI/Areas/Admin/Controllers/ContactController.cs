@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Application.Queries.Message;
 using Application.Commands.Departement;
 using EndPointUI.Areas.Admin.Models;
+using Application.Commands.Message;
 
 namespace EndPointUI.Areas.Admin.Controllers;
 
@@ -28,7 +29,7 @@ public class ContactController (IMediator mediator): Controller
     {
         try
         {
-            await _mediator.Send(new DeleteDepartementCommand()
+            await _mediator.Send(new DeleteMessageCommand()
             {
                 Id = input.Id
             });

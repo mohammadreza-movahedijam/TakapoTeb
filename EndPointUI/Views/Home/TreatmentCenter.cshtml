@@ -1,0 +1,50 @@
+﻿@model IReadOnlyList<Application.Queries.TreatmentCenter.TreatmentCenterViewModel>
+@{
+    string align = CultureInfo.CurrentUICulture.Name! == "en-US" ? "ltr" : "rtl"!;
+    string title = CultureInfo.CurrentUICulture.Name! == "en-US" ? "Equipped centers" : "مراکز تجهیز شده"!;
+
+    ViewData["Title"] = title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Style{
+    <link rel="stylesheet" href="~/map/leaflet.css" />
+    <script src="~/map/leaflet.js"></script>
+}
+<div class="row mt-5 text-center">
+    <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 offset-xl-2 offset-lg-2">
+
+        <h3 class="mb-3">
+            @title
+        </h3>
+        <div id="mapid" class="rounded shadow p-3 card" style="height: 400px;"></div>
+
+
+    </div>
+</div>
+<script>
+    var map = L.map('mapid').setView([35.6892, 51.3890], 11);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+    var markers = [];
+
+    @foreach (var item in Model)
+    {
+        var lat = item.Latitude;
+        var lng = item.Longitude;
+
+        <text>
+            markers.push({
+                coordinates: [@lat, @lng],
+                content: '@item.Id' 
+            });
+        </text>
+    }
+
+        markers.forEach(function (marker) {
+            L.marker(marker.coordinates).addTo(map).on('click', function (e) {
+
+                DoctorModal(marker.content);
+            });
+        });
+</script>

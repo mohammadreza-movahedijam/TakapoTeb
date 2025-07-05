@@ -1,0 +1,138 @@
+﻿@model Application.Queries.Feature.FeatureViewModel
+@{
+    string direction = CultureInfo.CurrentUICulture.Name == "en-US" ? "rtl" : "ltr";
+}
+<div class="banner-bottom">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-3">
+                <div class="card feature-bg " dir="@direction">
+                    <div>
+                        @if (Model.ImageOne == "default.jpg")
+                        {
+                            <img src="~/gallery/default.jpg"  />
+                        }
+                        else
+                        {
+                            <img src="~/gallery/feature/@Model.ImageOne" />
+
+                        }
+                    </div>
+                    <div class="care-text">
+                        @if (CultureInfo.CurrentUICulture.Name == "en-US")
+                        {
+                            <h2>@Model.TitleEnOne</h2>
+                            <p>@Model.TextEnOne</p>
+                        }
+                        else
+                        {
+
+                            <h2>@Model.TitleFaOne</h2>
+                            <p>@Model.TextFaOne</p>
+                        }
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card feature-bg " dir="@direction">
+                    <div>
+                        @if (Model.ImageTwo == "default.jpg")
+                        {
+                            <img src="~/gallery/default.jpg" />
+                        }
+                        else
+                        {
+                            <img src="~/gallery/feature/@Model.ImageTwo" />
+
+                        }
+                    </div>
+                    <div class="care-text">
+                        @if (CultureInfo.CurrentUICulture.Name == "en-US")
+                        {
+                            <h2>@Model.TitleEnTwo</h2>
+                            <p>@Model.TextEnTwo</p>
+                        }
+                        else
+                        {
+
+                            <h2>@Model.TitleFaTwo</h2>
+                            <p>@Model.TextFaTwo</p>
+                        }
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="col-md-3">
+                <div class="card feature-bg " dir="@direction">
+                    <div>
+                        @if (Model.ImageThree == "default.jpg")
+                        {
+                            <img src="~/gallery/default.jpg" />
+                        }
+                        else
+                        {
+                            <img src="~/gallery/feature/@Model.ImageThree" />
+
+                        }
+                    </div>
+                    <div class="care-text">
+                        @if (CultureInfo.CurrentUICulture.Name == "en-US")
+                        {
+                            <h2>@Model.TitleEnThree</h2>
+                            <p>@Model.TextEnThree</p>
+                        }
+                        else
+                        {
+
+                            <h2>@Model.TitleFaThree</h2>
+                            <p>@Model.TextFaThree</p>
+                        }
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card feature-bg " dir="@direction">
+                    <div>
+                        @if (Model.ImageFour == "default.jpg")
+                        {
+                            <img src="~/gallery/default.jpg" />
+                        }
+                        else
+                        {
+                            <img src="~/gallery/feature/@Model.ImageFour" />
+
+                        }
+                    </div>
+                    <div class="care-text">
+                        @if (CultureInfo.CurrentUICulture.Name == "en-US")
+                        {
+                            <h2>@Model.TitleEnFour</h2>
+                            <p>@Model.TextEnFour</p>
+                        }
+                        else
+                        {
+
+                            <h2>@Model.TitleFaFour</h2>
+                            <p>@Model.TextFaFour</p>
+                        }
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+</div>

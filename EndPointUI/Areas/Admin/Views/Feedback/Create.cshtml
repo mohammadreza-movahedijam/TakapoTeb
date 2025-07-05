@@ -1,0 +1,96 @@
+﻿@model Application.Commands.Feedback.FeedbackDto
+@{
+    ViewData["Title"] = "ایجاد نظر";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@section Script {
+    <partial name="_ValidationScriptsPartial.cshtml" />
+}
+<nav aria-label="breadcrumb">
+    <ol class="lh-1-85 breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/Admin">پیشخوان</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a href="/Admin/Feedback/Index">لیست نظرات مشتریان‌</a>
+        </li>
+
+        <li class="breadcrumb-item active">ایجاد نظر </li>
+    </ol>
+</nav>
+
+<div class="row">
+    <div class="col-8 offset-2">
+        <div class="card mb-4">
+            <div class="card-header">
+
+                <h5 class=" heading-color">ایجاد نظر</h5>
+                @if (ViewBag.ErrorMessage != null)
+                {
+                    <div class="alert alert-danger">
+                        @ViewBag.ErrorMessage
+                    </div>
+
+                }
+
+
+            </div>
+            <form asp-area="Admin" asp-controller="Feedback" asp-action="Create"
+                  method="post" class="card-body">
+
+                <div class="row">
+
+
+                    <div class="col-6">
+                        <label class="form-label">نام فارسی</label>
+                        <input asp-for="FullNameFa" type="text" class="form-control" />
+                        <span class="text-danger" asp-validation-for="FullNameFa"></span>
+                    </div>
+                    <div class="col-6">
+                        <label class="form-label">نام انگلیسی</label>
+                        <input asp-for="FullNameEn" type="text" class="form-control" />
+                        <span class="text-danger" asp-validation-for="FullNameEn"></span>
+                    </div>
+
+                    <div class="col-6">
+                        <label class="form-label">موقعیت شغلی فارسی</label>
+                        <input asp-for="JobPositionFa" type="text" class="form-control" />
+                        <span class="text-danger" asp-validation-for="JobPositionFa"></span>
+                    </div>
+                    <div class="col-6">
+                        <label class="form-label">موقعیت شغلی انگلیسی</label>
+                        <input asp-for="JobPositionEn" type="text" class="form-control" />
+                        <span class="text-danger" asp-validation-for="JobPositionEn"></span>
+                    </div>
+
+                    <div class="col-6">
+                        <label class="form-label">توضیح فارسی</label>
+                        <textarea asp-for="ExplanationFa"
+                                  type="text" class="form-control" rows="4">
+                                                  </textarea>
+                    </div>
+
+                     <div class="col-6">
+                        <label class="form-label">توضیح انگلیسی</label>
+                        <textarea asp-for="ExplanationEn"
+                                  type="text" class="form-control" rows="4">
+                                                  </textarea>
+                    </div>
+
+
+
+
+                </div>
+
+                <div class="mt-3">
+                    <button type="submit" class="btn btn-sm text-white btn-success">ثبت</button>
+                    <a asp-area="Admin" asp-controller="Feedback" asp-action="Index" class="btn btn-sm text-white btn-warning">بازگشت</a>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

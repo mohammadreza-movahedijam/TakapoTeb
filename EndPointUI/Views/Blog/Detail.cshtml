@@ -1,0 +1,97 @@
+﻿@model Application.Queries.Article.ViewModels.ArticleDetailViewModel
+@{
+    string align = CultureInfo.CurrentUICulture.Name! == "en-US" ? "ltr" : "rtl"!;
+    string? title = CultureInfo.CurrentUICulture.Name! == "en-US" ? Model.TitleEn : Model.TitleFa;
+
+    ViewData["Title"] = title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="row mt-5" dir="@align">
+        <div class="col-lg-8 col-md-12">
+            <div class="blog-view">
+                <div class="blog blog-single-post">
+                    <div class="blog-image">
+                        <a href="javascript:void(0);">
+
+                            @if (Model.ImagePath == "default.jpg")
+                            {
+                                <img src="~/gallery/default.jpg" class="img-fluid" />
+                            }
+                            else
+                            {
+                                <img src="~/gallery/Article/@Model.ImagePath" class="img-fluid" />
+
+                            }
+                        </a>
+                    </div>
+                    @if (CultureInfo.CurrentUICulture.Name == "en-US")
+                    {
+                        <h3 class="blog-title">@Model.TitleEn</h3>
+                    }
+                    else
+
+                    {
+                        <h3 class="blog-title">@Model.TitleFa</h3>
+                    }
+                        
+                        <div class="blog-info clearfix">
+                        <div class="post-left">
+                            <ul>
+                                
+                                <li>
+                                    <i class="far fa-calendar"></i>4 
+                                
+                                    @if (CultureInfo.CurrentUICulture.Name == "en-US")
+                                    {
+                                        <span >@Model.PublishDateEn</span>
+                                    }
+                                    else
+
+                                    {
+                                        <span>@Model.PublishDateFa</span>
+                                    }
+                                </li>
+                                <li>
+                                    <i class="fa fa-tags"></i>
+                                    @if (CultureInfo.CurrentUICulture.Name == "en-US")
+                                    {
+                                        <span >@Model.CategoryTitleEn</span>
+                                    }
+                                    else
+
+                                    {
+                                        <span >@Model.CategoryTitleFa</span>
+                                    }
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="blog-content">
+                        @if (CultureInfo.CurrentUICulture.Name == "en-US")
+                        {
+                            @Html.Raw(Model.TextEn)
+                        }
+                        else
+
+                        {
+                            @Html.Raw(Model.TextFa)
+                        }
+                    
+                    </div>
+                </div>
+              
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-12 sidebar-right theiaStickySidebar">
+
+
+            <partial name="/Views/Shared/Partial/SearchBlogSidebar.cshtml" />
+
+            @await Component.InvokeAsync("LastArticleSidebarComponent")
+            @await Component.InvokeAsync("BlogCategorySidebarComponent")
+
+        </div>
+    </div>
+</div>
+

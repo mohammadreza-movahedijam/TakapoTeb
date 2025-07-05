@@ -1,0 +1,83 @@
+﻿@model IReadOnlyList<Application.Queries.News.NewsViewModel>
+@using Application.Common.Extension
+@{
+    string textAlign = CultureInfo.CurrentUICulture.Name == "en-US" ? "left" : "right";
+    string direction = CultureInfo.CurrentUICulture.Name == "en-US" ? "ltr" : "rtl";
+    string title = CultureInfo.CurrentUICulture.Name == "en-US" ? "Latest News" : "آخرین اخبار";
+    string more = CultureInfo.CurrentUICulture.Name == "en-US" ? "See More Takapo News " : "مشاهده همه اخبارها";
+}
+<section>
+    <div class="container">
+        <div class="row">
+            <div dir="@(CultureInfo.CurrentUICulture.Name == "en-US" ? "rtl" : "ltr")" class="d-flex justify-content-between align-items-center" style="width: 100%;">
+                <a href="News" class="text-mute">@more</a>
+                <h2 dir="@direction" class="section-title mb-0">@title</h2>
+            </div>
+           
+            <div class="swiper mySwiperNews text-center mt-4">
+                <div class="swiper-wrapper ">
+
+                    @foreach (var item in Model)
+                    {
+                        <div class="swiper-slide mx-2" dir="@direction">
+                            <a asp-controller="News" asp-action="Detail" asp-route-Id="@item.Id">
+                            <div class="card shadow" style="width: 100%">
+                                @if (CultureInfo.CurrentUICulture.Name == "en-US")
+                                {
+
+                                    @if (item.ImagePath == "default.jpg")
+                                    {
+                                        <img id="imagePath_1"
+                                             src="~/Gallery/default.jpg" class="img-last-news" />
+                                    }
+                                    else
+                                    {
+
+
+
+                                        <img id="imagePath_1"
+                                             src="~/Gallery/News/@item.ImagePath" class="img-last-news" />
+                                    }
+                                    <div class="card-body body-last-news" >
+                                        <p class="card-text" style="text-align:@textAlign">@item.TitleEn</p>
+                                    </div>
+                                    <p class="card-text p-3" style="text-align:@textAlign"> <small class="text-info">@item.TopicTypeEn</small></p>
+
+                                }
+                                else
+                                {
+                                    @if (item.ImagePath == "default.jpg")
+                                    {
+                                        <img id="imagePath_1"
+                                             src="~/Gallery/default.jpg" class="img-last-news" />
+                                    }
+                                    else
+                                    {
+
+
+
+                                        <img id="imagePath_1"
+                                             src="~/Gallery/News/@item.ImagePath" class="img-last-news" />
+                                    }
+                                    <div class="card-body body-last-news" >
+                                        <p class="card-text" style="text-align:@textAlign">@item.TitleFa</p>
+                                    </div>
+                                    <p class="card-text p-3" style="text-align:@textAlign">
+                                        <small class="text-info">@item.TopicTypeFa</small></p>
+
+                                }
+
+                            </div>
+                            </a>
+                        </div>
+
+                    }
+
+                </div>
+                <div class="mySwiperNews-pagination zindex-1"></div>
+
+            </div>
+
+        </div>
+    </div>
+</section>

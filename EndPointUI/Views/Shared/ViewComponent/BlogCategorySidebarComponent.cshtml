@@ -1,0 +1,42 @@
+﻿@model IReadOnlyList<Application.Queries.BlogCategory.BlogCategoryViewModel>
+@{
+    string direction = CultureInfo.CurrentUICulture.Name == "en-US" ? "ltr" : "rtl";
+}
+
+<div class="card category-widget" dir="@direction">
+    <div class="card-header">
+        @if (CultureInfo.CurrentUICulture.Name == "en-US")
+        {
+            <h4 class="card-title">Blog Categories</h4>
+        }
+        else
+        {
+            <h4 class="card-title">دسته بندی مقالات</h4>
+        }
+
+    </div>
+    <div class="card-body">
+        <ul class="categories">
+            @foreach (var item in Model)
+            {
+                <li>
+
+                    @if (CultureInfo.CurrentUICulture.Name == "en-US")
+                    {
+                        <a asp-controller="Blog" asp-action="Index" asp-route-CategoryId="@item.Id">
+                            @item.TitleEn
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-controller="Blog" asp-action="Index" asp-route-CategoryId="@item.Id">@item.TitleFa</a>
+                    }
+
+
+                    <span>(@item.Count)</span>
+
+                </li>
+            }
+        </ul>
+    </div>
+</div>

@@ -38,7 +38,7 @@ internal sealed class GetLastArticleHandler :
                 TextEn= s.SummaryEn,
                 TextFa = s.SummaryFa,
                 PublishDateFa = s.PublishDate.PersianDate()!,
-                PublishDateEn=s.PublishDate.ToString(),
+                PublishDateEn=s.PublishDate.GregorianDate(),
             })
             .ToListAsync();
     }

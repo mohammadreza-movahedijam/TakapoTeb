@@ -1,0 +1,71 @@
+﻿@model IReadOnlyList<Application.Queries.Article.ViewModels.ArticleViewModel>
+@{
+    string direction = CultureInfo.CurrentUICulture.Name == "en-US" ? "ltr" : "rtl";
+}
+<div class="card post-widget">
+    <div class="card-header">
+      
+            @if (CultureInfo.CurrentUICulture.Name == "en-US")
+            {
+                <h4 class="card-title">
+                    Latest Posts
+                </h4>
+            }
+            else
+            {
+                <h4 class="card-title">
+                   جدید ترین مقالات
+                </h4>
+            }
+           
+    </div>
+    <div class="card-body">
+        <ul class="latest-posts">
+            @foreach(var blog in Model)
+            {
+                <li>
+                    <div class="post-thumb">
+                        <a asp-controller="Blog" asp-action="Detail" asp-route-Id="@blog.Id">
+
+                            @if (blog.ImagePath == "default.jpg")
+                            {
+                                <img src="~/gallery/default.jpg" class="img-fluid" />
+                            }
+                            else
+                            {
+                                <img src="~/gallery/Article/@blog.ImagePath" class="img-fluid" />
+
+                            }
+                        </a>
+                    </div>
+                    <div class="post-info">
+                        <h4>
+                            <a asp-controller="Blog" asp-action="Detail" asp-route-Id="@blog.Id">
+                                @if (CultureInfo.CurrentUICulture.Name == "en-US")
+                                {
+                                    @blog.TitleEn
+                                }
+                                else
+                                {
+                                    @blog.TitleFa
+                                }
+                            </a>
+                        </h4>
+                        <p>
+                            @if (CultureInfo.CurrentUICulture.Name == "en-US")
+                            {
+                                @blog.PublishDateEn
+                            }
+                            else
+                            {
+                                @blog.PublishDateFa
+                            }
+                        </p>
+                    </div>
+                </li>
+            }
+
+        </ul>
+    </div>
+</div>
+

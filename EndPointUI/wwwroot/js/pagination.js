@@ -22,12 +22,12 @@
                 <li class="page-item prev">  
                     <a class="page-link" href="${baseUrl}?curentPage=${currentPage - 1}&
                     Keyword=${filter}${Object.keys(queryParams).length ? '&' + $.param(queryParams) : ''}">  
-                      <i class="fa-solid fa-arrow-left"></i>
+                      <<
                     </a>  
                 </li>  
             `;
         } else {
-            paginationHtml += '<li class="page-item prev disabled"><a class="page-link" href="javascript:void(0);"><i class="fa-solid fa-arrow-left"></i></a></li>';
+            paginationHtml += '<li class="page-item prev disabled"><a class="page-link" href="javascript:void(0);"><<</a></li>';
         }
 
         var startPage = Math.max(1, currentPage - 2);
@@ -57,12 +57,12 @@
             paginationHtml += `  
                 <li class="page-item next">  
                     <a class="page-link" href="${baseUrl}?curentPage=${currentPage + 1}&Keyword=${filter}${Object.keys(queryParams).length ? '&' + $.param(queryParams) : ''}">  
-                      <i class="fa-solid fa-arrow-right"></i>
+                    >>
                     </a>  
                 </li>  
             `;
         } else {
-            paginationHtml += '<li class="page-item next disabled"><a class="page-link" href="javascript:void(0);"><i class="fa-solid fa-arrow-right"></i></a></li>';
+            paginationHtml += '<li class="page-item next disabled"><a class="page-link" href="javascript:void(0);">>></a></li>';
         }
 
         paginationHtml += '</ul></nav>';

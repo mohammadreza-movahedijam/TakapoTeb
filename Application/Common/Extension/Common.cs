@@ -6,6 +6,13 @@ public static class Common
 {
     private static readonly char[] Letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
     private static readonly char[] Numbers = "0123456789".ToCharArray();
+    public static string GetEnumShortName(this Enum item)
+    {
+        FieldInfo? FieldInfo = item.GetType().GetField(item.ToString());
+        DisplayAttribute? attribute = FieldInfo!.GetCustomAttribute<DisplayAttribute>();
+        return attribute != null ? attribute.ShortName! : item.ToString();
+    }
+    
     public static string GetEnumName(this Enum item)
     {
         FieldInfo? FieldInfo = item.GetType().GetField(item.ToString());

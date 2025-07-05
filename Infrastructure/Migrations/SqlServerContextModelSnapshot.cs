@@ -490,6 +490,135 @@ namespace Infrastructure.Migrations
                     b.ToTable("Departement", (string)null);
                 });
 
+            modelBuilder.Entity("Domain.Entities.System.FeatureEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ImageFour")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageOne")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageThree")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageTwo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TextEnFour")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TextEnOne")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TextEnThree")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TextEnTwo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TextFaFour")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TextFaOne")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TextFaThree")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TextFaTwo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleEnFour")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleEnOne")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleEnThree")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleEnTwo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleFaFour")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleFaOne")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleFaThree")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleFaTwo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Feature", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("b6a6e1eb-8ef7-45ea-aef9-f199b96f92a9"),
+                            ImageFour = "",
+                            ImageOne = "",
+                            ImageThree = "",
+                            ImageTwo = "",
+                            TextEnFour = "",
+                            TextEnOne = "",
+                            TextEnThree = "",
+                            TextEnTwo = "",
+                            TextFaFour = "",
+                            TextFaOne = "",
+                            TextFaThree = "",
+                            TextFaTwo = "",
+                            TitleEnFour = "",
+                            TitleEnOne = "",
+                            TitleEnThree = "",
+                            TitleEnTwo = "",
+                            TitleFaFour = "",
+                            TitleFaOne = "",
+                            TitleFaThree = "",
+                            TitleFaTwo = ""
+                        });
+                });
+
+            modelBuilder.Entity("Domain.Entities.System.FeedbackEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ExplanationEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ExplanationFa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullNameEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullNameFa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("JobPositionEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("JobPositionFa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Feedback", (string)null);
+                });
+
             modelBuilder.Entity("Domain.Entities.System.MessageEntity", b =>
                 {
                     b.Property<Guid>("Id")
@@ -517,6 +646,44 @@ namespace Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Message", (string)null);
+                });
+
+            modelBuilder.Entity("Domain.Entities.System.NewsEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreateAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DescriptionEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DescriptionFa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ReferencesLink")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleFa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TopicType")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("News", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.System.PartnerEntity", b =>
@@ -661,6 +828,71 @@ namespace Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Slider", (string)null);
+                });
+
+            modelBuilder.Entity("Domain.Entities.System.StatisticEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("NumberFour")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NumberOne")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NumberThree")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NumberTwo")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TitleEnFour")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleEnOne")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleEnThree")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleEnTwo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleFaFour")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleFaOne")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleFaThree")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleFaTwo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Statistic", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("6b067bbc-a472-4683-b1f1-bf44b3aa51f1"),
+                            NumberFour = 0,
+                            NumberOne = 0,
+                            NumberThree = 0,
+                            NumberTwo = 0,
+                            TitleEnFour = "",
+                            TitleEnOne = "",
+                            TitleEnThree = "",
+                            TitleEnTwo = "",
+                            TitleFaFour = "",
+                            TitleFaOne = "",
+                            TitleFaThree = "",
+                            TitleFaTwo = ""
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>

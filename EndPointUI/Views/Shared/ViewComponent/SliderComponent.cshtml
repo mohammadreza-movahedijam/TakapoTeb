@@ -7,23 +7,24 @@
 
         <div class="swiper mySwiper zindex">
             <div class="swiper-wrapper zindex">
-        @if (Model is not null)
-        {
-            @foreach (Application.Queries.Slider.SliderViewModel item in Model)
-            {
+                @if (Model is not null)
+                {
+                    @foreach (Application.Queries.Slider.SliderViewModel item in Model)
+                    {
                         <div class="swiper-slide zindex">
                             <a href="@item.Link">
                                 <img class="zindex" alt="@@item.Alt" title="@item.Title"
-                             style="width: 100%;" src="~/gallery/Slider/@item.ImagePath">
-                    </a>
-                </div>
-            }
+                                     style="width: 100%;" src="~/gallery/Slider/@item.ImagePath">
+                            </a>
+                        </div>
+                    }
 
-        }
+                }
 
-    </div>
-           <div class="swiper-pagination zindex-1"></div>
+            </div>
+            <div class="swiper-pagination zindex-1"></div>
             @*    <div class="swiper-button-next zindex-1"></div> *@
-    @* <div class="swiper-button-prev zindex-1" ></div> *@
-</div>
-</div></section>
+            @* <div class="swiper-button-prev zindex-1" ></div> *@
+        </div>
+    </div>
+</section>

@@ -1,0 +1,245 @@
+﻿@model Application.Commands.Feature.FeatureDto
+@{
+    ViewData["Title"] = "ویژگی‌ها";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section Script {
+    <script src="~/assets/js/upload.js"></script>
+}<nav aria-label="breadcrumb">
+    <ol class="lh-1-85 breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/Admin">پیشخوان</a>
+        </li>
+
+
+        <li class="breadcrumb-item ">تنظیمات</li>
+        <li class="breadcrumb-item active">ویژگی‌ها</li>
+    </ol>
+</nav>
+
+<div class="row">
+    <div class="col-12">
+        <form class="card mb-4"
+        asp-area="Admin"
+        asp-controller="Setting"
+              asp-action="Feature" enctype="multipart/form-data">
+            <div class="card-header">
+
+                <h5 class=" heading-color">ویژگی‌ها</h5>
+            </div>
+
+            <div class="card-body">
+                <input type="hidden" asp-for="ImageOne"/>
+                <input type="hidden" asp-for="ImageTwo"/>
+                <input type="hidden" asp-for="ImageThree"/>
+                <input type="hidden" asp-for="ImageFour"/>
+
+                <div class="accordion-item card border rounded-3 p-3">
+                    <h2 class="accordion-header">
+                        <button type="button" class="accordion-button"
+                        data-bs-toggle="collapse" 
+                        data-bs-target="#accordionStyle1-1" aria-expanded="true">
+                            ویژگی اول
+                        </button>
+                        <hr/>
+                    </h2>
+
+                    <div id="accordionStyle1-1" class="accordion-collapse collapse " data-bs-parent="#accordionStyle1" style="">
+                        <div class="accordion-body ">
+                           
+                                <div>
+                                    @if (Model.ImageOne == "default.jpg" ||
+                                    string.IsNullOrEmpty(Model.ImageOne))
+                                    {
+                                        <img id="imagePath_1" width="100" height="80"
+                                             src="~/Gallery/default.jpg" />
+                                    }
+                                    else
+                                    {
+                                        <img id="imagePath_1" width="100" height="80"
+                                             src="~/Gallery/feature/@Model.ImageOne " />
+                                    } <br />
+                                    <label class="form-label mt-2">تصویر اول </label>
+                                    <input asp-for="FileImageOne"
+                                           onchange="ChangeImage(this,1)" class="form-control mt-3 w-25" type="file" />
+                                </div>
+                                <div >
+                                    <label class="form-label mt-2">عنوان انگلیسی اول </label>
+                                    <input type="text" class="form-control" asp-for="TitleEnOne" />
+                                    <label class="form-label mt-2">توضیح انگلیسی اول </label>
+                                <input type="text" class="form-control" asp-for="TextEnOne" />
+                                </div>
+                                <div >
+                                    <label class="form-label mt-2">عنوان فارسی اول </label>
+                                    <input type="text" class="form-control" asp-for="TitleFaOne" />
+                                    <label class="form-label mt-2">توضیح فارسی اول </label>
+                                    <input type="text" class="form-control" asp-for="TextFaOne" />
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="accordion-item card border rounded-3 p-3 mt-3">
+                    <h2 class="accordion-header">
+                        <button type="button" class="accordion-button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#accordionStyle1-2" aria-expanded="true">
+                            ویژگی دوم
+                        </button>
+                        <hr />
+                    </h2>
+
+                    <div id="accordionStyle1-2" class="accordion-collapse collapse " data-bs-parent="#accordionStyle2" style="">
+                        <div class="accordion-body ">
+
+                            <div>
+                                @if (Model.ImageTwo == "default.jpg" ||
+                                string.IsNullOrEmpty(Model.ImageTwo))
+                                {
+                                    <img id="imagePath_2" width="100" height="80"
+                                         src="~/Gallery/default.jpg" />
+                                }
+                                else
+                                {
+                                    <img id="imagePath_2" width="100" height="80"
+                                         src="~/Gallery/feature/@Model.ImageTwo " />
+                                } <br />
+                                <label class="form-label mt-2">تصویر دوم </label>
+                                <input asp-for="FileImageTwo"
+                                       onchange="ChangeImage(this,2)" class="form-control mt-3 w-25" type="file" />
+                            </div>
+                            <div>
+                                <label class="form-label mt-2">عنوان انگلیسی دوم </label>
+                                <input type="text" class="form-control" asp-for="TitleEnTwo" />
+                                <label class="form-label mt-2">توضیح انگلیسی دوم </label>
+                                <input type="text" class="form-control" asp-for="TextEnTwo" />
+                            </div>
+                            <div>
+                                <label class="form-label mt-2">عنوان فارسی دوم </label>
+                                <input type="text" class="form-control" asp-for="TitleFaTwo" />
+                                <label class="form-label mt-2">توضیح فارسی دوم </label>
+                                <input type="text" class="form-control" asp-for="TextFaTwo" />
+                            </div>
+
+                        </div>
+                    </div>
+               
+                </div>
+
+
+
+
+                <div class="accordion-item card border rounded-3 p-3 mt-3">
+                    <h2 class="accordion-header">
+                        <button type="button" class="accordion-button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#accordionStyle1-3" aria-expanded="true">
+                            ویژگی سوم
+                        </button>
+                        <hr />
+                    </h2>
+
+                    <div id="accordionStyle1-3" class="accordion-collapse collapse " data-bs-parent="#accordionStyle3" style="">
+                        <div class="accordion-body ">
+
+                            <div>
+                                @if (Model.ImageThree == "default.jpg" ||
+                                string.IsNullOrEmpty(Model.ImageThree))
+                                {
+                                    <img id="imagePath_3" width="100" height="80"
+                                         src="~/Gallery/default.jpg" />
+                                }
+                                else
+                                {
+                                    <img id="imagePath_3" width="100" height="80"
+                                         src="~/Gallery/feature/@Model.ImageThree " />
+                                } <br />
+                                <label class="form-label mt-2">تصویر سوم </label>
+                                <input asp-for="FileImageThree"
+                                       onchange="ChangeImage(this,3)" class="form-control mt-3 w-25" type="file" />
+                            </div>
+                            <div>
+                                <label class="form-label mt-2">عنوان انگلیسی سوم </label>
+                                <input type="text" class="form-control" asp-for="TitleEnThree" />
+                                <label class="form-label mt-2">توضیح انگلیسی سوم </label>
+                                <input type="text" class="form-control" asp-for="TextEnThree" />
+                            </div>
+                            <div>
+                                <label class="form-label mt-2">عنوان فارسی سوم </label>
+                                <input type="text" class="form-control" asp-for="TitleFaThree" />
+                                <label class="form-label mt-2">توضیح فارسی سوم </label>
+                                <input type="text" class="form-control" asp-for="TextFaThree" />
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+
+
+                <div class="accordion-item card border rounded-3 p-3 mt-3">
+                    <h2 class="accordion-header">
+                        <button type="button" class="accordion-button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#accordionStyle1-4" aria-expanded="true">
+                            ویژگی چهارم
+                        </button>
+                        <hr />
+                    </h2>
+
+                    <div id="accordionStyle1-4" class="accordion-collapse collapse " data-bs-parent="#accordionStyle4" style="">
+                        <div class="accordion-body ">
+
+                            <div>
+                                @if (Model.ImageFour == "default.jpg" ||
+                                string.IsNullOrEmpty(Model.ImageFour))
+                                {
+                                    <img id="imagePath_4" width="100" height="80"
+                                         src="~/Gallery/default.jpg" />
+                                }
+                                else
+                                {
+                                    <img id="imagePath_4" width="100" height="80"
+                                         src="~/Gallery/feature/@Model.ImageFour " />
+                                } <br />
+                                <label class="form-label mt-2">تصویر چهارم </label>
+                                <input asp-for="FileImageFour"
+                                       onchange="ChangeImage(this,4)" class="form-control mt-3 w-25" type="file" />
+                            </div>
+                            <div>
+                                <label class="form-label mt-2">عنوان انگلیسی چهارم </label>
+                                <input type="text" class="form-control" asp-for="TitleEnFour" />
+                                <label class="form-label mt-2">توضیح انگلیسی چهارم </label>
+                                <input type="text" class="form-control" asp-for="TextEnFour" />
+                            </div>
+                            <div>
+                                <label class="form-label mt-2">عنوان فارسی چهارم </label>
+                                <input type="text" class="form-control" asp-for="TitleFaFour" />
+                                <label class="form-label mt-2">توضیح فارسی چهارم </label>
+                                <input type="text" class="form-control" asp-for="TextFaFour" />
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-sm text-white btn-success">ثبت</button>
+
+            </div>
+        </form>
+    </div>
+</div>

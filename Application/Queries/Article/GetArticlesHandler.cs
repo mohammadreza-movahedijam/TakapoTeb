@@ -22,16 +22,25 @@ internal sealed class GetArticlesHandler :
         (GetArticlesQuery request, CancellationToken cancellationToken)
     {
         TypeAdapterConfig config = new();
-        config.NewConfig<ArticleEntity,ArticleViewModel>()
-            .Map(d=>d.Id,s=>s.Id)
-            .Map(d=>d.CategoryTitleEn,s=>s.Category!.TitleEn)
-            .Map(d=>d.CategoryTitleFa, s=> s.Category!.TitleFa)
-            .Map(d=>d.ImagePath,s=>s.ImagePath)
-            .Map(d=>d.TitleFa,s=>s.TitleFa)
-            .Map(d=>d.TitleEn,s=>s.TitleEn).Compile();
+        config.NewConfig<ArticleEntity, ArticleViewModel>()
+            .Map(d => d.Id, s => s.Id)
+            .Map(d => d.CategoryTitleEn, s => s.Category!.TitleEn)
+            .Map(d => d.CategoryTitleFa, s => s.Category!.TitleFa)
+            .Map(d => d.ImagePath, s => s.ImagePath)
+
+            .Map(d => d.PublishDateFa, s => s.PublishDate.PersianDate())
+            .Map(d => d.PublishDateEn, s => s.PublishDate.GregorianDate())
+            .Map(d => d.SummaryEn, s => s.SummaryEn)
+            .Map(d => d.SummaryFa, s => s.SummaryFa)
+            .Map(d => d.TitleFa, s => s.TitleFa)
+            .Map(d => d.TitleEn, s => s.TitleEn).Compile();
 
         IQueryable<ArticleEntity> query = _repository.GetByQuery();
-        query = query.Include(i => i.Category);
+        if (request.CategoryId != Guid.Empty)
+        {
+            query = query.Where(w => w.CategoryId == request.CategoryId);
+        }
+        query = query.Include(i => i.Category).OrderBy(o => o.PublishDate);
         if (!string.IsNullOrEmpty(request!.Pagination!.keyword))
         {
             query = query.Where(w => w.TitleEn!.Contains(request!.Pagination!.keyword)

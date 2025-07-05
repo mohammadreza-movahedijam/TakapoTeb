@@ -1,8 +1,16 @@
 ﻿@model IReadOnlyList<Application.Queries.TreatmentCenter.TreatmentCenterViewModel>
+@{
+    string title = CultureInfo.CurrentUICulture.Name! == "en-US" ? "Equipped centers" : "مراکز تجهیز شده"!;
 
+}
 @if(Model!=null && Model.Any())
 {
-    <h3>مراکز تجهیز شده</h3>
+
+    <h3>
+        @title
+    </h3>
+
+
     <div id="mapid" class="rounded shadow p-3 card" style="height: 400px;"></div>
 }
 

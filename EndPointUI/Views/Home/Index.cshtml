@@ -1,75 +1,30 @@
 ﻿@inject IViewLocalizer Localizer
 @{
+    string align = CultureInfo.CurrentUICulture.Name! == "en-US" ? "ltr" : "rtl"!;
+
     ViewData["Title"] = Localizer["PageTitle"];
 }
 
 @section Style {
     <script src="~/js/index.js"></script>
 }
-@await Component.InvokeAsync("SliderComponent")
-<div class="banner-bottom">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="card">
-                    <div>
-                        <img src="~/assetsUi/img/emergency-case.png" alt="Emergency Care" />
-                    </div>
-                    <div class="care-text">
-                        <h2>@Localizer["Test"]</h2>
-                        <p>Lorem ipsum dolor sit amet sectetur adipisicing elit.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card">
-                    <div>
-                        <img src="~/assetsUi/img/emergency1-case.png" alt="Qualified Doctors" />
-                    </div>
-                    <div class="care-text">
-                        <h2>Qualified Doctors</h2>
-                        <p>Lorem ipsum dolor sit amet sectetur adipisicing elit.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card">
-                    <div>
-                        <img src="~/assetsUi/img/qualified-doctors.png" alt="Qualified Doctors" />
-                    </div>
-                    <div class="care-text">
-                        <h2>Support</h2>
-                        <p>How can we help you?</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card">
-                    <div>
-                        <img src="~/assetsUi/img/services.png" alt="Services" />
-                    </div>
-                    <div class="care-text">
-                        <h2>24/7 Contact Us                        </h2>
-                        <p>Find a sales rep or dealer near you</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+@await Component.InvokeAsync("SliderComponent") 
+@await Component.InvokeAsync("FeatureComponent")
+@await Component.InvokeAsync("LastNewsComponent")
+
 
 @await Component.InvokeAsync("AboutComponent")
 <section class="health-care">
     <div class="container">
-        <div class="d-flex justify-content-between align-items-center mob-disp">
+        <div class="d-flex justify-content-between align-items-center mob-disp" dir="@align">
             <div class="d-flex justify-content-between align-items-center">
                 <img style="direction:ltr" src="~/assetsUi/img/health-care-icon.png" alt="Health Care" />
                 <div class="health-care-text">
-                    <h3>مرکز مراقبت های بهداشتی</h3>
-                    <p>در صورت داشتن هرگونه مشکل بهداشتی با این شماره 12346548897 یا فرم تماس تماس بگیرید</p>
+                    <h3>@Localizer["ContactUsTitle"]</h3>
+                    <p>@Localizer["ContactUsText"]</p>
                 </div>
             </div>
-            <a href="contact-us.html" class="btn btn-primary">‌تماس با ما</a>
+            <a href="/contactus" class="btn btn-primary">@Localizer["ContactUsBtn"]</a>
         </div>
     </div>
 </section>
@@ -82,14 +37,8 @@
                 <img src="~/assetsUi/img/testimonial-img.png" class="img-fluid" alt="Testimonial" />
             </div>
             <div class="col-md-6">
-                <div>
-                    <h2 class="section-title">What Our Customers Say</h2>
-                </div>
-                <p class="mt-4">
-                    We work with passion to highlight the importance of early detection and the critical role that regular screening mammograms play in saving lives. Routine screenings can lead to earlier diagnosis and better outcomes, making them essential for all women who meet screening criteria.
+                @await Component.InvokeAsync("FeedbackComponent")
 
-                    ‏Together, we can make a significant impact in the fight against breast cancer.
-                </p>
             </div>
         </div>
     </div>

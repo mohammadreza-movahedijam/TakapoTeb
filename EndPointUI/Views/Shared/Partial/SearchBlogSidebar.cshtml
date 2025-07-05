@@ -1,0 +1,15 @@
+﻿<div class="card search-widget">
+    <div class="card-body" dir="rtl">
+        <form asp-controller="Blog" asp-action="Index" method="get">
+            <div class="input-group">
+                <input type="hidden" value="@ViewBag.CategoryId"
+                       name="CategoryId" />
+                <input name="keyword" type="text"
+                       placeholder="@(CultureInfo.CurrentUICulture.Name=="en-US"?"Search....":"جستجو...")" class="form-control">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

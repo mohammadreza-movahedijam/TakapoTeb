@@ -13,7 +13,9 @@
             public string? TextFa { get; set; }
             public string? PublishDateFa { get; set; }
             public string? PublishDateEn { get; set; }
-        }
+             public string? SummaryEn { get; set; }
+             public string? SummaryFa { get; set; }
+    }
 
     
 }

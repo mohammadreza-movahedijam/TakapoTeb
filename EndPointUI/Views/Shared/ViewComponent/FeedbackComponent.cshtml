@@ -1,0 +1,39 @@
+﻿@model IReadOnlyList<Application.Queries.Feedback.FeedbackViewModel>
+@{
+    string direction = CultureInfo.CurrentUICulture.Name == "en-US" ? "ltr" : "rtl";
+    string title = CultureInfo.CurrentUICulture.Name == "en-US" ? "What Our Customers Say" : "آنچه مشتریان ما می‌گویند";
+}
+<div dir="@direction">
+    <h2 class="section-title"> @title </h2>
+</div>
+<div class="swiper mySwiperFeedback text-center mt-4">
+    <div class="swiper-wrapper ">
+       
+        @foreach(var item in Model)
+        {
+            <div class="swiper-slide mx-2" dir="@direction">
+                <div class="comment-box">
+                    @if (CultureInfo.CurrentUICulture.Name == "en-US")
+                    {
+                        <h3 class="name text-primary">@item.FullNameEn</h3>
+                        <div class="title jobposition">@item.JobPositionEn</div>
+                        <hr />
+                        <p class="text text-dark">@item.ExplanationEn</p>
+                    }
+                    else
+                    {
+                        <h3 class="name text-primary">@item.FullNameFa</h3>
+                        <div class="title jobposition">@item.JobPositionFa</div>
+                        <hr />
+                        <p class="text text-dark">@item.ExplanationFa</p>
+                    }
+
+                </div>
+            </div>
+
+        } 
+
+    </div>
+    <div class="mySwiperFeedback-pagination zindex-1"></div>
+
+</div>

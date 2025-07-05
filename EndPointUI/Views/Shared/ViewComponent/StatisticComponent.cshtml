@@ -1,0 +1,44 @@
+﻿@model Application.Queries.Statistic.StatisticViewModel
+
+@if (CultureInfo.CurrentUICulture.Name == "en-US")
+{
+    <div class="row counts">
+        <div class="col-sm-6 col-md-3">
+            <h3>@Model.NumberOne</h3>
+            <h4>@Model.TitleEnOne</h4>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <h3>@Model.NumberTwo</h3>
+            <h4>@Model.TitleEnTwo</h4>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <h3>@Model.NumberThree</h3>
+            <h4>@Model.TitleEnThree</h4>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <h3>@Model.NumberFour</h3>
+            <h4>@Model.TitleEnFour</h4>
+        </div>
+    </div>
+}
+else
+{
+     <div class="row counts">
+        <div class="col-sm-6 col-md-3">
+            <h3>@Model.NumberOne</h3>
+            <h4>@Model.TitleFaOne</h4>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <h3>@Model.NumberTwo</h3>
+            <h4>@Model.TitleFaTwo</h4>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <h3>@Model.NumberThree</h3>
+            <h4>@Model.TitleFaThree</h4>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <h3>@Model.NumberFour</h3>
+            <h4>@Model.TitleFaFour</h4>
+        </div>
+    </div>
+}

@@ -61,6 +61,20 @@ public static class Time
     }
 
 
+    public static string GregorianDate(this DateOnly date)
+    {
+        DateTime dateTime = date.ToDateTime(TimeOnly.MinValue);
+  
+        return $"{dateTime.Year}-{dateTime.Month}-{dateTime.Day}";
+    }
+
+
+     public static string GregorianDate(this DateTime dateTime)
+    {
+      
+  
+        return $"{dateTime.Year}-{dateTime.Month}-{dateTime.Day}  {dateTime.Hour}:{dateTime.Minute}:{dateTime.Second}";
+    }
 
 
 

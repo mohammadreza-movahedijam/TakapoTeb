@@ -1,0 +1,98 @@
+﻿@using Application.Common.Extension
+@model Application.Queries.News.NewsDetailViewModel
+@{
+    string align = CultureInfo.CurrentUICulture.Name! == "en-US" ? "ltr" : "rtl"!;
+    string? title = CultureInfo.CurrentUICulture.Name! == "en-US" ? Model.TitleEn : Model.TitleFa;
+    ViewData["Title"] = "title";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}<div class="container">
+    <div class="row mt-5" >
+        <div class="col-lg-8 col-xl-8 col-md-12 offset-lg-2 offset-xl-2">
+            <div class="blog-view" dir="@align">
+                <div class="blog blog-single-post">
+                    <div class="blog-image">
+                        <a href="javascript:void(0);">
+
+                            @if (Model.ImagePath == "default.jpg")
+                            {
+                                <img src="~/gallery/default.jpg" class="img-fluid" />
+                            }
+                            else
+                            {
+                                <img src="~/gallery/News/@Model.ImagePath" class="img-fluid" />
+
+                            }
+                        </a>
+                    </div>
+                    @if (CultureInfo.CurrentUICulture.Name == "en-US")
+                    {
+                        <h3 class="blog-title">@Model.TitleEn</h3>
+                    }
+                    else
+
+                    {
+                        <h3 class="blog-title">@Model.TitleFa</h3>
+                    }
+
+                    <div class="blog-info clearfix">
+                        <div class="post-left">
+                            <ul>
+
+                               
+                                <li>
+                                    <i class="fa fa-tags"></i>
+                                    @if (CultureInfo.CurrentUICulture.Name == "en-US")
+                                    {
+                                        <span>@Model.TopicType.GetEnumShortName()</span>
+                                    }
+                                    else
+
+                                    {
+                                        <span>@Model.TopicType.GetEnumName()</span>
+                                    }
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="blog-content">
+                        @if (CultureInfo.CurrentUICulture.Name == "en-US")
+                        {
+                            @Html.Raw(Model.DescriptionEn)
+                        }
+                        else
+
+                        {
+                            @Html.Raw(Model.DescriptionFa)
+                        }
+                        @if (!string.IsNullOrEmpty(Model.ReferencesLink))
+                        {
+                            <p class="d-inline-flex gap-1">
+                                <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                    @if (CultureInfo.CurrentUICulture.Name == "en-US")
+                                    {
+                                        <span>
+                                            Reference
+                                        </span>
+                                    }
+                                    else
+
+                                    {
+                                        <span>منبع</span>
+                                    }
+                                </a>
+                              
+                            </p>
+                            <div class="collapse" id="collapseExample">
+                                <div class="card card-body">
+                                    @Model.ReferencesLink
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

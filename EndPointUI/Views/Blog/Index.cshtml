@@ -1,8 +1,117 @@
-﻿
+﻿@model PaginatedList<Application.Queries.Article.ViewModels.ArticleViewModel>
 @{
-    ViewData["Title"] = "Index";
+    string align = CultureInfo.CurrentUICulture.Name! == "en-US" ? "ltr" : "rtl"!;
+    string title = CultureInfo.CurrentUICulture.Name! == "en-US" ? "Blog" : "وبلاگ"!;
+
+    ViewData["Title"] = title;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section Script{
+    <script src="~/js/pagination.js"></script>
 
-<h1>Index</h1>
+}
+<div class="container">
+    <div class="row mt-5" dir="@align">
+        <div class="col-lg-8 col-md-12">
+            <div class="row blog-grid-row">
+                @foreach (var blog in Model.List!)
+                {
+                    <div class="col-md-6 col-sm-12">
+                        <div class="blog grid-blog">
+                            <div class="blog-image">
+                                <a asp-controller="Blog" asp-action="Detail" asp-route-Id="@blog.Id">
 
+                                    @if (blog.ImagePath == "default.jpg")
+                                    {
+                                        <img src="~/gallery/default.jpg" class="img-fluid" />
+                                    }
+                                    else
+                                    {
+                                        <img src="~/gallery/Article/@blog.ImagePath" class="img-fluid" />
+
+                                    }
+                                   
+                                </a>
+                            </div>
+                            <div class="blog-content">
+                                <ul class="entry-meta meta-item">
+                                    <li>
+                                        <div class="post-author">
+                                            <a asp-controller="Blog" asp-action="Detail" asp-route-Id="@blog.Id">
+                                                <img src="~/gallery/takapo-icon.png" 
+                                                alt="Post Author">
+                                                
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li >
+                                        <i class="far fa-clock"></i> 
+                                        @if (CultureInfo.CurrentUICulture.Name == "en-US")
+                                        {
+                                            <span dir="@align">@blog.PublishDateEn</span>
+                                        }
+                                        else
+                                        {
+                                            <span dir="@align">@blog.PublishDateFa</span>
+                                            
+                                        }
+                                    </li>
+                                </ul>
+                                <h3 class="blog-title">
+                                    <a asp-controller="Blog" asp-action="Detail" asp-route-Id="@blog.Id" 
+                                    style="line-height:normal;">
+                                        @if (CultureInfo.CurrentUICulture.Name == "en-US")
+                                        {
+                                            @blog.TitleEn
+                                        }
+                                        else
+                                        {
+                                            @blog.TitleFa
+                                        }
+                                    </a>
+                                </h3>
+                                <p class="mb-0">
+                                    @if (CultureInfo.CurrentUICulture.Name == "en-US")
+                                    {
+                                        @blog.SummaryEn
+                                    }
+                                    else
+                                    {
+                                        @blog.SummaryFa
+                                    }
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="blog-pagination">
+                        @if (Model!.TotalPage > 1)
+                        {
+                            <div id="pagination-body"
+                                 data-page-index="@Model.CurentPage"
+                                 data-total-pages="@Model.TotalPage"
+                                 data-search="@ViewBag.Search"
+                                 data-path="/Blog">
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-12 sidebar-right theiaStickySidebar">
+            <partial name="/Views/Shared/Partial/SearchBlogSidebar.cshtml" />
+           
+            @await Component.InvokeAsync("LastArticleSidebarComponent")
+            @await Component.InvokeAsync("BlogCategorySidebarComponent")
+          
+          
+        </div>
+    </div>
+</div>

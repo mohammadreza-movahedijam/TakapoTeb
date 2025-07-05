@@ -1,6 +1,7 @@
 using Application.Commands.Message;
 using Application.Queries.Setting;
 using Application.Queries.Setting.ViewModels;
+using Application.Queries.TreatmentCenter;
 using EndPointUI.Models;
 using MediatR;
 using Microsoft.AspNetCore.Localization;
@@ -21,6 +22,18 @@ public class HomeController : Controller
     {
         return View();
     }
+
+    [HttpGet]
+    [Route("TreatmentCenter")]
+    public async Task<IActionResult> TreatmentCenter()
+    {
+        IReadOnlyList<TreatmentCenterViewModel>
+            pageModel=await _mediator!.Send(new GetTreatmentCenterProductsQuery());
+        return View(pageModel);
+    }
+
+
+
 
     public IActionResult Privacy()
     {
@@ -50,12 +63,6 @@ public class HomeController : Controller
             Message = string.Empty,
         });
     }
-
-
-
-
-
-
 
     public IActionResult ChangeLanguage(string culture)
     {

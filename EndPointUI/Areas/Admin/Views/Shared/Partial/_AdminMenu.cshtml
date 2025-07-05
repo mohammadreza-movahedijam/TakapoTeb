@@ -1,6 +1,6 @@
 ﻿<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
-        <a href="index.html" class="app-brand-link">
+        <a href="/" class="app-brand-link">
             <span class="app-brand-logo demo">
                 <img src="~/gallery/takapo-icon.png" width="40" height="40"/>
             </span>
@@ -169,6 +169,15 @@
             </ul>
         </li>
        <li class="menu-item" >
+            <a asp-area="Admin" asp-controller="News" asp-action="Index" class="menu-link">
+                <i class="fas fa-sticky-note menu-icon"></i>
+
+                <div data-i18n="Invoice">اخبار</div>
+            </a>
+           
+        </li> 
+        
+        <li class="menu-item" >
             <a asp-area="Admin" asp-controller="Chat" asp-action="Index" class="menu-link">
                 
                 <i class="fa-solid fa-headset menu-icon"></i>
@@ -192,6 +201,15 @@
                 <div data-i18n="Invoice">واحدهای اداری</div>
             </a>
            
+        </li>  
+        
+        <li class="menu-item" >
+            <a asp-area="Admin" asp-controller="Feedback" asp-action="Index" class="menu-link">
+              
+                <i class="fa-solid fa-comments menu-icon"></i>
+                <div data-i18n="Invoice">نظرات مشتریان</div>
+            </a>
+           
         </li>
        <li class="menu-item" >
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -206,7 +224,20 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a  class="menu-link">
+                    <a asp-area="Admin" asp-controller="Setting" asp-action="Feature" class="menu-link">
+                        <div data-i18n="List">ویژگی‌ها</div>
+                    </a>
+                </li>
+                
+                <li class="menu-item">
+                    <a asp-area="Admin" asp-controller="Setting" asp-action="Statistic" class="menu-link">
+                        <div data-i18n="List">آمار</div>
+                    </a>
+                </li>
+
+@* 
+                 <li class="menu-item">
+                    <a class="menu-link">
                         <div data-i18n="List">مدیریت خطا</div>
                     </a>
                 </li>
@@ -217,7 +248,7 @@
                     </a>
                 </li>
                 
-               
+                *@
             </ul>
         </li>
        

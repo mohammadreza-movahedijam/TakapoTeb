@@ -28,9 +28,12 @@
             <ul class="main-nav mritem zindex2">
                 <li class=" mx-3">
                     <a href="/">@Localizer["HomeMenu"]</a>
-                </li>
+                </li> 
+               
                 @await Component.InvokeAsync("MenuComponent")
-
+                <li class=" mx-3">
+                    <a href="/Blog">@Localizer["BlogMenu"]</a>
+                </li>
                 <li class="has-submenu mx-3">
                     <a href="#">
                         ‌

@@ -8,6 +8,7 @@ namespace Application.Queries.Article;
 public sealed record GetArticlesQuery :
     IRequest<PaginatedList<ArticleViewModel>>
 {
+    public Guid CategoryId { get; set; }
     public IPagination Pagination { get; set; }
     public GetArticlesQuery(IPagination Pagination)
     {

@@ -1,0 +1,165 @@
+﻿@model Application.Commands.Statistic.StatisticDto
+@{
+    ViewData["Title"] = "آمار";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="lh-1-85 breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/Admin">پیشخوان</a>
+        </li>
+        <li class="breadcrumb-item ">تنظیمات</li>
+        <li class="breadcrumb-item active">‌آمار</li>
+    </ol>
+</nav>
+
+<div class="row">
+    <div class="col-12">
+        <form class="card mb-4"
+              asp-area="Admin"
+              asp-controller="Setting"
+              asp-action="Statistic" enctype="multipart/form-data">
+            <div class="card-header">
+
+                <h5 class=" heading-color">ویژگی‌ها</h5>
+            </div>
+
+            <div class="card-body">
+               
+
+                <div class="accordion-item card border rounded-3 p-3">
+                    <h2 class="accordion-header">
+                        <button type="button" class="accordion-button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#accordionStyle1-1" aria-expanded="true">
+                            آمار اول
+                        </button>
+                        <hr />
+                    </h2>
+
+                    <div id="accordionStyle1-1" class="accordion-collapse collapse " data-bs-parent="#accordionStyle1" style="">
+                        <div class="accordion-body ">
+
+                          
+                            <div>
+                                <label class="form-label mt-2">شمارنده </label>
+                                <input type="text" class="form-control" asp-for="NumberOne" />
+
+                                <label class="form-label mt-2">عنوان انگلیسی اول </label>
+                                <input type="text" class="form-control" asp-for="TitleEnOne" />
+                                <label class="form-label mt-2">عنوان فارسی اول </label>
+                                <input type="text" class="form-control" asp-for="TitleFaOne" />
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="accordion-item card border rounded-3 p-3 mt-3">
+                    <h2 class="accordion-header">
+                        <button type="button" class="accordion-button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#accordionStyle1-2" aria-expanded="true">
+                            آمار دوم
+                        </button>
+                        <hr />
+                    </h2>
+
+                    <div id="accordionStyle1-2" class="accordion-collapse collapse " data-bs-parent="#accordionStyle2" style="">
+                        <div class="accordion-body ">
+
+                           
+                            <div>
+                                <label class="form-label mt-2">شمارنده </label>
+                                <input type="text" class="form-control" asp-for="NumberTwo" />
+                                <label class="form-label mt-2">عنوان انگلیسی دوم </label>
+                                <input type="text" class="form-control" asp-for="TitleEnTwo" />
+                                <label class="form-label mt-2">عنوان فارسی دوم </label>
+                                <input type="text" class="form-control" asp-for="TitleFaTwo" />
+                            </div>
+                            
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+                <div class="accordion-item card border rounded-3 p-3 mt-3">
+                    <h2 class="accordion-header">
+                        <button type="button" class="accordion-button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#accordionStyle1-3" aria-expanded="true">
+                            آمار سوم
+                        </button>
+                        <hr />
+                    </h2>
+
+                    <div id="accordionStyle1-3" class="accordion-collapse collapse " data-bs-parent="#accordionStyle3" style="">
+                        <div class="accordion-body ">
+
+                          
+                            <div>
+
+                                <label class="form-label mt-2">شمارنده </label>
+                                <input type="text" class="form-control" asp-for="NumberThree" />
+                                <label class="form-label mt-2">عنوان انگلیسی سوم </label>
+                                <input type="text" class="form-control" asp-for="TitleEnThree" />
+                                <label class="form-label mt-2">عنوان فارسی سوم </label>
+                                <input type="text" class="form-control" asp-for="TitleFaThree" />
+                            </div>
+                           
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+
+
+                <div class="accordion-item card border rounded-3 p-3 mt-3">
+                    <h2 class="accordion-header">
+                        <button type="button" class="accordion-button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#accordionStyle1-4" aria-expanded="true">
+                            آمار چهارم
+                        </button>
+                        <hr />
+                    </h2>
+
+                    <div id="accordionStyle1-4" class="accordion-collapse collapse " data-bs-parent="#accordionStyle4" style="">
+                        <div class="accordion-body ">
+
+                            <div>
+                                <label class="form-label mt-2">شمارنده </label>
+                                <input type="text" class="form-control" asp-for="NumberFour" />
+                                <label class="form-label mt-2">عنوان انگلیسی چهارم </label>
+                                <input type="text" class="form-control" asp-for="TitleEnFour" />
+                                <label class="form-label mt-2">عنوان فارسی چهارم </label>
+                                <input type="text" class="form-control" asp-for="TitleFaFour" />
+                            </div>
+                           
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-sm text-white btn-success">ثبت</button>
+
+            </div>
+        </form>
+    </div>
+</div>

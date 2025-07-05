@@ -13,7 +13,9 @@
                     <div class="row">
                         @if (CultureInfo.CurrentUICulture.Name == "en-US")
                         {
+                            <a asp-controller="Blog" asp-action="Detail" asp-route-Id="@Model[0].Id">
                             <div class="media align-items-center mt-4 col-sm-6 col-md-12 d-flex">
+                                  
                                 <img class="me-3" src="~/gallery/Article/@Model[0].ImagePath"
                                      alt="@Model[0].TitleFa @Model[0].TitleEn">
                                 <div class="media-body flex-grow-1 mx-2">
@@ -22,8 +24,9 @@
                                     <p>
                                         @Model[0].TextEn
                                     </p>
-                                </div>
                             </div>
+                                </div></a>
+                                  <a asp-controller="Blog" asp-action="Detail" asp-route-Id="@Model[1].Id">
                             <div class="media align-items-center mt-4 col-sm-6 col-md-12 d-flex">
                                 <img class="me-3" src="~/gallery/Article/@Model[1].ImagePath"
                                      alt="@Model[1].TextFa @Model[1].TitleEn">
@@ -33,11 +36,12 @@
                                     <p>
                                         @Model[1].TextEn
                                     </p>
-                                </div>
                             </div>
+                                </div></a>
                         }
                         else
                         {
+                                  <a asp-controller="Blog" asp-action="Detail" asp-route-Id="@Model[0].Id">
                             <div class="media align-items-center mt-4 col-sm-6 col-md-12 d-flex">
                                 <img class="me-3" src="~/gallery/Article/@Model[0].ImagePath"
                                      alt="@Model[0].TitleFa @Model[0].TitleEn">
@@ -49,6 +53,8 @@
                                     </p>
                                 </div>
                             </div>
+                                </a>
+                                  <a asp-controller="Blog" asp-action="Detail" asp-route-Id="@Model[3].Id">
                             <div class="media align-items-center mt-4 col-sm-6 col-md-12 d-flex">
                                 <img class="me-3" src="~/gallery/Article/@Model[1].ImagePath"
                                      alt="@Model[1].TextFa @Model[1].TitleEn">
@@ -60,6 +66,7 @@
                                     </p>
                                 </div>
                             </div>
+                                </a>
                         }
                     </div>
                 }
@@ -69,6 +76,7 @@
                 @if (CultureInfo.CurrentUICulture.Name == "en-US")
                 {
                     <div class="col-sm-6 col-md-3 mt-3">
+                         <a asp-controller="Blog" asp-action="Detail" asp-route-Id="@Model[2].Id">
                         <div class="blog-img">
                             <img alt="@Model[2].TextFa @Model[2].TitleEn"
                                 src="~/gallery/Article/@Model[2].ImagePath" />
@@ -80,9 +88,10 @@
                             <p>
                                 @Model[2].TextEn
                             </p>
-                        </div>
+                        </div></a>
                     </div>
                     <div class="col-sm-6 col-md-3 mt-3">
+                         <a asp-controller="Blog" asp-action="Detail" asp-route-Id="@Model[3].Id">
                         <div class="blog-img">
                             <img alt="@Model[3].TextFa @Model[3].TitleEn"
                                  src="~/gallery/Article/@Model[3].ImagePath" />
@@ -94,12 +103,14 @@
                             <p>
                                 @Model[3].TextEn
                             </p>
-                        </div>
+                            </div>
+                        </a>
                     </div>
                 }
                 else
                 {
                     <div class="col-sm-6 col-md-3 mt-3">
+                        <a asp-controller="Blog" asp-action="Detail" asp-route-Id="@Model[2].Id">
                         <div class="blog-img">
                             <img alt="@Model[2].TextFa @Model[2].TitleEn"
                                  src="~/gallery/Article/@Model[2].ImagePath" />
@@ -111,9 +122,11 @@
                             <p>
                                 @Model[2].TextFa
                             </p>
-                        </div>
+                            </div>
+                        </a>
                     </div>
                     <div class="col-sm-6 col-md-3 mt-3">
+                        <a asp-controller="Blog" asp-action="Detail" asp-route-Id="@Model[3].Id">
                         <div class="blog-img">
                             <img alt="@Model[3].TextFa @Model[3].TitleEn"
                                  src="~/gallery/Article/@Model[3].ImagePath" />
@@ -125,7 +138,8 @@
                             <p>
                                 @Model[3].TextFa
                             </p>
-                        </div>
+                            </div>
+                        </a>
                     </div>
                 }
             }
