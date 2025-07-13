@@ -7,12 +7,12 @@
         @foreach (Application.Queries.ProductCategory.ViewModels.CategoryMenuViewModel item in Model
        .Where(w=>w.ParentProductCategoryId==null))
         {
-            <li class="has-submenu mx-3">
+            <li class="has-submenu mx-3" dir="ltr">
                 <a asp-controller="Category" asp-action="Detail" asp-route-pattern="@item.Id">
                     @item.TitleEn
                     @if (item.SubCategories != null && item.SubCategories!.Any())
                     {
-                        <i class="fas fa-chevron-down"></i>
+                        @* <i class="fas fa-chevron-down"></i> *@
                     }
                 </a>
                 @if (item.SubCategories!=null && item.SubCategories!.Any())
@@ -31,7 +31,7 @@
                 <a asp-controller="Category" asp-action="Detail" asp-route-pattern="@item.Id">
                     @item.TitleFa  @if (item.SubCategories != null && item.SubCategories!.Any())
                     {
-                        <i class="fas fa-chevron-down"></i>
+                        @* <i class="fas fa-chevron-down"></i> *@
                     }
                 </a>
                 @if (item.SubCategories != null && item.SubCategories!.Any())

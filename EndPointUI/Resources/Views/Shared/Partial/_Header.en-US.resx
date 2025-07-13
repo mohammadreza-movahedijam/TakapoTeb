@@ -117,14 +117,35 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="AboutTakapo" xml:space="preserve">
+    <value>About Takapo</value>
+  </data>
+  <data name="BD" xml:space="preserve">
+    <value>BD</value>
+  </data>
   <data name="BlogMenu" xml:space="preserve">
     <value>Blog</value>
+  </data>
+  <data name="Brochure" xml:space="preserve">
+    <value>Brochure</value>
   </data>
   <data name="Button" xml:space="preserve">
     <value>Signin / Signup</value>
   </data>
+  <data name="COMPANIES" xml:space="preserve">
+    <value>Companies</value>
+  </data>
   <data name="ContactUs" xml:space="preserve">
     <value>Contact Us</value>
+  </data>
+  <data name="Events" xml:space="preserve">
+    <value>Events</value>
+  </data>
+  <data name="Hologic" xml:space="preserve">
+    <value>Hologic</value>
   </data>
   <data name="HomeMenu" xml:space="preserve">
     <value>Home</value>
@@ -141,10 +162,31 @@
   <data name="LanguageMenu" xml:space="preserve">
     <value>Language</value>
   </data>
+  <data name="Mindray" xml:space="preserve">
+    <value>Mindray</value>
+  </data>
+  <data name="Newsroom" xml:space="preserve">
+    <value>Newsroom</value>
+  </data>
+  <data name="OperationManual" xml:space="preserve">
+    <value>Operation Manual</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>Product</value>
+  </data>
   <data name="SearchMenu" xml:space="preserve">
     <value>Search</value>
   </data>
+  <data name="ServiceRequest" xml:space="preserve">
+    <value>Service Request</value>
+  </data>
+  <data name="Snibe" xml:space="preserve">
+    <value>Snibe</value>
+  </data>
   <data name="Support" xml:space="preserve">
     <value>Support</value>
+  </data>
+  <data name="TrainingRequest" xml:space="preserve">
+    <value>Training Request</value>
   </data>
 </root>

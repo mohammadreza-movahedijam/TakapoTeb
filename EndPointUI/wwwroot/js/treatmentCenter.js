@@ -1,25 +1,4 @@
-﻿$(document).ready(function () {
-    var swiper = new Swiper(".mySwiperRelated", {
-        slidesPerView: 'auto',
-        spaceBetween: 30,
-        centeredSlides: false,
-        loop: true,
-        grabCursor: true,
-        autoplay: {
-            delay: 3000,
-            disableOnInteraction: false,
-        },
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-    });
-});
-async function TreatmentCenterModal(id) {
+﻿async function TreatmentCenterModal(id) {
     var CurrentUICulture = document.getElementById("CurrentUICulture").value;
     var formData = new FormData();
     formData.append('Id', id);
@@ -54,14 +33,13 @@ async function TreatmentCenterModal(id) {
     modalTitle.id = 'modalCenterTitle';
 
 
-    if (CurrentUICulture === "ltr")
-    {
+    if (CurrentUICulture === "ltr") {
         modalTitle.innerText = data.titleEn;
     } else {
         modalTitle.innerText = data.titleFa;
     }
 
-    
+
 
     const closeButton = document.createElement('button');
     closeButton.type = 'button';
@@ -80,28 +58,31 @@ async function TreatmentCenterModal(id) {
     modalBody.className = 'modal-body';
     modalBody.setAttribute("dir", CurrentUICulture);
 
+    const productName = document.createElement("h4");
     const description = document.createElement("h4");
     const phoneNumber = document.createElement("h4");
 
 
-    if (CurrentUICulture === "ltr")
-    {
-      
+    if (CurrentUICulture === "ltr") {
+
+        productName.innerText = "Product: " + data.productTitleEn;
         description.innerText = "Description: " + data.descriptionEn;
         phoneNumber.innerText = "Phone Number: " + data.phoneNumber;
 
     } else {
-        
+
+        productName.innerText = "محصول: " + data.productTitleFa;
         description.innerText = "توضیحات: " + data.descriptionFa;
         phoneNumber.innerText = "شماره تماس: " + data.phoneNumber;
     }
 
 
-   
 
 
 
 
+
+    modalBody.appendChild(productName);
     modalBody.appendChild(description);
     modalBody.appendChild(phoneNumber);
 
@@ -116,7 +97,7 @@ async function TreatmentCenterModal(id) {
     closeModalButton.type = 'button';
     closeModalButton.className = 'btn btn-label-secondary';
     closeModalButton.setAttribute('data-bs-dismiss', 'modal');
-   
+
 
     if (CurrentUICulture === "ltr") {
         closeModalButton.innerText = 'Close';

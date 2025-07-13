@@ -37,7 +37,7 @@
         markers.forEach(function (marker) {
             L.marker(marker.coordinates).addTo(map).on('click', function (e) {
 
-                DoctorModal(marker.content);
+                TreatmentCenterModal(marker.content);
             });
         });
 </script>

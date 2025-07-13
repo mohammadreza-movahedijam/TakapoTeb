@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using Application.Queries.Product.ViewModels;
 using Application.Queries.Product;
+using Application.Queries.TreatmentCenter;
+using EndPointUI.Areas.Admin.Models;
 
 namespace EndPointUI.Controllers;
 
@@ -32,5 +34,13 @@ public class ProductController (IMediator mediator): Controller
         return View(model);
     }
 
-
+    public async Task<IActionResult> GetTreatmentCenterInformation
+       ([FromForm] InputModel input)
+    {
+        TreatmentCenterInfoViewModel model = await _mediator.Send(new GetTreatmentCenterInfoByIdQuery()
+        {
+            Id = input.Id
+        });
+        return Json(model);
+    }
 }

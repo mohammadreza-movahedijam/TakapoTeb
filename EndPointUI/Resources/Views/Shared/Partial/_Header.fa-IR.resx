@@ -117,14 +117,35 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="About" xml:space="preserve">
+    <value>درباره ما</value>
+  </data>
+  <data name="AboutTakapo" xml:space="preserve">
+    <value>درباره تکاپو</value>
+  </data>
+  <data name="BD" xml:space="preserve">
+    <value>BD</value>
+  </data>
   <data name="BlogMenu" xml:space="preserve">
     <value>وبلاگ</value>
+  </data>
+  <data name="Brochure" xml:space="preserve">
+    <value>کاتالوگ</value>
   </data>
   <data name="Button" xml:space="preserve">
     <value>ورود / ثبت نام</value>
   </data>
+  <data name="COMPANIES" xml:space="preserve">
+    <value>نمایندگی ها</value>
+  </data>
   <data name="ContactUs" xml:space="preserve">
     <value>تماس با ما</value>
+  </data>
+  <data name="Events" xml:space="preserve">
+    <value>رویداد ها</value>
+  </data>
+  <data name="Hologic" xml:space="preserve">
+    <value>Hologic</value>
   </data>
   <data name="HomeMenu" xml:space="preserve">
     <value>خانه</value>
@@ -141,10 +162,31 @@
   <data name="LanguageMenu" xml:space="preserve">
     <value>زبان</value>
   </data>
+  <data name="Mindray" xml:space="preserve">
+    <value>Mindray</value>
+  </data>
+  <data name="Newsroom" xml:space="preserve">
+    <value>اخبار</value>
+  </data>
+  <data name="OperationManual" xml:space="preserve">
+    <value>کتاب کار</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>محصولات</value>
+  </data>
   <data name="SearchMenu" xml:space="preserve">
     <value>جستجو</value>
   </data>
+  <data name="ServiceRequest" xml:space="preserve">
+    <value>درخواست سرویس</value>
+  </data>
+  <data name="Snibe" xml:space="preserve">
+    <value>Snibe</value>
+  </data>
   <data name="Support" xml:space="preserve">
     <value>پشتیبانی</value>
+  </data>
+  <data name="TrainingRequest" xml:space="preserve">
+    <value>درخواست آموزش</value>
   </data>
 </root>

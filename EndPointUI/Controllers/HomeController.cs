@@ -1,7 +1,9 @@
 using Application.Commands.Message;
+using Application.Queries.Search;
 using Application.Queries.Setting;
 using Application.Queries.Setting.ViewModels;
 using Application.Queries.TreatmentCenter;
+using EndPointUI.Areas.Admin.Models;
 using EndPointUI.Models;
 using MediatR;
 using Microsoft.AspNetCore.Localization;
@@ -31,9 +33,6 @@ public class HomeController : Controller
             pageModel=await _mediator!.Send(new GetTreatmentCenterProductsQuery());
         return View(pageModel);
     }
-
-
-
 
     public IActionResult Privacy()
     {
@@ -79,4 +78,21 @@ public class HomeController : Controller
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
+
+
+    [HttpGet]
+    [Route("Search")]
+    public async Task<IActionResult> Search(string text)
+    {
+        ViewBag.Search = text;
+        IReadOnlyList<SearchViewModel> pageModel =await
+            _mediator.Send(new GetListWithKeywordQuery()
+            {
+                Search = text
+            });
+        return View(pageModel);
+    }
+
+
+   
 }

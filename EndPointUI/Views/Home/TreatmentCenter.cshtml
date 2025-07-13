@@ -9,7 +9,10 @@
 @section Style{
     <link rel="stylesheet" href="~/map/leaflet.css" />
     <script src="~/map/leaflet.js"></script>
+    <script src="~/js/treatmentCenter.js"></script>
 }
+<input type="hidden" value="@align" id="CurrentUICulture" />
+
 <div class="row mt-5 text-center">
     <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 offset-xl-2 offset-lg-2">
 
@@ -44,7 +47,7 @@
         markers.forEach(function (marker) {
             L.marker(marker.coordinates).addTo(map).on('click', function (e) {
 
-                DoctorModal(marker.content);
+                TreatmentCenterModal(marker.content);
             });
         });
 </script>

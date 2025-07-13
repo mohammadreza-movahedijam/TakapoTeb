@@ -16,7 +16,7 @@
                 @await Component.InvokeAsync("LogoHeaderComponent")
             </a>
         </div>
-        <div class="main-menu-wrapper ms-auto" >
+        <div class="main-menu-wrapper " >
             <div class="menu-header">
                 <a href="/" class="menu-logo">
                     @await Component.InvokeAsync("LogoHeaderComponent")
@@ -28,33 +28,139 @@
             <ul class="main-nav mritem zindex2">
                 <li class=" mx-3">
                     <a href="/">@Localizer["HomeMenu"]</a>
-                </li> 
-               
-                @await Component.InvokeAsync("MenuComponent")
-                <li class=" mx-3">
-                    <a href="/Blog">@Localizer["BlogMenu"]</a>
                 </li>
+
                 <li class="has-submenu mx-3">
                     <a href="#">
+                        ‌
+                        @Localizer["Product"]
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="submenu ">
+                        @await Component.InvokeAsync("MenuComponent")
+
+
+
+                    </ul>
+                </li>
+               
+                <li class="has-submenu mx-3">
+                    <a href="#">
+                        ‌
+                        @Localizer["COMPANIES"]
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="submenu ">
+                        <li>
+                            <a>
+                                @Localizer["Hologic"]
+                            </a>
+                        </li>
+
+                        <li>
+                            <a>
+                                @Localizer["BD"]
+                            </a>
+                        </li>
+
+                        <li>
+                            <a>
+                                @Localizer["Mindray"]
+                            </a>
+                        </li>
+
+                        <li>
+                            <a>
+                                @Localizer["Snibe"]
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+
+
+                <li class="has-submenu mx-3">
+                    <a >
                         ‌
                         @Localizer["Support"]
                         <i class="fas fa-chevron-down"></i>
                     </a>
                     <ul class="submenu ">
                         <li>
-
-                            <a asp-controller="Home" asp-action="ContactUs">
-                      
-                                @Localizer["ContactUs"]
+                            <a>
+                                @Localizer["ServiceRequest"]
                             </a>
                         </li>
-                      
+                        <li>
+                            <a>
+                                @Localizer["TrainingRequest"]
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                @Localizer["OperationManual"]
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                @Localizer["Brochure"]
+                            </a>
+                        </li>
 
-                         
+
+
 
                     </ul>
                 </li>
+
+
                 <li class="has-submenu mx-3">
+                    <a>
+                        ‌
+                        @Localizer["About"]
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="submenu ">
+                        <li>
+                            <a>
+                                @Localizer["AboutTakapo"]
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                @Localizer["Events"]
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-controller="News" asp-action="Index">
+                                @Localizer["Newsroom"]
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-controller="Home" asp-action="ContactUs">
+                                @Localizer["ContactUs"]
+                            </a>
+                        </li>
+
+                        <li >
+                            <a href="/Blog">@Localizer["BlogMenu"]</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class=" mx-3">
+                    <a asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="en-US">
+                        <img src="~/gallery/en.png" width="35" height="25" />
+                    </a>
+                </li>
+                 <li class=" mx-3">
+                    <a asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="fa-IR">
+                        <img src="~/gallery/fa.png" width="35" height="25" />
+
+                    </a>
+                </li>
+
+
+             @*    <li class="has-submenu mx-3">
                     <a href="#">
                         ‌
                         @Localizer["LanguageMenu"]
@@ -79,10 +185,13 @@
                         </li>
                        
                     </ul>
-                </li>
+                </li> *@
 
                 <li class="mx-3">
-                    <input type="text" class="form-control form-control-sm search-menu" placeholder="@Localizer["SearchMenu"]">
+                <form asp-controller="Home" asp-action="Search" method="get">
+                        <input type="text" name="text" class="form-control form-control-sm search-menu" placeholder="@Localizer["SearchMenu"]">
+
+                    </form> 
                 </li>
             </ul>
 
