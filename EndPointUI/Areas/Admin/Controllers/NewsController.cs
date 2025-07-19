@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace EndPointUI.Areas.Admin.Controllers;
 
 [Area("Admin")]
+[AdminAuthorize("News")]
 public class NewsController (IMediator mediator): Controller
 {
     readonly IMediator _mediator=mediator;

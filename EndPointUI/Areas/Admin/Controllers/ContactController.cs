@@ -1,25 +1,23 @@
-﻿using Application.Queries.Article.ViewModels;
-using Application.Queries.Article;
+﻿using Application.Commands.Message;
+using Application.Queries.Message;
+using EndPointUI.Areas.Admin.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Application.Queries.Message;
-using Application.Commands.Departement;
-using EndPointUI.Areas.Admin.Models;
-using Application.Commands.Message;
 
 namespace EndPointUI.Areas.Admin.Controllers;
 
 
 [Area("Admin")]
-public class ContactController (IMediator mediator): Controller
+[AdminAuthorize("Contact")]
+public class ContactController(IMediator mediator) : Controller
 {
-    readonly IMediator _mediator=mediator;
+    readonly IMediator _mediator = mediator;
     public async Task<IActionResult> Index(Pagination pagination)
     {
         PaginatedList<MessageViewModel> pageModel =
           await _mediator.Send(new GetMessagesQuery()
           {
-              Pagination= pagination
+              Pagination = pagination
           });
         ViewBag.Search = pagination.keyword;
         return View(pageModel);

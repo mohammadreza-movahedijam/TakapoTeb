@@ -1,8 +1,11 @@
-﻿<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+﻿@using Application.Queries.Role.ViewModel
+@using Newtonsoft.Json
+
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
         <a href="/" class="app-brand-link">
             <span class="app-brand-logo demo">
-                <img src="~/gallery/takapo-icon.png" width="40" height="40"/>
+                <img src="~/gallery/takapo-icon.png" width="40" height="40" />
             </span>
             <span style="color:#303580" class="app-brand-text demo menu-text fw-bold ms-2">پیشخوان</span>
         </a>
@@ -18,239 +21,29 @@
     <div class="menu-inner-shadow"></div>
 
     <ul class="menu-inner py-1">
-        <!-- Page -->
-        
-        <li class="menu-item" >
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                
-                <i class="fa-solid fa-medal menu-icon"></i>
-                <div data-i18n="Invoice">مدیریت نقش</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a asp-area="Admin" asp-controller="Role" asp-action="Index" class="menu-link">
-                        <div data-i18n="List">لیست نقش‌های کاربران</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a asp-area="Admin" asp-controller="Role" asp-action="Create" class="menu-link">
-                        <div data-i18n="Preview">ایجاد نقش جدید</div>
-                    </a>
-                </li>
-                  <li class="menu-item">
-                    <a  class="menu-link">
-                        <div data-i18n="Preview">تعین سطح دسترسی</div>
-                    </a>
-                </li>
-               
-            </ul>
-        </li>
-        
-        
-        <li class="menu-item" >
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="fa-solid fa-user-tie menu-icon"></i>
-              
-                <div data-i18n="Invoice">مدیریت کاربران</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a asp-area="Admin" asp-controller="User" asp-action="Index" class="menu-link">
-                        <div data-i18n="List">لیست کاربران</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a asp-area="Admin" asp-controller="User" asp-action="Create" class="menu-link">
-                        <div data-i18n="Preview">ایجاد کاربر جدید</div>
-                    </a>
-                </li>
-               
-            </ul>
-        </li>
-          
-        
-        <li class="menu-item" >
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="fa-solid fa-store  menu-icon"></i>
-                <div data-i18n="Invoice">مدیریت محصولات</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a asp-area="Admin" asp-controller="Product" asp-action="Index" class="menu-link">
-                        <div data-i18n="List">لیست محصولات</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a asp-area="Admin" asp-controller="Product" asp-action="Create" class="menu-link">
-                        <div data-i18n="Preview">ایجاد محصول جدید</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a asp-area="Admin" asp-controller="ProductCategory" asp-action="Index" class="menu-link">
-                        <div data-i18n="List">لیست دسته بندی ها</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a asp-area="Admin" asp-controller="ProductCategory" asp-action="Create" class="menu-link">
-                        <div data-i18n="Preview">ایجاد دسته بندی جدید</div>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="menu-item" >
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                
-                <i class="fa-solid fa-pen-nib menu-icon"></i>
-                <div data-i18n="Invoice">مدیریت مقالات</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a asp-area="Admin" asp-controller="Article" asp-action="Index" class="menu-link">
-                        <div data-i18n="List">لیست مقالات</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a asp-area="Admin" asp-controller="Article" asp-action="Create" class="menu-link">
-                        <div data-i18n="Preview">ایجاد مقاله جدید</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a asp-area="Admin" asp-controller="Article" asp-action="Index" class="menu-link">
-                        <div data-i18n="List">لیست دسته بندی ها </div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a asp-area="Admin" asp-controller="Article" asp-action="Create" class="menu-link">
-                        <div data-i18n="Preview">ایجاد دسته بندی جدید</div>
-                    </a>
-                </li>
-               
-            </ul>
-        </li>
-        
-        <li class="menu-item" >
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="fa-solid fa-images menu-icon"></i>
-               
-                <div data-i18n="Invoice">مدیریت اسلایدر</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a asp-area="Admin" asp-controller="Slider" asp-action="Index" class="menu-link">
-                        <div data-i18n="List">لیست اسلایدها</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a asp-area="Admin" asp-controller="Slider" asp-action="Create" class="menu-link">
-                        <div data-i18n="Preview">ایجاد تصویر جدید</div>
-                    </a>
-                </li>
-               
-            </ul>
-        </li>
-        <li class="menu-item" >
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-             
-                <i class="fa-solid fa-handshake menu-icon"></i>
-                <div data-i18n="Invoice">مدیریت شرکای تجاری</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a asp-area="Admin" asp-controller="Partner" asp-action="Index" class="menu-link">
-                        <div data-i18n="List">لیست شرکای تجاری</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a asp-area="Admin" asp-controller="Partner" asp-action="Create" class="menu-link">
-                        <div data-i18n="Preview">ایجاد شریک تجاری جدید</div>
-                    </a>
-                </li>
-               
-            </ul>
-        </li>
-       <li class="menu-item" >
-            <a asp-area="Admin" asp-controller="News" asp-action="Index" class="menu-link">
-                <i class="fas fa-sticky-note menu-icon"></i>
 
-                <div data-i18n="Invoice">اخبار</div>
-            </a>
-           
-        </li> 
-        
-        <li class="menu-item" >
-            <a asp-area="Admin" asp-controller="Chat" asp-action="Index" class="menu-link">
-                
-                <i class="fa-solid fa-headset menu-icon"></i>
-                <div data-i18n="Invoice">گفتگوی آنلاین</div>
-            </a>
-           
-        </li>
-        <li class="menu-item">
-            <a asp-area="Admin" asp-controller="Contact" asp-action="Index" class="menu-link">
+        @{
+            var claim = User.Claims.Where(w => w.Type == "Route").FirstOrDefault();
+            if (claim != null)
+            {
+                List<RouteViewModel>? routes =
+                JsonConvert.DeserializeObject<List<RouteViewModel>>(claim.Value);
+                if (routes != null && routes.Any())
+                {
+                    foreach(var route in routes.Where(w=>w.Icon!="").OrderBy(r=>r.Order))
+                    {
+                        <li class="menu-item">
+                        <a href="@route.Url" class="menu-link">
+                           @Html.Raw(route.Icon)
+                            <div>@route.Title</div>
+                        </a>
 
-            <i class="fa-solid fa-envelope menu-icon"></i>
-                <div data-i18n="Invoice">پیام‌ها</div>
-            </a>
-           
-        </li>  
-        
-        <li class="menu-item" >
-            <a asp-area="Admin" asp-controller="Departement" asp-action="Index" class="menu-link">
-                
-                <i class="fa-solid fa-building menu-icon"></i>
-                <div data-i18n="Invoice">واحدهای اداری</div>
-            </a>
-           
-        </li>  
-        
-        <li class="menu-item" >
-            <a asp-area="Admin" asp-controller="Feedback" asp-action="Index" class="menu-link">
-              
-                <i class="fa-solid fa-comments menu-icon"></i>
-                <div data-i18n="Invoice">نظرات مشتریان</div>
-            </a>
-           
-        </li>
-       <li class="menu-item" >
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="fa-solid fa-wrench  menu-icon"></i>
-            
-                <div data-i18n="Invoice">تنظیمات</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a asp-area="Admin" asp-controller="Setting" asp-action="General" class="menu-link">
-                        <div data-i18n="List">عمومی</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a asp-area="Admin" asp-controller="Setting" asp-action="Feature" class="menu-link">
-                        <div data-i18n="List">ویژگی‌ها</div>
-                    </a>
-                </li>
-                
-                <li class="menu-item">
-                    <a asp-area="Admin" asp-controller="Setting" asp-action="Statistic" class="menu-link">
-                        <div data-i18n="List">آمار</div>
-                    </a>
-                </li>
-
-@* 
-                 <li class="menu-item">
-                    <a class="menu-link">
-                        <div data-i18n="List">مدیریت خطا</div>
-                    </a>
-                </li>
-                
-                <li class="menu-item">
-                    <a  class="menu-link">
-                        <div data-i18n="List">سئو و بهینه سازی</div>
-                    </a>
-                </li>
-                
-                *@
-            </ul>
-        </li>
-       
+                    </li>
+                    }
+                }
+            }
+        }
+      
+      
     </ul>
 </aside>

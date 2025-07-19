@@ -10,6 +10,7 @@ using EndPointUI.Areas.Admin.Models;
 namespace EndPointUI.Areas.Admin.Controllers;
 
 [Area("Admin")]
+[AdminAuthorize("Role")]
 public class RoleController(IMediator mediator) : Controller
 {
     readonly IMediator _mediator = mediator;
@@ -66,4 +67,32 @@ public class RoleController(IMediator mediator) : Controller
         }
     }
 
+
+    [HttpGet]
+    public async Task<IActionResult> RouteAccess(Guid Id)
+    {
+        await FetchRouts(Id);
+        ViewBag.Id = Id;
+        return View();
+
+    }
+    [HttpPost]
+
+    public async Task<IActionResult> RouteAccess(RoleRouteDto model)
+    {
+
+        await _mediator.Send(new SetRouteCommand()
+        {
+            RoleRoute = model
+        });
+        return RedirectToAction(nameof(Index));
+    }
+    async Task FetchRouts(Guid Id)
+    {
+        var model = await _mediator.Send(new GetRoleRoutesQuery()
+        {
+            RoleId = Id
+        });
+        ViewBag.Data = model;
+    }
 }

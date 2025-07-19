@@ -123,6 +123,12 @@
   <data name="Blog" xml:space="preserve">
     <value>Blog</value>
   </data>
+  <data name="clubText" xml:space="preserve">
+    <value>Don't miss the latest news and events.</value>
+  </data>
+  <data name="clubTitle" xml:space="preserve">
+    <value>Be with us</value>
+  </data>
   <data name="contactus" xml:space="preserve">
     <value>Contact Us</value>
   </data>

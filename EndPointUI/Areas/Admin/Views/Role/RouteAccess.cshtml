@@ -1,0 +1,58 @@
+﻿@using Application.Commands.Role.DataTransferObject
+@model RoleRouteDto
+
+@{
+
+
+    ViewData["Title"] = "تعیین سطح دسترسی";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 offset-xl-2 offset-lg-2">
+        <form asp-area="Admin" asp-controller="Role" asp-action="RouteAccess" class="card">
+            <div class="card-header">
+                <h3>تعیین سطح دسترسی</h3>
+            </div>
+            <div class="card-body">
+                @{
+                    var dataTuple = (ValueTuple<IReadOnlyList<RouteDto>, IReadOnlyList<Guid>>)ViewBag.Data;
+                    var routes = dataTuple.Item1 ?? new List<RouteDto>();
+                    var selectedGuidList = dataTuple.Item2 ?? new List<Guid>();
+                }
+
+                @foreach (var route in routes)
+                {
+                    var isChecked = selectedGuidList.Any(a => a == route.Id);
+                    var checkboxId = $"route_{route.Id}";
+
+                    <div class="form-check mt-3">
+
+
+                        <input class="form-check-input" type="checkbox"
+                               name="Routes"
+                               value="@route.Id"
+                               id="@checkboxId"
+                        @(isChecked ? "checked" : "") />
+                        <label class="form-check-label" for="@checkboxId">
+                            @route.Title
+                        </label>
+                    </div>
+                }
+                <input type="hidden" asp-for="RoleId" value="@ViewBag.Id"/>
+            </div>
+            
+            <div class="card-footer">
+               <button type="submit" class="btn btn-sm btn-success text-white">
+                   ثبت
+               </button>
+                <a asp-area="Admin" asp-controller="Role" asp-action="Index"
+                   class="btn btn-sm btn-warning text-white">
+                   بازگشت
+               </a>
+            </div>
+
+        </form>
+    </div>
+</div>
+

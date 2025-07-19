@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace EndPointUI.Areas.Admin.Controllers;
-
+[AdminAuthorize("User")]
 [Area("Admin")]
 public class UserController(IMediator mediator) : Controller
 {

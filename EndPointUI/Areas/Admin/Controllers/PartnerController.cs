@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EndPointUI.Areas.Admin.Controllers;
 
-
+[AdminAuthorize("Partner")]
 [Area("Admin")]
 public class PartnerController (IMediator mediator): Controller
 {

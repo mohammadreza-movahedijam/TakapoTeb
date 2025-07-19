@@ -5,12 +5,14 @@ using Application.Queries.BlogCategory;
 using Application.Queries.ProductCategory;
 using EndPointUI.Areas.Admin.Models;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace EndPointUI.Areas.Admin.Controllers;
 
 [Area("Admin")]
+[AdminAuthorize("Article")]
 public class ArticleController (IMediator mediator): Controller
 {
      readonly IMediator _mediator=mediator;

@@ -129,6 +129,27 @@ namespace Infrastructure.Migrations
                     b.ToTable("AspNetRoles", (string)null);
                 });
 
+            modelBuilder.Entity("Domain.Entities.Identity.RoleRouteEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("RoleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("RouteId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.HasIndex("RouteId");
+
+                    b.ToTable("RoleRouteMap", "dbo");
+                });
+
             modelBuilder.Entity("Domain.Entities.Identity.UserEntity", b =>
                 {
                     b.Property<Guid>("Id")
@@ -706,6 +727,170 @@ namespace Infrastructure.Migrations
                     b.ToTable("Partner", (string)null);
                 });
 
+            modelBuilder.Entity("Domain.Entities.System.RouteEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Icon")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Order")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Route", "dbo");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("92e9b533-395f-40de-bf5c-daf5175174cf"),
+                            Icon = "<i class=\"fa-solid fa-medal menu-icon\"></i>",
+                            Order = 1,
+                            Title = "مدیریت نقش",
+                            Url = "/Admin/Role"
+                        },
+                        new
+                        {
+                            Id = new Guid("13efcf5b-ac2a-4ea7-8dbf-00794f5c3579"),
+                            Icon = "<i class=\"fa-solid fa-user-tie menu-icon\"></i>",
+                            Order = 2,
+                            Title = "مدیریت کاربران",
+                            Url = "/Admin/User"
+                        },
+                        new
+                        {
+                            Id = new Guid("5fd23be1-e7bf-4c08-b5d7-2a5df8c41d71"),
+                            Icon = "<i class=\"fa-solid fa-store  menu-icon\"></i>",
+                            Order = 3,
+                            Title = "مدیریت محصولات",
+                            Url = "/Admin/Product"
+                        },
+                        new
+                        {
+                            Id = new Guid("69d86bce-910a-4410-ae9a-da72409d3047"),
+                            Icon = "<i class=\"fa-solid fa-pen-nib menu-icon\"></i>",
+                            Order = 4,
+                            Title = "مدیریت مقالات",
+                            Url = "/Admin/Article"
+                        },
+                        new
+                        {
+                            Id = new Guid("c3d18153-b55e-4f50-b64c-93d4f6bea161"),
+                            Icon = "<i class=\"fa-solid fa-images menu-icon\"></i>",
+                            Order = 5,
+                            Title = "مدیریت اسلایدر",
+                            Url = "/Admin/Slider"
+                        },
+                        new
+                        {
+                            Id = new Guid("20cfd69e-b34c-4f6d-9e36-d9877239b3bb"),
+                            Icon = "<i class=\"fa-solid fa-images menu-icon\"></i>",
+                            Order = 6,
+                            Title = "مدیریت شرکای تجاری",
+                            Url = "/Admin/Partner"
+                        },
+                        new
+                        {
+                            Id = new Guid("7d9a13c7-a233-4551-8b4a-61b4c162ac4a"),
+                            Icon = "<i class=\"fas fa-sticky-note menu-icon\"></i>",
+                            Order = 7,
+                            Title = "مدیریت اخبار",
+                            Url = "/Admin/News"
+                        },
+                        new
+                        {
+                            Id = new Guid("04a19910-8314-4909-8ab6-28b01f8d8612"),
+                            Icon = "<i class=\"fa-solid fa-headset menu-icon\"></i>",
+                            Order = 8,
+                            Title = "گفتگوی آنلاین",
+                            Url = "/Admin/Chat"
+                        },
+                        new
+                        {
+                            Id = new Guid("2b187594-0cd6-4103-a93e-c7ecc35df142"),
+                            Icon = "<i class=\"fa-solid fa-envelope menu-icon\"></i>",
+                            Order = 9,
+                            Title = "پیام ها",
+                            Url = "/Admin/Contact"
+                        },
+                        new
+                        {
+                            Id = new Guid("0063a094-6e6b-40ff-b459-9db952afa2d8"),
+                            Icon = "<i class=\"fa-solid fa-building menu-icon\"></i>",
+                            Order = 10,
+                            Title = "واحد های اداری",
+                            Url = "/Admin/Departement"
+                        },
+                        new
+                        {
+                            Id = new Guid("b8f6c352-571a-4235-9e92-c325db6d6ddf"),
+                            Icon = "<i class=\"fa-solid fa-wrench  menu-icon\"></i>",
+                            Order = 11,
+                            Title = "تنظیمات عمومی",
+                            Url = "/Admin/Setting/General"
+                        },
+                        new
+                        {
+                            Id = new Guid("8072a16c-8db7-46dd-a3e4-e41f0ece7a76"),
+                            Icon = "<i class=\"fa-solid fa-chart-bar  menu-icon\"></i>",
+                            Order = 12,
+                            Title = "آمار",
+                            Url = "/Admin/Setting/Statistic"
+                        },
+                        new
+                        {
+                            Id = new Guid("d71c15ce-8785-4abf-8f5b-d58a1a4e8ca5"),
+                            Icon = "<i class=\"fa-solid fa-star  menu-icon\"></i>",
+                            Order = 13,
+                            Title = "آمار",
+                            Url = "/Admin/Setting/Feature"
+                        },
+                        new
+                        {
+                            Id = new Guid("faf6eddd-f721-4a8b-9614-7e7223759b58"),
+                            Icon = "",
+                            Order = 14,
+                            Title = "ویژگی های محصول",
+                            Url = "/Admin/Option"
+                        },
+                        new
+                        {
+                            Id = new Guid("adb33323-9d60-4993-8299-81d37ed3c41c"),
+                            Icon = "",
+                            Order = 15,
+                            Title = "مستندات محصول",
+                            Url = "/Admin/Document"
+                        },
+                        new
+                        {
+                            Id = new Guid("8fe991ba-68d0-4398-8ca5-9ad25e9fd75d"),
+                            Icon = "",
+                            Order = 16,
+                            Title = "تصاویر محصول",
+                            Url = "/Admin/ProductImage"
+                        },
+                        new
+                        {
+                            Id = new Guid("b89b74ce-4017-4d02-8e9e-42a0dc4341b7"),
+                            Icon = "",
+                            Order = 17,
+                            Title = "مراکز",
+                            Url = "/Admin/TreatmentCenter"
+                        });
+                });
+
             modelBuilder.Entity("Domain.Entities.System.SettingEntity", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1009,6 +1194,25 @@ namespace Infrastructure.Migrations
                     b.Navigation("Category");
                 });
 
+            modelBuilder.Entity("Domain.Entities.Identity.RoleRouteEntity", b =>
+                {
+                    b.HasOne("Domain.Entities.Identity.RoleEntity", "Role")
+                        .WithMany("RoleRoutes")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.System.RouteEntity", "Route")
+                        .WithMany("RoleRoutes")
+                        .HasForeignKey("RouteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Role");
+
+                    b.Navigation("Route");
+                });
+
             modelBuilder.Entity("Domain.Entities.Product.CategoryEntity", b =>
                 {
                     b.HasOne("Domain.Entities.Product.CategoryEntity", "ParentCategory")
@@ -1150,6 +1354,11 @@ namespace Infrastructure.Migrations
                     b.Navigation("Articles");
                 });
 
+            modelBuilder.Entity("Domain.Entities.Identity.RoleEntity", b =>
+                {
+                    b.Navigation("RoleRoutes");
+                });
+
             modelBuilder.Entity("Domain.Entities.Product.CategoryEntity", b =>
                 {
                     b.Navigation("Products");
@@ -1173,6 +1382,11 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Domain.Entities.System.ChatGroupEntity", b =>
                 {
                     b.Navigation("chatMessages");
+                });
+
+            modelBuilder.Entity("Domain.Entities.System.RouteEntity", b =>
+                {
+                    b.Navigation("RoleRoutes");
                 });
 #pragma warning restore 612, 618
         }

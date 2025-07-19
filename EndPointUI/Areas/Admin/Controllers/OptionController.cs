@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EndPointUI.Areas.Admin.Controllers;
 [Area("Admin")]
+[AdminAuthorize("Option")]
 public class OptionController
     (IMediator mediator) : Controller
 {

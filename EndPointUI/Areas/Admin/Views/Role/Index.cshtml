@@ -57,6 +57,10 @@
                                     <td>@item.PersianName</td>
                                     <td>@item.Name</td>
                                     <td>
+                                        <a asp-area="Admin" asp-controller="Role" asp-action="RouteAccess"
+                                                   asp-route-id="@item.Id"
+                                            
+                                            class="btn btn-sm btn-primary text-white">سطح دسترسی</a>
                                         <a asp-area="Admin" asp-controller="Role" asp-action="Edit"
                                         asp-route-id="@item.Id"
                                         class="btn btn-sm btn-warning text-white">ویرایش</a>

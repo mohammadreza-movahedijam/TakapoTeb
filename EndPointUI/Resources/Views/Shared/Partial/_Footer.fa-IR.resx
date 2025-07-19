@@ -123,6 +123,12 @@
   <data name="Blog" xml:space="preserve">
     <value>وبلاگ</value>
   </data>
+  <data name="clubText" xml:space="preserve">
+    <value>آخرین اخبار و رویدادها را از دست ندهید</value>
+  </data>
+  <data name="clubTitle" xml:space="preserve">
+    <value>با ما همراه باشید</value>
+  </data>
   <data name="contactus" xml:space="preserve">
     <value>تماس با ما</value>
   </data>

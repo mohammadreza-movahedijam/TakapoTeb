@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EndPointUI.Areas.Admin.Controllers;
 [Area("Admin")]
+
 public class CommonController : Controller
 {
     #region CKEDITOR

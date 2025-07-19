@@ -1,0 +1,27 @@
+﻿
+@{
+    string? title = CultureInfo.CurrentUICulture.Name! == "en-US" ? "Not Found Page" : "صفحه یافت نشد";
+
+    ViewData["Title"] = title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="text-center col-xl-6 col-lg-6 col-md-12 col-sm-12 offset-xl-3 offset-lg-3 p-5">
+        <img src="~/gallery/404.webp"/>
+        @if (CultureInfo.CurrentUICulture.Name == "en-US")
+        {
+            <h1 class="mt-5 mb-5 ">Not Found Page</h1>
+            <br />
+            <a class="btn btn-sm btn-info text-white mt-2" href="/">Home</a>
+        }
+        else
+        {
+            <h1 class="mt-5 mb-5 ">صفحه یافت نشد</h1>
+            <br />
+            <a class="btn btn-sm btn-info text-white mt-2" href="/">صفحه اصلی</a>
+
+        }
+       
+
+    </div>
+</div>

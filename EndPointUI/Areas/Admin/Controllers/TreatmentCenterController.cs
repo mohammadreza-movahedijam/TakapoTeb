@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EndPointUI.Areas.Admin.Controllers;
 
-
+[AdminAuthorize("TreatmentCenter")]
 [Area("Admin")]
 public class TreatmentCenterController(IMediator mediator) : Controller
 {

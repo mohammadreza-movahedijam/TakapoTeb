@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace EndPointUI.Areas.Admin.Controllers;
 
 [Area("Admin")]
+[AdminAuthorize("Departement")]
 public class DepartementController(IMediator mediator) : Controller
 {
     readonly IMediator _mediator = mediator;

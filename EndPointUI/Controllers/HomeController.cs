@@ -92,7 +92,16 @@ public class HomeController : Controller
             });
         return View(pageModel);
     }
-
+    [HttpGet][Route("/404")]
+    public IActionResult NotFound()
+    {
+        return View();
+    }
+    [HttpGet][Route("/Forbidden")]
+    public IActionResult Forbidden()
+    {
+        return View();
+    }
 
    
 }

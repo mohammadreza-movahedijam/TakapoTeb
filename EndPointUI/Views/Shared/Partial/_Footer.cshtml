@@ -48,12 +48,16 @@
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-widget footer-menu">
-                        <h2 class="footer-title"> اشتراک در به روزرسانی </h2>
-                        <p>آخرین اخبار و رویدادها را از دست ندهید</p>
+                        <h2 class="footer-title"> @Localizer["clubTitle"] </h2>
+                       <p>
+                            @Localizer["clubText"]
+                       </p>
                         <form>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="ایمیل">
-                                <button class="btn btn-outline-secondary" type="button">اشتراک</button>
+                                <input type="text" class="form-control" placeholder="@(CultureInfo.CurrentUICulture.Name == "en-US" ? "Email" : "ایمیل")">
+                                <button class="btn btn-outline-secondary" type="button">
+                                    @(CultureInfo.CurrentUICulture.Name == "en-US" ? "Share" : "اشتراک")
+                                </button>
                             </div>
                         </form>
                     </div>

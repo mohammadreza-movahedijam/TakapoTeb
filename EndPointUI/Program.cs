@@ -52,7 +52,21 @@ var options = new RequestLocalizationOptions()
 app.UseRequestLocalization(options);
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseStatusCodePages(async context =>
+{
+    if (context.HttpContext.Response.StatusCode == 404)
+    {
+         context.HttpContext.Response.Redirect("/404");
+    }
 
+    if (context.HttpContext.Response.StatusCode == 401 || context.HttpContext.Response.StatusCode == 403)
+    {
+         context.HttpContext.Response.Redirect("/Forbidden");
+    }
+
+
+
+});
 
 app.MapControllerRoute(
     name: "areas",

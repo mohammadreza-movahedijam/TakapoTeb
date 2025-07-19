@@ -8,7 +8,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EndPointUI.Areas.Admin.Controllers;
-
+[AdminAuthorize("Setting")]
 [Area("Admin")]
 public class SettingController (IMediator mediator): Controller
 {
