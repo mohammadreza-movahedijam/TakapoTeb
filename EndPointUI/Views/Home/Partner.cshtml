@@ -1,0 +1,55 @@
+﻿@using Application.Queries.Partner
+@model PartnerDetailViewModel
+@{
+    string? dir = CultureInfo.CurrentUICulture.Name == "en-US" ? "ltr" : "rtl";
+    string? title = CultureInfo.CurrentUICulture.Name == "en-US" ? Model.TitleEn : Model.TitleFa;
+    ViewData["Title"] = title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mg-t-100">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body" dir="@dir">
+                    <div class="booking-doc-info">
+                        <a href="doctor-profile.html" class="booking-doc-img">
+                            <img src="~/gallery/partner/@Model.LogoPath" alt="@title">
+                        </a>
+                        <div class="booking-info mx-3">
+                            <h4 class="mt-4">
+                                @title
+                            </h4>
+                            @if (CultureInfo.CurrentUICulture.Name == "en-US")
+                            {
+                                <a href="@Model.Link" class="text-primary mb-0">
+                                    Website
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="@Model.Link" class="text-primary mb-0">
+                                    مشاهده وب سایت
+                                </a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card booking-schedule schedule-widget">
+                <div class="schedule-header">
+                    <div class="row">
+                        <div class="col-md-12" dir="@dir">
+                           
+                                @Html.Raw(CultureInfo.CurrentUICulture.Name == "en-US" ? Model.DescriptionEn : Model.DescriptionFa)
+                           
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+          
+        </div>
+    </div>
+</div>

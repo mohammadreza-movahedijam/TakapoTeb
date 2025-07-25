@@ -17,8 +17,10 @@ internal sealed class SettingMap : IEntityTypeConfiguration<SettingEntity>
         builder.HasData(new SettingEntity()
         {
             Id= Guid.Parse("b6a6e1eb-8ef7-45ea-aef9-f199b96f92a9"),
-            TopLogoPath=string.Empty,
-            BottomLogoPath = string.Empty,
+            TopLogoPathEn=string.Empty,
+            BottomLogoPathEn = string.Empty,
+            TopLogoPathFa=string.Empty,
+            BottomLogoPathFa = string.Empty,
             Linkedin = string.Empty,
             Instagram = string.Empty,
             WhatsApp = string.Empty,

@@ -154,10 +154,10 @@
     <value>My Profile</value>
   </data>
   <data name="Language1" xml:space="preserve">
-    <value>English</value>
+    <value>en-US</value>
   </data>
   <data name="Language2" xml:space="preserve">
-    <value>Persian</value>
+    <value>fa-IR</value>
   </data>
   <data name="LanguageMenu" xml:space="preserve">
     <value>Language</value>

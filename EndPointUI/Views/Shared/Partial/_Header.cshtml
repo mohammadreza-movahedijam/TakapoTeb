@@ -2,7 +2,7 @@
     string direction = CultureInfo.CurrentUICulture.Name == "en-US" ? "ltr" : "rtl";
 }
 
-<header class="header" style="direction:@direction;">
+<header class=" custom-header" style="direction:@direction;">
     <nav  class="navbar navbar-expand-lg header-nav d-flex justify-content-between zindex-3">
         <div class="navbar-header">
             <a id="mobile_btn" href="javascript:void(0);">
@@ -26,15 +26,15 @@
                 </a>
             </div>
             <ul class="main-nav mritem zindex2">
-                <li class=" mx-3">
+               @*  <li class=" mx-3">
                     <a href="/">@Localizer["HomeMenu"]</a>
-                </li>
+                </li> *@
 
                 <li class="has-submenu mx-3">
                     <a href="#">
                         ‌
                         @Localizer["Product"]
-                        <i class="fas fa-chevron-down"></i>
+                        @* <i class="fas fa-chevron-down"></i> *@
                     </a>
                     <ul class="submenu ">
                         @await Component.InvokeAsync("MenuComponent")
@@ -48,33 +48,11 @@
                     <a href="#">
                         ‌
                         @Localizer["COMPANIES"]
-                        <i class="fas fa-chevron-down"></i>
+                        @* <i class="fas fa-chevron-down"></i> *@
                     </a>
                     <ul class="submenu ">
-                        <li>
-                            <a href="/Hologic">
-                                @Localizer["Hologic"]
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="/BD">
-                                @Localizer["BD"]
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="/Mindray">
-                                @Localizer["Mindray"]
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="/Snibe">
-                                @Localizer["Snibe"]
-                            </a>
-                        </li>
-
+                       
+                        @await Component.InvokeAsync("PartnerItemMenuComponent")
                     </ul>
                 </li>
 
@@ -83,7 +61,7 @@
                     <a >
                         ‌
                         @Localizer["Support"]
-                        <i class="fas fa-chevron-down"></i>
+                        @* <i class="fas fa-chevron-down"></i> *@
                     </a>
                     <ul class="submenu ">
                         <li>
@@ -112,13 +90,13 @@
 
                     </ul>
                 </li>
-
+               
 
                 <li class="has-submenu mx-3">
                     <a>
                         ‌
                         @Localizer["About"]
-                        <i class="fas fa-chevron-down"></i>
+                        @* <i class="fas fa-chevron-down"></i> *@
                     </a>
                     <ul class="submenu ">
                         <li>
@@ -136,25 +114,27 @@
                                 @Localizer["Newsroom"]
                             </a>
                         </li>
-                        <li>
-                            <a asp-controller="Home" asp-action="ContactUs">
-                                @Localizer["ContactUs"]
-                            </a>
-                        </li>
+                      
 
                         <li >
                             <a href="/Blog">@Localizer["BlogMenu"]</a>
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <a asp-controller="Home" asp-action="ContactUs">
+                        @Localizer["ContactUs"]
+                    </a>
+                </li>
+                
                 <li class=" mx-3">
                     <a asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="en-US">
-                        <img src="~/gallery/en.png" width="35" height="25" />
+                        @Localizer["Language1"]  
                     </a>
                 </li>
                  <li class=" mx-3">
                     <a asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="fa-IR">
-                        <img src="~/gallery/fa.png" width="35" height="25" />
+                        @Localizer["Language2"]   
 
                     </a>
                 </li>
@@ -188,15 +168,16 @@
                 </li> *@
 
                 <li class="mx-3">
-                <form asp-controller="Home" asp-action="Search" method="get">
-                        <input type="text" name="text" class="form-control form-control-sm search-menu" placeholder="@Localizer["SearchMenu"]">
+                    <a onclick="Search('@direction')">
+                <i  class="fa fa-search mt-4" aria-hidden="true"></i>
+                </a>    
 
-                    </form> 
+
                 </li>
             </ul>
 
         </div>
-        <ul class="nav header-navbar-rht">
+       @*  <ul class="nav header-navbar-rht">
           
             <li class="nav-item">
                 @if (User.Identity.IsAuthenticated)
@@ -218,7 +199,8 @@
                 }
                 
             </li>
-        </ul>
+        </ul> *@
     </nav>
 </header>
 
+                        

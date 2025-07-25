@@ -61,8 +61,9 @@
     const productName = document.createElement("h4");
     const description = document.createElement("h4");
     const phoneNumber = document.createElement("h4");
+    const image = document.createElement("img");
 
-
+    image.src = "/gallery/TreatmentCenter/" + data.image;
     if (CurrentUICulture === "ltr") {
 
         productName.innerText = "Product: " + data.productTitleEn;
@@ -82,6 +83,7 @@
 
 
 
+    modalBody.appendChild(image);
     modalBody.appendChild(productName);
     modalBody.appendChild(description);
     modalBody.appendChild(phoneNumber);

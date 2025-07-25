@@ -409,6 +409,9 @@ namespace Infrastructure.Migrations
                     b.Property<string>("DescriptionFa")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -435,6 +438,38 @@ namespace Infrastructure.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("TreatmentCenter", "Product");
+                });
+
+            modelBuilder.Entity("Domain.Entities.System.CatalogEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("DescriptionEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DescriptionFa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FilePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("TitleEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleFa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Catalog", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.System.ChatGroupEntity", b =>
@@ -713,6 +748,12 @@ namespace Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("DescriptionEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DescriptionFa")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -720,6 +761,12 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LogoPath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleFa")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -906,7 +953,10 @@ namespace Infrastructure.Migrations
                     b.Property<string>("AboutImagePath")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("BottomLogoPath")
+                    b.Property<string>("BottomLogoPathEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BottomLogoPathFa")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ContactNumber")
@@ -942,7 +992,10 @@ namespace Infrastructure.Migrations
                     b.Property<string>("Telegram")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TopLogoPath")
+                    b.Property<string>("TopLogoPathEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TopLogoPathFa")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Video")
@@ -971,7 +1024,8 @@ namespace Infrastructure.Migrations
                             AboutEn = "",
                             AboutFa = "",
                             AboutImagePath = "",
-                            BottomLogoPath = "",
+                            BottomLogoPathEn = "",
+                            BottomLogoPathFa = "",
                             ContactNumber = "",
                             DescriptionEn = "",
                             DescriptionFa = "",
@@ -980,7 +1034,8 @@ namespace Infrastructure.Migrations
                             LocationEn = "",
                             LocationFa = "",
                             Telegram = "",
-                            TopLogoPath = "",
+                            TopLogoPathEn = "",
+                            TopLogoPathFa = "",
                             Video = "",
                             WhatsApp = "",
                             WorkingHoursEn = "",

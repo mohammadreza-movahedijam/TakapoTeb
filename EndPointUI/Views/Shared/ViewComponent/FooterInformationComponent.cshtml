@@ -1,7 +1,16 @@
 ﻿@model Application.Queries.Setting.ViewModels.FooterInformationViewModel
 <div class="footer-widget footer-about">
     <div class="footer-logo">
-        <img src="~/gallery/setting/@Model.BottomLogoPath" alt="logo">
+
+        @if (CultureInfo.CurrentUICulture.Name == "fa-IR")
+        {
+            <img src="~/gallery/setting/@Model.BottomLogoPathFa" alt="logo">
+        }
+        else
+        {
+            <img src="~/gallery/setting/@Model.BottomLogoPathEn" alt="logo">
+        }
+       
     </div>
     <div class="footer-about-content">
 

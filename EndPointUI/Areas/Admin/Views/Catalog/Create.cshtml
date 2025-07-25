@@ -1,0 +1,106 @@
+﻿@using Application.Commands.Catalog
+@model CatalogDto
+@{
+    ViewData["Title"] = "ایجاد کاتالوگ";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+@section Script {
+
+
+    <partial name="_ValidationScriptsPartial.cshtml" />
+}
+<nav aria-label="breadcrumb">
+    <ol class="lh-1-85 breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/Admin">پیشخوان</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a href="/Admin/Catalog/Index">لیست کاتالوگ ها</a>
+        </li>
+
+        <li class="breadcrumb-item active">ایجاد کاتالوگ </li>
+    </ol>
+</nav>
+
+<div class="row">
+    <div class="col-10 offset-1">
+        <div class="card mb-4">
+            <div class="card-header">
+
+                <h5 class=" heading-color">ایجاد کاتالوگ</h5>
+                @if (ViewBag.ErrorMessage != null)
+                {
+                    <div class="alert alert-danger">
+                        @ViewBag.ErrorMessage
+                    </div>
+                }
+            </div>
+            <form asp-area="Admin" asp-controller="Catalog" asp-action="Create"
+                  method="post" class="card-body" enctype="multipart/form-data">
+                <div class="row">
+                   
+                    <div class="col-3">
+                        <label class="form-label">فایل</label>
+                        <input asp-for="File"  class="form-control" type="file" />
+                        <span class="text-danger" asp-validation-for="File"></span>
+
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-6">
+                        <label class="form-label">عنوان فارسی</label>
+                        <input asp-for="TitleFa" type="text" class="form-control" />
+                        <span class="text-danger" asp-validation-for="TitleFa"></span>
+                    </div>
+
+                    <div class="col-6">
+                        <label class="form-label">عنوان انگلیسی</label>
+                        <input asp-for="TitleEn" type="text" class="form-control" />
+                        <span class="text-danger" asp-validation-for="TitleEn"></span>
+                    </div>
+                   
+
+
+                    <div class="col-4">
+                        <label class="form-label">نوع فایل</label>
+                        <select class="form-control"
+                                asp-items="Html.GetEnumSelectList<Domain.Types.FileType>()"
+                                asp-for="Type"></select>
+                    </div>
+                </div>
+
+
+
+                <div class="col-12">
+                    <label class="form-label">متن فارسی</label>
+                    <textarea asp-for="DescriptionFa" 
+                              type="text" class="form-control" rows="7">
+                                                  </textarea>
+                    <span class="text-danger" asp-validation-for="DescriptionFa"></span>
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label">متن انگلیسی</label>
+                    <textarea asp-for="DescriptionEn" 
+                              type="text" class="form-control" rows="7">
+                                                  </textarea>
+                    <span class="text-danger" asp-validation-for="DescriptionEn"></span>
+                </div>
+
+                <div class="mt-3">
+                    <button type="submit" class="btn btn-sm text-white btn-success">ثبت</button>
+                    <a asp-area="Admin" asp-controller="Catalog" asp-action="Index" class="btn btn-sm text-white btn-warning">بازگشت</a>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+

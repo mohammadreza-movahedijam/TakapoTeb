@@ -3,6 +3,7 @@
 public sealed record TreatmentCenterInfoViewModel
 {
     public Guid Id { get; set; }
+    public string? Image { get; set; }
 
     public string? TitleFa { get; set; }
     public string? DescriptionFa { get; set; }

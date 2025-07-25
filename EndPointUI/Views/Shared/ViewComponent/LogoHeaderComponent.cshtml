@@ -1,2 +1,13 @@
 ﻿@model Application.Queries.Setting.ViewModels.LogoViewModel
-<img src="~/gallery/setting/@Model.Logo" class="img-fluid" alt="TakapoTeb">
+
+@if (CultureInfo.CurrentUICulture.Name == "fa-IR")
+{
+    <img src="~/gallery/setting/@Model.LogoFa" class="img-fluid" alt="TakapoTeb">
+
+
+}
+else
+{
+    <img src="~/gallery/setting/@Model.LogoEn" class="img-fluid" alt="TakapoTeb">
+
+}

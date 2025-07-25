@@ -2,7 +2,8 @@
 
 public sealed record FooterInformationViewModel
 {
-    public string? BottomLogoPath { get; set; }
+    public string? BottomLogoPathEn { get; set; }
+    public string? BottomLogoPathFa { get; set; }
     public string? Linkedin { get; set; }
     public string? Instagram { get; set; }
     public string? WhatsApp { get; set; }

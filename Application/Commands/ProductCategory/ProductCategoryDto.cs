@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.ProductCategory;
 
-public sealed record ProductCategoryDto
+public sealed record ProductCategoryDto:IValidatableObject
 {
     public Guid Id { get; set; }
     public Guid? ParentProductCategoryId { get; set; }
@@ -20,4 +20,16 @@ public sealed record ProductCategoryDto
     [Required(ErrorMessage = "عنوان انگلیسی الزامی است")]
     public string? TitleEn { get; set; }
     public string? DescriptionEn { get; set; }
+
+    public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+    {
+        var results = new List<ValidationResult>();
+
+        if (string.IsNullOrEmpty(ImagePath) && ImageFile is null)
+        {
+            results.Add(new ValidationResult("تصویر را آپلود نمائید", new[] { nameof(ImageFile) }));
+
+        }
+        return results;
+    }
 }

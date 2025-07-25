@@ -17,6 +17,10 @@ internal sealed class IndertPartnerHandler :
         CancellationToken cancellationToken)
     {
         PartnerEntity partner = new();
+        partner.DescriptionEn = request.Partner.DescriptionEn;
+        partner.DescriptionFa = request.Partner.DescriptionFa;
+        partner.TitleEn = request.Partner.TitleEn;
+        partner.TitleFa = request.Partner.TitleFa;
         partner.Link = request.Partner.Link;
         partner.LogoPath = request.Partner!.File!.UploadImage("partner");
         await _partnerRepository.InsertAsync(partner, cancellationToken);

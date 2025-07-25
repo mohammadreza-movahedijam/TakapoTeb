@@ -24,7 +24,8 @@ internal sealed class GetFooterInformationHandler :
         IQueryable<SettingEntity> query = _settingEntityRepository.GetByQuery();
         FooterInformationViewModel? model = await query.Select(s => new FooterInformationViewModel()
         {
-            BottomLogoPath=s.BottomLogoPath,
+            BottomLogoPathEn=s.BottomLogoPathEn,
+            BottomLogoPathFa=s.BottomLogoPathFa,
             DescriptionFa = s.DescriptionFa,
             DescriptionEn = s.DescriptionEn,
             Instagram =s.Instagram,

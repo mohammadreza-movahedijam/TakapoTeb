@@ -2,5 +2,6 @@
 
 public sealed record LogoViewModel
 {
-    public string? Logo { get; set; }
+    public string? LogoEn { get; set; }
+    public string? LogoFa { get; set; }
 }

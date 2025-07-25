@@ -1,4 +1,5 @@
 using Application.Commands.Message;
+using Application.Queries.Partner;
 using Application.Queries.Search;
 using Application.Queries.Setting;
 using Application.Queries.Setting.ViewModels;
@@ -103,5 +104,15 @@ public class HomeController : Controller
         return View();
     }
 
-   
+    [HttpGet]
+    [Route("/Partner/{Id}")]
+    public async Task<IActionResult> Partner(Guid Id)
+    {
+        PartnerDetailViewModel partnerDetail=
+            await _mediator.Send(new GetPartnerDetailQuery()
+            {
+                Id=Id
+            });
+        return View(partnerDetail);
+    }
 }

@@ -19,7 +19,8 @@ internal sealed class GetLogoHandler :
         IQueryable<SettingEntity> query = _repository.GetByQuery();
         LogoViewModel? model = await query.Select(s => new LogoViewModel()
         {
-            Logo = s.TopLogoPath
+            LogoEn = s.TopLogoPathEn,
+            LogoFa = s.TopLogoPathFa
         }).FirstOrDefaultAsync();
         return model!;
     }

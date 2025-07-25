@@ -2,6 +2,7 @@
 
 public class TreatmentCenterEntity:BaseEntity,IDelete
 {
+    public string? Image {  get; set; }
     public string? TitleFa { get; set; }
     public string? DescriptionFa { get; set; }
 

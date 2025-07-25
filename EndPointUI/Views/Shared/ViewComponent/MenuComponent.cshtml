@@ -10,10 +10,10 @@
             <li class="has-submenu mx-3" dir="ltr">
                 <a asp-controller="Category" asp-action="Detail" asp-route-pattern="@item.Id">
                     @item.TitleEn
-                    @if (item.SubCategories != null && item.SubCategories!.Any())
+                  @*   @if (item.SubCategories != null && item.SubCategories!.Any())
                     {
-                        @* <i class="fas fa-chevron-down"></i> *@
-                    }
+                        <i class="fas fa-chevron-down"></i>
+                    } *@
                 </a>
                 @if (item.SubCategories!=null && item.SubCategories!.Any())
                 {
@@ -29,10 +29,11 @@
         {
             <li class="has-submenu mx-3">
                 <a asp-controller="Category" asp-action="Detail" asp-route-pattern="@item.Id">
-                    @item.TitleFa  @if (item.SubCategories != null && item.SubCategories!.Any())
+                    @item.TitleFa  
+                  @*   @if (item.SubCategories != null && item.SubCategories!.Any())
                     {
-                        @* <i class="fas fa-chevron-down"></i> *@
-                    }
+                        <i class="fas fa-chevron-down"></i>
+                    } *@
                 </a>
                 @if (item.SubCategories != null && item.SubCategories!.Any())
                 {

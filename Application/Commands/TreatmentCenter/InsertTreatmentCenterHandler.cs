@@ -2,6 +2,7 @@
 using MediatR;
 using Domain.Entities.Product;
 using Mapster;
+using Application.Common.Extension;
 
 namespace Application.Commands.TreatmentCenter;
 
@@ -18,6 +19,12 @@ internal sealed class InsertTreatmentCenterHandler :
     {
         TreatmentCenterEntity treatmentCenter =
             request.TreatmentCenter.Adapt<TreatmentCenterEntity>();
+
+        if (request.TreatmentCenter!.ImageFile is not null)
+        {
+            treatmentCenter.Image = request.TreatmentCenter.ImageFile.UploadImage("TreatmentCenter");
+        }
+
         await _treatmentCenterRepository.
             InsertAsync(treatmentCenter,cancellationToken);
     }

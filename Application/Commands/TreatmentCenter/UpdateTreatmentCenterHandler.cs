@@ -1,4 +1,5 @@
-﻿using Application.Contract;
+﻿using Application.Common.Extension;
+using Application.Contract;
 using Domain.Entities.Product;
 using Mapster;
 using MediatR;
@@ -31,6 +32,14 @@ internal sealed class UpdateTreatmentCenterHandler :
             throw new InternalException(CustomMessage.NotFoundOnDb);
         }
         request.TreatmentCenter.Adapt(treatmentCenter);
+
+        if (request.TreatmentCenter!.ImageFile is not null)
+        {
+            treatmentCenter.Image =
+                request.TreatmentCenter.ImageFile.UploadImage("News");
+            request.TreatmentCenter.ImagePath!.RemoveImage("News");
+        }
+
         await _treatmentCenterRepository.UpdateAsync(treatmentCenter, cancellationToken);
 
     }

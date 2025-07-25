@@ -95,7 +95,8 @@ public static class FileProcessing
             await file.CopyToAsync(memoryStream);
             byte[] fileBytes = memoryStream.ToArray();
             string fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
-            string folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "files", folder);
+            string folderPath = Path.Combine(Directory.GetCurrentDirectory(), 
+                "wwwroot", "files", folder);
             byte[] fileSignature = fileBytes.Take(4).ToArray();
             string extension = Path.GetExtension(fileName).ToLower();
 
@@ -144,6 +145,34 @@ public static class FileProcessing
             throw new InternalException(ExceptionUpload);
 
           
+        }
+    }
+
+
+    public static void RemoveFile(this string fileName, string folder, string? defualt = null)
+    {
+        if (string.IsNullOrEmpty(fileName))
+        {
+            return;
+        }
+        if (!string.IsNullOrEmpty(defualt) && fileName == defualt)
+        {
+            return;
+        }
+
+        string folderPath = Path.Combine(Directory.GetCurrentDirectory(),
+            "wwwroot", "files", folder);
+
+        string path = Path.Combine(folderPath, fileName);
+
+        if (File.Exists(path))
+        {
+            File.Delete(path);
+            return;
+        }
+        else
+        {
+            throw new InternalException(PathError);
         }
     }
 }

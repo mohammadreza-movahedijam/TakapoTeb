@@ -5,10 +5,18 @@ namespace Application.Commands.Setting;
 public sealed record SettingDto
 {
 
-    public IFormFile? TopLogoFile { get; set; }
-    public IFormFile? BottomLogoFile { get; set; }
-    public string? TopLogoPath { get; set; }
-    public string? BottomLogoPath { get; set; }
+    public IFormFile? TopLogoFileEn { get; set; }
+    public IFormFile? BottomLogoFileEn { get; set; }
+    public string? TopLogoPathEn { get; set; }
+    public string? BottomLogoPathEn { get; set; }
+
+    public IFormFile? TopLogoFileFa { get; set; }
+    public IFormFile? BottomLogoFileFa { get; set; }
+    public string? TopLogoPathFa { get; set; }
+    public string? BottomLogoPathFa { get; set; }
+
+
+
     public string? WorkingHoursFa { get; set; }
     public string? WorkingHoursEn { get; set; }
     public string? Linkedin { get; set; }

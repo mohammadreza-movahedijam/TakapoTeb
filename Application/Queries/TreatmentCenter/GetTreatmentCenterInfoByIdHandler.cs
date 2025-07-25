@@ -27,6 +27,7 @@ internal sealed class GetTreatmentCenterInfoByIdHandler :
             .Select(s=>new TreatmentCenterInfoViewModel()
             {
                 Id = s.Id,
+                Image = s.Image,
                 DescriptionEn   = s.DescriptionEn,
                 DescriptionFa = s.DescriptionFa,
                 PhoneNumber = s.PhoneNumber,

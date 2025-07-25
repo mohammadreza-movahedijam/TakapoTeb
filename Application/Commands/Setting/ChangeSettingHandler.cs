@@ -23,18 +23,39 @@ internal sealed class ChangeSettingHandler :
         SettingEntity? setting = await query.FirstOrDefaultAsync();
 
         request.Setting.Adapt(setting);
-        if (request.Setting.BottomLogoFile != null) 
+        if (request.Setting.BottomLogoFileFa != null) 
         {
-            setting!.BottomLogoPath = request.Setting.BottomLogoFile.UploadImage("setting");
-            request.Setting.BottomLogoPath!.RemoveImage("setting");
+            setting!.BottomLogoPathFa = request.Setting.BottomLogoFileFa.UploadImage("setting");
+            request.Setting.BottomLogoPathFa!.RemoveImage("setting");
         }
 
-        if (request.Setting.TopLogoFile != null)
+        if (request.Setting.TopLogoFileFa != null)
         {
-            setting!.TopLogoPath = request.Setting.TopLogoFile.UploadImage("setting");
-            request.Setting.TopLogoPath!.RemoveImage("setting");
+            setting!.TopLogoPathFa = request.Setting.TopLogoFileFa.UploadImage("setting");
+            request.Setting.TopLogoPathFa!.RemoveImage("setting");
         }
-        
+
+
+        if (request.Setting.BottomLogoFileEn != null)
+        {
+            setting!.BottomLogoPathEn = request.Setting.BottomLogoFileEn.UploadImage("setting");
+            request.Setting.BottomLogoPathEn!.RemoveImage("setting");
+        }
+
+        if (request.Setting.TopLogoFileEn != null)
+        {
+            setting!.TopLogoPathEn = request.Setting.TopLogoFileEn.UploadImage("setting");
+            request.Setting.TopLogoPathEn!.RemoveImage("setting");
+        }
+
+
+
+
+
+
+
+
+
         if (request.Setting.AboutImageFile != null)
         {
             setting!.AboutImagePath = request.Setting.AboutImageFile.UploadImage("setting");

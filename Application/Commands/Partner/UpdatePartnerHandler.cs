@@ -23,6 +23,11 @@ internal sealed class UpdatePartnerHandler :
             throw new InternalException(CustomMessage.NotFoundOnDb);
         }
         partner.Link = request.Partner.Link;
+        partner.DescriptionEn= request.Partner.DescriptionEn;
+        partner.DescriptionFa= request.Partner.DescriptionFa;
+        partner.TitleEn= request.Partner.TitleEn;
+        partner.TitleFa= request.Partner.TitleFa;
+
         if (request.Partner.File is not null)
         {
             partner.LogoPath = request.Partner!.File!.UploadImage("partner");

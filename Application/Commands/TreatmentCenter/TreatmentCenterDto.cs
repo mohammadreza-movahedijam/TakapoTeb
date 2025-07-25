@@ -1,9 +1,12 @@
-﻿namespace Application.Commands.TreatmentCenter;
+﻿using Microsoft.AspNetCore.Http;
+
+namespace Application.Commands.TreatmentCenter;
 
 public sealed record TreatmentCenterDto
 {
     public Guid Id { get; set; }
-
+    public string? ImagePath { get; set; }
+    public IFormFile? ImageFile { get; set; }
     public string? TitleFa { get; set; }
     public string? DescriptionFa { get; set; }
 

@@ -67,7 +67,15 @@
             <form asp-area="Admin" asp-controller="TreatmentCenter"
                   enctype="multipart/form-data"
                   asp-action="Create" method="post" class="card-body">
-
+                <div class="row">
+                    <div class="col-12">
+                        <img id="imagePath_1" width="100" height="80" src="~/Gallery/default.jpg" />
+                    </div>
+                    <div class="col-3">
+                        <label class="form-label">تصویر</label>
+                        <input asp-for="ImageFile" onchange="ChangeImage(this,1)" class="form-control" type="file" />
+                    </div>
+                </div>
               
                 <div>
                     <label class="form-label">نام فارسی </label>

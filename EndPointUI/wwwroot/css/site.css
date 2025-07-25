@@ -414,3 +414,16 @@ body {
     -webkit-box-orient: vertical;
     height: 70px !important;
 }
+.custom-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999; /* برای اینکه همیشه در بالای دیگر المان‌ها باشد */
+    display: block;
+    unicode-bidi: isolate;
+}
+.mg-t-70 {
+    margin-top: 70px; 
+}.mg-t-100 {
+    margin-top: 100px !important; 
+}

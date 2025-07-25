@@ -9,4 +9,31 @@
 
 <script src="~/js/signalr.js"></script>
 <script src="~/js/signalr-service.js"></script>
+<script src="~/js/sweetalert.js"></script>
+<script>
 
+    async function Search(direction) {
+        const isRTL = direction === "rtl";
+
+        const { value: text } = await Swal.fire({
+            title: isRTL ? "جستجو در سایت" : "Search In Site",
+            input: "text",
+            inputValue: "", // مقدار اولیه دلخواه
+            showCancelButton: true,
+            cancelButtonText: isRTL ? "انصراف" : undefined,
+            confirmButtonText: isRTL ? "جستجو" : undefined,
+            inputValidator: (value) => {
+                if (!value) {
+                    return isRTL ? "عبارتی وارد نشده!" : "You need to write something!";
+                }
+            }
+        });
+
+        if (text) {
+            location.href = "/Search?text=" + text;
+           
+        }
+    }
+
+   
+</script>

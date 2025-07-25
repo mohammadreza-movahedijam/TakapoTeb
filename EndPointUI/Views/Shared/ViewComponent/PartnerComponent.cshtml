@@ -8,7 +8,10 @@
             {
                 <!-- استفاده از کلاس استاندارد swiper-slide -->
                 <div class="swiper-slide-partner swiper-slide">
+                    <a asp-controller="Home" asp-action="Partner" asp-route-Id="@item.Id">
+
                     <img src="~/gallery/partner/@item.LogoPath" alt="Partner Logo" />
+                    </a>
                 </div>
             }
         </div>
