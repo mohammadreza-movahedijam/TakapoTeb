@@ -115,4 +115,18 @@ public class HomeController : Controller
             });
         return View(partnerDetail);
     }
+
+
+
+
+
+    [HttpGet]
+    [Route("Request-Education")]
+    public IActionResult RequestEducation() => View();
+
+
+    [Route("Request-Service")]
+    [HttpGet]
+    public IActionResult RequestService() => View();
+  
 }

@@ -1,0 +1,96 @@
+﻿@{
+    string title = CultureInfo.CurrentUICulture.Name == "en-US" ? "Request Education" : "درخواست آموزش";
+    string dir = CultureInfo.CurrentUICulture.Name == "en-US" ? "ltr" : "rtl";
+    ViewData["Title"] = title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row mg-t-100">
+    <div class="col-xl-8 col-lg-8 col-sm-12 col-md-12 offset-xl-2 offset-lg-2">
+        <div class="card" dir="@dir">
+            <div class="card-header">
+                <h3>@title</h3>
+            </div>
+            <div class="card-body row">
+
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 mt-3">
+                    <label> @Localizer["Center"]</label>
+                    <input type="text" class="form-control" />
+                </div>
+
+
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 mt-3">
+                    <label> @Localizer["FullName"]</label>
+                    <input type="text" class="form-control" />
+                </div>
+
+
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 mt-3">
+                    <label> @Localizer["Mobile"]</label>
+                    <input type="text" class="form-control" />
+                </div>
+
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 mt-3">
+                    <label> @Localizer["DeviceName"]</label>
+                    <input type="text" class="form-control" />
+                </div>
+
+
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 mt-3">
+                    <label> @Localizer["DeviceSerialNumber"]</label>
+                    <input type="text" class="form-control" />
+                </div>
+
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 mt-3">
+                  
+                    <label> @Localizer["EducationType"]</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" checked>
+                        <label class="form-check-label">
+                            @Localizer["InitialTraining"]
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" checked>
+                        <label class="form-check-label">
+                            @Localizer["Retraining"]
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios">
+                        <label class="form-check-label">
+                            @Localizer["FurtherTraining"]
+                        </label>
+                    </div>
+                </div>
+
+               
+                <div class="col-12 mt-3">
+                    <label>@Localizer["Description"] </label>
+                    <textarea class="form-control" rows="4"></textarea>
+                </div>
+
+
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 mt-3">
+                    <div class="form-group">
+                        <label>@Localizer["FileAttachment"] </label>
+                        <input type="file" class="form-control-file" />
+                    </div>
+                </div>
+
+
+             
+
+
+
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-sm btn-primary text-white">
+                    @Localizer["btn"]
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

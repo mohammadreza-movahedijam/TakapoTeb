@@ -20,8 +20,8 @@
             input: "text",
             inputValue: "", // مقدار اولیه دلخواه
             showCancelButton: true,
-            cancelButtonText: isRTL ? "انصراف" : undefined,
-            confirmButtonText: isRTL ? "جستجو" : undefined,
+            cancelButtonText: isRTL ? "انصراف" : "Cancel",
+            confirmButtonText: isRTL ? "جستجو" : "Search",
             inputValidator: (value) => {
                 if (!value) {
                     return isRTL ? "عبارتی وارد نشده!" : "You need to write something!";
