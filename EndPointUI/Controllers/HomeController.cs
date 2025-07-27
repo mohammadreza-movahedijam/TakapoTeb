@@ -1,4 +1,6 @@
 using Application.Commands.Message;
+using Application.Commands.RequestEducation;
+using Application.Commands.RequestService;
 using Application.Queries.Partner;
 using Application.Queries.Search;
 using Application.Queries.Setting;
@@ -128,5 +130,60 @@ public class HomeController : Controller
     [Route("Request-Service")]
     [HttpGet]
     public IActionResult RequestService() => View();
-  
+
+
+
+
+
+    [HttpPost]
+    [Route("SendRequestEducation")]
+    public async Task<IActionResult> SendRequestEducation
+        (RequestEducationDto requestEducation)
+    {
+        try
+        {
+            await _mediator!.Send(new InsertRequestEducationCommand(){
+                RequestEducation= requestEducation
+            });
+            return new JsonResult(new
+            {
+                IsSuccess = true
+            });
+
+        }
+        catch (Exception ex) 
+        {
+            return new JsonResult(new
+            {
+                IsSuccess=false
+            });
+        }
+    }
+
+    [HttpPost]
+    [Route("SendRequestService")]
+    public async Task<IActionResult> SendRequestService
+       (RequestServiceDto requestService)
+    {
+        try
+        {
+            await _mediator!.Send(new InsertRequestServiceCommand()
+            {
+                RequestService = requestService
+            });
+            return new JsonResult(new
+            {
+                IsSuccess = true
+            });
+
+        }
+        catch (Exception ex)
+        {
+            return new JsonResult(new
+            {
+                IsSuccess = false
+            });
+        }
+    }
+
 }

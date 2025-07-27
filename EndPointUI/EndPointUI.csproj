@@ -8,11 +8,13 @@
 
   <ItemGroup>
     <Content Remove="wwwroot\js\productDetail.js" />
+    <Content Remove="wwwroot\js\request.js" />
     <Content Remove="wwwroot\js\treatmentCenter.js" />
   </ItemGroup>
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="wwwroot\js\productDetail.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\request.js" />
     <_ContentIncludedByDefault Remove="wwwroot\js\treatmentCenter.js" />
   </ItemGroup>
 
@@ -38,6 +40,7 @@
 
   <ItemGroup>
     <None Include="wwwroot\js\productDetail.js" />
+    <None Include="wwwroot\js\request.js" />
     <None Include="wwwroot\js\treatmentCenter.js" />
   </ItemGroup>
 

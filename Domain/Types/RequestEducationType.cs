@@ -10,9 +10,9 @@ namespace Domain.Types;
 public enum RequestEducationType
 {
     [Display(Name ="آموزش اولیه")]
-    Primary,
+    Primary=0,
     [Display(Name = "آموزش مجدد")]
-    Repeated,
+    Repeated=1,
     [Display(Name = "آموزش تکمیلی")]
-    Complete
+    Complete=2
 }

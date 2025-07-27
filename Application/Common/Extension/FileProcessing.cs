@@ -14,7 +14,7 @@ public static class FileProcessing
     
     #region Format
     static string[] _allowedExtensions 
-        = { ".pdf", ".txt", ".doc", ".docx", ".xlsx" };
+        = { ".pdf", ".txt", ".doc", ".docx", ".xlsx",".webp",".png",".jpeg",".jpg" };
     #endregion
 
     #region Message
