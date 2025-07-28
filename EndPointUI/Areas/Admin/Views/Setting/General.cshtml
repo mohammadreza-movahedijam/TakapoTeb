@@ -306,7 +306,173 @@
                 <input type="hidden" asp-for="BottomLogoPathFa" />
                 <input type="hidden" asp-for="TopLogoPathFa" />
 
+                <div style="background-color:#eeeeee" class="accordion-item card border rounded-3 p-3 mt-5">
+                    <h2 class="accordion-header">
+                        <button type="button" class="accordion-button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#accordionStyle1-1" aria-expanded="true">
+                           منو پابرگ
+                        </button>
+                        <hr />
+                    </h2>
 
+                    <div id="accordionStyle1-1" class="accordion-collapse collapse " data-bs-parent="#accordionStyle1" style="">
+                        <div class="accordion-body ">
+
+                           <div class="row">
+                                <div class="col-3">
+                                    <label>عنوان ستون اول (فارسی)</label>
+                                    <input type="text" asp-for="ColumnOneTitleFa" class="form-control"/>
+                                </div>
+                                <div class="col-3">
+                                    <label>عنوان ستون اول (انگلیسی)</label>
+                                    <input type="text" asp-for="ColumnOneTitleEn" class="form-control" />
+                                </div>
+
+
+                                <div class="col-3">
+                                    <label>عنوان ستون دوم (فارسی)</label>
+                                    <input type="text" asp-for="ColumnTwoTitleFa" class="form-control" />
+                                </div>
+                                <div class="col-3">
+                                    <label>عنوان ستون دوم (انگلیسی)</label>
+                                    <input type="text" asp-for="ColumnTwoTitleEn" class="form-control" />
+                                </div>
+
+                           </div>
+
+                            <div class="row mt-3">
+                                <div class="col-3">
+                                    <label>عنوان فارسی آیتم اول (فارسی)</label>
+                                    <input type="text" asp-for="ColumnOneItemOneTitleFa" class="form-control" />
+                                </div>
+                                <div class="col-3">
+                                    <label>عنوان فارسی آیتم اول (انگلیسی)</label>
+                                    <input type="text" asp-for="ColumnOneItemOneTitleEn" class="form-control" />
+                                </div>
+
+                                <div class="col-3">
+                                    <label>عنوان فارسی آیتم اول (فارسی)</label>
+                                    <input type="text" asp-for="ColumnTwoItemOneTitleFa" class="form-control" />
+                                </div>
+                                <div class="col-3">
+                                      <label>عنوان فارسی آیتم اول (انگلیسی)</label>
+                                    <input type="text" asp-for="ColumnTwoItemOneTitleEn" class="form-control" />
+                                </div>
+
+                                <div class="col-6 mt-2">
+                                    <label>لینک آیتم اول</label>
+                                    <input type="text" asp-for="ColumnOneItemOneLink" class="form-control" />
+                                </div>
+                                <div class="col-6  mt-2">
+                                    <label>لینک آیتم اول</label>
+                                    <input type="text" asp-for="ColumnTwoItemOneLink" class="form-control" />
+                                </div>
+
+                            </div>
+
+
+                            <div class="row mt-3">
+                                <div class="col-3">
+                                    <label>عنوان فارسی آیتم دوم (فارسی)</label>
+                                    <input type="text" asp-for="ColumnOneItemTwoTitleFa" class="form-control" />
+                                </div>
+                                <div class="col-3">
+                                    <label>عنوان فارسی آیتم دوم (انگلیسی)</label>
+                                    <input type="text" asp-for="ColumnOneItemTwoTitleEn" class="form-control" />
+                                </div>
+
+                                <div class="col-3">
+                                    <label>عنوان فارسی آیتم دوم (فارسی)</label>
+                                    <input type="text" asp-for="ColumnTwoItemTwoTitleFa" class="form-control" />
+                                </div>
+                                <div class="col-3">
+                                    <label>عنوان فارسی آیتم دوم (انگلیسی)</label>
+                                    <input type="text" asp-for="ColumnTwoItemTwoTitleEn" class="form-control" />
+                                </div>
+
+                                <div class="col-6 mt-2">
+                                    <label>لینک آیتم دوم</label>
+                                    <input type="text" asp-for="ColumnOneItemTwoLink" class="form-control" />
+                                </div>
+                                <div class="col-6  mt-2">
+                                    <label>لینک آیتم دوم</label>
+                                    <input type="text" asp-for="ColumnTwoItemTwoLink" class="form-control" />
+                                </div>
+
+                            </div>
+
+
+                            <div class="row mt-3">
+                                <div class="col-3">
+                                    <label>عنوان فارسی آیتم سوم (فارسی)</label>
+                                    <input type="text" asp-for="ColumnOneItemThreeTitleFa" class="form-control" />
+                                </div>
+                                <div class="col-3">
+                                    <label>عنوان فارسی آیتم سوم (انگلیسی)</label>
+                                    <input type="text" asp-for="ColumnOneItemThreeTitleEn" class="form-control" />
+                                </div>
+
+                                <div class="col-3">
+                                    <label>عنوان فارسی آیتم سوم (فارسی)</label>
+                                    <input type="text" asp-for="ColumnTwoItemThreeTitleFa" class="form-control" />
+                                </div>
+                                <div class="col-3">
+                                    <label>عنوان فارسی آیتم سوم (انگلیسی)</label>
+                                    <input type="text" asp-for="ColumnTwoItemThreeTitleEn" class="form-control" />
+                                </div>
+
+                                <div class="col-6 mt-2">
+                                    <label>لینک آیتم سوم</label>
+                                    <input type="text" asp-for="ColumnOneItemThreeLink" class="form-control" />
+                                </div>
+                                <div class="col-6  mt-2">
+                                    <label>لینک آیتم سوم</label>
+                                    <input type="text" asp-for="ColumnTwoItemThreeLink" class="form-control" />
+                                </div>
+
+                            </div>
+
+                            <div class="row mt-3">
+                                <div class="col-3">
+                                    <label>عنوان فارسی آیتم چهارم (فارسی)</label>
+                                    <input type="text" asp-for="ColumnOneItemFourTitleFa" class="form-control" />
+                                </div>
+                                <div class="col-3">
+                                    <label>عنوان فارسی آیتم چهارم (انگلیسی)</label>
+                                    <input type="text" asp-for="ColumnOneItemFourTitleEn" class="form-control" />
+                                </div>
+
+                                <div class="col-3">
+                                    <label>عنوان فارسی آیتم چهارم (فارسی)</label>
+                                    <input type="text" asp-for="ColumnTwoItemFourTitleFa" class="form-control" />
+                                </div>
+                                <div class="col-3">
+                                    <label>عنوان فارسی آیتم چهارم (انگلیسی)</label>
+                                    <input type="text" asp-for="ColumnTwoItemFourTitleEn" class="form-control" />
+                                </div>
+
+                                <div class="col-6 mt-2">
+                                    <label>لینک آیتم چهارم</label>
+                                    <input type="text" asp-for="ColumnOneItemFourLink" class="form-control" />
+                                </div>
+                                <div class="col-6  mt-2">
+                                    <label>لینک آیتم چهارم</label>
+                                    <input type="text" asp-for="ColumnTwoItemFourLink" class="form-control" />
+                                </div>
+
+                            </div>
+
+
+
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
 
 
 
