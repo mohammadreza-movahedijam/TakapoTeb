@@ -1,0 +1,106 @@
+﻿@model Application.Common.PaginatedList<Application.Queries.Request.RequestViewModel>
+
+@{
+    ViewData["Title"] = "لیست درخواست سرویس";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<nav aria-label="breadcrumb">
+    <ol class="lh-1-85 breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/Admin">پیشخوان</a>
+        </li>
+
+        <li class="breadcrumb-item active">‌لیست درخواست های سرویس‌</li>
+    </ol>
+</nav>
+
+<div class="row">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="heading-color">لیست درخواست های سرویس‌‌</h5>
+
+            <form asp-area="Admin" asp-controller="Request"
+                  asp-action="Service"
+                  method="get" class="input-group mt-3 w-25">
+                <input class="form-control form-control-sm"
+                       name="keyword" type="search"
+                       placeholder="یک عبارت جستجو کنید" value="@ViewBag.Search" />
+                <button class="btn btn-sm btn-primary" type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <a asp-area="Admin" asp-controller="Request"
+                   asp-action="Service"
+                   class="btn btn-sm btn-warning text-white">
+                    <i class="fa-solid fa-rotate-right"></i>
+                </a>
+            </form>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive text-nowrap">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>نام مرکز</th>
+                            <th>نام و نام خانوادگی</th>
+                            <th>نام دستگاه</th>
+                            <th>تاریخ ثبت درخواست</th>
+                            <th>وضعیت</th>
+                    
+                            
+
+
+                            <th>عملیات</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        @if (Model != null && Model.List!.Any())
+                        {
+                            @foreach (var item in Model.List!)
+                            {
+                                <tr id="item_@item.Id">
+
+
+                                    <td>@item.TreatmentCenterName</td>
+                                    <td>@item.FullName</td>
+                                    <td>@item.DeviceName</td>
+                                    <td>@item.CreatedAt</td>
+
+                                    <td>
+                                        @if(item.IsSeen){
+                                            <span class="badge bg-success text-white">مشاهده شده</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-warning text-white">مشاهده نشده</span>
+                                        }
+                                    </td>
+                                    <td>
+
+                                        <a class="btn btn-info btn-sm text-white"
+                                           asp-area="Admin" asp-controller="Request"
+                                           asp-action="ServiceDetail" asp-route-Id="@item.Id">
+                                            نمایش درخواست
+                                        </a>
+                                       
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer">
+
+            @if (Model!.TotalPage > 1)
+            {
+                <div id="pagination-body"
+                     data-page-index="@Model.CurentPage"
+                     data-total-pages="@Model.TotalPage"
+                     data-search="@ViewBag.Search"
+                     data-path="/Admin/Request/Service">
+                </div>
+            }
+        </div>
+    </div>
+</div>

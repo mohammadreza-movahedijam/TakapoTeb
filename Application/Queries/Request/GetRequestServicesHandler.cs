@@ -28,6 +28,7 @@ internal sealed class GetRequestServicesHandler :
             .Map(d => d.TreatmentCenterName, s => s.TreatmentCenterName)
             .Map(d => d.FullName, s => s.FullName)
             .Map(d => d.DeviceName, s => s.DeviceName)
+            .Map(d => d.IsSeen, s => s.IsSeen)
             .Map(d => d.CreatedAt, s => s.CreatedAt!.Value.PersianDateWithTime())
 
       .Compile();

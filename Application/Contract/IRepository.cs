@@ -1,6 +1,7 @@
 ﻿using Mapster;
 using System.Linq.Expressions;
 using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Contract;
 
@@ -14,6 +15,11 @@ public interface IRepository<TEntity> where TEntity : BaseEntity
 
     Task<TModel> GetAsync<TModel>(Expression<Func<TEntity, bool>>
         condition, TypeAdapterConfig? config = null, CancellationToken cancellation = default);
+     Task<List<TEntity>> GetListAsync(Expression<Func<TEntity, bool>>
+        condition,  CancellationToken cancellation = default);
+
+
+
 
     Task<TEntity?> GetAsync(Expression<Func<TEntity, bool>>
         condition, CancellationToken cancellation = default);
@@ -35,5 +41,6 @@ public interface IRepository<TEntity> where TEntity : BaseEntity
 
     IQueryable<TEntity> GetByQuery();
 
+    DbSet<TEntity> SetEntity();
 
 }

@@ -111,4 +111,15 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEnti
         _context.Remove(entity!);
         await SaveChanges(cancellation);
     }
+
+    public async Task<List<TEntity>> GetListAsync(Expression<Func<TEntity, bool>> 
+        condition, CancellationToken cancellation = default)
+    {
+        return await _context.Set<TEntity>().Where(condition).ToListAsync();
+    }
+
+    public DbSet<TEntity> SetEntity()
+    {
+      return _context.Set<TEntity>();
+    }
 }

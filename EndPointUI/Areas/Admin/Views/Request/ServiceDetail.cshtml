@@ -1,0 +1,97 @@
+﻿@using Application.Queries.Request
+@model RequestServiceDetailViewModel
+@{
+    ViewData["Title"] = "جزئیات درخواست";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<nav aria-label="breadcrumb">
+    <ol class="lh-1-85 breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/Admin">پیشخوان</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a href="/Admin/Request/Service">لیست درخواست های سرویس</a>
+        </li>
+        <li class="breadcrumb-item active">‌‌جزئیات درخواست سرویس</li>
+    </ol>
+</nav>
+<div class="row">
+    <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 offset-xl-2 offset-xl-2" >
+        <div class="card">
+            <div class="card-header">
+                <h4>@Model.TreatmentCenterName</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                   
+                    <tbody>
+                        <tr>
+                            <td>نام مرکز:</td>
+                            <td>@Model.TreatmentCenterName</td>
+                        </tr>
+
+                         <tr>
+                            <td>نام و نام خانوادگی :</td>
+                            <td>@Model.FullName</td>
+                        </tr>
+
+                         <tr>
+                            <td> موبایل:</td>
+                            <td>@Model.Mobile</td>
+                        </tr>
+
+                         <tr>
+                            <td> نام دستگاه:</td>
+                            <td>@Model.DeviceName</td>
+                        </tr>
+
+                         <tr>
+                            <td>سریال دستگاه:</td>
+                            <td>@Model.DeviceSerialNumber</td>
+                        </tr>
+                         <tr>
+                            <td>نوع سرویس:</td>
+                            <td>@Model.RequestType</td>
+                        </tr>  
+                        <tr>
+                            <td>تاریخ ثبت:</td>
+                            <td>@Model.CreatedAt</td>
+                        </tr>
+                         <tr>
+                            <td>توضیحات:</td>
+                            <td>@Model.CreatedAt</td>
+                        </tr>
+                        @if (Model.Files !=null&& Model.Files!.Any())
+                        {
+                            <tr>
+                                <td>پیوست:</td>
+                                <td>
+                                    @for(int i = 1; i < Model.Files.Count; i++)
+                                    {
+                                        <a href="/files/RequestService/@Model.Files[i]">دانلود فایل پیوستی @(i+1)</a><br/>
+                                    }
+
+                                </td>
+                            </tr>
+                        }
+
+
+
+
+
+
+
+
+
+                        
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <a asp-area="Admin"
+                   asp-controller="Request"
+                   asp-action="Service">بازگشت</a>
+            </div>
+        </div>
+    </div>
+</div>
