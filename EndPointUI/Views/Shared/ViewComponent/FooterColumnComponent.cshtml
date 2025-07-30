@@ -1,0 +1,88 @@
+﻿@using Application.Queries.Setting.ViewModels
+@model FooterColumnViewModel
+
+<div class="col-lg-3 col-md-6">
+    <div class="footer-widget footer-menu">
+        <h2 class="footer-title">
+            @(CultureInfo.CurrentUICulture.Name == "en-US" ? Model.ColumnOneTitleEn : Model.ColumnOneTitleFa)
+        </h2>
+        <ul>
+            <li>
+                <a href="@(Model.ColumnOneItemOneLink)">
+                    @(CultureInfo.CurrentUICulture.Name == "en-US" ? 
+                        Model.ColumnOneItemOneTitleEn : Model.ColumnOneItemOneTitleFa)
+
+                </a>
+            </li>
+            <li>
+                <a href="@(Model.ColumnOneItemTwoLink)">
+                    @(CultureInfo.CurrentUICulture.Name == "en-US" ?
+                        Model.ColumnOneItemTwoTitleEn : Model.ColumnOneItemTwoTitleFa)
+
+                </a>
+            </li>
+
+
+
+            <li>
+                <a href="@(Model.ColumnOneItemThreeLink)">
+                    @(CultureInfo.CurrentUICulture.Name == "en-US" ?
+                        Model.ColumnOneItemThreeTitleEn : Model.ColumnOneItemThreeTitleFa)
+
+                </a>
+            </li>
+
+
+            <li>
+                <a href="@(Model.ColumnOneItemFourLink)">
+                    @(CultureInfo.CurrentUICulture.Name == "en-US" ?
+                        Model.ColumnOneItemFourTitleEn : Model.ColumnOneItemFourTitleFa)
+
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="col-lg-3 col-md-6">
+    <div class="footer-widget footer-menu">
+        <h2 class="footer-title">
+            @(CultureInfo.CurrentUICulture.Name == "en-US" ? Model.ColumnTwoTitleEn : Model.ColumnTwoTitleFa)
+        </h2>
+        <ul>
+
+            <li>
+                <a href="@(Model.ColumnTwoItemOneLink)">
+                    @(CultureInfo.CurrentUICulture.Name == "en-US" ?
+                        Model.ColumnTwoItemOneTitleEn : Model.ColumnTwoItemOneTitleFa)
+
+                </a>
+            </li>
+            <li>
+                <a href="@(Model.ColumnTwoItemTwoLink)">
+                    @(CultureInfo.CurrentUICulture.Name == "en-US" ?
+                        Model.ColumnTwoItemTwoTitleEn : Model.ColumnTwoItemTwoTitleFa)
+
+                </a>
+            </li>
+
+
+
+            <li>
+                <a href="@(Model.ColumnTwoItemThreeLink)">
+                    @(CultureInfo.CurrentUICulture.Name == "en-US" ?
+                        Model.ColumnTwoItemThreeTitleEn : Model.ColumnTwoItemThreeTitleFa)
+
+                </a>
+            </li>
+
+
+            <li>
+                <a href="@(Model.ColumnTwoItemFourLink)">
+                    @(CultureInfo.CurrentUICulture.Name == "en-US" ?
+                        Model.ColumnTwoItemFourTitleEn : Model.ColumnTwoItemFourTitleFa)
+
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

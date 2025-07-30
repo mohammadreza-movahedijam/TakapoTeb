@@ -8,44 +8,8 @@
                 <div class="col-lg-3 col-md-6">
                     @await Component.InvokeAsync("FooterInformationComponent")
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="footer-widget footer-menu">
-                        <h2 class="footer-title"> @Localizer["QuickLinks"]</h2>
-                        <ul>
-                            <li>
-                                <a asp-controller="Home" asp-action="ContactUs">@Localizer["contactus"]</a>
-                            </li>
-                            <li>
-                                <a href="About">‌@Localizer["About"]</a>
-                            </li>
-                            
-                            <li>
-                                <a asp-controller="Blog" asp-action="Index">‌@Localizer["Blog"]</a>
-                            </li>
-                           <li>
-                                <a asp-controller="News" asp-action="Index">‌@Localizer["News"]</a>
-                            </li>
-                           
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="footer-widget footer-menu">
-                        <h2 class="footer-title"> @Localizer["QuickLinks"]</h2>
-                        <ul>
-                           
-                            <li>
-                                <a asp-controller="Home" asp-action="TreatmentCenter" >‌@Localizer["TreatmentCenter"]</a>
-                            </li>  
-                            <li>
-                                <a asp-controller="Identity" asp-action="SignIn" >‌@Localizer["SignIn"]</a>
-                            </li>  
-                            <li>
-                                <a asp-controller="Identity" asp-action="signup" >‌@Localizer["signup"]</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                @await Component.InvokeAsync("FooterColumnComponent")
+              
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-widget footer-menu">
                         <h2 class="footer-title"> @Localizer["clubTitle"] </h2>
