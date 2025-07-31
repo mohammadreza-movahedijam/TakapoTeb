@@ -15,6 +15,6 @@ internal sealed class RequestServiceAttachMap :
     public void Configure(EntityTypeBuilder<RequestServiceAttachEntity>
         builder)
     {
-        builder.ToTable("RequestServiceAttach");
+        builder.ToTable("RequestServiceAttach", "dbo");
     }
 }

@@ -9,7 +9,7 @@ internal sealed class RequestEducationMap :
 {
     public void Configure(EntityTypeBuilder<RequestEducationEntity> builder)
     {
-        builder.ToTable("RequestEducation");
+        builder.ToTable("RequestEducation", "dbo");
         builder.HasMany(m => m.RequestEducationAttaches)
             .WithOne(o => o.RequestEducation)
             .HasForeignKey(f => f.RequestEducationId);

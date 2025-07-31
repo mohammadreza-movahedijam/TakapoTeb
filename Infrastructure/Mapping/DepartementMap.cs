@@ -9,7 +9,7 @@ internal sealed class DepartementMap :
 {
     public void Configure(EntityTypeBuilder<DepartementEntity> builder)
     {
-        builder.ToTable("Departement");
+        builder.ToTable("Departement", "dbo");
         builder.HasQueryFilter(f => f.IsDeleted == false);
     }
 }

@@ -1,0 +1,61 @@
+﻿@using Application.Queries.Catalog
+@model IReadOnlyList<CatalogDetailViewModel>
+@{
+    string? title = CultureInfo.CurrentUICulture.Name == "en-US" ? "Brochure" : "کاتالوگ";
+    ViewData["Title"] = title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class=" mg-t-100">
+    <div class="container-fluid mg-t-100">
+        <div class="row mg-t-100">
+            <div class="col-md-12 text-center">
+                <h3 class="mb-4">‌@title</h3>
+            </div>
+        </div>
+        <div class="row ">
+
+            @if (Model != null && Model.Any())
+            {
+                @foreach (var book in Model)
+                {
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                        <div class="card w-100">
+                            <div class="card-header">
+                                @if (CultureInfo.CurrentUICulture.Name == "en-US")
+                                {
+                                    <h3>@book.TitleEn</h3>
+                                }
+                                else
+                                {
+                                    <h3>@book.TitleFa</h3>
+                                }
+                            </div>
+                            <div class="card-body">
+                                @if (CultureInfo.CurrentUICulture.Name == "en-US")
+                                {
+                                    <p class="card-text">
+                                        @book.DescriptionEn
+                                    </p>
+                                }
+                                else
+                                {
+                                    <p class="card-text">
+                                        @book.DescriptionFa
+                                    </p>
+                                }
+
+                            </div>
+                            <div class="card-footer">
+                                <a href="~/files/Catalog/@book.FilePath" class="btn btn-sm btn-info text-white">
+                                    @(CultureInfo.CurrentUICulture.Name == "en-US" ? "Download" : "دانلود")
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>

@@ -14,7 +14,7 @@ internal sealed class FeatureMap :
 {
     public void Configure(EntityTypeBuilder<FeatureEntity> builder)
     {
-        builder.ToTable("Feature");
+        builder.ToTable("Feature", "dbo");
         builder.HasData(new FeatureEntity()
         {
             Id = Guid.Parse("b6a6e1eb-8ef7-45ea-aef9-f199b96f92a9"),

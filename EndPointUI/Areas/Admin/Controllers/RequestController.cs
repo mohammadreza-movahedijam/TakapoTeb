@@ -9,6 +9,7 @@ public class RequestController (IMediator mediator): Controller
 {
     readonly IMediator _mediator=mediator;
     [HttpGet]
+    [AdminAuthorize("Request/Service")]
     public async Task<IActionResult> Service
         ([FromQuery] Pagination pagination)
     {
@@ -21,6 +22,7 @@ public class RequestController (IMediator mediator): Controller
         return View(paginated);
     }
     [HttpGet]
+    [AdminAuthorize("Request/Service")]
     public async Task<IActionResult> ServiceDetail(Guid id)
     {
 
@@ -38,6 +40,7 @@ public class RequestController (IMediator mediator): Controller
     }
 
     [HttpGet]
+    [AdminAuthorize("Request/Education")]
     public async Task<IActionResult> Education
        ([FromQuery] Pagination pagination)
     {
@@ -50,6 +53,7 @@ public class RequestController (IMediator mediator): Controller
         return View(paginated);
     }
     [HttpGet]
+    [AdminAuthorize("Request/Education")]
     public async Task<IActionResult> EducationDetail(Guid id)
     {
         await _mediator.Publish(new UpdateSeenRequestNotification()

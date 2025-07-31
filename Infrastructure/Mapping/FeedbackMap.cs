@@ -9,7 +9,7 @@ internal sealed class FeedbackMap :
 {
     public void Configure(EntityTypeBuilder<FeedbackEntity> builder)
     {
-        builder.ToTable("Feedback");
+        builder.ToTable("Feedback", "dbo");
         builder.HasQueryFilter(f => f.IsDeleted == false);
     }
 }

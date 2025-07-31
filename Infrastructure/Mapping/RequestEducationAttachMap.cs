@@ -9,6 +9,6 @@ internal sealed class RequestEducationAttachMap :
 {
     public void Configure(EntityTypeBuilder<RequestEducationAttachEntity> builder)
     {
-        builder.ToTable("RequestEducationAttach");
+        builder.ToTable("RequestEducationAttach", "dbo");
     }
 }

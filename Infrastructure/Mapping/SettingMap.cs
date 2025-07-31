@@ -13,7 +13,7 @@ internal sealed class SettingMap : IEntityTypeConfiguration<SettingEntity>
 {
     public void Configure(EntityTypeBuilder<SettingEntity> builder)
     {
-        builder.ToTable("Setting");
+        builder.ToTable("Setting", "dbo");
         builder.HasData(new SettingEntity()
         {
             Id = Guid.Parse("b6a6e1eb-8ef7-45ea-aef9-f199b96f92a9"),

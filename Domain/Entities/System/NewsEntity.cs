@@ -17,5 +17,8 @@ public class NewsEntity : BaseEntity,IDelete
     public DateTime CreateAt { get; set; } = DateTime.Now;
     public string? ReferencesLink {set;get;}
     public TopicType TopicType { get; set; }
+
+    public NewsCategoryEntity? NewsCategory { get; set; }
+    public Guid NewsCategoryId { get; set; }
     public bool IsDeleted { get; set ; }=false;
 }

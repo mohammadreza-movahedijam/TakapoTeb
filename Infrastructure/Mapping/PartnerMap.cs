@@ -9,7 +9,7 @@ internal sealed class PartnerMap :
 {
     public void Configure(EntityTypeBuilder<PartnerEntity> builder)
     {
-        builder.ToTable("Partner");
+        builder.ToTable("Partner", "dbo");
         builder.HasQueryFilter(f => f.IsDeleted == false);
     }
 }

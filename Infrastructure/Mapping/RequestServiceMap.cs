@@ -9,7 +9,7 @@ internal sealed class RequestServiceMap :
 {
     public void Configure(EntityTypeBuilder<RequestServiceEntity> builder)
     {
-        builder.ToTable("RequestService");
+        builder.ToTable("RequestService", "dbo");
         builder.HasMany(m => m.RequestServiceAttaches)
             .WithOne(o => o.RequestService)
             .HasForeignKey(f => f.RequestServiceId);

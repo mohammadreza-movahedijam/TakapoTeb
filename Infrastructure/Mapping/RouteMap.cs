@@ -194,6 +194,41 @@ internal sealed class RouteMap : IEntityTypeConfiguration<RouteEntity>
             Order = 17
         });
 
+        builder.HasData(new RouteEntity()
+        {
+            Id = Guid.Parse("e7f43df3-5a79-4d69-b1f0-bb7badae1662"),
+            Title = "کاتالوگ و کتاب کار",
+            Icon = "<i class=\"fa fa-folder menu-icon\"></i>\r\n",
+            Url = "/Admin/Catalog",
+            Order = 18
+        });
+
+        builder.HasData(new RouteEntity()
+        {
+            Id = Guid.Parse("\r\n4c773ebb-a00b-4eb7-b275-18e67dc12ad0\r\n"),
+            Title = "درخواست آموزش",
+            Icon = "<i class=\"fa fa-graduation-cap menu-icon\"></i>\r\n",
+            Url = "/Admin/Request/Education",
+            Order = 19
+        });
+        builder.HasData(new RouteEntity()
+        {
+            Id = Guid.Parse("3bd7c475-345a-4f0f-8b6a-8001369c9101"),
+            Title = "درخواست سرویس",
+            Icon = "<i class=\"fas fa-code-pull-request menu-icon\"></i>\r\n",
+            Url = "/Admin/Request/Service",
+            Order = 20
+        });
+
+        builder.HasData(new RouteEntity()
+        {
+            Id = Guid.Parse("579d113a-ca1f-409f-a50f-7581984f8fb0"),
+            Title = "دیدگاه کاربران",
+            Icon = "<i class=\"fa fa-comment menu-icon\"></i>",
+            Url = "/Admin/Request/Service",
+            Order = 21
+        });
+
 
     }
 }

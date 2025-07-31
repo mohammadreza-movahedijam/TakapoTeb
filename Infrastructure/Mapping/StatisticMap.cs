@@ -14,7 +14,7 @@ internal sealed class StatisticMap :
 {
     public void Configure(EntityTypeBuilder<StatisticEntity> builder)
     {
-        builder.ToTable("Statistic");
+        builder.ToTable("Statistic", "dbo");
         builder.HasData(new StatisticEntity()
         {
             Id = Guid.Parse("6b067bbc-a472-4683-b1f1-bf44b3aa51f1"),

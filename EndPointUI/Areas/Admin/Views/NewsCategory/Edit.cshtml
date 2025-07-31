@@ -1,0 +1,55 @@
+﻿@model Application.Commands.NewsCategory.NewsCategoryDto
+
+@{
+    ViewData["Title"] = "ویرایش دسته بندی";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section Script {
+    <script src="~/assets/js/upload.js"></script>
+    <partial name="_ValidationScriptsPartial.cshtml" />
+}
+<nav aria-label="breadcrumb">
+    <ol class="lh-1-85 breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/Admin">پیشخوان</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a href="/Admin/NewsCategory/Index">لیست دسته بندی ها</a>
+        </li>
+
+        <li class="breadcrumb-item active">ویرایش دسته بندی </li>
+    </ol>
+</nav>
+<div class="row">
+    <div class="col-4 offset-4">
+        <div class="card mb-4">
+            <h5 class="card-header heading-color">ویرایش دسته بندی</h5>
+            <form asp-area="Admin" asp-controller="NewsCategory"
+                  enctype="multipart/form-data"
+                  asp-action="Edit" method="post" class="card-body">
+
+
+                <div>
+                    <label class="form-label">عنوان فارسی </label>
+                    <input asp-for="TitleFa" type="text" class="form-control" />
+                    <span class="text-danger" asp-validation-for="TitleFa"></span>
+                </div>
+
+
+                <div>
+                    <label class="form-label">عنوان انگلیسی </label>
+                    <input asp-for="TitleEn" type="text" class="form-control" />
+                    <span class="text-danger" asp-validation-for="TitleEn"></span>
+                </div>
+
+                <input type="hidden" asp-for="Id" />
+                <div class="mt-3">
+                    <button type="submit" class="btn btn-sm text-white btn-success">ثبت</button>
+                    <a asp-area="Admin" asp-controller="NewsCategory" asp-action="Index" class="btn btn-sm text-white btn-warning">بازگشت</a>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

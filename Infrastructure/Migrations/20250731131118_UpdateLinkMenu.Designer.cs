@@ -4,6 +4,7 @@ using Infrastructure.Configuration.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(SqlServerContext))]
-    partial class SqlServerContextModelSnapshot : ModelSnapshot
+    [Migration("20250731131118_UpdateLinkMenu")]
+    partial class UpdateLinkMenu
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -469,7 +472,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Catalog", "dbo");
+                    b.ToTable("Catalog", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.System.ChatGroupEntity", b =>
@@ -489,7 +492,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ChatGroup", "dbo");
+                    b.ToTable("ChatGroup", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.System.ChatMessageEntity", b =>
@@ -543,7 +546,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Departement", "dbo");
+                    b.ToTable("Departement", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.System.FeatureEntity", b =>
@@ -614,7 +617,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Feature", "dbo");
+                    b.ToTable("Feature", (string)null);
 
                     b.HasData(
                         new
@@ -672,7 +675,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Feedback", "dbo");
+                    b.ToTable("Feedback", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.System.MessageEntity", b =>
@@ -701,27 +704,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Message", "dbo");
-                });
-
-            modelBuilder.Entity("Domain.Entities.System.NewsCategoryEntity", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("TitleEn")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TitleFa")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("NewsCategory", "dbo");
+                    b.ToTable("Message", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.System.NewsEntity", b =>
@@ -745,9 +728,6 @@ namespace Infrastructure.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<Guid>("NewsCategoryId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("ReferencesLink")
                         .HasColumnType("nvarchar(max)");
 
@@ -762,9 +742,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("NewsCategoryId");
-
-                    b.ToTable("News", "dbo");
+                    b.ToTable("News", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.System.PartnerEntity", b =>
@@ -796,7 +774,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Partner", "dbo");
+                    b.ToTable("Partner", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.System.RequestEducationAttachEntity", b =>
@@ -815,7 +793,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("RequestEducationId");
 
-                    b.ToTable("RequestEducationAttach", "dbo");
+                    b.ToTable("RequestEducationAttach", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.System.RequestEducationEntity", b =>
@@ -853,7 +831,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("RequestEducation", "dbo");
+                    b.ToTable("RequestEducation", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.System.RequestServiceAttachEntity", b =>
@@ -872,7 +850,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("RequestServiceId");
 
-                    b.ToTable("RequestServiceAttach", "dbo");
+                    b.ToTable("RequestServiceAttach", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.System.RequestServiceEntity", b =>
@@ -910,7 +888,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("RequestService", "dbo");
+                    b.ToTable("RequestService", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.System.RouteEntity", b =>
@@ -1098,14 +1076,6 @@ namespace Infrastructure.Migrations
                             Order = 20,
                             Title = "درخواست سرویس",
                             Url = "/Admin/Request/Service"
-                        },
-                        new
-                        {
-                            Id = new Guid("579d113a-ca1f-409f-a50f-7581984f8fb0"),
-                            Icon = "<i class=\"fa fa-comment menu-icon\"></i>",
-                            Order = 21,
-                            Title = "دیدگاه کاربران",
-                            Url = "/Admin/Request/Service"
                         });
                 });
 
@@ -1270,7 +1240,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Setting", "dbo");
+                    b.ToTable("Setting", (string)null);
 
                     b.HasData(
                         new
@@ -1350,7 +1320,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Slider", "dbo");
+                    b.ToTable("Slider", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.System.StatisticEntity", b =>
@@ -1397,7 +1367,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Statistic", "dbo");
+                    b.ToTable("Statistic", (string)null);
 
                     b.HasData(
                         new
@@ -1636,17 +1606,6 @@ namespace Infrastructure.Migrations
                     b.Navigation("ChatGroup");
                 });
 
-            modelBuilder.Entity("Domain.Entities.System.NewsEntity", b =>
-                {
-                    b.HasOne("Domain.Entities.System.NewsCategoryEntity", "NewsCategory")
-                        .WithMany("News")
-                        .HasForeignKey("NewsCategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("NewsCategory");
-                });
-
             modelBuilder.Entity("Domain.Entities.System.RequestEducationAttachEntity", b =>
                 {
                     b.HasOne("Domain.Entities.System.RequestEducationEntity", "RequestEducation")
@@ -1753,11 +1712,6 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Domain.Entities.System.ChatGroupEntity", b =>
                 {
                     b.Navigation("chatMessages");
-                });
-
-            modelBuilder.Entity("Domain.Entities.System.NewsCategoryEntity", b =>
-                {
-                    b.Navigation("News");
                 });
 
             modelBuilder.Entity("Domain.Entities.System.RequestEducationEntity", b =>

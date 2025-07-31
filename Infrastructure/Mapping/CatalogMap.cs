@@ -9,7 +9,7 @@ internal sealed class CatalogMap :
 {
     public void Configure(EntityTypeBuilder<CatalogEntity> builder)
     {
-        builder.ToTable("Catalog");
+        builder.ToTable("Catalog", "dbo");
         builder.HasQueryFilter(f => f.IsDeleted == false);
     }
 }

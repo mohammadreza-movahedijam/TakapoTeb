@@ -1,6 +1,7 @@
 using Application.Commands.Message;
 using Application.Commands.RequestEducation;
 using Application.Commands.RequestService;
+using Application.Queries.Catalog;
 using Application.Queries.Partner;
 using Application.Queries.Search;
 using Application.Queries.Setting;
@@ -117,6 +118,48 @@ public class HomeController : Controller
             });
         return View(partnerDetail);
     }
+
+
+
+
+
+
+
+
+
+    [HttpGet]
+    public async Task<IActionResult> Book()
+    {
+        IReadOnlyList<CatalogDetailViewModel>
+            model = await _mediator!.Send
+            (new GetBookOrCatalogQuery()
+            {
+                Type=Domain.Types.FileType.Book,
+            });
+        return View(model);
+    }
+
+
+
+    [HttpGet]
+    public async Task<IActionResult> Catalog()
+    {
+        IReadOnlyList<CatalogDetailViewModel>
+            model = await _mediator!.Send
+            (new GetBookOrCatalogQuery()
+            {
+                Type = Domain.Types.FileType.Catalog,
+            });
+        return View(model);
+    }
+
+
+
+
+
+
+
+
 
 
 

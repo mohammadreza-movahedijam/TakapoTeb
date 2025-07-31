@@ -14,7 +14,7 @@ internal sealed class ChatGroupMap :
 {
     public void Configure(EntityTypeBuilder<ChatGroupEntity> builder)
     {
-        builder.ToTable("ChatGroup");
+        builder.ToTable("ChatGroup", "dbo");
         builder.HasMany(m => m.chatMessages)
             .WithOne(o => o.ChatGroup)
             .HasForeignKey(f => f.ChatGroupId);

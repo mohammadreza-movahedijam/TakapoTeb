@@ -8,7 +8,7 @@ internal sealed class MessageMap : IEntityTypeConfiguration<MessageEntity>
 {
     public void Configure(EntityTypeBuilder<MessageEntity> builder)
     {
-        builder.ToTable("Message");
+        builder.ToTable("Message", "dbo");
         builder.HasQueryFilter(f => f.IsDeleted == false);
     }
 }

@@ -13,7 +13,7 @@ internal sealed class NewsMap : IEntityTypeConfiguration<NewsEntity>
 {
     public void Configure(EntityTypeBuilder<NewsEntity> builder)
     {
-        builder.ToTable("News");
+        builder.ToTable("News", "dbo");
         builder.HasQueryFilter(f=>f.IsDeleted==false);
     }
 }
