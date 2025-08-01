@@ -38,7 +38,7 @@
 
 
     var swiper = new Swiper('.mySwiperFeedback', {
-        slidesPerView: 1,
+        slidesPerView: 3,
         spaceBetween: 30,
         loop: true,
         autoplay: {

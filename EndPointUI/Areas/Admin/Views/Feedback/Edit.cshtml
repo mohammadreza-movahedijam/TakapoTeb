@@ -6,6 +6,8 @@
 }
 
 @section Script {
+        <script src="~/assets/js/upload.js"></script>
+
     <partial name="_ValidationScriptsPartial.cshtml" />
 }
 <nav aria-label="breadcrumb">
@@ -38,8 +40,28 @@
 
             </div>
             <form asp-area="Admin" asp-controller="Feedback" asp-action="Edit"
-                  method="post" class="card-body">
+                  enctype="multipart/form-data" method="post" class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        @if (Model.FilePath == "default.jpg" || Model.FilePath == null)
+                        {
+                            <img id="imagePath_1" width="100" height="80"
+                                 src="~/Gallery/default.jpg" />
+                        }
+                        else
+                        {
 
+
+
+                            <img id="imagePath_1" width="100" height="80"
+                                 src="~/Gallery/Feedback/@Model.FilePath " />
+                        }
+                    </div>
+                    <div class="col-3">
+                        <label class="form-label">تصویر</label>
+                        <input accept=".jpg, .jpeg, .png, .webp" asp-for="File" onchange="ChangeImage(this,1)" class="form-control" type="file" />
+                    </div>
+                </div>
                 <div class="row">
 
                     <input type="hidden" asp-for="Id"/>

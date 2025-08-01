@@ -1,0 +1,62 @@
+﻿@model Application.Commands.Video.VideoDto
+
+@{
+    ViewData["Title"] = "ویرایش ویدئو";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section Script {
+    <partial name="_ValidationScriptsPartial.cshtml" />
+}
+<nav aria-label="breadcrumb">
+    <ol class="lh-1-85 breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/Admin">پیشخوان</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a asp-area="Admin"
+               asp-controller="Video"
+               asp-action="Index" asp-route-ProductId="@ViewBag.EventId">لیست ویدئو ها</a>
+        </li>
+
+        <li class="breadcrumb-item active">ویرایش ویدئو </li>
+    </ol>
+</nav>
+<div class="row">
+    <div class="col-4 offset-4">
+        <div class="card mb-4">
+            <h5 class="card-header heading-color">ویرایش ویدئو</h5>
+            <form asp-area="Admin" asp-controller="Video"
+                  asp-action="Edit" method="post" class="card-body">
+
+                <div>
+                    <label class="form-label">لینک آپارات </label>
+                    <input asp-for="Link" type="text" class="form-control" />
+                    <span class="text-danger" asp-validation-for="Link"></span>
+                </div>
+                <div>
+                    <label class="form-label">عنوان فارسی </label>
+                    <input asp-for="TitleFa" type="text" class="form-control" />
+                    <span class="text-danger" asp-validation-for="TitleFa"></span>
+                </div>
+
+                <div>
+                    <label class="form-label">عنوان انگلیسی </label>
+                    <input asp-for="TitleEn" type="text" class="form-control" />
+                    <span class="text-danger" asp-validation-for="TitleEn"></span>
+                </div>
+
+                <input type="hidden" asp-for="Id" value="@Model.Id" />
+                <input type="hidden" asp-for="EventId" value="@Model.EventId" />
+                <div class="mt-3">
+                    <button type="submit" class="btn btn-sm text-white btn-success">ثبت</button>
+                    <a asp-area="Admin"
+                       asp-controller="Video"
+                       asp-action="Index" asp-route-EventId="@Model.EventId"
+                       class="btn btn-sm text-white btn-warning">بازگشت</a>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

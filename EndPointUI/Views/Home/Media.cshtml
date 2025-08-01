@@ -1,0 +1,96 @@
+﻿@using Application.Queries.Event
+@model IReadOnlyList<EventDetailViewModel>
+@{
+    string dir = CultureInfo.CurrentUICulture.Name == "en-US" ? "ltr" : "rtl";
+    string? title = CultureInfo.CurrentUICulture.Name == "en-US" ? "Media" : "رسانه تکاپو طب";
+    ViewData["Title"] = title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mg-t-100">
+    <div class="row mt-5">
+        <h3 dir="@dir">@title</h3>
+        <hr />
+
+        <div class="col-lg-12 col-xl-12 col-md-12">
+            @if (Model != null && Model.Any())
+            {
+                @foreach (var item in Model)
+                {
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="doctor-widget">
+                                <div class="doc-info-left">
+
+                                    <div class="doc-info-cont" dir="@dir">
+                                        @if (CultureInfo.CurrentUICulture.Name == "en-US")
+                                        {
+                                            <h4 class="doc-name">@item.TitleEn</h4>
+                                            <p class="doc-speciality">
+                                                @item.DescriptionEn
+                                            </p>
+
+                                        }
+                                        else
+                                        {
+                                            <h4 class="doc-name">@item.TitleFa</h4>
+                                            <p class="doc-speciality">
+                                                @item.DescriptionFa
+                                            </p>
+
+                                        }
+                                        @if (item.Pictures != null && item.Pictures.Any())
+                                        {
+                                            <div class="row">
+                                            @foreach (var picture in item.Pictures)
+                                            {
+                                                <div class="feature-col">
+                                                    <div class="feature-subox d-flex flex-wrap justify-content-center">
+                                                        <img src="~/gallery/Picture/@picture.FilePath" class="img-fluid" alt="Features">
+                                                        @if (CultureInfo.CurrentUICulture.Name == "en-US")
+                                                        {
+                                                            <h4>@picture.TitleEn</h4>
+                                                        }
+                                                        else
+                                                        {
+                                                            <h4>@picture.TitleFa</h4>
+                                                        }
+                                                    </div>
+                                                </div>
+
+                                                }
+                                            </div>
+                                        }
+
+                                        @if (item.Videos != null && item.Videos.Any())
+                                        {
+                                            <div class="row">
+                                            @foreach (var video in item.Videos)
+                                            {
+                                                <div class="feature-col shadow p-2 rounded3">
+                                                    @Html.Raw(video.Link)
+
+                                                    @if (CultureInfo.CurrentUICulture.Name == "en-US")
+                                                    {
+                                                        <h4 class="mt-3">@video.TitleEn</h4>
+                                                    }
+                                                    else
+                                                    {
+                                                        <h4 class="mt-3">@video.TitleFa</h4>
+                                                    }
+                                                </div>
+
+                                                }
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>

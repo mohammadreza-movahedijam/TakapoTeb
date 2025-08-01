@@ -15,4 +15,5 @@ public sealed record FeedbackViewModel
     public string? FullNameEn { get; set; }
     public string? JobPositionEn { get; set; }
     public string? ExplanationEn { get; set; }
+    public string? FilePath { set; get; }
 }

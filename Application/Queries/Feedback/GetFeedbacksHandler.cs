@@ -27,6 +27,7 @@ internal sealed class GetFeedbacksHandler :
             .Map(d => d.FullNameFa, s => s.FullNameFa)
             .Map(d => d.JobPositionEn, s => s.JobPositionEn)
             .Map(d => d.JobPositionFa, s => s.JobPositionFa)
+            .Map(d => d.FilePath, s => s.FilePath)
             .Compile();
         IQueryable<FeedbackEntity> query = _repository.GetByQuery();
 

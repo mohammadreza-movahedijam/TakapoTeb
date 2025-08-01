@@ -1,4 +1,5 @@
-﻿using Application.Contract;
+﻿using Application.Common.Extension;
+using Application.Contract;
 using Domain.Entities.System;
 using Mapster;
 using MediatR;
@@ -24,6 +25,12 @@ internal sealed class UpdateFeedbackHandler :
         FeedbackEntity? feedback = await _repository
             .GetAsync(g => g.Id == request.Feedback.Id, cancellationToken);
         request.Feedback.Adapt(feedback);
+
+        if (request.Feedback!.File is not null)
+        {
+            feedback.FilePath = request.Feedback.File.UploadImage("Feedback");
+            request.Feedback.FilePath!.RemoveImage("Feedback");
+        }
         await _repository.UpdateAsync(feedback!, cancellationToken);
     }
 }

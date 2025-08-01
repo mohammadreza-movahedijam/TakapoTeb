@@ -2,6 +2,8 @@ using Application.Commands.Message;
 using Application.Commands.RequestEducation;
 using Application.Commands.RequestService;
 using Application.Queries.Catalog;
+using Application.Queries.Event;
+using Application.Queries.Page;
 using Application.Queries.Partner;
 using Application.Queries.Search;
 using Application.Queries.Setting;
@@ -40,6 +42,37 @@ public class HomeController : Controller
     public IActionResult Index()
     {
         return View();
+    }
+
+    [HttpGet]
+    [Route("Media")]
+    public async Task<IActionResult> Media()
+    {
+        IReadOnlyList<EventDetailViewModel> model = await _mediator!
+            .Send(new GetEventsDetailQuery());
+        return View(model);
+    }
+
+
+
+
+
+
+
+
+
+
+
+    [HttpGet]
+    [Route("Page")]
+    public async Task<IActionResult> Page(Guid Id)
+    {
+        PageDetailViewModel pageDetail=
+            await _mediator!.Send(new GetPageDetailQuery()
+            {
+                Id=Id
+            });
+        return View(pageDetail);
     }
 
     [HttpGet]

@@ -60,7 +60,7 @@
                     </div>
                     <div class="col-3">
                         <label class="form-label">تصویر</label>
-                        <input asp-for="ImageFile" onchange="ChangeImage(this,1)" class="form-control" type="file" />
+                        <input accept=".jpg, .jpeg, .png, .webp" asp-for="ImageFile" onchange="ChangeImage(this,1)" class="form-control" type="file" />
                     </div>
                 </div>
                 <div class="row">

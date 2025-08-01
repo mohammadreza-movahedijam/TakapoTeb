@@ -70,6 +70,13 @@
                              
                                     <td>
 
+                                        <a asp-area="Admin" asp-controller="Video" asp-action="Index"
+                                           asp-route-EventId="@item.Id"
+                                            class="btn btn-sm btn-info text-white">ویدئو ها</a>
+                                        <a asp-area="Admin" asp-controller="Picture" asp-action="Index"
+                                           asp-route-EventId="@item.Id"
+                                            class="btn btn-sm btn-primary text-white">تصاویر</a>
+
 
                                         <a asp-area="Admin" asp-controller="Event" asp-action="Edit"
                                            asp-route-id="@item.Id"

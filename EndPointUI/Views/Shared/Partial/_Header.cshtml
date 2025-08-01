@@ -126,7 +126,7 @@
                         @Localizer["ContactUs"]
                     </a>
                 </li>
-                
+                @await Component.InvokeAsync("PageComponent")
                 <li class=" mx-3">
                     <a asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="en-US">
                         @Localizer["Language1"]  

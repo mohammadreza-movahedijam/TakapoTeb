@@ -1,4 +1,5 @@
-﻿using Application.Contract;
+﻿using Application.Common.Extension;
+using Application.Contract;
 using Domain.Entities.System;
 using Mapster;
 using MediatR;
@@ -16,6 +17,10 @@ internal sealed class InsertFeedbackHandler :
     public async Task Handle(InsertFeedbackCommand request, CancellationToken cancellationToken)
     {
         FeedbackEntity feedbackEntity = request.Feedback.Adapt<FeedbackEntity>();
+        if (request!.Feedback!.File is not null)
+        {
+            feedbackEntity.FilePath = request.Feedback.File.UploadImage("Feedback");
+        }
         await _feedbackRepository.InsertAsync(feedbackEntity,cancellationToken);
     }
 }

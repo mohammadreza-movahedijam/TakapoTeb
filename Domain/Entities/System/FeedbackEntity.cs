@@ -2,6 +2,8 @@
 
 public class FeedbackEntity : BaseEntity,IDelete
 {
+    public string? FilePath { set; get; }
+
     public string? FullNameFa { get; set; }
     public string? JobPositionFa { get; set; }    
     public string? ExplanationFa { get; set; }

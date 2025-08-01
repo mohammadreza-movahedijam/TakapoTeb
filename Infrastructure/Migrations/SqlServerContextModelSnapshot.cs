@@ -681,6 +681,9 @@ namespace Infrastructure.Migrations
                     b.Property<string>("ExplanationFa")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("FilePath")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("FullNameEn")
                         .HasColumnType("nvarchar(max)");
 
@@ -794,6 +797,41 @@ namespace Infrastructure.Migrations
                     b.HasIndex("NewsCategoryId");
 
                     b.ToTable("News", "dbo");
+                });
+
+            modelBuilder.Entity("Domain.Entities.System.PageEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreateAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DescriptionEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DescriptionFa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsShowOnMenu")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("TitleEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleFa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Page", "dbo");
                 });
 
             modelBuilder.Entity("Domain.Entities.System.PartnerEntity", b =>
@@ -1039,7 +1077,7 @@ namespace Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("20cfd69e-b34c-4f6d-9e36-d9877239b3bb"),
-                            Icon = "<i class=\"fa-solid fa-images menu-icon\"></i>",
+                            Icon = "<i class=\"fa fa-users menu-icon\"></i>\r\n",
                             Order = 6,
                             Title = "مدیریت شرکای تجاری",
                             Url = "/Admin/Partner"
@@ -1187,6 +1225,38 @@ namespace Infrastructure.Migrations
                             Order = 24,
                             Title = "دسته بندی محصولات",
                             Url = "/Admin/ProductCategory"
+                        },
+                        new
+                        {
+                            Id = new Guid("0a007642-8260-4199-b18f-9e0a97dcfffd"),
+                            Icon = "<i class=\"fa fa-calendar menu-icon\" aria-hidden=\"true\"></i>\r\n",
+                            Order = 25,
+                            Title = "رویدادها",
+                            Url = "/Admin/Event"
+                        },
+                        new
+                        {
+                            Id = new Guid("70c72f87-6463-41fe-b751-25a2acfecaea"),
+                            Icon = "",
+                            Order = 26,
+                            Title = "ویدئوهای رویداد",
+                            Url = "/Admin/Video"
+                        },
+                        new
+                        {
+                            Id = new Guid("d2434681-faa3-4937-9bd7-fb8a7b7bd447"),
+                            Icon = "",
+                            Order = 27,
+                            Title = "تصاویر رویداد",
+                            Url = "/Admin/Picture"
+                        },
+                        new
+                        {
+                            Id = new Guid("62d1bb97-11f7-477b-892d-78d300ab77df"),
+                            Icon = "<i class=\"fa fa-file menu-icon\" aria-hidden=\"true\"></i>\r\n",
+                            Order = 28,
+                            Title = "صفحات",
+                            Url = "/Admin/Page"
                         });
                 });
 

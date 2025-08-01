@@ -1,0 +1,23 @@
+﻿@using Application.Queries.Page
+@model IReadOnlyList<PageViewModel>
+
+@if(Model!=null && Model.Any())
+{
+    @foreach(var item in Model)
+    {
+        <li>
+            @if (CultureInfo.CurrentUICulture.Name == "en-US")
+            {
+                <a asp-controller="Home" asp-action="Page" asp-route-Id="@item.Id">
+                    @item.TitleEn
+                </a>
+            }
+            else
+            {
+                <a asp-controller="Home" asp-action="Page" asp-route-Id="@item.Id">
+                    @item.TitleFa
+                </a>
+            }
+        </li>
+    }
+}

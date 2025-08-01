@@ -75,7 +75,7 @@ internal sealed class RouteMap : IEntityTypeConfiguration<RouteEntity>
         {
             Id = Guid.Parse("20cfd69e-b34c-4f6d-9e36-d9877239b3bb"),
             Title = "مدیریت شرکای تجاری",
-            Icon = "<i class=\"fa-solid fa-images menu-icon\"></i>",
+            Icon = "<i class=\"fa fa-users menu-icon\"></i>\r\n",
             Url = "/Admin/Partner",
             Order = 6
         });
@@ -256,6 +256,40 @@ internal sealed class RouteMap : IEntityTypeConfiguration<RouteEntity>
             Order = 24
         });
 
+        builder.HasData(new RouteEntity()
+        {
+            Id = Guid.Parse("0a007642-8260-4199-b18f-9e0a97dcfffd"),
+            Title = "رویدادها",
+            Icon = "<i class=\"fa fa-calendar menu-icon\" aria-hidden=\"true\"></i>\r\n",
+            Url = "/Admin/Event",
+            Order = 25
+        });
+
+        builder.HasData(new RouteEntity()
+        {
+            Id = Guid.Parse("70c72f87-6463-41fe-b751-25a2acfecaea"),
+            Title = "ویدئوهای رویداد",
+            Icon = string.Empty,
+            Url = "/Admin/Video",
+            Order = 26
+        });
+        builder.HasData(new RouteEntity()
+        {
+            Id = Guid.Parse("d2434681-faa3-4937-9bd7-fb8a7b7bd447"),
+            Title = "تصاویر رویداد",
+            Icon = string.Empty,
+            Url = "/Admin/Picture",
+            Order = 27
+        });
+
+         builder.HasData(new RouteEntity()
+        {
+            Id = Guid.Parse("62d1bb97-11f7-477b-892d-78d300ab77df"),
+            Title = "صفحات",
+            Icon = "<i class=\"fa fa-file menu-icon\" aria-hidden=\"true\"></i>\r\n",
+            Url = "/Admin/Page",
+            Order = 28
+        });
 
 
     }

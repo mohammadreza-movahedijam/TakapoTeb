@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -10,6 +11,11 @@ namespace Application.Commands.Feedback;
 public sealed record FeedbackDto
 {
     public Guid Id { get; set; }
+
+
+    public string? FilePath { set; get; }
+    public IFormFile? File { set; get; }
+
 
     [Required(ErrorMessage = "نام فارسی الزامی است")]
     public string? FullNameFa { get; set; }

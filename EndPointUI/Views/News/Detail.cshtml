@@ -3,10 +3,12 @@
 @{
     string align = CultureInfo.CurrentUICulture.Name! == "en-US" ? "ltr" : "rtl"!;
     string? title = CultureInfo.CurrentUICulture.Name! == "en-US" ? Model.TitleEn : Model.TitleFa;
-    ViewData["Title"] = "title";
+    ViewData["Title"] = title;
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-}<div class="container mg-t-100">
+}
+
+<div class="container mg-t-100">
     <div class="row mt-5" >
         <div class="col-lg-8 col-xl-8 col-md-12 offset-lg-2 offset-xl-2">
             <div class="blog-view" dir="@align">

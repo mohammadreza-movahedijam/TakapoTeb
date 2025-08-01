@@ -1,6 +1,8 @@
 ﻿@using Application.Queries.Catalog
 @model IReadOnlyList<CatalogDetailViewModel>
 @{
+    string dir = CultureInfo.CurrentUICulture.Name == "en-US" ? "ltr" : "rtl";
+
     string? title = CultureInfo.CurrentUICulture.Name == "en-US" ? "Operation Manua" : "کتاب کار";
     ViewData["Title"] = title;
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -20,7 +22,7 @@
                 @foreach (var book in Model)
                 {
                     <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                        <div class="card w-100" >
+                        <div class="card w-100" dir="@dir">
                             <div class="card-header">
                                 @if (CultureInfo.CurrentUICulture.Name == "en-US")
                                 {
