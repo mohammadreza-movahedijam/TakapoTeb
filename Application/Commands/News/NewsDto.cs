@@ -15,7 +15,8 @@ public sealed record NewsDto: IValidatableObject
     public string? TitleEn { get; set; }
     [Required(ErrorMessage = "عنوان فارسی الزامی است")]
     public string? TitleFa { get; set; }
-    public TopicType TopicType { get; set; }
+    [Required(ErrorMessage = "انتخاب دسته بندی الزامی است")]
+    public Guid NewsCategoryId { get; set; }
     [Required(ErrorMessage = "متن فارسی الزامی است")]
     public string? DescriptionEn { get; set; }
     [Required(ErrorMessage = "متن انگلیسی الزامی است")]

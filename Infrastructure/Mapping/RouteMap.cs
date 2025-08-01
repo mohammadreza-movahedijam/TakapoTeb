@@ -225,9 +225,37 @@ internal sealed class RouteMap : IEntityTypeConfiguration<RouteEntity>
             Id = Guid.Parse("579d113a-ca1f-409f-a50f-7581984f8fb0"),
             Title = "دیدگاه کاربران",
             Icon = "<i class=\"fa fa-comment menu-icon\"></i>",
-            Url = "/Admin/Request/Service",
+            Url = "/Admin/Feedback",
             Order = 21
         });
+
+         builder.HasData(new RouteEntity()
+        {
+            Id = Guid.Parse("3340131a-42eb-448e-87b8-be6f2cf0baed"),
+            Title = "دسته بندی مقالات",
+            Icon = "<i class=\"fas fa-list-alt menu-icon\"></i>\r\n",
+            Url = "/Admin/BlogCategory",
+            Order = 22
+        });
+
+        builder.HasData(new RouteEntity()
+        {
+            Id = Guid.Parse("a7a03bed-1848-4a26-b886-df2efef5271d"),
+            Title = "دسته بندی اخبار",
+            Icon = "<i class=\"fas fa-list-alt menu-icon\"></i>\r\n",
+            Url = "/Admin/NewsCategory",
+            Order = 23
+        });
+
+            builder.HasData(new RouteEntity()
+        {
+            Id = Guid.Parse("67d20d6a-cf73-4150-b9ce-0cb3bc83a8c8"),
+            Title = "دسته بندی محصولات",
+            Icon = "<i class=\"fas fa-list-alt menu-icon\"></i>\r\n",
+            Url = "/Admin/ProductCategory",
+            Order = 24
+        });
+
 
 
     }

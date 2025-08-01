@@ -73,91 +73,103 @@
             </div>
             <form asp-area="Admin" asp-controller="Setting" asp-action="General"
             method="post" class="card-body" enctype="multipart/form-data">
-                <div class="row">
-                    <div class="col-6">
-                        @if (Model.TopLogoPathEn == "default.jpg" || string.IsNullOrEmpty(Model.TopLogoPathEn))
-                        {
-                            <img id="imagePath_1" width="100" height="80"
-                                 src="~/Gallery/default.jpg" />
-                        }
-                        else
-                        {
+                <div style="background-color:#eeeeee" class="accordion-item card border rounded-3 p-3 mt-5">
+                    <h2 class="accordion-header">
+                        <button type="button" class="accordion-button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#accordionStyle1-3" aria-expanded="true">
+                           عمومی
+                        </button>
+                        <hr />
+                    </h2>
 
-
-
-                            <img id="imagePath_1" width="100" height="80"
-                                 src="~/Gallery/Setting/@Model.TopLogoPathEn " />
-                        }
-                        <br />
-                        <label class="form-label mt-2">لوگو سربرگ انگلیسی</label>
-                        <input asp-for="TopLogoFileEn" onchange="ChangeImage(this,1)" class="form-control" type="file" />
-                    </div>
-                    <div class="col-6">
-                       
-                        @if (Model.BottomLogoPathEn == "default.jpg" || string.IsNullOrEmpty(Model.BottomLogoPathEn))
-                        {
-                            <img id="imagePath_2" width="100" height="80"
-                                 src="~/Gallery/default.jpg" />
-                        }
-                        else
-                        {
-
-                            <img id="imagePath_2" width="100" height="80"
-                                 src="~/Gallery/Setting/@Model.BottomLogoPathEn " />
-                        }
-                  <br/>
-                        <label class="form-label mt-2">لوگو پابرگ انگلیسی</label>
-                        <input asp-for="BottomLogoFileEn" onchange="ChangeImage(this,2)" class="form-control" type="file" />
-                    </div>
-
-
-                </div>
-
-
-
-                <div class="row mt-4">
-                    <div class="col-6">
-                        @if (Model.TopLogoPathFa == "default.jpg" || string.IsNullOrEmpty(Model.TopLogoPathFa))
-                        {
-                            <img id="imagePath_4" width="100" height="80"
-                                 src="~/Gallery/default.jpg" />
-                        }
-                        else
-                        {
-
-
-
-                            <img id="imagePath_4" width="100" height="80"
-                                 src="~/Gallery/Setting/@Model.TopLogoPathFa " />
-                        }
-                        <br />
-                        <label class="form-label mt-2"> لوگو سربرگ فارسی</label>
-                        <input asp-for="TopLogoFileFa" onchange="ChangeImage(this,4)" class="form-control" type="file" />
-                    </div>
-                    <div class="col-6">
-                      
-                        @if (Model.BottomLogoPathFa == "default.jpg" || string.IsNullOrEmpty(Model.BottomLogoPathFa))
-                        {
-                            <img id="imagePath_5" width="100" height="80"
-                                 src="~/Gallery/default.jpg" />
-                        }
-                        else
-                        {
-
-                            <img id="imagePath_5" width="100" height="80"
-                                 src="~/Gallery/Setting/@Model.BottomLogoPathFa " />
-                        }
-                        <br />
-                        <label class="form-label mt-2">لوگو پابرگ فارسی</label>
-                        <input asp-for="BottomLogoFileFa" onchange="ChangeImage(this,5)" class="form-control" type="file" />
-                    </div>
-
-
-                </div>
+                    <div id="accordionStyle1-3" class="accordion-collapse collapse  show" data-bs-parent="#accordionStyle3" style="">
+                        <div class="accordion-body ">
 
 
 
 
+                            <div class="row">
+                                <div class="col-6">
+                                    @if (Model.TopLogoPathEn == "default.jpg" || string.IsNullOrEmpty(Model.TopLogoPathEn))
+                                    {
+                                        <img id="imagePath_1" width="100" height="80"
+                                             src="~/Gallery/default.jpg" />
+                                    }
+                                    else
+                                    {
+
+
+
+                                        <img id="imagePath_1" width="100" height="80"
+                                             src="~/Gallery/Setting/@Model.TopLogoPathEn " />
+                                    }
+                                    <br />
+                                    <label class="form-label mt-2">لوگو سربرگ انگلیسی</label>
+                                    <input asp-for="TopLogoFileEn" onchange="ChangeImage(this,1)" class="form-control" type="file" />
+                                </div>
+                                <div class="col-6">
+
+                                    @if (Model.BottomLogoPathEn == "default.jpg" || string.IsNullOrEmpty(Model.BottomLogoPathEn))
+                                    {
+                                        <img id="imagePath_2" width="100" height="80"
+                                             src="~/Gallery/default.jpg" />
+                                    }
+                                    else
+                                    {
+
+                                        <img id="imagePath_2" width="100" height="80"
+                                             src="~/Gallery/Setting/@Model.BottomLogoPathEn " />
+                                    }
+                                    <br />
+                                    <label class="form-label mt-2">لوگو پابرگ انگلیسی</label>
+                                    <input asp-for="BottomLogoFileEn" onchange="ChangeImage(this,2)" class="form-control" type="file" />
+                                </div>
+
+
+                            </div>
+
+
+
+                            <div class="row mt-4">
+                                <div class="col-6">
+                                    @if (Model.TopLogoPathFa == "default.jpg" || string.IsNullOrEmpty(Model.TopLogoPathFa))
+                                    {
+                                        <img id="imagePath_4" width="100" height="80"
+                                             src="~/Gallery/default.jpg" />
+                                    }
+                                    else
+                                    {
+
+
+
+                                        <img id="imagePath_4" width="100" height="80"
+                                             src="~/Gallery/Setting/@Model.TopLogoPathFa " />
+                                    }
+                                    <br />
+                                    <label class="form-label mt-2"> لوگو سربرگ فارسی</label>
+                                    <input asp-for="TopLogoFileFa" onchange="ChangeImage(this,4)" class="form-control" type="file" />
+                                </div>
+                                <div class="col-6">
+
+                                    @if (Model.BottomLogoPathFa == "default.jpg" || string.IsNullOrEmpty(Model.BottomLogoPathFa))
+                                    {
+                                        <img id="imagePath_5" width="100" height="80"
+                                             src="~/Gallery/default.jpg" />
+                                    }
+                                    else
+                                    {
+
+                                        <img id="imagePath_5" width="100" height="80"
+                                             src="~/Gallery/Setting/@Model.BottomLogoPathFa " />
+                                    }
+                                    <br />
+                                    <label class="form-label mt-2">لوگو پابرگ فارسی</label>
+                                    <input asp-for="BottomLogoFileFa" onchange="ChangeImage(this,5)" class="form-control" type="file" />
+                                </div>
+
+
+                            </div>
 
 
 
@@ -175,136 +187,214 @@
 
 
 
-                <div class="row">
 
-                    <div class="col-6">
-                        <label class="form-label">ساعت کاری (فارسی)</label>
-                        <input asp-for="WorkingHoursFa" type="text" class="form-control" />
-                    </div>
 
-                  <div class="col-6">
-                        <label class="form-label">ساعت کاری (انگلیسی)</label>
-                        <input asp-for="WorkingHoursEn" type="text" class="form-control" />
-                    </div>  
-                    
-                    
-                    
-                    <div class="col-3">
-                        <label class="form-label">لینکدین</label>
-                        <input asp-for="Linkedin" type="text" class="form-control" />
-                    </div>
 
-                  <div class="col-3">
-                        <label class="form-label">اینستاگرام</label>
-                        <input asp-for="Instagram" type="text" class="form-control" />
-                    </div>
 
-                  <div class="col-3">
-                        <label class="form-label">واتساپ</label>
-                        <input asp-for="WhatsApp" type="text" class="form-control" />
-                    </div>
+                            <div class="row">
 
-                  <div class="col-3">
-                        <label class="form-label">تلگرام</label>
-                        <input asp-for="Telegram" type="text" class="form-control" />
-                    </div>
-                    <div class="col-3">
-                        <label class="form-label">لینک ویدئو آپارات</label>
-                        <input asp-for="Video" type="text" class="form-control" />
-                    </div>
-                    <div class="col-3">
-                        <label class="form-label">پست الکترونیک</label>
-                        <input asp-for="Email" type="text" class="form-control" />
-                    </div>
-                    <div class="col-3">
-                        <label class="form-label">شماره تماس</label>
-                        <input asp-for="ContactNumber" type="text" class="form-control" />
-                    </div>
-                      <div class="col-3">
-                        <label class="form-label">سابقه</label>
-                        <input asp-for="YearsExperience" type="text" class="form-control" />
-                    </div>
-                   
-                    <div class="col-6">
-                        <label class="form-label">نشانی (فارسی)</label>
-                        <textarea asp-for="LocationFa"
-                                  type="text" class="form-control" rows="4">
+                                <div class="col-6">
+                                    <label class="form-label">ساعت کاری (فارسی)</label>
+                                    <input asp-for="WorkingHoursFa" type="text" class="form-control" />
+                                </div>
+
+                                <div class="col-6">
+                                    <label class="form-label">ساعت کاری (انگلیسی)</label>
+                                    <input asp-for="WorkingHoursEn" type="text" class="form-control" />
+                                </div>
+
+
+
+                                <div class="col-3">
+                                    <label class="form-label">لینکدین</label>
+                                    <input asp-for="Linkedin" type="text" class="form-control" />
+                                </div>
+
+                                <div class="col-3">
+                                    <label class="form-label">اینستاگرام</label>
+                                    <input asp-for="Instagram" type="text" class="form-control" />
+                                </div>
+
+                                <div class="col-3">
+                                    <label class="form-label">واتساپ</label>
+                                    <input asp-for="WhatsApp" type="text" class="form-control" />
+                                </div>
+
+                                <div class="col-3">
+                                    <label class="form-label">تلگرام</label>
+                                    <input asp-for="Telegram" type="text" class="form-control" />
+                                </div>
+                                <div class="col-3">
+                                    <label class="form-label">لینک ویدئو آپارات</label>
+                                    <input asp-for="Video" type="text" class="form-control" />
+                                </div>
+                                <div class="col-3">
+                                    <label class="form-label">پست الکترونیک</label>
+                                    <input asp-for="Email" type="text" class="form-control" />
+                                </div>
+                                <div class="col-3">
+                                    <label class="form-label">شماره تماس</label>
+                                    <input asp-for="ContactNumber" type="text" class="form-control" />
+                                </div>
+                                <div class="col-3">
+                                    <label class="form-label">سابقه</label>
+                                    <input asp-for="YearsExperience" type="text" class="form-control" />
+                                </div>
+
+                                <div class="col-6">
+                                    <label class="form-label">نشانی (فارسی)</label>
+                                    <textarea asp-for="LocationFa"
+                                              type="text" class="form-control" rows="4">
                                                   </textarea>
-                    </div> <div class="col-6">
-                        <label class="form-label">نشانی (انگلیسی)</label>
-                        <textarea asp-for="LocationEn"
-                                  type="text" class="form-control" rows="4">
+                                </div> <div class="col-6">
+                                    <label class="form-label">نشانی (انگلیسی)</label>
+                                    <textarea asp-for="LocationEn"
+                                              type="text" class="form-control" rows="4">
                                                   </textarea>
-                    </div>
+                                </div>
 
-                    <div class="col-6">
-                        <label class="form-label">توضیحات پابرگ(فارسی)</label>
-                        <textarea asp-for="DescriptionFa"
-                                  type="text" class="form-control" rows="7">
+                                <div class="col-6">
+                                    <label class="form-label">توضیحات پابرگ(فارسی)</label>
+                                    <textarea asp-for="DescriptionFa"
+                                              type="text" class="form-control" rows="7">
                                                   </textarea>
-                    </div>
+                                </div>
 
-                      <div class="col-6">
-                        <label class="form-label">توضیحات پابرگ(انگلیسی)</label>
-                        <textarea asp-for="DescriptionEn"
-                                  type="text" class="form-control" rows="7">
+                                <div class="col-6">
+                                    <label class="form-label">توضیحات پابرگ(انگلیسی)</label>
+                                    <textarea asp-for="DescriptionEn"
+                                              type="text" class="form-control" rows="7">
                                                   </textarea>
-                    </div>
+                                </div>
 
 
-                </div>
-                <div class="row mt-3">
-                    <div class="col-12">
-                        @if (Model.AboutImagePath == "default.jpg" || string.IsNullOrEmpty(Model.AboutImagePath))
-                        {
-                            <img id="imagePath_3" width="100" height="80"
-                                 src="~/Gallery/default.jpg" />
-                        }
-                        else
-                        {
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-12">
+                                    @if (Model.AboutImagePath == "default.jpg" || string.IsNullOrEmpty(Model.AboutImagePath))
+                                    {
+                                        <img id="imagePath_3" width="100" height="80"
+                                             src="~/Gallery/default.jpg" />
+                                    }
+                                    else
+                                    {
 
 
 
-                            <img id="imagePath_3" width="100" height="80"
-                                 src="~/Gallery/Setting/@Model.AboutImagePath " />
-                        }
-                    </div>
-                    <div class="col-4">
-                        <label class="form-label mt-2">تصویر درباره ما</label>
-                        <input asp-for="AboutImageFile" onchange="ChangeImage(this,3)" class="form-control" type="file" />
-                    </div>
-                </div>
+                                        <img id="imagePath_3" width="100" height="80"
+                                             src="~/Gallery/Setting/@Model.AboutImagePath " />
+                                    }
+                                </div>
+                                <div class="col-4">
+                                    <label class="form-label mt-2">تصویر درباره ما</label>
+                                    <input asp-for="AboutImageFile" onchange="ChangeImage(this,3)" class="form-control" type="file" />
+                                </div>
+                            </div>
 
-                
-                <div class="col-12">
-                    <label class="form-label">درباره ما (فارسی)</label>
-                    <textarea asp-for="AboutFa" id="AboutFa"
-                              type="text" class="form-control" rows="7">
+
+                            <div class="col-12">
+                                <label class="form-label">درباره ما (فارسی)</label>
+                                <textarea asp-for="AboutFa" id="AboutFa"
+                                          type="text" class="form-control" rows="7">
                                                   </textarea>
-                </div>
+                            </div>
 
-                <div class="col-12">
-                    <label class="form-label">درباره ما (انگلیسی)</label>
-                    <textarea asp-for="AboutEn" id="AboutEn"
-                              type="text" class="form-control" rows="7">
+                            <div class="col-12">
+                                <label class="form-label">درباره ما (انگلیسی)</label>
+                                <textarea asp-for="AboutEn" id="AboutEn"
+                                          type="text" class="form-control" rows="7">
                                                   </textarea>
-                </div>
-                <div class="col-12">
-                    <div class="form-group ">
-                        <div style="z-index:0" id="map"></div>
-                        <input type="hidden" asp-for="Latitude" class="form-control" id="lat">
-                        <input type="hidden" asp-for="Longitude" class="form-control" id="lng">
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group ">
+                                    <div style="z-index:0" id="map"></div>
+                                    <input type="hidden" asp-for="Latitude" class="form-control" id="lat">
+                                    <input type="hidden" asp-for="Longitude" class="form-control" id="lng">
+                                </div>
+                            </div>
+
+                            <input type="hidden" asp-for="Longitude" id="lan" />
+                            <input type="hidden" asp-for="Latitude" id="lat" />
+                            <input type="hidden" asp-for="AboutImagePath" />
+                            <input type="hidden" asp-for="BottomLogoPathEn" />
+                            <input type="hidden" asp-for="TopLogoPathEn" />
+
+                            <input type="hidden" asp-for="BottomLogoPathFa" />
+                            <input type="hidden" asp-for="TopLogoPathFa" />
+                            <input type="hidden" asp-for="AboutImage" />
+                        </div>
                     </div>
                 </div>
 
-               <input type="hidden" asp-for="Longitude" id="lan"/>
-                <input type="hidden" asp-for="Latitude" id="lat" />
-               <input type="hidden" asp-for="AboutImagePath"/>
-               <input type="hidden" asp-for="BottomLogoPathEn"/>
-               <input type="hidden" asp-for="TopLogoPathEn"/>
+            
 
-                <input type="hidden" asp-for="BottomLogoPathFa" />
-                <input type="hidden" asp-for="TopLogoPathFa" />
+
+                <div style="background-color:#eeeeee" class="accordion-item card border rounded-3 p-3 mt-5">
+                    <h2 class="accordion-header">
+                        <button type="button" class="accordion-button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#accordionStyle1-2" aria-expanded="true">
+                           درباره ما
+                        </button>
+                        <hr />
+                    </h2>
+
+                    <div id="accordionStyle1-2" class="accordion-collapse collapse " data-bs-parent="#accordionStyle2" style="">
+                        <div class="accordion-body ">
+                           <div class="row">
+                                <div class="col-12">
+                                    @if (Model.TopLogoPathEn == "default.jpg" || string.IsNullOrEmpty(Model.AboutImage))
+                                    {
+                                        <img id="imagePath_6" width="100" height="80"
+                                             src="~/Gallery/default.jpg" />
+                                    }
+                                    else
+                                    {
+
+
+
+                                        <img id="imagePath_6" width="100" height="80"
+                                             src="~/Gallery/Setting/@Model.AboutImage " />
+                                    }
+                                    <br />
+                                    <label class="form-label mt-2">لوگو سربرگ انگلیسی</label>
+                                    <input asp-for="AboutPageImageFile" onchange="ChangeImage(this,6)"
+                                    class="form-control w-25" type="file" />
+                                </div>
+
+
+                                <div class="col-6">
+                                    <label class="form-label">عنوان فارسی</label>
+                                    <input asp-for="AboutTitleFa" type="text" class="form-control" />
+                                </div>
+
+                                <div class="col-6">
+                                    <label class="form-label">عنوان انگلیسی</label>
+                                    <input asp-for="AboutTitleEn" type="text" class="form-control" />
+                                </div>
+
+                                <div class="col-12">
+                                    <label class="form-label">درباره ما (فارسی)</label>
+                                    <textarea asp-for="AboutDescriptionFa" id="AboutPageFa"
+                                              type="text" class="form-control" rows="7">
+                                                  </textarea>
+                                </div>
+
+                                <div class="col-12">
+                                    <label class="form-label">درباره ما (انگلیسی)</label>
+                                    <textarea asp-for="AboutDescriptionEn" id="AboutPageEn"
+                                              type="text" class="form-control" rows="7">
+                                                  </textarea>
+                                </div>
+
+                           </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
 
                 <div style="background-color:#eeeeee" class="accordion-item card border rounded-3 p-3 mt-5">
                     <h2 class="accordion-header">

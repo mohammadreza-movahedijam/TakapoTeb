@@ -4,6 +4,12 @@ namespace Application.Commands.Setting;
 
 public sealed record SettingDto
 {
+    public IFormFile? AboutPageImageFile { get; set; }
+    public string? AboutImage { get; set; }
+    public string? AboutTitleEn { get; set; }
+    public string? AboutTitleFa { get; set; }
+    public string? AboutDescriptionEn { get; set; }
+    public string? AboutDescriptionFa { get; set; }
 
     public IFormFile? TopLogoFileEn { get; set; }
     public IFormFile? BottomLogoFileEn { get; set; }

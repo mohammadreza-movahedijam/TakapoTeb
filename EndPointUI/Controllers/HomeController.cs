@@ -24,6 +24,19 @@ public class HomeController : Controller
         _mediator = mediator;
     }
 
+    [HttpGet]
+    [Route("/About")]
+    public async Task<IActionResult> About()
+    {
+        AboutViewModel model =
+            await _mediator!.Send(new GetAboutPageQuery());
+        return View(model);
+    }
+
+
+
+
+
     public IActionResult Index()
     {
         return View();
@@ -83,7 +96,6 @@ public class HomeController : Controller
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 
-
     [HttpGet]
     [Route("Search")]
     public async Task<IActionResult> Search(string text)
@@ -106,7 +118,6 @@ public class HomeController : Controller
     {
         return View();
     }
-
     [HttpGet]
     [Route("/Partner/{Id}")]
     public async Task<IActionResult> Partner(Guid Id)
@@ -118,15 +129,6 @@ public class HomeController : Controller
             });
         return View(partnerDetail);
     }
-
-
-
-
-
-
-
-
-
     [HttpGet]
     public async Task<IActionResult> Book()
     {
@@ -138,9 +140,6 @@ public class HomeController : Controller
             });
         return View(model);
     }
-
-
-
     [HttpGet]
     public async Task<IActionResult> Catalog()
     {
@@ -152,32 +151,12 @@ public class HomeController : Controller
             });
         return View(model);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
     [HttpGet]
     [Route("Request-Education")]
     public IActionResult RequestEducation() => View();
-
-
     [Route("Request-Service")]
     [HttpGet]
     public IActionResult RequestService() => View();
-
-
-
-
-
     [HttpPost]
     [Route("SendRequestEducation")]
     public async Task<IActionResult> SendRequestEducation
@@ -202,7 +181,6 @@ public class HomeController : Controller
             });
         }
     }
-
     [HttpPost]
     [Route("SendRequestService")]
     public async Task<IActionResult> SendRequestService

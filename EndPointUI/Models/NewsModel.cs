@@ -2,6 +2,6 @@
 
 public sealed record NewsModel
 {
-    public int type { get; set; }
+    public string type { get; set; }
     public int part { get; set; }
 }

@@ -1,0 +1,44 @@
+﻿@using Application.Queries.Setting.ViewModels
+@model AboutViewModel
+@{
+    string dir = CultureInfo.CurrentUICulture.Name == "en-US" ? "ltr" : "rtl";
+    string title = CultureInfo.CurrentUICulture.Name == "en-US" ? "About Us" : "درباره ما";
+    ViewData["Title"] = @title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="section section-featurebox mg-t-100">
+    <div class="container">
+       
+        <div class="container">
+            <div class="row" dir="@dir">
+                <div class="col-lg-6 col-md-12" dir="@dir">
+                    @if (CultureInfo.CurrentUICulture.Name == "en-US")
+                    {
+                        <h3 class="mb-4">@Model.AboutTitleEn</h3>
+                        <p>@Html.Raw(Model.AboutDescriptionEn)</p>
+                    }
+                    else
+                    {
+                        <h3 class="mb-4">@Model.AboutTitleFa</h3>
+                        <p>@Html.Raw(Model.AboutDescriptionFa)</p>
+                    }
+                </div>
+                <div class="col-md-6">
+                    @if (Model.AboutImage == "default.jpg" || string.IsNullOrEmpty(Model.AboutImage))
+                    {
+                        <img class="img-fluid"
+                             src="~/Gallery/default.jpg" />
+                    }
+                    else
+                    {
+
+                        <img class="img-fluid"
+                             src="~/Gallery/Setting/@Model.AboutImage " />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

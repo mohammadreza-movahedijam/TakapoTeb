@@ -546,6 +546,32 @@ namespace Infrastructure.Migrations
                     b.ToTable("Departement", "dbo");
                 });
 
+            modelBuilder.Entity("Domain.Entities.System.EventEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("DescriptionEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DescriptionFa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("TitleEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleFa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Event", "dbo");
+                });
+
             modelBuilder.Entity("Domain.Entities.System.FeatureEntity", b =>
                 {
                     b.Property<Guid>("Id")
@@ -710,6 +736,9 @@ namespace Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -797,6 +826,34 @@ namespace Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Partner", "dbo");
+                });
+
+            modelBuilder.Entity("Domain.Entities.System.PictureEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("EventId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("FilePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("TitleEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleFa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EventId");
+
+                    b.ToTable("Picture", "dbo");
                 });
 
             modelBuilder.Entity("Domain.Entities.System.RequestEducationAttachEntity", b =>
@@ -1105,7 +1162,31 @@ namespace Infrastructure.Migrations
                             Icon = "<i class=\"fa fa-comment menu-icon\"></i>",
                             Order = 21,
                             Title = "دیدگاه کاربران",
-                            Url = "/Admin/Request/Service"
+                            Url = "/Admin/Feedback"
+                        },
+                        new
+                        {
+                            Id = new Guid("3340131a-42eb-448e-87b8-be6f2cf0baed"),
+                            Icon = "<i class=\"fas fa-list-alt menu-icon\"></i>\r\n",
+                            Order = 22,
+                            Title = "دسته بندی مقالات",
+                            Url = "/Admin/BlogCategory"
+                        },
+                        new
+                        {
+                            Id = new Guid("a7a03bed-1848-4a26-b886-df2efef5271d"),
+                            Icon = "<i class=\"fas fa-list-alt menu-icon\"></i>\r\n",
+                            Order = 23,
+                            Title = "دسته بندی اخبار",
+                            Url = "/Admin/NewsCategory"
+                        },
+                        new
+                        {
+                            Id = new Guid("67d20d6a-cf73-4150-b9ce-0cb3bc83a8c8"),
+                            Icon = "<i class=\"fas fa-list-alt menu-icon\"></i>\r\n",
+                            Order = 24,
+                            Title = "دسته بندی محصولات",
+                            Url = "/Admin/ProductCategory"
                         });
                 });
 
@@ -1115,13 +1196,28 @@ namespace Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("AboutDescriptionEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AboutDescriptionFa")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("AboutEn")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("AboutFa")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("AboutImage")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("AboutImagePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AboutTitleEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AboutTitleFa")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("BottomLogoPathEn")
@@ -1276,9 +1372,14 @@ namespace Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("b6a6e1eb-8ef7-45ea-aef9-f199b96f92a9"),
+                            AboutDescriptionEn = "",
+                            AboutDescriptionFa = "",
                             AboutEn = "",
                             AboutFa = "",
+                            AboutImage = "",
                             AboutImagePath = "",
+                            AboutTitleEn = "",
+                            AboutTitleFa = "",
                             BottomLogoPathEn = "",
                             BottomLogoPathFa = "",
                             ColumnOneItemFourLink = "",
@@ -1416,6 +1517,34 @@ namespace Infrastructure.Migrations
                             TitleFaThree = "",
                             TitleFaTwo = ""
                         });
+                });
+
+            modelBuilder.Entity("Domain.Entities.System.VideoEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("EventId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Link")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleFa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EventId");
+
+                    b.ToTable("Video", "dbo");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -1647,6 +1776,15 @@ namespace Infrastructure.Migrations
                     b.Navigation("NewsCategory");
                 });
 
+            modelBuilder.Entity("Domain.Entities.System.PictureEntity", b =>
+                {
+                    b.HasOne("Domain.Entities.System.EventEntity", "Event")
+                        .WithMany("Pictures")
+                        .HasForeignKey("EventId");
+
+                    b.Navigation("Event");
+                });
+
             modelBuilder.Entity("Domain.Entities.System.RequestEducationAttachEntity", b =>
                 {
                     b.HasOne("Domain.Entities.System.RequestEducationEntity", "RequestEducation")
@@ -1667,6 +1805,15 @@ namespace Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("RequestService");
+                });
+
+            modelBuilder.Entity("Domain.Entities.System.VideoEntity", b =>
+                {
+                    b.HasOne("Domain.Entities.System.EventEntity", "Event")
+                        .WithMany("Videos")
+                        .HasForeignKey("EventId");
+
+                    b.Navigation("Event");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -1753,6 +1900,13 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Domain.Entities.System.ChatGroupEntity", b =>
                 {
                     b.Navigation("chatMessages");
+                });
+
+            modelBuilder.Entity("Domain.Entities.System.EventEntity", b =>
+                {
+                    b.Navigation("Pictures");
+
+                    b.Navigation("Videos");
                 });
 
             modelBuilder.Entity("Domain.Entities.System.NewsCategoryEntity", b =>

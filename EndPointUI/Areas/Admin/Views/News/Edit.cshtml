@@ -83,12 +83,12 @@
                         <span class="text-danger" asp-validation-for="ReferencesLink"></span>
                     </div>
 
-
                     <div class="col-4">
-                        <label class="form-label">دسته بندی</label>
-                        <select class="form-control"
-                                asp-items="Html.GetEnumSelectList<Domain.Types.TopicType>()"
-                                asp-for="TopicType"></select>
+                        <label class="form-label">انتخاب دسته بندی</label>
+                        <select asp-for="NewsCategoryId" class="form-select" asp-items="@ViewBag.Categories">
+                        </select>
+                        <span class="text-danger" asp-validation-for="NewsCategoryId"></span>
+
                     </div>
                 </div>
 

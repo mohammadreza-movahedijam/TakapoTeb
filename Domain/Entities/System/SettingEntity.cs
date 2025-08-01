@@ -79,4 +79,17 @@ public class SettingEntity : BaseEntity
     public string? ColumnTwoItemFourTitleFa          { get; set; }
     public string? ColumnTwoItemFourLink            { get; set; }
     #endregion
+
+
+
+
+
+    #region About
+
+    public string? AboutImage {  get; set; }
+    public string? AboutTitleEn {  get; set; }
+    public string? AboutTitleFa {  get; set; }
+    public string? AboutDescriptionEn { get; set; }
+    public string? AboutDescriptionFa { get; set; }
+    #endregion
 }

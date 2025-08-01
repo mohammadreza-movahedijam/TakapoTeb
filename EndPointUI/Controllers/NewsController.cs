@@ -26,7 +26,7 @@ public class NewsController (IMediator mediator): Controller
         var news = await _mediator.Send(new GetNewsByTopicQuery()
         {
             part = part + model.part,
-            TopicType=(TopicType)model.type
+            NewsCategoryId = model.type
         });
 
         return new JsonResult(new

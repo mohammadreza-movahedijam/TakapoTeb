@@ -1,25 +1,32 @@
 ﻿
 $(document).ready(function () {
-    loadNews('0', 1);
+    loadNews(null, 1);
 });
 
 function loadNews(type, part) {
-    
+    let currentType;
+    if (type === null) {
+        currentType = document.getElementById("ActiveTab").value;
+    } else {
+        currentType = type;
+    }
+    let activeTab = document.getElementById("list_" + currentType);
     let body = {
         part: part,
         type: type
-    };
+    }; activeTab.innerHTML = "";
     rest.postAsync("/GetNews", null, body, function (isSuccess, response) {
-        debugger
 
 
 
-        let currentType = parseInt(type);
-        let activeTab = document.getElementById("list" + currentType );
-        let btnMore = document.getElementById("more" + currentType );
+
+
+
+
+        let btnMore = document.getElementById("more_" + currentType);
         let culture = document.getElementById("culture").value;
         if (response.isSuccess) {
-            activeTab.innerHTML = "";
+           
             btnMore.removeAttribute("onclick");
             btnMore.style.display = "block";
             response.data.forEach((item, index) => {
@@ -59,12 +66,12 @@ function loadNews(type, part) {
                     <p class="card-text p-3" style="text-align:${textAlign}"> <small class="text-info">${topic} - ${dateTime}</small></p>
                 </div> </a> </div>
             `;
-                activeTab.innerHTML += news; 
+                activeTab.innerHTML += news;
             });
 
             if (response.data.length >= response.count) {
                 btnMore.style.display = "none";
-            }else{
+            } else {
                 btnMore.setAttribute("onclick", "loadNews('" + parseInt(type) + "','" + (response.current + 1) + "')");
             }
         }

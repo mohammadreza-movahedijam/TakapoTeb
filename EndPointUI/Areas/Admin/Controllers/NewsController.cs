@@ -1,8 +1,11 @@
 ﻿using Application.Commands.News;
+using Application.Queries.BlogCategory;
 using Application.Queries.News;
+using Application.Queries.NewsCategory;
 using EndPointUI.Areas.Admin.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace EndPointUI.Areas.Admin.Controllers;
 
@@ -23,14 +26,16 @@ public class NewsController (IMediator mediator): Controller
         return View(pageModel);
     }
     [HttpGet]
-    public IActionResult Create()
+    public async Task<IActionResult> Create()
     {
+        await FetchCategory();
         return View();
     }
 
     [HttpPost]
     public async Task<IActionResult> Create(NewsDto News)
     {
+      
         await _mediator.Send(new InsertNewsCommand()
         {
             News = News
@@ -40,6 +45,7 @@ public class NewsController (IMediator mediator): Controller
     [HttpGet]
     public async Task<IActionResult> Edit(Guid Id)
     {
+        await FetchCategory();
         NewsDto News = await _mediator.Send
             (new GetNewsByIdQuery()
             {
@@ -81,6 +87,11 @@ public class NewsController (IMediator mediator): Controller
         }
     }
 
+    async Task FetchCategory()
+    {
+        var items = await _mediator.Send(new GetNewsCategoryItemQuery());
+        ViewBag.Categories = new SelectList(items, "Id", "Title");
+    }
 
 
 }

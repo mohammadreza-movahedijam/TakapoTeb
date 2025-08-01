@@ -18,15 +18,15 @@ internal sealed class GetLastNewsHandler :
         (GetLastNewsQuery request, CancellationToken cancellationToken)
     {
         IQueryable<NewsEntity> query = _repository.GetByQuery();
-        return await query.OrderBy(b => b.CreateAt)
+        return await query.OrderBy(b => b.CreateAt).Include(i=>i.NewsCategory)
             .Take(6).Select(s=> new NewsViewModel()
             {
                 Id = s.Id,
                 ImagePath = s.ImagePath,
                 TitleEn=s.TitleEn,
                 TitleFa=s.TitleFa,
-                TopicTypeFa=s.TopicType.GetEnumName(),
-                TopicTypeEn=s.TopicType.GetEnumShortName(),
+                TopicTypeFa=s.NewsCategory.TitleFa,
+                TopicTypeEn=s.NewsCategory.TitleEn,
             }).ToListAsync();
     }
 }

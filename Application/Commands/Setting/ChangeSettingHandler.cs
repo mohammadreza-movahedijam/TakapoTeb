@@ -56,6 +56,14 @@ internal sealed class ChangeSettingHandler :
 
 
 
+        if (request.Setting.AboutPageImageFile != null)
+        {
+            setting!.AboutImage = request.Setting.AboutPageImageFile.UploadImage("setting");
+            request.Setting.AboutImage!.RemoveImage("setting");
+        }
+
+
+
         if (request.Setting.AboutImageFile != null)
         {
             setting!.AboutImagePath = request.Setting.AboutImageFile.UploadImage("setting");

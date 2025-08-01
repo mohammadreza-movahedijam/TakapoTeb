@@ -5,6 +5,7 @@ using Application.Queries.Feedback;
 using Domain.Entities.System;
 using Mapster;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using System;
 using System.Collections.Generic;
@@ -34,11 +35,12 @@ internal sealed class GetNewsHandler :
             .Map(d => d.ImagePath, s => s.ImagePath)
             .Map(d => d.TitleEn, s => s.TitleEn)
             .Map(d => d.TitleFa, s => s.TitleFa)
-            .Map(d => d.TopicTypeEn, s => s.TopicType.GetEnumShortName())
-            .Map(d => d.TopicTypeFa, s => s.TopicType.GetEnumName())
+           
+            .Map(d => d.TopicTypeFa, s => s.NewsCategory!.TitleFa)
+            .Map(d => d.TopicTypeEn, s => s.NewsCategory!.TitleEn)
          .Compile();
         IQueryable<NewsEntity> query = _repository.GetByQuery();
-
+        query=query.Include(i=>i.NewsCategory);
         if (!string.IsNullOrEmpty(request!.Pagination!.keyword))
         {
             query = query.Where(w => w.TitleFa!.Contains(request!.Pagination!.keyword)
