@@ -1,5 +1,8 @@
 ﻿@model IReadOnlyList<Application.Queries.Product.ViewModels.ProductViewModel>
-
+@{
+    string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
+}
+}
 
 <div class="row p-5 mb-5 text-center">
 
@@ -9,7 +12,7 @@
 
             @if (CultureInfo.CurrentUICulture.Name == "en-US")
             {
-                <h2 class="card-title">
+                <h2 class="card-title @font">
                     Related products
                 </h2>
             }
@@ -47,7 +50,7 @@
 
                                 </div>
                                 <div class="pro-content">
-                                    <h3 class="title">
+                                    <h3 class="title @font">
                                         <a asp-controller="Product" asp-action="Detail" asp-route-pattern="@product.Id" class="product-title">
                                             @if (CultureInfo.CurrentUICulture.Name == "en-US")
                                             {

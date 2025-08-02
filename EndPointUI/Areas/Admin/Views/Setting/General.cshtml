@@ -106,7 +106,7 @@
                                     }
                                     <br />
                                     <label class="form-label mt-2">لوگو سربرگ انگلیسی</label>
-                                    <input asp-for="TopLogoFileEn" onchange="ChangeImage(this,1)" class="form-control" type="file" />
+                                    <input accept=".jpg, .jpeg, .png, .webp" asp-for="TopLogoFileEn" onchange="ChangeImage(this,1)" class="form-control" type="file" />
                                 </div>
                                 <div class="col-6">
 
@@ -123,7 +123,7 @@
                                     }
                                     <br />
                                     <label class="form-label mt-2">لوگو پابرگ انگلیسی</label>
-                                    <input asp-for="BottomLogoFileEn" onchange="ChangeImage(this,2)" class="form-control" type="file" />
+                                    <input accept=".jpg, .jpeg, .png, .webp" asp-for="BottomLogoFileEn" onchange="ChangeImage(this,2)" class="form-control" type="file" />
                                 </div>
 
 
@@ -132,7 +132,7 @@
 
 
                             <div class="row mt-4">
-                                <div class="col-6">
+                                <div class="col-4">
                                     @if (Model.TopLogoPathFa == "default.jpg" || string.IsNullOrEmpty(Model.TopLogoPathFa))
                                     {
                                         <img id="imagePath_4" width="100" height="80"
@@ -148,9 +148,9 @@
                                     }
                                     <br />
                                     <label class="form-label mt-2"> لوگو سربرگ فارسی</label>
-                                    <input asp-for="TopLogoFileFa" onchange="ChangeImage(this,4)" class="form-control" type="file" />
+                                    <input accept=".jpg, .jpeg, .png, .webp" asp-for="TopLogoFileFa" onchange="ChangeImage(this,4)" class="form-control" type="file" />
                                 </div>
-                                <div class="col-6">
+                                <div class="col-4">
 
                                     @if (Model.BottomLogoPathFa == "default.jpg" || string.IsNullOrEmpty(Model.BottomLogoPathFa))
                                     {
@@ -165,10 +165,27 @@
                                     }
                                     <br />
                                     <label class="form-label mt-2">لوگو پابرگ فارسی</label>
-                                    <input asp-for="BottomLogoFileFa" onchange="ChangeImage(this,5)" class="form-control" type="file" />
+                                    <input accept=".jpg, .jpeg, .png, .webp" asp-for="BottomLogoFileFa" onchange="ChangeImage(this,5)" class="form-control" type="file" />
                                 </div>
 
+                                <div class="col-4">
 
+                                    @if (Model.LicenseLogo == "default.jpg" || string.IsNullOrEmpty(Model.LicenseLogo))
+                                    {
+                                        <img id="imagePath_7" width="100" height="80"
+                                             src="~/Gallery/default.jpg" />
+                                    }
+                                    else
+                                    {
+
+                                        <img id="imagePath_7" width="100" height="80"
+                                             src="~/Gallery/Setting/@Model.LicenseLogo " />
+                                    }
+                                    <br />
+                                    <label class="form-label mt-2">لوگو مجوزها</label>
+                                    <input accept=".jpg, .jpeg, .png, .webp" asp-for="LicenseLogoFile"
+                                    onchange="ChangeImage(this,7)" class="form-control" type="file" />
+                                </div>
                             </div>
 
 
@@ -287,7 +304,7 @@
                                 </div>
                                 <div class="col-4">
                                     <label class="form-label mt-2">تصویر درباره ما</label>
-                                    <input asp-for="AboutImageFile" onchange="ChangeImage(this,3)" class="form-control" type="file" />
+                                    <input accept=".jpg, .jpeg, .png, .webp" asp-for="AboutImageFile" onchange="ChangeImage(this,3)" class="form-control" type="file" />
                                 </div>
                             </div>
 
@@ -318,7 +335,8 @@
                             <input type="hidden" asp-for="AboutImagePath" />
                             <input type="hidden" asp-for="BottomLogoPathEn" />
                             <input type="hidden" asp-for="TopLogoPathEn" />
-
+                            <input type="hidden" asp-for="AcademyImagePath" />
+                            <input type="hidden" asp-for="LicenseLogo" />
                             <input type="hidden" asp-for="BottomLogoPathFa" />
                             <input type="hidden" asp-for="TopLogoPathFa" />
                             <input type="hidden" asp-for="AboutImage" />
@@ -358,7 +376,7 @@
                                     }
                                     <br />
                                     <label class="form-label mt-2">لوگو سربرگ انگلیسی</label>
-                                    <input asp-for="AboutPageImageFile" onchange="ChangeImage(this,6)"
+                                    <input accept=".jpg, .jpeg, .png, .webp" asp-for="AboutPageImageFile" onchange="ChangeImage(this,6)"
                                     class="form-control w-25" type="file" />
                                 </div>
 
@@ -391,6 +409,91 @@
                         </div>
                     </div>
                 </div>
+
+
+
+
+                <div style="background-color:#eeeeee" class="accordion-item card border rounded-3 p-3 mt-5">
+                    <h2 class="accordion-header">
+                        <button type="button" class="accordion-button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#accordionStyle1-4" aria-expanded="true">
+                            آکادمی
+                        </button>
+                        <hr />
+                    </h2>
+
+                    <div id="accordionStyle1-4" class="accordion-collapse collapse " data-bs-parent="#accordionStyle4" style="">
+                        <div class="accordion-body ">
+                            <div class="row">
+                                <div class="col-12">
+                                    @if (Model.AcademyImagePath == "default.jpg" ||
+                                    string.IsNullOrEmpty(Model.AcademyImagePath))
+                                    {
+                                        <img id="imagePath_8" width="100" height="80"
+                                             src="~/Gallery/default.jpg" />
+                                    }
+                                    else
+                                    {
+
+
+
+                                        <img id="imagePath_8" width="100" height="80"
+                                             src="~/Gallery/Setting/@Model.AcademyImagePath " />
+                                    }
+                                    <br />
+                                    <label class="form-label mt-2">تصویر آکادمی</label>
+                                    <input accept=".jpg, .jpeg, .png, .webp"
+                                    asp-for="AcademyImageFile" onchange="ChangeImage(this,8)"
+                                           class="form-control w-25" type="file" />
+                                </div>
+
+
+                                <div class="col-6">
+                                    <label class="form-label">عنوان فارسی</label>
+                                    <input asp-for="AcademyTitleFa" type="text" class="form-control" />
+                                </div>
+
+                                <div class="col-6">
+                                    <label class="form-label">عنوان انگلیسی</label>
+                                    <input asp-for="AcademyTitleEn" type="text" class="form-control" />
+                                </div>
+
+                                <div class="col-12">
+                                    <label class="form-label">متن (فارسی)</label>
+                                    <textarea asp-for="AcademyTextFa"
+                                              type="text" class="form-control" rows="7">
+                                                  </textarea>
+                                </div>
+
+                                <div class="col-12">
+                                    <label class="form-label">متن (انگلیسی)</label>
+                                    <textarea asp-for="AcademyTextEn"
+                                              type="text" class="form-control" rows="7">
+                                                  </textarea>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

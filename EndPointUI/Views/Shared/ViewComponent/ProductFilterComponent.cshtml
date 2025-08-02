@@ -2,7 +2,9 @@
 @{
     string align = CultureInfo.CurrentUICulture.Name! == "en-US" ? "ltr" : "rtl"!;
     var categories = ViewBag.Pattern as List<Guid>;
+    string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
 }
+
 <div class="filter-widget">
     @foreach(var item in Model)
     {
@@ -18,7 +20,7 @@
                     {
                         <input type="checkbox" class="custom_checkinputEn" name="patterns" value="@item.Id">
                     }
-                    <span class="titlecheckboxEn">@item.TitleEn</span>
+                    <span class="titlecheckboxEn @font">@item.TitleEn</span>
                      
                 </label>
             </div>

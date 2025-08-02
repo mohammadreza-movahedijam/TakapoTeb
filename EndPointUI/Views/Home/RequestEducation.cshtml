@@ -1,4 +1,6 @@
 ﻿@{
+    string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
+
     string title = CultureInfo.CurrentUICulture.Name == "en-US" ? "Request Education" : "درخواست آموزش";
     string dir = CultureInfo.CurrentUICulture.Name == "en-US" ? "ltr" : "rtl";
     ViewData["Title"] = title;
@@ -11,12 +13,12 @@
     <div class="col-xl-8 col-lg-8 col-sm-12 col-md-12 offset-xl-2 offset-lg-2">
         <div class="card" dir="@dir">
             <div class="card-header">
-                <h3>@title</h3>
+                <h3 class="@font">@title</h3>
             </div>
             <div class="card-body row">
                
                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 mt-3">
-                    <label> @Localizer["Center"]
+                    <label class="@font"> @Localizer["Center"]
                         <span class="text-danger">*</span>
                     </label>
                     <input type="text" id="Center" class="form-control" />
@@ -24,7 +26,8 @@
 
 
                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 mt-3">
-                    <label> @Localizer["FullName"]
+                    <label class="@font">
+                        @Localizer["FullName"]
                         <span class="text-danger">*</span>
                     </label>
                     <input id="FullName" type="text" class="form-control" />
@@ -32,14 +35,16 @@
 
 
                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 mt-3">
-                    <label> @Localizer["Mobile"]
+                    <label class="@font">
+                        @Localizer["Mobile"]
                         <span class="text-danger">*</span>
                     </label>
                     <input id="Mobile" type="text" class="form-control" />
                 </div>
 
                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 mt-3">
-                    <label> @Localizer["DeviceName"]
+                    <label class="@font">
+                        @Localizer["DeviceName"]
                         <span class="text-danger">*</span>
                     </label>
                     <input id="DeviceName" type="text" class="form-control" />
@@ -47,30 +52,30 @@
 
 
                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 mt-3">
-                    <label> @Localizer["DeviceSerialNumber"]</label>
+                    <label class="@font"> @Localizer["DeviceSerialNumber"]</label>
                     <input id="DeviceSerialNumber" type="text" class="form-control" />
                 </div>
 
                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 mt-3">
                   
-                    <label> @Localizer["EducationType"]</label>
+                    <label class="@font"> @Localizer["EducationType"]</label>
                     <div class="form-check">
                         <input class="form-check-input" value="0" type="radio" name="EducationType" checked>
-                        <label class="form-check-label">
+                        <label class="form-check-label @font">
                             @Localizer["InitialTraining"]
                         </label>
                     </div>
 
                     <div class="form-check">
                         <input class="form-check-input" value="1" type="radio" name="EducationType" checked>
-                        <label class="form-check-label">
+                        <label class="form-check-label @font">
                             @Localizer["Retraining"]
                         </label>
                     </div>
 
                     <div class="form-check">
                         <input class="form-check-input" value="2" type="radio" name="EducationType">
-                        <label class="form-check-label">
+                        <label class="form-check-label @font">
                             @Localizer["FurtherTraining"]
                         </label>
                     </div>
@@ -78,14 +83,14 @@
 
                
                 <div class="col-12 mt-3">
-                    <label>@Localizer["Description"] </label>
+                    <label class="@font">@Localizer["Description"] </label>
                     <textarea class="form-control" id="Description" rows="4"></textarea>
                 </div>
 
 
                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 mt-3">
                     <div class="form-group">
-                        <label>@Localizer["FileAttachment"] </label>
+                        <label class="@font">@Localizer["FileAttachment"] </label>
                         <input type="file" accept=".jpg, .jpeg, .png, .pdf" multiple id="FileAttachment" class="form-control-file" />
                     </div>
                 </div>
@@ -97,7 +102,7 @@
 
             </div>
             <div class="card-footer">
-                <a onclick="SendRequestEducation('@dir')" class="btn btn-sm btn-primary text-white">
+                <a onclick="SendRequestEducation('@dir')" class="btn btn-sm btn-primary @font text-white">
                     @Localizer["btn"]
                 </a>
             </div>

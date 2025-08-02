@@ -25,7 +25,7 @@
                             <div class="card-header">
                                 @if (CultureInfo.CurrentUICulture.Name == "en-US")
                                 {
-                                    <h3>@book.TitleEn</h3>
+                                    <h3 class="English">@book.TitleEn</h3>
                                 }
                                 else
                                 {
@@ -35,7 +35,7 @@
                             <div class="card-body">
                                 @if (CultureInfo.CurrentUICulture.Name == "en-US")
                                 {
-                                    <p class="card-text">
+                                    <p class="card-text English">
                                         @book.DescriptionEn
                                     </p>
                                 }

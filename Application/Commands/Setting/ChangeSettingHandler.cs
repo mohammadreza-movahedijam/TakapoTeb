@@ -51,6 +51,21 @@ internal sealed class ChangeSettingHandler :
 
 
 
+        if (request.Setting.LicenseLogoFile != null)
+        {
+            setting!.LicenseLogo = request.Setting.LicenseLogoFile.UploadImage("setting");
+            request.Setting.LicenseLogo!.RemoveImage("setting");
+        }
+
+
+        
+
+        if (request.Setting.AcademyImageFile != null)
+        {
+            setting!.AcademyImagePath = request.Setting.AcademyImageFile.UploadImage("setting");
+            request.Setting.AcademyImagePath!.RemoveImage("setting");
+        }
+
 
 
 

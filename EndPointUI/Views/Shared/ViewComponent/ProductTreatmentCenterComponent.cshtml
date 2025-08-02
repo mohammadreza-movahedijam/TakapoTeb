@@ -1,12 +1,13 @@
 ﻿@model IReadOnlyList<Application.Queries.TreatmentCenter.TreatmentCenterViewModel>
 @{
     string title = CultureInfo.CurrentUICulture.Name! == "en-US" ? "Equipped centers" : "مراکز تجهیز شده"!;
-
+    string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
+}
 }
 @if(Model!=null && Model.Any())
 {
 
-    <h3>
+    <h3 class="@font">
         @title
     </h3>
 

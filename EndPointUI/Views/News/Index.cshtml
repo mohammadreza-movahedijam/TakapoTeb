@@ -1,5 +1,6 @@
 ﻿@{
     string align = CultureInfo.CurrentUICulture.Name! == "en-US" ? "ltr" : "rtl"!;
+    string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
 
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -11,8 +12,8 @@
 }
 <div class="container ">
     <div class="row text-center mt-5">
-        <h3 class="mg-t-70">@Localizer["title"]</h3>
-        <p>@Localizer["text"]</p>
+        <h3 class="mg-t-70 @font">@Localizer["title"]</h3>
+        <p class="@font">@Localizer["text"]</p>
         <input type="hidden" id="culture" value="@align" />
 
         @await Component.InvokeAsync("NewsCategoryComponent")

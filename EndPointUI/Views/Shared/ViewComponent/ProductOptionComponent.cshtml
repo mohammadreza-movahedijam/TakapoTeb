@@ -1,4 +1,8 @@
 ﻿@model IReadOnlyList<Application.Queries.Option.OptionViewModel>
+@{
+    string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
+}
+}
 <div class="row p-3">
     @foreach (var item in Model)
     {
@@ -6,7 +10,7 @@
             <div class="card text-center  d-flex justify-content-center" style="width: 18rem;">
                 <img src="~/gallery/Product/@item.ImagePath" class="card-img-top img-option" />
                 <div class="card-body">
-                    <h5 class="card-title">
+                    <h5 class="card-title @font">
                         @if (CultureInfo.CurrentUICulture.Name == "en-US")
                         {
                             @item.TitleEn
@@ -16,7 +20,7 @@
                             @item.TitleFa
                         }
                     </h5>
-                    <p class="card-text">
+                    <p class="card-text @font">
                         @if (CultureInfo.CurrentUICulture.Name == "en-US")
                         {
                             @item.DescriptionEn

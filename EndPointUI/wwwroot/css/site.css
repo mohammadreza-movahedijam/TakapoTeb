@@ -1,6 +1,15 @@
-﻿.swiper {
+﻿
+@font-face {
+    font-family: Poppins-Light;
+    src: url(../font/Poppins-Light.ttf);
+}
+
+.English {
+    font-family: Poppins-Light !important;
+}
+.swiper {
     width: 100%;
-   /* padding: 50px 0;*/
+    /* padding: 50px 0;*/
 }
 
 .swiper-slide-partner {
@@ -33,7 +42,7 @@
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background-color: #0d6efd;
+    background-color: #a6c6ed;
     color: white;
     display: flex;
     align-items: center;
@@ -70,7 +79,7 @@
     }
 
 .chat-header {
-    background-color: #0d6efd;
+    background-color: #3783A5;
     color: white;
     padding: 15px;
     border-top-left-radius: 12px;
@@ -171,7 +180,7 @@
 
 .bg-category {
     height: 500px;
-    background: linear-gradient(to right, #303580, #0F70AD);
+    background: linear-gradient(to right, #3783a5, #A6C6ED);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -346,11 +355,11 @@ body {
     margin-left: 60px !important;
     margin-right: 60px !important;
     padding: 15px;
-    background-color: #AB031E;
+    background-color: #C7C8CA;
     color: white;
 }
     .btn-more-product:hover {
-        background-color: #800116;
+        background-color: #767778;
         color: white;
     }
 .title-product {
@@ -358,7 +367,7 @@ body {
 }
 .bg-product {
     height: 500px;
-    background: linear-gradient(to right, #303580, #800116);
+    background: linear-gradient(to right, #af3cb1, #73287b);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -422,8 +431,11 @@ body {
     display: block;
     unicode-bidi: isolate;
 }
+.mg-t-48 {
+    margin-top: 48px;
+}
 .mg-t-70 {
-    margin-top: 70px; 
+    margin-top: 70px;
 }.mg-t-100 {
     margin-top: 100px !important; 
 }
@@ -432,4 +444,11 @@ body {
     display: -webkit-box !important;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
+}
+
+.text-dark-blue {
+    color: #252e69 !important;
+}
+.tab-color {
+    background-color: #3783A5 !important;
 }

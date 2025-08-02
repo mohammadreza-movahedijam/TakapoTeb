@@ -1,21 +1,24 @@
 ﻿@using Application.Queries.Setting.ViewModels
 @model FooterColumnViewModel
+@{
+    string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
 
+}
 <div class="col-lg-3 col-md-6">
     <div class="footer-widget footer-menu">
-        <h2 class="footer-title">
+        <h2 class="footer-title text-dark-blue @font">
             @(CultureInfo.CurrentUICulture.Name == "en-US" ? Model.ColumnOneTitleEn : Model.ColumnOneTitleFa)
         </h2>
         <ul>
             <li>
-                <a href="@(Model.ColumnOneItemOneLink)">
+                <a class="text-dark-blue @font" href="@(Model.ColumnOneItemOneLink)">
                     @(CultureInfo.CurrentUICulture.Name == "en-US" ? 
                         Model.ColumnOneItemOneTitleEn : Model.ColumnOneItemOneTitleFa)
 
                 </a>
             </li>
             <li>
-                <a href="@(Model.ColumnOneItemTwoLink)">
+                <a class="text-dark-blue @font" href="@(Model.ColumnOneItemTwoLink)">
                     @(CultureInfo.CurrentUICulture.Name == "en-US" ?
                         Model.ColumnOneItemTwoTitleEn : Model.ColumnOneItemTwoTitleFa)
 
@@ -25,7 +28,7 @@
 
 
             <li>
-                <a href="@(Model.ColumnOneItemThreeLink)">
+                <a class="text-dark-blue @font" href="@(Model.ColumnOneItemThreeLink)">
                     @(CultureInfo.CurrentUICulture.Name == "en-US" ?
                         Model.ColumnOneItemThreeTitleEn : Model.ColumnOneItemThreeTitleFa)
 
@@ -34,7 +37,7 @@
 
 
             <li>
-                <a href="@(Model.ColumnOneItemFourLink)">
+                <a class="text-dark-blue @font" href="@(Model.ColumnOneItemFourLink)">
                     @(CultureInfo.CurrentUICulture.Name == "en-US" ?
                         Model.ColumnOneItemFourTitleEn : Model.ColumnOneItemFourTitleFa)
 
@@ -45,20 +48,20 @@
 </div>
 <div class="col-lg-3 col-md-6">
     <div class="footer-widget footer-menu">
-        <h2 class="footer-title">
+        <h2 class="footer-title text-dark-blue @font">
             @(CultureInfo.CurrentUICulture.Name == "en-US" ? Model.ColumnTwoTitleEn : Model.ColumnTwoTitleFa)
         </h2>
         <ul>
 
             <li>
-                <a href="@(Model.ColumnTwoItemOneLink)">
+                <a class="text-dark-blue @font" href="@(Model.ColumnTwoItemOneLink)">
                     @(CultureInfo.CurrentUICulture.Name == "en-US" ?
                         Model.ColumnTwoItemOneTitleEn : Model.ColumnTwoItemOneTitleFa)
 
                 </a>
             </li>
             <li>
-                <a href="@(Model.ColumnTwoItemTwoLink)">
+                <a class="text-dark-blue @font" href="@(Model.ColumnTwoItemTwoLink)">
                     @(CultureInfo.CurrentUICulture.Name == "en-US" ?
                         Model.ColumnTwoItemTwoTitleEn : Model.ColumnTwoItemTwoTitleFa)
 
@@ -68,7 +71,7 @@
 
 
             <li>
-                <a href="@(Model.ColumnTwoItemThreeLink)">
+                <a class="text-dark-blue @font" href="@(Model.ColumnTwoItemThreeLink)">
                     @(CultureInfo.CurrentUICulture.Name == "en-US" ?
                         Model.ColumnTwoItemThreeTitleEn : Model.ColumnTwoItemThreeTitleFa)
 
@@ -77,7 +80,7 @@
 
 
             <li>
-                <a href="@(Model.ColumnTwoItemFourLink)">
+                <a class="@font text-dark-blue" href="@(Model.ColumnTwoItemFourLink)">
                     @(CultureInfo.CurrentUICulture.Name == "en-US" ?
                         Model.ColumnTwoItemFourTitleEn : Model.ColumnTwoItemFourTitleFa)
 

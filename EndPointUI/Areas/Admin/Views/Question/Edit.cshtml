@@ -1,0 +1,92 @@
+﻿@model Application.Commands.Question.QuestionDto
+@{
+    ViewData["Title"] = "ویرایش سوال";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section Script {
+    <partial name="_ValidationScriptsPartial.cshtml" />
+}
+<nav aria-label="breadcrumb">
+    <ol class="lh-1-85 breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/Admin">پیشخوان</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a href="/Admin/Question/Index">سوالات</a>
+        </li>
+
+        <li class="breadcrumb-item active">ویرایش سوال </li>
+    </ol>
+</nav>
+
+<div class="row">
+    <div class="col-8 offset-2">
+        <div class="card mb-4">
+            <div class="card-header">
+
+                <h5 class=" heading-color">ویرایش سوال</h5>
+                @if (ViewBag.ErrorMessage != null)
+                {
+                    <div class="alert alert-danger">
+                        @ViewBag.ErrorMessage
+                    </div>
+
+                }
+
+
+            </div>
+            <form asp-area="Admin" asp-controller="Question" asp-action="Edit"
+                  method="post" class="card-body">
+
+                <div class="row">
+                    <div class="col-12">
+                        <label class="form-label">عنوان سوال</label>
+                        <textarea asp-for="Title"
+                                  type="text" class="form-control" rows="4">
+                                                  </textarea>
+                        <span class="Question-danger" asp-validation-for="Title"></span>
+
+                    </div>
+
+                    <div class="col-6">
+                        <label class="form-label">گزینه اول</label>
+                        <input asp-for="OptionOne" type="Question" class="form-control" />
+                        <span class="Question-danger" asp-validation-for="OptionOne"></span>
+                    </div>
+
+
+                    <div class="col-6">
+                        <label class="form-label">گزینه دوم</label>
+                        <input asp-for="OptionTwo" type="Question" class="form-control" />
+                        <span class="Question-danger" asp-validation-for="OptionTwo"></span>
+                    </div>
+
+
+                    <div class="col-6">
+                        <label class="form-label">گزینه سوم</label>
+                        <input asp-for="OptionThree" type="Question" class="form-control" />
+                        <span class="Question-danger" asp-validation-for="OptionThree"></span>
+                    </div>
+
+
+                    <div class="col-6">
+                        <label class="form-label">گزینه چهارم</label>
+                        <input asp-for="OptionFour" type="Question" class="form-control" />
+                        <span class="Question-danger" asp-validation-for="OptionFour"></span>
+                    </div>
+
+
+                    <input type="hidden" asp-for="Id"/>
+
+                </div>
+
+                <div class="mt-3">
+                    <button type="submit" class="btn btn-sm Question-white btn-success">ثبت</button>
+                    <a asp-area="Admin" asp-controller="Question" asp-action="Index" class="btn btn-sm Question-white btn-warning">بازگشت</a>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,7 @@
 ﻿@model Application.Queries.Setting.ViewModels.AboutSectionViewModel
 @{
+    string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
+
     string icon = string.Empty;
 }
 <section class="mt-5">
@@ -9,7 +11,7 @@
                 @if (CultureInfo.CurrentUICulture.Name == "fa-IR")
                 {
                       <div class="text-right" style="direction:rtl">
-                        <h2 class="section-title"> @Localizer["Title"]</h2>
+                        <h2 class="section-title "> @Localizer["Title"]</h2>
                         <h3 class="mt-3">+ @Model.YearsExperience   @Localizer["SubTitle"] </h3>
 
                         @Html.Raw(Model.AboutFa)
@@ -22,15 +24,18 @@
                 else
                 {
                     <div class="text-right" style="direction:ltr">
-                        <h2 class="section-title"> @Localizer["Title"]</h2>
-                        <h3 class="mt-3">@Model.YearsExperience +  @Localizer["SubTitle"] </h3>
+                        <h2 class="section-title English"> @Localizer["Title"]</h2>
+                        <h3 class="mt-3 English">@Model.YearsExperience +  @Localizer["SubTitle"] </h3>
+                        <div class="English">
 
                         @Html.Raw(Model.AboutEn)
+                        </div>
 
                     </div>
                     icon = "fa-arrow-circle-right";
                 }
-                <a class="btn btn-primary mt-4">@Localizer["Button"]
+                <a href="/About" class="btn btn-primary mt-4 English">
+                    @Localizer["Button"]
                     
                     <i class="fas @icon ms-2"></i>
                 </a>

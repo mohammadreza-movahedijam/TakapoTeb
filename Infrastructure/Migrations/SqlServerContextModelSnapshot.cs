@@ -894,6 +894,35 @@ namespace Infrastructure.Migrations
                     b.ToTable("Picture", "dbo");
                 });
 
+            modelBuilder.Entity("Domain.Entities.System.QuestionEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("OptionFour")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OptionOne")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OptionThree")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OptionTwo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Question", "dbo");
+                });
+
             modelBuilder.Entity("Domain.Entities.System.RequestEducationAttachEntity", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1257,6 +1286,14 @@ namespace Infrastructure.Migrations
                             Order = 28,
                             Title = "صفحات",
                             Url = "/Admin/Page"
+                        },
+                        new
+                        {
+                            Id = new Guid("efc3f43b-c8e1-4f13-bea2-4438a0041032"),
+                            Icon = "<i class=\"fas fa-question-circle menu-icon\"></i>",
+                            Order = 29,
+                            Title = "سوالات",
+                            Url = "/Admin/Question"
                         });
                 });
 
@@ -1288,6 +1325,21 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("AboutTitleFa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AcademyImagePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AcademyTextEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AcademyTextFa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AcademyTitleEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AcademyTitleFa")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("BottomLogoPathEn")
@@ -1398,6 +1450,9 @@ namespace Infrastructure.Migrations
                     b.Property<string>("Latitude")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("LicenseLogo")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Linkedin")
                         .HasColumnType("nvarchar(max)");
 
@@ -1450,6 +1505,11 @@ namespace Infrastructure.Migrations
                             AboutImagePath = "",
                             AboutTitleEn = "",
                             AboutTitleFa = "",
+                            AcademyImagePath = "",
+                            AcademyTextEn = "",
+                            AcademyTextFa = "",
+                            AcademyTitleEn = "",
+                            AcademyTitleFa = "",
                             BottomLogoPathEn = "",
                             BottomLogoPathFa = "",
                             ColumnOneItemFourLink = "",
@@ -1484,6 +1544,7 @@ namespace Infrastructure.Migrations
                             DescriptionEn = "",
                             DescriptionFa = "",
                             Instagram = "",
+                            LicenseLogo = "",
                             Linkedin = "",
                             LocationEn = "",
                             LocationFa = "",

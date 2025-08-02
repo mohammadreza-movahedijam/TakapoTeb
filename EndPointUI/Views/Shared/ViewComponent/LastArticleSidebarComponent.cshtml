@@ -1,5 +1,6 @@
 ﻿@model IReadOnlyList<Application.Queries.Article.ViewModels.ArticleViewModel>
 @{
+    string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
     string direction = CultureInfo.CurrentUICulture.Name == "en-US" ? "ltr" : "rtl";
 }
 <div class="card post-widget">
@@ -7,7 +8,7 @@
       
             @if (CultureInfo.CurrentUICulture.Name == "en-US")
             {
-                <h4 class="card-title">
+                <h4 class="card-title English">
                     Latest Posts
                 </h4>
             }
@@ -39,8 +40,8 @@
                         </a>
                     </div>
                     <div class="post-info">
-                        <h4>
-                            <a asp-controller="Blog" asp-action="Detail" asp-route-Id="@blog.Id">
+                        <h4 class="@font">
+                            <a class="@font" asp-controller="Blog" asp-action="Detail" asp-route-Id="@blog.Id">
                                 @if (CultureInfo.CurrentUICulture.Name == "en-US")
                                 {
                                     @blog.TitleEn
@@ -51,7 +52,7 @@
                                 }
                             </a>
                         </h4>
-                        <p>
+                        <p class="@font">
                             @if (CultureInfo.CurrentUICulture.Name == "en-US")
                             {
                                 @blog.PublishDateEn

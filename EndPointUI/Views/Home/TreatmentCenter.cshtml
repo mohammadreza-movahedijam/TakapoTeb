@@ -2,6 +2,7 @@
 @{
     string align = CultureInfo.CurrentUICulture.Name! == "en-US" ? "ltr" : "rtl"!;
     string title = CultureInfo.CurrentUICulture.Name! == "en-US" ? "Equipped centers" : "مراکز تجهیز شده"!;
+    string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
 
     ViewData["Title"] = title;
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -16,7 +17,7 @@
 <div class="row mt-5 text-center">
     <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 offset-xl-2 offset-lg-2">
 
-        <h3 class="mb-3">
+        <h3 class="mb-3 @font">
             @title
         </h3>
         <div id="mapid" class="rounded shadow p-3 card" style="height: 400px;"></div>

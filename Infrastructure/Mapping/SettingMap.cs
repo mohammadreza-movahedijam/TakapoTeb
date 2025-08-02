@@ -25,6 +25,7 @@ internal sealed class SettingMap : IEntityTypeConfiguration<SettingEntity>
             AboutDescriptionFa = string.Empty,
 
 
+            LicenseLogo = string.Empty,
             TopLogoPathEn = string.Empty,
             BottomLogoPathEn = string.Empty,
             TopLogoPathFa = string.Empty,
@@ -72,7 +73,12 @@ internal sealed class SettingMap : IEntityTypeConfiguration<SettingEntity>
             ColumnTwoItemThreeLink = string.Empty,
             ColumnTwoItemFourTitleEn = string.Empty,
             ColumnTwoItemFourTitleFa = string.Empty,
-            ColumnTwoItemFourLink = string.Empty
+            ColumnTwoItemFourLink = string.Empty,
+            AcademyTitleEn = string.Empty,
+            AcademyTitleFa = string.Empty,
+            AcademyTextFa = string.Empty,
+            AcademyTextEn = string.Empty,
+            AcademyImagePath = string.Empty
         });
     }
 }

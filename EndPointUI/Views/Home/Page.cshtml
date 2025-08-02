@@ -1,6 +1,8 @@
 ﻿@using Application.Queries.Page
 @model PageDetailViewModel
 @{
+    string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
+
     string align = CultureInfo.CurrentUICulture.Name! == "en-US" ? "ltr" : "rtl"!;
     string? title = CultureInfo.CurrentUICulture.Name! == "en-US" ? Model.TitleEn : Model.TitleFa;
     ViewData["Title"] = title;
@@ -15,7 +17,7 @@
                     
                     @if (CultureInfo.CurrentUICulture.Name == "en-US")
                     {
-                        <h3 class="blog-title">@Model.TitleEn</h3>
+                        <h3 class="blog-title @font">@Model.TitleEn</h3>
                     }
                     else
 
@@ -37,7 +39,7 @@
                     </a>
                 </div>
 
-                    <div class="blog-content">
+                    <div class="blog-content @font">
                         @if (CultureInfo.CurrentUICulture.Name == "en-US")
                         {
                             @Html.Raw(Model.DescriptionEn)

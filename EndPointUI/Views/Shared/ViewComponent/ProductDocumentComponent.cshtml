@@ -1,11 +1,15 @@
 ﻿@model IReadOnlyList<Application.Queries.Document.DocumentViewModel> 
+@{
+    string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
+}
+}
 <div class="row justify-content-center">
         @foreach (var item in Model)
         {
             <div class="col-sm-3 mb-3 mb-sm-0">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">
+                        <h5 class="card-title @font">
                         @if (CultureInfo.CurrentUICulture.Name == "en-US")
                         {
                             @item.TitleEn
@@ -18,7 +22,7 @@
                         
                         @if (CultureInfo.CurrentUICulture.Name == "en-US")
                         {
-                        <a href="~/files/Product/@item.FilePath" class="btn btn-primary">
+                        <a href="~/files/Product/@item.FilePath" class="@font btn btn-primary">
                             Download
                         </a>
                         }

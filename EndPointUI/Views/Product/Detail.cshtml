@@ -3,6 +3,7 @@
     string title = CultureInfo.CurrentUICulture.Name! == "en-US" ? Model.TitleEn! : Model.TitleFa!;
     ViewData["Title"] = title;
     Layout = "~/Views/Shared/_Layout.cshtml";
+    string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
 
     string align = CultureInfo.CurrentUICulture.Name! == "en-US" ? "ltr" : "rtl"!;
 
@@ -24,7 +25,7 @@
 
         @if (CultureInfo.CurrentUICulture.Name == "en-US")
         {
-            <h2 class="text-white title-product">@Model.TitleEn</h2>
+            <h2 class="text-white title-product @font">@Model.TitleEn</h2>
 
         }
         else
@@ -34,7 +35,7 @@
 
         }
         <br />
-        <a class="btn-more-product">@Localizer["BtnMore"]</a>
+        <a class="btn-more-product @font">@Localizer["BtnMore"]</a>
         <div>
         </div>
     </div>
@@ -44,13 +45,13 @@
         <nav class="user-tabs mb-4" style="direction:@align">
             <ul style="padding-left:0;" class="nav nav-tabs nav-tabs-bottom nav-justified">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#overview" data-bs-toggle="tab">@Localizer["Tab1"]</a>
+                    <a class="@font nav-link active" href="#overview" data-bs-toggle="tab">@Localizer["Tab1"]</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#gallery" data-bs-toggle="tab">@Localizer["Tab2"]</a>
+                    <a class="@font nav-link" href="#gallery" data-bs-toggle="tab">@Localizer["Tab2"]</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#document" data-bs-toggle="tab">@Localizer["Tab3"]</a>
+                    <a class="@font nav-link" href="#document" data-bs-toggle="tab">@Localizer["Tab3"]</a>
                 </li>
 
             </ul>
@@ -59,7 +60,7 @@
             <div role="tabpanel" id="overview" class="tab-pane fade show active">
                 <div class="row p-3">
                     <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 offset-xl-2 offset-lg-2">
-                        <p style="direction:@align">
+                        <p class="@font" style="direction:@align">
                             @if (CultureInfo.CurrentUICulture.Name == "en-US")
                             {
                                 @Model.DescrptionEn

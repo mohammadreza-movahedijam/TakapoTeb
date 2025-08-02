@@ -1,29 +1,22 @@
 ﻿@{
+    string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
+
     string direction = CultureInfo.CurrentUICulture.Name == "en-US" ? "ltr" : "rtl";
 }
 <footer class="footer" style="direction:@direction;">
     <div class="footer-top">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-3 col-md-6 @font">
                     @await Component.InvokeAsync("FooterInformationComponent")
                 </div>
                 @await Component.InvokeAsync("FooterColumnComponent")
               
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-widget footer-menu">
-                        <h2 class="footer-title"> @Localizer["clubTitle"] </h2>
-                       <p>
-                            @Localizer["clubText"]
-                       </p>
-                        <form>
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="@(CultureInfo.CurrentUICulture.Name == "en-US" ? "Email" : "ایمیل")">
-                                <button class="btn btn-outline-secondary" type="button">
-                                    @(CultureInfo.CurrentUICulture.Name == "en-US" ? "Share" : "اشتراک")
-                                </button>
-                            </div>
-                        </form>
+                      
+                        @await Component.InvokeAsync("LicenseLogoComponent")
+
                     </div>
                 </div>
             </div>
@@ -32,14 +25,14 @@
     <div class="footer-bottom">
         <div class="container">
             <div class="row d-flex col-md-12">
-                <p>
+                <p class="@font">
                     @if (CultureInfo.CurrentUICulture.Name == "en-US")
                     {
                         <strong>©Copyright @(DateTime.Now.Year)</strong>
                     }
 
                     @Localizer["CopyRight1"]
-                <a class="text-white" href="https://darnogroup.com/">
+                    <a class="text-white @font" href="https://darnogroup.com/">
                         @Localizer["CopyRight2"]
                 </a>
                 </p>

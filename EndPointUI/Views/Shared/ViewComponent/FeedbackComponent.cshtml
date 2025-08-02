@@ -1,10 +1,12 @@
 ﻿@model IReadOnlyList<Application.Queries.Feedback.FeedbackViewModel>
 @{
+    string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
+
     string direction = CultureInfo.CurrentUICulture.Name == "en-US" ? "ltr" : "rtl";
     string title = CultureInfo.CurrentUICulture.Name == "en-US" ? "What Our Customers Say" : "آنچه مشتریان ما می‌گویند";
 }
 <div dir="@direction">
-    <h6 class="section-title"> @title </h6>
+    <h6 class="section-title @font"> @title </h6>
 </div>
 <div class="swiper mySwiperFeedback text-center mt-4">
     <div class="swiper-wrapper ">
@@ -12,13 +14,29 @@
         @foreach(var item in Model)
         {
             <div class="swiper-slide mx-2" dir="@direction">
-                <div class="comment-box">
+                <div class="comment-box text-center">
+                    <div style="display: flex; justify-content: center;">
+                    @if (item.FilePath == "default.jpg" || item.FilePath == null)
+                    {
+                        <img style="border-radius:50px;width:50px;height:50px"
+                             src="~/Gallery/default.jpg" />
+                    }
+                    else
+                    {
+
+
+
+                        <img style="border-radius:50px;width:50px;height:50px" 
+                             src="~/Gallery/Feedback/@item.FilePath " />
+                        }
+                    </div>
                     @if (CultureInfo.CurrentUICulture.Name == "en-US")
                     {
-                        <h3 class="name text-primary">@item.FullNameEn</h3>
-                        <div class="title jobposition">@item.JobPositionEn</div>
+                        <h3 class="name text-primary @font">@item.FullNameEn</h3>
+                        <div class="title jobposition @font">@item.JobPositionEn</div>
                         <hr />
-                        <p class="text text-dark feedback-text">@item.ExplanationEn</p>
+                        <p class="@font text text-dark feedback-text">@item.ExplanationEn</p>
+                        <a class="English" onclick="ShowText('@item.FullNameEn', '@item.ExplanationEn')">Show</a>
                     }
                     else
                     {
@@ -26,6 +44,8 @@
                         <div class="title jobposition">@item.JobPositionFa</div>
                         <hr />
                         <p class="text text-dark feedback-text">@item.ExplanationFa</p>
+                        <a class="English" onclick="ShowText('@item.FullNameFa', '@item.ExplanationFa')">مشاهده</a>
+
                     }
 
                 </div>

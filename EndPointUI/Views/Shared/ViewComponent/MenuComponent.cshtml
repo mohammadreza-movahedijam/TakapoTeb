@@ -1,5 +1,7 @@
 ﻿@model IReadOnlyList<Application.Queries.ProductCategory.ViewModels.CategoryMenuViewModel>
-
+@{
+    string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
+}
 @if (Model.Any())
 {
     if (CultureInfo.CurrentUICulture.Name == "en-US")
@@ -8,7 +10,7 @@
        .Where(w=>w.ParentProductCategoryId==null))
         {
             <li class="has-submenu mx-3" dir="ltr">
-                <a asp-controller="Category" asp-action="Detail" asp-route-pattern="@item.Id">
+                <a class="@font" asp-controller="Category" asp-action="Detail" asp-route-pattern="@item.Id">
                     @item.TitleEn
                   @*   @if (item.SubCategories != null && item.SubCategories!.Any())
                     {
@@ -28,7 +30,7 @@
        .Where(w => w.ParentProductCategoryId == null))
         {
             <li class="has-submenu mx-3">
-                <a asp-controller="Category" asp-action="Detail" asp-route-pattern="@item.Id">
+                <a class="@font" asp-controller="Category" asp-action="Detail" asp-route-pattern="@item.Id">
                     @item.TitleFa  
                   @*   @if (item.SubCategories != null && item.SubCategories!.Any())
                     {

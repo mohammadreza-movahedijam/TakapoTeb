@@ -1,6 +1,8 @@
 ﻿@using Application.Common.Extension
 @model Application.Queries.News.NewsDetailViewModel
 @{
+    string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
+
     string align = CultureInfo.CurrentUICulture.Name! == "en-US" ? "ltr" : "rtl"!;
     string? title = CultureInfo.CurrentUICulture.Name! == "en-US" ? Model.TitleEn : Model.TitleFa;
     ViewData["Title"] = title;
@@ -29,7 +31,7 @@
                     </div>
                     @if (CultureInfo.CurrentUICulture.Name == "en-US")
                     {
-                        <h3 class="blog-title">@Model.TitleEn</h3>
+                        <h3 class="blog-title English">@Model.TitleEn</h3>
                     }
                     else
 
@@ -46,7 +48,7 @@
                                     <i class="fa fa-tags"></i>
                                     @if (CultureInfo.CurrentUICulture.Name == "en-US")
                                     {
-                                        <span>@Model.TopicType.GetEnumShortName()</span>
+                                        <span class="English">@Model.TopicType.GetEnumShortName()</span>
                                     }
                                     else
 
@@ -57,7 +59,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="blog-content">
+                    <div class="blog-content @font">
                         @if (CultureInfo.CurrentUICulture.Name == "en-US")
                         {
                             @Html.Raw(Model.DescriptionEn)
@@ -73,7 +75,7 @@
                                 <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                                     @if (CultureInfo.CurrentUICulture.Name == "en-US")
                                     {
-                                        <span>
+                                        <span class="@font">
                                             Reference
                                         </span>
                                     }
@@ -86,7 +88,7 @@
                               
                             </p>
                             <div class="collapse" id="collapseExample">
-                                <div class="card card-body">
+                                <div class="card @font card-body">
                                     @Model.ReferencesLink
                                 </div>
                             </div>

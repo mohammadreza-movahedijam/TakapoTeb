@@ -2,7 +2,7 @@
 @model IReadOnlyList<NewsCategoryViewModel>
 @{
     string align = CultureInfo.CurrentUICulture.Name! == "en-US" ? "ltr" : "rtl"!;
-
+    string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
 }
 <nav class="user-tabs mb-4" style="direction:@align">
     <ul style="padding-left:0;" class="nav nav-tabs nav-tabs-bottom nav-justified">
@@ -24,7 +24,7 @@
                        href="#tab_@Model[i].Id" data-bs-toggle="tab">
                         @if (CultureInfo.CurrentUICulture.Name == "en-US")
                         {
-                            <span>@Model[i].TitleEn</span>
+                            <span class="@font">@Model[i].TitleEn</span>
                         }
                         else
                         {
@@ -45,7 +45,7 @@
             <div role="tabpanel" id="tab_@Model[i].Id" class="tab-pane fade show @isActive" style="direction:@align">
                 <div class="row" id="list_@Model[i].Id">
                 </div>
-                <a onclick="loadNews('@(Model[i].Id)',1)" class="w-25 btn btn-sm btn-primary text-white mb-5" id="more_@Model[i].Id">
+                <a onclick="loadNews('@(Model[i].Id)',1)" class="@font w-25 btn btn-sm btn-primary text-white mb-5" id="more_@Model[i].Id">
                     @(CultureInfo.CurrentUICulture.Name! == "en-US" ? "more" : "بیشتر")
                 </a>
             </div>

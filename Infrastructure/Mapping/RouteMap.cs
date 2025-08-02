@@ -291,6 +291,15 @@ internal sealed class RouteMap : IEntityTypeConfiguration<RouteEntity>
             Order = 28
         });
 
+          builder.HasData(new RouteEntity()
+        {
+            Id = Guid.Parse("efc3f43b-c8e1-4f13-bea2-4438a0041032"),
+            Title = "سوالات",
+            Icon = "<i class=\"fas fa-question-circle menu-icon\"></i>",
+            Url = "/Admin/Question",
+            Order = 29
+        });
+
 
     }
 }

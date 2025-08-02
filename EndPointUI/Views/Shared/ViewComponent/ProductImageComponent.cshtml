@@ -1,4 +1,8 @@
 ﻿@model IReadOnlyList<Application.Queries.Image.ImageViewModel>
+@{
+    string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
+}
+}
 <div class="row justify-content-center">
     <div class="feature-col-list">
         @foreach (var item in Model)
@@ -7,7 +11,7 @@
                 <div class="feature-subox d-flex flex-wrap justify-content-center">
                     <img src="~/gallery/ProductImage/@item.Path"
                         class="img-fluid" alt="Features">
-                    <h4>
+                    <h4 class="@font"> 
                         @if (CultureInfo.CurrentUICulture.Name == "en-US")
                         {
                             @item.TitleEn

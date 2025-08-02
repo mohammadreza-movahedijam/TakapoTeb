@@ -4,6 +4,16 @@ namespace Application.Commands.Setting;
 
 public sealed record SettingDto
 {
+
+    public string? AcademyTitleEn { get; set; }
+    public string? AcademyTitleFa { get; set; }
+    public string? AcademyTextFa { get; set; }
+    public string? AcademyTextEn { get; set; }
+    public string? AcademyImagePath { get; set; }
+    public IFormFile? AcademyImageFile { get; set; }
+    public string? LicenseLogo { get; set; }
+    public IFormFile? LicenseLogoFile { get; set; }
+
     public IFormFile? AboutPageImageFile { get; set; }
     public string? AboutImage { get; set; }
     public string? AboutTitleEn { get; set; }

@@ -1,11 +1,12 @@
 ﻿@using Application.Queries.Partner
 @model IReadOnlyList<PartnerItemMenuViewModel> 
-
-
+@{
+    string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
+}
 @foreach(var item in Model)
 {
     <li>
-        <a asp-controller="Home" asp-action="Partner" asp-route-Id="@item.Id">
+        <a class="@font" asp-controller="Home" asp-action="Partner" asp-route-Id="@item.Id">
            @(CultureInfo.CurrentUICulture.Name=="en-US"?item.TitleEn:item.TitleFa)
         </a>
     </li>

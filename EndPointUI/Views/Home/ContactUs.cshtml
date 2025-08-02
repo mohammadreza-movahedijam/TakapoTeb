@@ -1,6 +1,7 @@
 ﻿@model Application.Queries.Setting.ViewModels.ContactUsViewModel
 @{
     string align = CultureInfo.CurrentUICulture.Name! == "en-US" ? "ltr" : "rtl"!;
+    string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
 
     ViewData["Title"] = Localizer["PageTitle"];
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -17,8 +18,8 @@
     <script src="~/js/sweetalert.js"></script>
 }
 <div class="mg-t-100 d-flex flex-column align-items-center mt-5 text-center">
-    <h1>@Localizer["PageTitle"]</h1>
-    <p>
+    <h1 class="@font">@Localizer["PageTitle"]</h1>
+    <p class="@font">
         @Localizer["Text"]
     </p>
 </div>
@@ -30,14 +31,14 @@
                 <div class="schedule-nav">
                     <ul class="nav nav-tabs nav-justified" style="direction:@align;">
                         <li class="nav-item">
-                            <a class="nav-link active" data-bs-toggle="tab" href="#tab2">@Localizer["Tab2"]</a>
+                            <a class="nav-link active @font" data-bs-toggle="tab" href="#tab2">@Localizer["Tab2"]</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#tab1">@Localizer["Tab1"]</a>
+                            <a class="nav-link @font" data-bs-toggle="tab" href="#tab1">@Localizer["Tab1"]</a>
                         </li>
                    
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#tab3">@Localizer["Tab3"]</a>
+                            <a class="nav-link @font" data-bs-toggle="tab" href="#tab3">@Localizer["Tab3"]</a>
                         </li>
 
 
@@ -56,8 +57,8 @@
                                         </div>
                                     </div>
                                     <div class="infor-details text-center">
-                                        <label>@Localizer["PhoneNumber"]</label>
-                                        <p>
+                                        <label class="@font">@Localizer["PhoneNumber"]</label>
+                                        <p class="@font">
                                             @Model.ContactNumber
                                         </p>
                                     </div>
@@ -71,8 +72,8 @@
                                         </div>
                                     </div>
                                     <div class="infor-details text-center">
-                                        <label>@Localizer["Email"]</label>
-                                        <p>
+                                        <label class="@font">@Localizer["Email"]</label>
+                                        <p class="@font">
                                             <a href="mailto:@Model.Email">@Model.Email</a>
                                         </p>
                                     </div>
@@ -86,8 +87,8 @@
                                         </div>
                                     </div>
                                     <div class="infor-details text-center">
-                                        <label>@Localizer["Location"]</label>
-                                        <p>
+                                        <label class="@font">@Localizer["Location"]</label>
+                                        <p class="@font">
                                             @if (CultureInfo.CurrentUICulture.Name == "en")
                                             {
                                                 @Model.LocationEn
@@ -112,7 +113,7 @@
                 <div id="tab1" class="tab-pane fade ">
                     <div class="container">
                         <div class="section-header text-center" style="direction:@align;">
-                            <h2>  @Localizer["FormTitle"]</h2>
+                            <h2 class="@font">  @Localizer["FormTitle"]</h2>
                         </div>
                         <div class="row">
                             <div class="col-md-12" style="direction:@align;">
@@ -120,15 +121,15 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>
+                                                <label class="@font">
                                                     @Localizer["FieldName"] <span class="textdnger">*</span>
                                                 </label>
-                                                <input type="text" id="fullname" class="form-control">
+                                                <input type="text" id="fullname" class=" form-control">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>
+                                                <label class="@font">
                                                     @Localizer["FieldEmail"] <span class="textdnger">*</span>
                                                 </label>
                                                 <input type="text" id="email" class="form-control">
@@ -136,7 +137,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>
+                                                <label class="@font">
                                                     @Localizer["FieldPhoneNumber"] <span class="textdnger">*</span>
                                                 </label>
                                                 <input type="text" id="phonenumber" class="form-control">
@@ -144,13 +145,13 @@
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>@Localizer["FieldSubject"] <span class="textdnger">*</span></label>
+                                                <label class="@font">@Localizer["FieldSubject"] <span class="textdnger">*</span></label>
                                                 <input type="text" id="subject" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>
+                                                <label class="@font">
                                                     @Localizer["FieldMessage"] <span class="textdnger">*</span>
                                                 </label>
                                                 <textarea id="text" class="form-control"></textarea>

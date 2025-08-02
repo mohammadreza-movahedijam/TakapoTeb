@@ -1,4 +1,9 @@
 ﻿@model Application.Queries.Setting.ViewModels.FooterInformationViewModel
+
+@{
+    string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
+
+}
 <div class="footer-widget footer-about">
     <div class="footer-logo">
 
@@ -16,18 +21,21 @@
 
         @if (CultureInfo.CurrentUICulture.Name == "fa-IR")
         {
-            <p>@Model.DescriptionFa
+            <p class="@font text-dark-blue">
+                @Model.DescriptionFa
             </p>
         }
         else
-        { <p>@Model.DescriptionEn
+        {
+            <p class="text-dark-blue">
+                @Model.DescriptionEn
             </p>
             
         }
 
         <div class="social-icon">
             <ul>
-                <li class="mx-1">
+                <li class="mx-1 ">
                     <a href="@Model.WhatsApp" target="_blank">
                         <i class="fab fa-whatsapp"></i>
                     </a>
@@ -39,12 +47,12 @@
                 </li>
                 <li class="mx-1">
                     <a href="@Model.Instagram" target="_blank">
-                        <i class="fab fa-instagram"></i>
+                        <i class="fab fa-instagram social-icon"></i>
                     </a>
                 </li>
                 <li class="mx-1">
                     <a href="@Model.Telegram" target="_blank">
-                        <i class="fab fa-telegram"></i>
+                        <i class="fab fa-telegram "></i>
                     </a>
                 </li>
             </ul>

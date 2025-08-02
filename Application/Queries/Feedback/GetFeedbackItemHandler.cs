@@ -26,6 +26,7 @@ internal sealed class GetFeedbackItemHandler :
             Select(x => new FeedbackViewModel (){
         
                 Id = x.Id,
+                FilePath=x.FilePath,
                 ExplanationEn=x.ExplanationEn,
                 ExplanationFa=x.ExplanationFa,
                 FullNameEn=x.FullNameEn,

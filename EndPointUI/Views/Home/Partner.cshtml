@@ -1,6 +1,8 @@
 ﻿@using Application.Queries.Partner
 @model PartnerDetailViewModel
 @{
+    string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
+
     string? dir = CultureInfo.CurrentUICulture.Name == "en-US" ? "ltr" : "rtl";
     string? title = CultureInfo.CurrentUICulture.Name == "en-US" ? Model.TitleEn : Model.TitleFa;
     ViewData["Title"] = title;
@@ -22,7 +24,7 @@
                             </h4>
                             @if (CultureInfo.CurrentUICulture.Name == "en-US")
                             {
-                                <a href="@Model.Link" class="text-primary mb-0">
+                                <a href="@Model.Link" class="text-primary @font mb-0">
                                     Website
                                 </a>
                             }

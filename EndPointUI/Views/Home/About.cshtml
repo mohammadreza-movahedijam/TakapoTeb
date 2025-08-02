@@ -15,8 +15,8 @@
                 <div class="col-lg-6 col-md-12" dir="@dir">
                     @if (CultureInfo.CurrentUICulture.Name == "en-US")
                     {
-                        <h3 class="mb-4">@Model.AboutTitleEn</h3>
-                        <p>@Html.Raw(Model.AboutDescriptionEn)</p>
+                        <h3 class="mb-4 English">@Model.AboutTitleEn</h3>
+                        <p class="English">@Html.Raw(Model.AboutDescriptionEn)</p>
                     }
                     else
                     {

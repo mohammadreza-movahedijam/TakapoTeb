@@ -1,5 +1,7 @@
 ﻿@model PaginatedList<Application.Queries.Product.ViewModels.ProductViewModel>
 @{
+    string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
+
     var categories = ViewBag.Pattern as List<Guid>;
     string title = CultureInfo.CurrentUICulture.Name! == "en-US" ? "Products" : "محصولات  " ;
     string align = CultureInfo.CurrentUICulture.Name! == "en-US" ? "ltr" : "rtl"!;
@@ -16,7 +18,7 @@
         <div class="col-md-12 col-lg-4 col-xl-3 theiaStickySidebar">
             <div class="card search-filter">
                 <div class="card-header">
-                    <h4 class="card-title mb-0"> @Localizer["FilterTitle"]</h4>
+                    <h4 class="card-title mb-0 @font"> @Localizer["FilterTitle"]</h4>
                 </div>
                 <form class="card-body" asp-controller="Product" asp-action="ProductCategory">
                     <div class="filter-widget">
@@ -27,7 +29,7 @@
                     @await Component.InvokeAsync("ProductFilterComponent")
                  
                     <div class="btn-search">
-                        <button type="submit" class="btn w-100">@Localizer["Button"]</button>
+                        <button type="submit" class="btn w-100 @font">@Localizer["Button"]</button>
                     </div>
                 </form>
             </div>
@@ -54,7 +56,8 @@
                             </div>
                             <div class="pro-content">
                                 <h3 class="title">
-                                    <a asp-controller="Product" asp-action="Detail" asp-route-pattern="@product.Id" class="product-title">
+                                    <a asp-controller="Product" asp-action="Detail"
+                                       asp-route-pattern="@product.Id" class="product-title @font">
                                         @if (CultureInfo.CurrentUICulture.Name == "en-US")
                                         {
                                             @product.TitleEn

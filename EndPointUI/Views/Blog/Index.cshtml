@@ -6,7 +6,7 @@
     ViewData["Title"] = title;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@section Script{
+@section Script {
     <script src="~/js/pagination.js"></script>
 
 }
@@ -30,7 +30,7 @@
                                         <img src="~/gallery/Article/@blog.ImagePath" class="img-fluid" />
 
                                     }
-                                   
+
                                 </a>
                             </div>
                             <div class="blog-content">
@@ -38,48 +38,56 @@
                                     <li>
                                         <div class="post-author">
                                             <a asp-controller="Blog" asp-action="Detail" asp-route-Id="@blog.Id">
-                                                <img src="~/gallery/takapo-icon.png" 
-                                                alt="Post Author">
-                                                
+                                                <img src="~/gallery/takapo-icon.png"
+                                                     alt="Post Author">
+
                                             </a>
                                         </div>
                                     </li>
-                                    <li >
-                                        <i class="far fa-clock"></i> 
+                                    <li>
+                                        <i class="far fa-clock"></i>
                                         @if (CultureInfo.CurrentUICulture.Name == "en-US")
                                         {
-                                            <span dir="@align">@blog.PublishDateEn</span>
+                                            <span class="English" dir="@align">@blog.PublishDateEn</span>
                                         }
                                         else
                                         {
                                             <span dir="@align">@blog.PublishDateFa</span>
-                                            
+
                                         }
                                     </li>
                                 </ul>
                                 <h3 class="blog-title">
-                                    <a asp-controller="Blog" asp-action="Detail" asp-route-Id="@blog.Id" 
-                                    style="line-height:normal;">
+                                    <a asp-controller="Blog" asp-action="Detail" asp-route-Id="@blog.Id"
+                                       style="line-height:normal;">
                                         @if (CultureInfo.CurrentUICulture.Name == "en-US")
                                         {
-                                            @blog.TitleEn
+                                            <span class="English">
+                                                @blog.TitleEn
+                                            </span>
                                         }
                                         else
                                         {
-                                            @blog.TitleFa
+                                            <span>
+                                                @blog.TitleFa
+                                            </span>
                                         }
                                     </a>
                                 </h3>
-                                <p class="mb-0">
-                                    @if (CultureInfo.CurrentUICulture.Name == "en-US")
-                                    {
+
+                                @if (CultureInfo.CurrentUICulture.Name == "en-US")
+                                {
+                                    <p class="mb-0 English">
                                         @blog.SummaryEn
-                                    }
-                                    else
-                                    {
+                                    </p>
+                                }
+                                else
+                                {
+                                    <p class="mb-0">
                                         @blog.SummaryFa
-                                    }
-                                </p>
+                                    </p>
+                                }
+
 
                             </div>
                         </div>
@@ -107,11 +115,11 @@
         </div>
         <div class="col-lg-4 col-md-12 sidebar-right theiaStickySidebar">
             <partial name="/Views/Shared/Partial/SearchBlogSidebar.cshtml" />
-           
+
             @await Component.InvokeAsync("LastArticleSidebarComponent")
             @await Component.InvokeAsync("BlogCategorySidebarComponent")
-          
-          
+
+
         </div>
     </div>
 </div>

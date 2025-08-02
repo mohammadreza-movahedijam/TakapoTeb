@@ -1,0 +1,43 @@
+﻿@model Application.Queries.Setting.ViewModels.AcademyViewModel
+@{
+    string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
+
+    string icon = string.Empty;
+}
+<section class="mt-5 mb-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 ">
+                <img src="~/gallery/setting/@Model.AcademyImagePath" alt="About Us"
+                     class="img-fluid w-100" />
+
+            </div>
+            <div class="col-md-6">
+                @if (CultureInfo.CurrentUICulture.Name == "fa-IR")
+                {
+                    <div class="text-right" style="direction:rtl">
+                        <h2 class="section-title> @Model.AcademyTitleFa</h2>
+                      
+                        @Model.AcademyTextFa
+
+
+                    </div>
+
+                }
+                else
+                {
+                    <div class="text-right" style="direction:rtl">
+                        <h2 class="section-title @font"> @Model.AcademyTitleEn</h2>
+
+                        @Model.AcademyTextEn 
+
+
+                    </div>
+
+                }
+               
+            </div>
+            
+        </div>
+    </div>
+</section>

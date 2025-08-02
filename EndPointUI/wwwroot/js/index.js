@@ -77,3 +77,13 @@
 
 
 });
+
+function ShowText(title, text) {
+    Swal.fire({
+        title: title,
+        text: text,
+         showConfirmButton:false,
+        showCloseButton: true,
+
+    });
+}

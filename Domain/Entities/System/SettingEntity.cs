@@ -2,6 +2,7 @@
 
 public class SettingEntity : BaseEntity
 {
+    public string? LicenseLogo { get; set; }
     public string? TopLogoPathEn { get; set; }
     public string? BottomLogoPathEn { get; set; }
     public string? TopLogoPathFa { get; set; }
@@ -56,28 +57,28 @@ public class SettingEntity : BaseEntity
 
     #region ColumnTwo
 
-    public string? ColumnTwoTitleFa             { get; set; }
-    public string? ColumnTwoTitleEn             { get; set; }
+    public string? ColumnTwoTitleFa { get; set; }
+    public string? ColumnTwoTitleEn { get; set; }
 
 
-    public string? ColumnTwoItemOneTitleEn      { get; set; }
-    public string? ColumnTwoItemOneTitleFa      { get; set; }
-    public string? ColumnTwoItemOneLink          { get; set; }
+    public string? ColumnTwoItemOneTitleEn { get; set; }
+    public string? ColumnTwoItemOneTitleFa { get; set; }
+    public string? ColumnTwoItemOneLink { get; set; }
 
 
-    public string? ColumnTwoItemTwoTitleEn          { get; set; }
-    public string? ColumnTwoItemTwoTitleFa       { get; set; }
-    public string? ColumnTwoItemTwoLink         { get; set; }
+    public string? ColumnTwoItemTwoTitleEn { get; set; }
+    public string? ColumnTwoItemTwoTitleFa { get; set; }
+    public string? ColumnTwoItemTwoLink { get; set; }
 
 
-    public string? ColumnTwoItemThreeTitleEn    { get; set; }
-    public string? ColumnTwoItemThreeTitleFa    { get; set; }
-    public string? ColumnTwoItemThreeLink        { get; set; }
+    public string? ColumnTwoItemThreeTitleEn { get; set; }
+    public string? ColumnTwoItemThreeTitleFa { get; set; }
+    public string? ColumnTwoItemThreeLink { get; set; }
 
 
-    public string? ColumnTwoItemFourTitleEn         { get; set; }
-    public string? ColumnTwoItemFourTitleFa          { get; set; }
-    public string? ColumnTwoItemFourLink            { get; set; }
+    public string? ColumnTwoItemFourTitleEn { get; set; }
+    public string? ColumnTwoItemFourTitleFa { get; set; }
+    public string? ColumnTwoItemFourLink { get; set; }
     #endregion
 
 
@@ -86,10 +87,17 @@ public class SettingEntity : BaseEntity
 
     #region About
 
-    public string? AboutImage {  get; set; }
-    public string? AboutTitleEn {  get; set; }
-    public string? AboutTitleFa {  get; set; }
+    public string? AboutImage { get; set; }
+    public string? AboutTitleEn { get; set; }
+    public string? AboutTitleFa { get; set; }
     public string? AboutDescriptionEn { get; set; }
     public string? AboutDescriptionFa { get; set; }
     #endregion
+
+    public string? AcademyTitleEn { get; set; }
+    public string? AcademyTitleFa { get; set; }
+    public string? AcademyTextFa { get; set; }
+    public string? AcademyTextEn { get; set; }
+    public string? AcademyImagePath { get; set; }
+
 }

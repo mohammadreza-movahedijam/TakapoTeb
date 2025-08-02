@@ -1,6 +1,7 @@
 ﻿@model IReadOnlyList<Application.Queries.News.NewsViewModel>
 @using Application.Common.Extension
 @{
+    string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
     string textAlign = CultureInfo.CurrentUICulture.Name == "en-US" ? "left" : "right";
     string direction = CultureInfo.CurrentUICulture.Name == "en-US" ? "ltr" : "rtl";
     string title = CultureInfo.CurrentUICulture.Name == "en-US" ? "Latest News" : "آخرین اخبار";
@@ -10,8 +11,8 @@
     <div class=" container">
         <div class="row">
             <div dir="@(CultureInfo.CurrentUICulture.Name == "en-US" ? "rtl" : "ltr")" class="d-flex justify-content-between align-items-center" style="width: 100%;">
-                <a href="News" class="text-mute">@more</a>
-                <h2 dir="@direction" class="section-title mb-0">@title</h2>
+                <a href="News" class="text-mute @font">@more</a>
+                <h2 dir="@direction" class="section-title mb-0 @font">@title</h2>
             </div>
            
             <div class="swiper mySwiperNews text-center mt-4">
@@ -39,9 +40,11 @@
                                              src="~/Gallery/News/@item.ImagePath" class="img-last-news" />
                                     }
                                     <div class="card-body body-last-news" >
-                                        <p class="card-text" style="text-align:@textAlign">@item.TitleEn</p>
+                                            <p class=" @font card-text" style="text-align:@textAlign">@item.TitleEn</p>
                                     </div>
-                                    <p class="card-text p-3" style="text-align:@textAlign"> <small class="text-info">@item.TopicTypeEn</small></p>
+                                    <p class=" @font card-text p-3" style="text-align:@textAlign">
+                                            <small class="text-info  @font">@item.TopicTypeEn</small>
+                                        </p>
 
                                 }
                                 else
@@ -60,10 +63,11 @@
                                              src="~/Gallery/News/@item.ImagePath" class="img-last-news" />
                                     }
                                     <div class="card-body body-last-news" >
-                                        <p class="card-text" style="text-align:@textAlign">@item.TitleFa</p>
+                                            <p class="card-text  @font" style="text-align:@textAlign">@item.TitleFa</p>
                                     </div>
                                     <p class="card-text p-3" style="text-align:@textAlign">
-                                        <small class="text-info">@item.TopicTypeFa</small></p>
+                                            <small class="text-info  @font">@item.TopicTypeFa</small>
+                                        </p>
 
                                 }
 

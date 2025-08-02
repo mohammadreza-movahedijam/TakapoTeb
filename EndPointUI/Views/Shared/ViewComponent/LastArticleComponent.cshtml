@@ -1,5 +1,7 @@
 ﻿@model IReadOnlyList<Application.Queries.Article.ViewModels.ArticleViewModel>
 @{
+    string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
+
     string direction = CultureInfo.CurrentUICulture.Name == "en-US" ? "ltr" : "rtl";
 }    <section class="our-blog">
     <div class="container" style="direction:@direction;">
@@ -14,14 +16,14 @@
                         @if (CultureInfo.CurrentUICulture.Name == "en-US")
                         {
                             <a asp-controller="Blog" asp-action="Detail" asp-route-Id="@Model[0].Id">
-                            <div class="media align-items-center mt-4 col-sm-6 col-md-12 d-flex">
+                            <div class="@font media align-items-center mt-4 col-sm-6 col-md-12 d-flex">
                                   
                                 <img class="me-3" src="~/gallery/Article/@Model[0].ImagePath"
                                      alt="@Model[0].TitleFa @Model[0].TitleEn">
-                                <div class="media-body flex-grow-1 mx-2">
-                                    <h5 class="mt-0">@Model[0].TitleEn</h5>
-                                    <span class="mt-0">@Model[0].PublishDateEn</span>
-                                    <p>
+                                    <div class="media-body flex-grow-1 mx-2 @font">
+                                        <h5 class="@font mt-0">@Model[0].TitleEn</h5>
+                                    <span class="@font mt-0">@Model[0].PublishDateEn</span>
+                                        <p class="@font">
                                         @Model[0].TextEn
                                     </p>
                             </div>
@@ -31,9 +33,9 @@
                                 <img class="me-3" src="~/gallery/Article/@Model[1].ImagePath"
                                      alt="@Model[1].TextFa @Model[1].TitleEn">
                                 <div class="media-body flex-grow-1 mx-2">
-                                    <h5 class="mt-0">@Model[0].TitleEn</h5>
-                                    <span class="mt-0">@Model[0].PublishDateEn</span>
-                                    <p>
+                                        <h5 class="@font mt-0">@Model[0].TitleEn</h5>
+                                    <span class="@font mt-0">@Model[0].PublishDateEn</span>
+                                        <p class="@font">
                                         @Model[1].TextEn
                                     </p>
                             </div>
@@ -82,10 +84,10 @@
                                 src="~/gallery/Article/@Model[2].ImagePath" />
                         </div>
                         <div class="blog-text">
-                            <h6>@Model[2].PublishDateEn</h6>
-                            <h5>@Model[2].TitleEn</h5>
+                            <h6 class="@font">@Model[2].PublishDateEn</h6>
+                            <h5 class="@font">@Model[2].TitleEn</h5>
 
-                            <p>
+                                <p class="@font">
                                 @Model[2].TextEn
                             </p>
                         </div></a>
@@ -97,10 +99,10 @@
                                  src="~/gallery/Article/@Model[3].ImagePath" />
                         </div>
                         <div class="blog-text">
-                            <h6>@Model[3].PublishDateEn</h6>
-                            <h5>@Model[3].TitleEn</h5>
+                                <h6 class="@font">@Model[3].PublishDateEn</h6>
+                                <h5 class="@font">@Model[3].TitleEn</h5>
 
-                            <p>
+                                <p class="@font">
                                 @Model[3].TextEn
                             </p>
                             </div>

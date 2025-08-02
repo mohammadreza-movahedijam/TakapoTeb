@@ -1,5 +1,7 @@
 ﻿@{
     string direction = CultureInfo.CurrentUICulture.Name == "en-US" ? "ltr" : "rtl";
+    string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
+
 }
 
 <header class=" custom-header" style="direction:@direction;">
@@ -31,7 +33,7 @@
                 </li> *@
 
                 <li class="has-submenu mx-3">
-                    <a href="#">
+                    <a class="@font" href="#">
                         ‌
                         @Localizer["Product"]
                         @* <i class="fas fa-chevron-down"></i> *@
@@ -45,7 +47,7 @@
                 </li>
                
                 <li class="has-submenu mx-3">
-                    <a href="#">
+                    <a class="@font" href="#">
                         ‌
                         @Localizer["COMPANIES"]
                         @* <i class="fas fa-chevron-down"></i> *@
@@ -58,29 +60,29 @@
 
 
                 <li class="has-submenu mx-3">
-                    <a >
+                    <a class="@font">
                         ‌
                         @Localizer["Support"]
                         @* <i class="fas fa-chevron-down"></i> *@
                     </a>
                     <ul class="submenu ">
                         <li>
-                            <a asp-controller="Home" asp-action="RequestService">
+                            <a class="@font" asp-controller="Home" asp-action="RequestService">
                                 @Localizer["ServiceRequest"]
                             </a>
                         </li>
                         <li>
-                            <a asp-controller="Home" asp-action="RequestEducation">
+                            <a class="@font" asp-controller="Home" asp-action="RequestEducation">
                                 @Localizer["TrainingRequest"]
                             </a>
                         </li>
                         <li>
-                            <a asp-controller="Home" asp-action="Book">
+                            <a class="@font" asp-controller="Home" asp-action="Book">
                                 @Localizer["OperationManual"]
                             </a>
                         </li>
                         <li>
-                            <a asp-controller="Home" asp-action="Catalog">
+                            <a class="@font" asp-controller="Home" asp-action="Catalog">
                                 @Localizer["Brochure"]
                             </a>
                         </li>
@@ -93,47 +95,47 @@
                
 
                 <li class="has-submenu mx-3">
-                    <a>
+                    <a href="About" class="@font">
                         ‌
                         @Localizer["About"]
                         @* <i class="fas fa-chevron-down"></i> *@
                     </a>
                     <ul class="submenu ">
                         <li>
-                            <a>
+                            <a href="About" class="@font">
                                 @Localizer["AboutTakapo"]
                             </a>
                         </li>
                         <li>
-                            <a>
+                            <a class="@font">
                                 @Localizer["Events"]
                             </a>
                         </li>
                         <li>
-                            <a asp-controller="News" asp-action="Index">
+                            <a class="@font" asp-controller="News" asp-action="Index">
                                 @Localizer["Newsroom"]
                             </a>
                         </li>
                       
 
                         <li >
-                            <a href="/Blog">@Localizer["BlogMenu"]</a>
+                            <a class="@font" href="/Blog">@Localizer["BlogMenu"]</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a asp-controller="Home" asp-action="ContactUs">
+                    <a class="@font" asp-controller="Home" asp-action="ContactUs">
                         @Localizer["ContactUs"]
                     </a>
                 </li>
                 @await Component.InvokeAsync("PageComponent")
                 <li class=" mx-3">
-                    <a asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="en-US">
+                    <a class="@font" asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="en-US">
                         @Localizer["Language1"]  
                     </a>
                 </li>
                  <li class=" mx-3">
-                    <a asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="fa-IR">
+                    <a class="@font" asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="fa-IR">
                         @Localizer["Language2"]   
 
                     </a>
@@ -168,7 +170,7 @@
                 </li> *@
 
                 <li class="mx-3">
-                    <a onclick="Search('@direction')">
+                    <a class="@font" onclick="Search('@direction')">
                 <i  class="fa fa-search mt-4" aria-hidden="true"></i>
                 </a>    
 

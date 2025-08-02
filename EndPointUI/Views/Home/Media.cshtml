@@ -1,6 +1,8 @@
 ﻿@using Application.Queries.Event
 @model IReadOnlyList<EventDetailViewModel>
 @{
+    string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
+
     string dir = CultureInfo.CurrentUICulture.Name == "en-US" ? "ltr" : "rtl";
     string? title = CultureInfo.CurrentUICulture.Name == "en-US" ? "Media" : "رسانه تکاپو طب";
     ViewData["Title"] = title;
@@ -25,8 +27,8 @@
                                     <div class="doc-info-cont" dir="@dir">
                                         @if (CultureInfo.CurrentUICulture.Name == "en-US")
                                         {
-                                            <h4 class="doc-name">@item.TitleEn</h4>
-                                            <p class="doc-speciality">
+                                            <h4 class="doc-name @font">@item.TitleEn</h4>
+                                            <p class="doc-speciality @font">
                                                 @item.DescriptionEn
                                             </p>
 
@@ -49,7 +51,7 @@
                                                         <img src="~/gallery/Picture/@picture.FilePath" class="img-fluid" alt="Features">
                                                         @if (CultureInfo.CurrentUICulture.Name == "en-US")
                                                         {
-                                                            <h4>@picture.TitleEn</h4>
+                                                                <h4 class="@font">@picture.TitleEn</h4>
                                                         }
                                                         else
                                                         {
@@ -72,7 +74,7 @@
 
                                                     @if (CultureInfo.CurrentUICulture.Name == "en-US")
                                                     {
-                                                        <h4 class="mt-3">@video.TitleEn</h4>
+                                                            <h4 class="mt-3 @font">@video.TitleEn</h4>
                                                     }
                                                     else
                                                     {

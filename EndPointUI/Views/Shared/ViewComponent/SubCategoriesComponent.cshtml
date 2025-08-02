@@ -1,6 +1,8 @@
 ﻿@model IReadOnlyList<Application.Queries.ProductCategory.ViewModels.CategoryDetailViewModel>
 @{
     string align = CultureInfo.CurrentUICulture.Name! == "en-US" ? "ltr" : "rtl"!;
+    string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
+}
 }
 <div class="container">
     <div class="row mt-3 mb-3">
@@ -26,10 +28,10 @@
                                     <div class="card-body body-subcategory">
                                         <a class="link-sub-category" asp-controller="Product" asp-action="ProductCategory" asp-route-patterns="@item.Id">
                                   
-                                            <h5 class="card-title">@item.TitleEn</h5>
-                                            <p class="card-text limited-text">@item.DescriptionEn</p>
+                                            <h5 class="card-title @font">@item.TitleEn</h5>
+                                            <p class="card-text limited-text @font">@item.DescriptionEn</p>
                                             <p class="card-text">
-                                                <small class="text-body-secondary">
+                                                <small class="text-body-secondary @font">
                                                     Product   <i class="fas fa-arrow-right"></i>
                                                 </small>
                                             </p>

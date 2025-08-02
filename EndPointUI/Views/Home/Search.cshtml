@@ -12,7 +12,7 @@
     <div class="row text-center mt-5">
         @if (CultureInfo.CurrentUICulture.Name! == "en-US")
         {
-            <h3 dir="@align">Advanced search for : <span class="text-danger">@ViewBag.Search</span></h3>
+            <h3 class="English" dir="@align">Advanced search for : <span class="English text-danger">@ViewBag.Search</span></h3>
         }
         else
         {
@@ -157,9 +157,9 @@
                                      src="~/Gallery/Product/@item.Image" class="img-last-news" />
                             }
                             <div class="card-body body-last-news">
-                                <p class="card-text" style="text-align:@textAlign">@item.TitleEn</p>
+                                    <p class="card-text English" style="text-align:@textAlign">@item.TitleEn</p>
                             </div>
-                            <p class="card-text p-3" style="text-align:@textAlign"><small class="text-info">Product</small></p>
+                                <p class="card-text English p-3" style="text-align:@textAlign"><small class="text-info">Product</small></p>
 
                         }
                         else

@@ -1,5 +1,7 @@
 ﻿@model Application.Queries.Feature.FeatureViewModel
 @{
+    string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
+
     string direction = CultureInfo.CurrentUICulture.Name == "en-US" ? "ltr" : "rtl";
 }
 <div class="banner-bottom">
@@ -22,8 +24,8 @@
                     <div class="care-text">
                         @if (CultureInfo.CurrentUICulture.Name == "en-US")
                         {
-                            <h2>@Model.TitleEnOne</h2>
-                            <p>@Model.TextEnOne</p>
+                            <h2 class="@font">@Model.TitleEnOne</h2>
+                            <p class="@font">@Model.TextEnOne</p>
                         }
                         else
                         {
@@ -52,8 +54,8 @@
                     <div class="care-text">
                         @if (CultureInfo.CurrentUICulture.Name == "en-US")
                         {
-                            <h2>@Model.TitleEnTwo</h2>
-                            <p>@Model.TextEnTwo</p>
+                            <h2 class="@font">@Model.TitleEnTwo</h2>
+                            <p class="@font">@Model.TextEnTwo</p>
                         }
                         else
                         {
@@ -85,8 +87,8 @@
                     <div class="care-text">
                         @if (CultureInfo.CurrentUICulture.Name == "en-US")
                         {
-                            <h2>@Model.TitleEnThree</h2>
-                            <p>@Model.TextEnThree</p>
+                            <h2 class="@font">@Model.TitleEnThree</h2>
+                            <p class="@font">@Model.TextEnThree</p>
                         }
                         else
                         {
@@ -115,8 +117,8 @@
                     <div class="care-text">
                         @if (CultureInfo.CurrentUICulture.Name == "en-US")
                         {
-                            <h2>@Model.TitleEnFour</h2>
-                            <p>@Model.TextEnFour</p>
+                            <h2 class="@font">@Model.TitleEnFour</h2>
+                            <p class="@font">@Model.TextEnFour</p>
                         }
                         else
                         {
