@@ -10,6 +10,7 @@ internal sealed class ProductMap : IEntityTypeConfiguration<ProductEntity>
     public void Configure(EntityTypeBuilder<ProductEntity> builder)
     {
         builder.ToTable("Product", "Product");
+        builder.Property(p => p.ImageHeaderPath).HasDefaultValue("default.jpg");
         builder.Property(p=>p.TitleEn).IsRequired().HasMaxLength(700);
         builder.Property(p=>p.TitleFa).IsRequired().HasMaxLength(700);
         builder.Property(p=>p.DescrptionEn).IsRequired();

@@ -15,7 +15,7 @@
     <script src="~/map/leaflet.js"></script>
 }
 @section Script {
-
+    <script src="~/assets/js/upload.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
 
@@ -76,7 +76,7 @@
                         <input accept=".jpg, .jpeg, .png, .webp" asp-for="ImageFile" onchange="ChangeImage(this,1)" class="form-control" type="file" />
                     </div>
                 </div>
-              
+               
                 <div>
                     <label class="form-label">نام فارسی </label>
                     <input asp-for="TitleFa" type="text" class="form-control" />
@@ -97,7 +97,20 @@
                     <label class="form-label">توضیحات انگلیسی</label>
                     <textarea class="form-control" asp-for="DescriptionEn" rows="3"></textarea>
                     <span class="text-danger" asp-validation-for="DescriptionEn"></span>
+                </div> 
+                <div>
+                    <label class="form-label">شماره تماس </label>
+                    <input asp-for="PhoneNumber" type="text" class="form-control" />
+                    <span class="text-danger" asp-validation-for="PhoneNumber"></span>
                 </div>
+
+                <div>
+                    <label class="form-label"> لینک</label>
+                    <input asp-for="Link" type="text" class="form-control" />
+                    <span class="text-danger" asp-validation-for="Link"></span>
+                </div>
+
+
                 <div class="col-12">
                     <label class="form-label">انتخاب موقعیت مکانی</label>
                     <div class="form-group ">

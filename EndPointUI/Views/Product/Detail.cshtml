@@ -18,7 +18,7 @@
 <input type="hidden" value="@align" id="CurrentUICulture" />
 <div class="row row-Category mg-t-70">
     <div class="col-lg-6 col-xl-6 col-md-12 col-sm-12 col-without-space">
-        <img class="category-image" src="~/gallery/Product/@Model.ImagePath" />
+        <img class="category-image" src="~/gallery/Product/@Model.ImageHeaderPath" />
     </div>
 
     <div class="col-lg-6 col-xl-6 col-md-12 col-sm-12 bg-product col-without-space" style="direction:@align">
@@ -63,11 +63,12 @@
                         <p class="@font" style="direction:@align">
                             @if (CultureInfo.CurrentUICulture.Name == "en-US")
                             {
-                                @Model.DescrptionEn
+                                @Html.Raw(Model.DescrptionEn)
                             }
                             else
                             {
-                                @Model.DescrptionFa
+                                @Html.Raw(Model.DescrptionFa)
+                               
                             }
                         </p>
                     </div>

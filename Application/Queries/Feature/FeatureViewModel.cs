@@ -1,7 +1,10 @@
 ﻿namespace Application.Queries.Feature;
 public sealed record FeatureViewModel
 {
-
+    public string? LinkOne { get; set; }
+    public string? LinkTwo { get; set; }
+    public string? LinkThree { get; set; }
+    public string? LinkFour { get; set; }
     public string? ImageOne { get; set; }
     public string? ImageTwo { get; set; }
     public string? ImageThree { get; set; }

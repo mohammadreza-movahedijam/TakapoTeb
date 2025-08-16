@@ -9,6 +9,7 @@ public class TreatmentCenterEntity:BaseEntity,IDelete
     public string? TitleEn { get; set; }
     public string? DescriptionEn { get; set; }
     public string? PhoneNumber { get; set; }
+    public string? Link { get; set; }
 
 
     public string? Latitude { set; get; }

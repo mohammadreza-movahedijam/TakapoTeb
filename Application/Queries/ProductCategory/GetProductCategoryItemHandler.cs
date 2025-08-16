@@ -25,10 +25,10 @@ internal sealed class GetProductCategoryItemHandler :
             query = query.Where(w => w.TitleFa!.Contains(request.Search) ||
             w.TitleEn!.Contains(request.Search));
         }
-        else
-        {
-            query = query.Where(w => w.ParentProductCategoryId == null);
-        }
+        //else
+        //{
+        //    query = query.Where(w => w.ParentProductCategoryId == null);
+        //}
 
 
         return await query.Select(s => new ItemGeneric<Guid, string>

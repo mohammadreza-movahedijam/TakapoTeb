@@ -61,14 +61,17 @@
     const productName = document.createElement("h4");
     const description = document.createElement("h4");
     const phoneNumber = document.createElement("h4");
+    const link = document.createElement("a");
     const image = document.createElement("img");
-
+    image.setAttribute("style", "width: 100px;height: 80px;")
+    image.classList.add("mb-4");
     image.src = "/gallery/TreatmentCenter/" + data.image;
     if (CurrentUICulture === "ltr") {
 
         productName.innerText = "Product: " + data.productTitleEn;
         description.innerText = "Description: " + data.descriptionEn;
         phoneNumber.innerText = "Phone Number: " + data.phoneNumber;
+       
 
     } else {
 
@@ -76,8 +79,8 @@
         description.innerText = "توضیحات: " + data.descriptionFa;
         phoneNumber.innerText = "شماره تماس: " + data.phoneNumber;
     }
-
-
+    link.innerText = data.link;
+    link.setAttribute("href", data.link);
 
 
 
@@ -87,6 +90,7 @@
     modalBody.appendChild(productName);
     modalBody.appendChild(description);
     modalBody.appendChild(phoneNumber);
+    modalBody.appendChild(link);
 
 
 

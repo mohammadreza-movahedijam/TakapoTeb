@@ -25,6 +25,9 @@ public class FeatureEntity:BaseEntity
     public string? TextFaFour   {  get; set; }
 
 
-
+    public string? LinkOne { get; set; }
+    public string? LinkTwo { get; set; }
+    public string? LinkThree { get; set; }
+    public string? LinkFour { get; set; }
 
 }

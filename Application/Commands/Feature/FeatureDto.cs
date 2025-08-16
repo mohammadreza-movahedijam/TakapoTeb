@@ -15,7 +15,10 @@ public sealed record FeatureDto
     public IFormFile? FileImageThree { get; set; }
     public IFormFile? FileImageFour { get; set; }
 
-
+    public string? LinkOne { get; set; }
+    public string? LinkTwo { get; set; }
+    public string? LinkThree { get; set; }
+    public string? LinkFour { get; set; }
 
 
 

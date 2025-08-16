@@ -6,8 +6,10 @@ namespace Application.Commands.Product;
 public sealed record ProductDto:IValidatableObject
 {
     public Guid? Id { get; set; }
+    public string? ImageHeaderPath { get; set; }
     public string? ImagePath { get; set; }
     public IFormFile? ImageFile { get; set; }
+    public IFormFile? ImageHeaderFile { get; set; }
     [Required(ErrorMessage ="عنوان فارسی الزامی است")]
     public string? TitleFa { get; set; }
     [Required(ErrorMessage = "توضیح فارسی الزامی است")]

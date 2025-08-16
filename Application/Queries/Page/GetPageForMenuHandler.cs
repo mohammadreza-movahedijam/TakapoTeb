@@ -23,7 +23,7 @@ internal sealed class GetPageForMenuHandler
     {
         IQueryable<PageEntity> query =
             _pageRepository.GetByQuery();
-        return await query.Select(s=> new PageViewModel()
+        return await query.Where(w=>w.IsShowOnMenu==true).Select(s=> new PageViewModel()
         {
             Id = s.Id,
             IsShowOnMenu = s.IsShowOnMenu,

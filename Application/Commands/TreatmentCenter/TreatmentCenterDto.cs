@@ -15,7 +15,7 @@ public sealed record TreatmentCenterDto
     public string? PhoneNumber { get; set; }
 
     public Guid ProductId { get; set; }
-
+    public string? Link { get; set; }
 
     public string? Latitude { set; get; }
     public string? Longitude { set; get; }

@@ -34,6 +34,7 @@ internal sealed class InsertProductHandler : IRequestHandler<InsertProductComman
                 {
                     ProductEntity product = request.Product.Adapt<ProductEntity>();
                     product.ImagePath = request.Product.ImageFile!.UploadImage("Product");
+                    product.ImageHeaderPath = request.Product.ImageHeaderFile!.UploadImage("Product");
                     await _repository.InsertAsync(product, cancellationToken);
                     if (request.Product.RelatedProducts != null && request.Product.RelatedProducts.Any())
                     {

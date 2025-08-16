@@ -57,6 +57,13 @@ internal sealed class UpdateProductHandler :
                         product.ImagePath = request.Product.ImageFile.UploadImage("Product");
                         request.Product.ImagePath!.RemoveImage("Product");
                     }
+                    if (request.Product.ImageHeaderFile != null)
+                    {
+                        product.ImageHeaderPath = request.Product.ImageHeaderFile.UploadImage("Product");
+                        request.Product.ImageHeaderPath!.RemoveImage("Product");
+                    }
+
+
                     await _repository.UpdateAsync(product, cancellationToken);
 
                     await query.Where(w=>w.ProductId==request.Product.Id)

@@ -52,7 +52,11 @@ internal sealed class FeatureMap :
             = "",
             TextFaThree
             = "",
-            TextFaFour = ""
+            TextFaFour = "",
+            LinkOne="#",
+            LinkTwo="#",
+            LinkThree="#",
+            LinkFour="#"
         });
     }
 }

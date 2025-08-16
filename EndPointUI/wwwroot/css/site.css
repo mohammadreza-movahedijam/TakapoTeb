@@ -325,7 +325,7 @@
 }
 
     .product-card:hover {
-        border: solid 2px #303580;
+        /*border: solid 2px #303580;*/
     }
 
 body {
@@ -452,3 +452,34 @@ body {
 .tab-color {
     background-color: #3783A5 !important;
 }
+.feature:hover {
+    background-color: #ffffff !important;
+    box-shadow: 0px 0px 10px #c7c8ca;
+    border-radius: 5px;
+   
+}
+.feature{
+    padding:20px;
+}
+.search-wrapper {
+    margin-top:12px;
+    position: relative;
+    display: inline-block;
+
+}
+
+    .search-wrapper input[type="text"] {
+        padding: 8px 30px 8px 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 40px;
+    }
+
+    .search-wrapper .fa-search {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: gray;
+        pointer-events: none; /* برای غیر فعال کردن کلیک روی آیکون */
+    }

@@ -4,6 +4,7 @@ using Infrastructure.Configuration.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(SqlServerContext))]
-    partial class SqlServerContextModelSnapshot : ModelSnapshot
+    [Migration("20250816161325_Add Image Header")]
+    partial class AddImageHeader
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -423,9 +426,6 @@ namespace Infrastructure.Migrations
                     b.Property<string>("Latitude")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Link")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Longitude")
                         .HasColumnType("nvarchar(max)");
 
@@ -598,18 +598,6 @@ namespace Infrastructure.Migrations
                     b.Property<string>("ImageTwo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("LinkFour")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LinkOne")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LinkThree")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LinkTwo")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("TextEnFour")
                         .HasColumnType("nvarchar(max)");
 
@@ -670,10 +658,6 @@ namespace Infrastructure.Migrations
                             ImageOne = "",
                             ImageThree = "",
                             ImageTwo = "",
-                            LinkFour = "#",
-                            LinkOne = "#",
-                            LinkThree = "#",
-                            LinkTwo = "#",
                             TextEnFour = "",
                             TextEnOne = "",
                             TextEnThree = "",

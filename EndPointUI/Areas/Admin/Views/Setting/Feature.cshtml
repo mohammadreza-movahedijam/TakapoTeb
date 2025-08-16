@@ -21,8 +21,8 @@
 <div class="row">
     <div class="col-12">
         <form class="card mb-4"
-        asp-area="Admin"
-        asp-controller="Setting"
+              asp-area="Admin"
+              asp-controller="Setting"
               asp-action="Feature" enctype="multipart/form-data">
             <div class="card-header">
 
@@ -30,53 +30,57 @@
             </div>
 
             <div class="card-body">
-                <input type="hidden" asp-for="ImageOne"/>
-                <input type="hidden" asp-for="ImageTwo"/>
-                <input type="hidden" asp-for="ImageThree"/>
-                <input type="hidden" asp-for="ImageFour"/>
+                <input type="hidden" asp-for="ImageOne" />
+                <input type="hidden" asp-for="ImageTwo" />
+                <input type="hidden" asp-for="ImageThree" />
+                <input type="hidden" asp-for="ImageFour" />
 
                 <div class="accordion-item card border rounded-3 p-3">
                     <h2 class="accordion-header">
                         <button type="button" class="accordion-button"
-                        data-bs-toggle="collapse" 
-                        data-bs-target="#accordionStyle1-1" aria-expanded="true">
+                                data-bs-toggle="collapse"
+                                data-bs-target="#accordionStyle1-1" aria-expanded="true">
                             ویژگی اول
                         </button>
-                        <hr/>
+                        <hr />
                     </h2>
 
                     <div id="accordionStyle1-1" class="accordion-collapse collapse " data-bs-parent="#accordionStyle1" style="">
                         <div class="accordion-body ">
-                           
-                                <div>
-                                    @if (Model.ImageOne == "default.jpg" ||
-                                    string.IsNullOrEmpty(Model.ImageOne))
-                                    {
-                                        <img id="imagePath_1" width="100" height="80"
-                                             src="~/Gallery/default.jpg" />
-                                    }
-                                    else
-                                    {
-                                        <img id="imagePath_1" width="100" height="80"
-                                             src="~/Gallery/feature/@Model.ImageOne " />
-                                    } <br />
-                                    <label class="form-label mt-2">تصویر اول </label>
-                                    <input asp-for="FileImageOne"
-                                           onchange="ChangeImage(this,1)" class="form-control mt-3 w-25" type="file" />
-                                </div>
-                                <div >
-                                    <label class="form-label mt-2">عنوان انگلیسی اول </label>
-                                    <input type="text" class="form-control" asp-for="TitleEnOne" />
-                                    <label class="form-label mt-2">توضیح انگلیسی اول </label>
+
+                            <div>
+                                @if (Model.ImageOne == "default.jpg" ||
+                                string.IsNullOrEmpty(Model.ImageOne))
+                                {
+                                    <img id="imagePath_1" width="100" height="80"
+                                         src="~/Gallery/default.jpg" />
+                                }
+                                else
+                                {
+                                    <img id="imagePath_1" width="100" height="80"
+                                         src="~/Gallery/feature/@Model.ImageOne " />
+                                } <br />
+                                <label class="form-label mt-2">تصویر اول </label>
+                                <input asp-for="FileImageOne"
+                                       onchange="ChangeImage(this,1)" class="form-control mt-3 w-25" type="file" />
+                            </div>
+                            <div>
+                                <label class="form-label mt-2">عنوان انگلیسی اول </label>
+                                <input type="text" class="form-control" asp-for="TitleEnOne" />
+                                <label class="form-label mt-2">توضیح انگلیسی اول </label>
                                 <input type="text" class="form-control" asp-for="TextEnOne" />
-                                </div>
-                                <div >
-                                    <label class="form-label mt-2">عنوان فارسی اول </label>
-                                    <input type="text" class="form-control" asp-for="TitleFaOne" />
-                                    <label class="form-label mt-2">توضیح فارسی اول </label>
-                                    <input type="text" class="form-control" asp-for="TextFaOne" />
-                                </div>
-                            
+                            </div>
+                            <div>
+                                <label class="form-label mt-2">عنوان فارسی اول </label>
+                                <input type="text" class="form-control" asp-for="TitleFaOne" />
+                                <label class="form-label mt-2">توضیح فارسی اول </label>
+                                <input type="text" class="form-control" asp-for="TextFaOne" />
+
+                                <label class="form-label mt-2">لینک </label>
+                                <input type="text" class="form-control" asp-for="LinkOne" />
+                            </div>
+
+
                         </div>
                     </div>
                 </div>
@@ -123,11 +127,13 @@
                                 <input type="text" class="form-control" asp-for="TitleFaTwo" />
                                 <label class="form-label mt-2">توضیح فارسی دوم </label>
                                 <input type="text" class="form-control" asp-for="TextFaTwo" />
+                                <label class="form-label mt-2">لینک </label>
+                                <input type="text" class="form-control" asp-for="LinkTwo" />
                             </div>
 
                         </div>
                     </div>
-               
+
                 </div>
 
 
@@ -173,6 +179,9 @@
                                 <input type="text" class="form-control" asp-for="TitleFaThree" />
                                 <label class="form-label mt-2">توضیح فارسی سوم </label>
                                 <input type="text" class="form-control" asp-for="TextFaThree" />
+
+                                <label class="form-label mt-2">لینک </label>
+                                <input type="text" class="form-control" asp-for="LinkThree" />
                             </div>
 
                         </div>
@@ -225,6 +234,8 @@
                                 <input type="text" class="form-control" asp-for="TitleFaFour" />
                                 <label class="form-label mt-2">توضیح فارسی چهارم </label>
                                 <input type="text" class="form-control" asp-for="TextFaFour" />
+                                <label class="form-label mt-2">لینک </label>
+                                <input type="text" class="form-control" asp-for="LinkFour" />
                             </div>
 
                         </div>

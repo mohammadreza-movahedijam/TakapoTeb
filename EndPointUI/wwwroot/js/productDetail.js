@@ -54,14 +54,13 @@ async function TreatmentCenterModal(id) {
     modalTitle.id = 'modalCenterTitle';
 
 
-    if (CurrentUICulture === "ltr")
-    {
+    if (CurrentUICulture === "ltr") {
         modalTitle.innerText = data.titleEn;
     } else {
         modalTitle.innerText = data.titleFa;
     }
 
-    
+
 
     const closeButton = document.createElement('button');
     closeButton.type = 'button';
@@ -80,30 +79,40 @@ async function TreatmentCenterModal(id) {
     modalBody.className = 'modal-body';
     modalBody.setAttribute("dir", CurrentUICulture);
 
+    const productName = document.createElement("h4");
     const description = document.createElement("h4");
     const phoneNumber = document.createElement("h4");
+    const link = document.createElement("a");
+    const image = document.createElement("img");
 
+    image.src = "/gallery/TreatmentCenter/" + data.image;
+    image.setAttribute("style", "width: 100px;height: 80px;")
+    image.classList.add("mb-4");
+    if (CurrentUICulture === "ltr") {
 
-    if (CurrentUICulture === "ltr")
-    {
-      
+        productName.innerText = "Product: " + data.productTitleEn;
         description.innerText = "Description: " + data.descriptionEn;
         phoneNumber.innerText = "Phone Number: " + data.phoneNumber;
 
+
     } else {
-        
+
+        productName.innerText = "محصول: " + data.productTitleFa;
         description.innerText = "توضیحات: " + data.descriptionFa;
         phoneNumber.innerText = "شماره تماس: " + data.phoneNumber;
     }
+    link.innerText = data.link;
+    link.setAttribute("href", data.link);
 
 
-   
 
 
 
-
+    modalBody.appendChild(image);
+    modalBody.appendChild(productName);
     modalBody.appendChild(description);
     modalBody.appendChild(phoneNumber);
+    modalBody.appendChild(link);
 
 
 
@@ -116,7 +125,7 @@ async function TreatmentCenterModal(id) {
     closeModalButton.type = 'button';
     closeModalButton.className = 'btn btn-label-secondary';
     closeModalButton.setAttribute('data-bs-dismiss', 'modal');
-   
+
 
     if (CurrentUICulture === "ltr") {
         closeModalButton.innerText = 'Close';

@@ -21,13 +21,13 @@
 
         @if (CultureInfo.CurrentUICulture.Name == "fa-IR")
         {
-            <p class="@font text-dark-blue">
+            <p class="@font text-white">
                 @Model.DescriptionFa
             </p>
         }
         else
         {
-            <p class="text-dark-blue">
+            <p class="text-white">
                 @Model.DescriptionEn
             </p>
             
@@ -37,22 +37,22 @@
             <ul>
                 <li class="mx-1 ">
                     <a href="@Model.WhatsApp" target="_blank">
-                        <i class="fab fa-whatsapp"></i>
+                        <i class="fab fa-whatsapp text-dark-blue"></i>
                     </a>
                 </li>
                 <li class="mx-1">
                     <a href="@Model.Linkedin" target="_blank">
-                        <i class="fab fa-linkedin-in"></i>
+                        <i class="fab fa-linkedin-in text-dark-blue"></i>
                     </a>
                 </li>
                 <li class="mx-1">
                     <a href="@Model.Instagram" target="_blank">
-                        <i class="fab fa-instagram social-icon"></i>
+                        <i class="fab fa-instagram text-dark-blue"></i>
                     </a>
                 </li>
                 <li class="mx-1">
                     <a href="@Model.Telegram" target="_blank">
-                        <i class="fab fa-telegram "></i>
+                        <i class="fab fa-telegram text-dark-blue"></i>
                     </a>
                 </li>
             </ul>

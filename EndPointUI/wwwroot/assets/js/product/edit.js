@@ -33,7 +33,10 @@
 }).on('select2:open', function () {
     $(this).data('select2').dropdown.$search.attr('placeholder', 'جستجو...');
 });
-
+$(document).ready(function () {
+    CKEDITOR.replace('TextFa');
+    CKEDITOR.replace('TextEn');
+});
 $(document).ready(function () {
     let productId = document.getElementById("ProductId").value;
 

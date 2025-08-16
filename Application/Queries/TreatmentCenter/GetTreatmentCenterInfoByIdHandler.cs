@@ -28,13 +28,14 @@ internal sealed class GetTreatmentCenterInfoByIdHandler :
             {
                 Id = s.Id,
                 Image = s.Image,
-                DescriptionEn   = s.DescriptionEn,
-                DescriptionFa = s.DescriptionFa,
-                PhoneNumber = s.PhoneNumber,
-                ProductTitleEn=s.Product!.TitleEn,
-                TitleEn=s.TitleEn,
-                ProductTitleFa=s.Product.TitleFa,
-                TitleFa=s.TitleFa
+                DescriptionEn   = s.DescriptionEn ?? "",
+                DescriptionFa = s.DescriptionFa ?? "",
+                PhoneNumber = s.PhoneNumber ?? "",
+                ProductTitleEn=s.Product!.TitleEn ?? "",
+                TitleEn =s.TitleEn ?? "",
+                ProductTitleFa =s.Product.TitleFa ?? "",
+                TitleFa =s.TitleFa ?? "",
+                Link =s.Link??""
             }).FirstOrDefaultAsync() ;
         return model!;
     }

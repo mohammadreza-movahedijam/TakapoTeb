@@ -36,8 +36,8 @@ internal sealed class UpdateTreatmentCenterHandler :
         if (request.TreatmentCenter!.ImageFile is not null)
         {
             treatmentCenter.Image =
-                request.TreatmentCenter.ImageFile.UploadImage("News");
-            request.TreatmentCenter.ImagePath!.RemoveImage("News");
+                request.TreatmentCenter.ImageFile.UploadImage("TreatmentCenter");
+            request.TreatmentCenter.ImagePath!.RemoveImage("TreatmentCenter");
         }
 
         await _treatmentCenterRepository.UpdateAsync(treatmentCenter, cancellationToken);

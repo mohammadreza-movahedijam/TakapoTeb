@@ -2150,7 +2150,7 @@ html.menu-opened body {
 -----------------------*/
 
 .footer {
-	background-color: #e6e6e6;
+	background-color: #252D69;
 }
 .footer .footer-top {
 	padding: 40px 0;
@@ -2243,7 +2243,7 @@ html.menu-opened body {
 		transition: all 0.4s ease 0s;
 		width: 40px;
 		height: 40px;
-		background-color: #3783A5;
+		background-color: #ffffff;
 		border-radius: 50%;
 		padding: 10px;
 	}
@@ -2253,7 +2253,7 @@ html.menu-opened body {
 }
 .footer-bottom {
 	padding: 20px 0px 10px;
-	background-color: #c7c8ca;
+	background-color: #f1f3f5;
 }
 .footer-bottom p {
 	color: #fff;
@@ -2438,7 +2438,7 @@ html.menu-opened body {
 	padding: 60px 0px 30px;
 }
 .banner-bottom .card {
-    display: flex;
+    display: inline-flex;
     flex-direction: row;
     justify-content: space-between;
 	align-items: center;
@@ -7171,7 +7171,7 @@ html.menu-opened body {
 		z-index: 1000;
 	}
 	.main-nav li .submenu::before {
-		border: 7px solid #fff;
+		/*border: 7px solid #fff;*/
 		border-color: transparent transparent #fff #fff;
 		box-shadow: -2px 2px 2px -1px rgba(0, 0, 0, 0.1);
 		content: "";
@@ -8921,18 +8921,32 @@ span.call-duration.float-end {
 .mritem {
 	margin-left: 0 !important; /* حالت موبایل: بدون فاصله */
 }
+.mritem-en {
+	margin-left: 0 !important; /* حالت موبایل: بدون فاصله */
+}
+.mritem-fa {
+	margin-left: 0 !important; /* حالت موبایل: بدون فاصله */
+}
 
 /* حالت تبلت: فاصله 30 پیکسل از راست */
 @media (min-width: 995px) and (max-width: 1024px) {
 	.mritem {
 		margin-left: 30px !important;
 	}
+	
 }
 
 /* حالت لپ‌تاپ یا مانیتور بزرگ: فاصله 50 پیکسل از راست */
 @media (min-width: 1025px) {
 	.mritem {
-		margin-left: 80px !important;
+		margin-left: 700px !important;
+	}
+	.mritem-fa {
+		margin-left: 200px !important;
+	}
+
+	.mritem-en {
+		margin-right: 200px !important;
 	}
 }
 
