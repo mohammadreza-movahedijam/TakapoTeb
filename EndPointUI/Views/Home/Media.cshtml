@@ -11,10 +11,10 @@
 
 <div class="container mg-t-100">
     <div class="row mt-5">
-        <h3 dir="@dir">@title</h3>
-        <hr />
+        <h1 dir="@dir" style=" font-weight: bold !important;font-size: revert !important;">@title</h1>
+        <hr class="mt-3" />
 
-        <div class="col-lg-12 col-xl-12 col-md-12">
+        <div class="col-lg-12 col-xl-12 col-md-12 mt-5">
             @if (Model != null && Model.Any())
             {
                 @foreach (var item in Model)

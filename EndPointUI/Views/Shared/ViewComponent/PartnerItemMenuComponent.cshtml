@@ -3,13 +3,24 @@
 @{
     string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
 }
-@foreach(var item in Model)
-{
-    <li>
-        <a class="@font" asp-controller="Home" asp-action="Partner" asp-route-Id="@item.Id">
-           @(CultureInfo.CurrentUICulture.Name=="en-US"?item.TitleEn:item.TitleFa)
-        </a>
-    </li>
+<div id="resources-dropdown" class="dropdown-menu absolute top-full right-0 w-64 bg-white shadow-xl border rounded-lg z-50">
+    <div class="py-2 text-center">
 
-   
-}
+        @foreach (var item in Model)
+        {
+            <a class="@font block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors" asp-controller="Home" asp-action="Partner" asp-route-Id="@item.Id">
+                    @(CultureInfo.CurrentUICulture.Name == "en-US" ? item.TitleEn : item.TitleFa)
+                </a>
+            
+
+
+        }
+      @*   <a href="#" class="">Documentation</a>
+        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">API Reference</a>
+        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">Tutorials</a>
+        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">Community Forum</a>
+        <div class="border-t border-gray-100 my-2"></div>
+        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">Downloads</a>
+        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">Release Notes</a>
+   *@  </div>
+</div>

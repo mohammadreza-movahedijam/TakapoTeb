@@ -36,9 +36,8 @@
     });
 
 
-
     var swiper = new Swiper('.mySwiperFeedback', {
-        slidesPerView: 3,
+        slidesPerView: 3, // حالت پیش‌فرض برای دسکتاپ
         spaceBetween: 30,
         loop: true,
         autoplay: {
@@ -53,11 +52,21 @@
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
         },
+        breakpoints: {
+            // وقتی عرض صفحه کمتر از 768 پیکسل (مثلا موبایل) باشد
+            0: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+            },
+            // وقتی عرض صفحه 768 پیکسل یا بیشتر باشد (مثلا تبلت و دسکتاپ)
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+        },
     });
-
-
     var swiper = new Swiper('.mySwiperNews', {
-        slidesPerView: 3,
+        slidesPerView: 3, // حالت پیش‌فرض برای دسکتاپ
         spaceBetween: 30,
         loop: true,
         autoplay: {
@@ -65,14 +74,44 @@
             disableOnInteraction: false,
         },
         pagination: {
-            el: '.mySwiperNews-pagination',
+            el: '.mySwiperFeedback-pagination',
             clickable: true,
         },
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
         },
+        breakpoints: {
+            // وقتی عرض صفحه کمتر از 768 پیکسل (مثلا موبایل) باشد
+            0: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+            },
+            // وقتی عرض صفحه 768 پیکسل یا بیشتر باشد (مثلا تبلت و دسکتاپ)
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+        },
     });
+
+    //var swiper = new Swiper('.mySwiperNews', {
+    //    slidesPerView: 3,
+    //    spaceBetween: 30,
+    //    loop: true,
+    //    autoplay: {
+    //        delay: 3000,
+    //        disableOnInteraction: false,
+    //    },
+    //    pagination: {
+    //        el: '.mySwiperNews-pagination',
+    //        clickable: true,
+    //    },
+    //    navigation: {
+    //        nextEl: '.swiper-button-next',
+    //        prevEl: '.swiper-button-prev',
+    //    },
+    //});
 
 
 

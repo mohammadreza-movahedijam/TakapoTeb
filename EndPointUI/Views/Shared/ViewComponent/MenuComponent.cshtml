@@ -1,50 +1,60 @@
 ﻿@model IReadOnlyList<Application.Queries.ProductCategory.ViewModels.CategoryMenuViewModel>
 @{
+    string align = CultureInfo.CurrentUICulture.Name! == "en-US" ? "left" : "right"!;
+
     string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
 }
-@if (Model.Any())
-{
-    if (CultureInfo.CurrentUICulture.Name == "en-US")
-    {
-        @foreach (Application.Queries.ProductCategory.ViewModels.CategoryMenuViewModel item in Model
-       .Where(w=>w.ParentProductCategoryId==null))
-        {
-            <li class="has-submenu mx-3" dir="ltr">
-                <a class="@font" asp-controller="Category" asp-action="Detail" asp-route-pattern="@item.Id">
-                    @item.TitleEn
-                  @*   @if (item.SubCategories != null && item.SubCategories!.Any())
-                    {
-                        <i class="fas fa-chevron-down"></i>
-                    } *@
-                </a>
-                @if (item.SubCategories!=null && item.SubCategories!.Any())
+
+<div id="products-mega" class="mega-menu absolute top-full left-0 w-full bg-white shadow-xl border-t">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+            @if (Model.Any())
+            {
+                if (CultureInfo.CurrentUICulture.Name == "en-US")
                 {
-                    @await Html.PartialAsync("Partial/_CategoryMenu", item.SubCategories)
-                }
-            </li>
-        }
-    }
-    else
-    {
-        @foreach (Application.Queries.ProductCategory.ViewModels.CategoryMenuViewModel item in Model
-       .Where(w => w.ParentProductCategoryId == null))
-        {
-            <li class="has-submenu mx-3">
-                <a class="@font" asp-controller="Category" asp-action="Detail" asp-route-pattern="@item.Id">
-                    @item.TitleFa  
-                  @*   @if (item.SubCategories != null && item.SubCategories!.Any())
+                    @foreach (Application.Queries.ProductCategory.ViewModels.CategoryMenuViewModel item in Model
+                   .Where(w => w.ParentProductCategoryId == null))
                     {
-                        <i class="fas fa-chevron-down"></i>
-                    } *@
-                </a>
-                @if (item.SubCategories != null && item.SubCategories!.Any())
-                {
-                    @await Html.PartialAsync("Partial/_CategoryMenu", item.SubCategories)
+                        <div class="space-y-4 " style="text-align:@align">
+                            <h3 style="color:#252D69" class="text-lg font-semibold text-gray-900 mb-4">
+                                <a class="@font" asp-controller="Category" asp-action="Detail" asp-route-pattern="@item.Id">
+                                    @item.TitleEn
+
+                                </a>
+
+                            </h3>
+                            @if (item.SubCategories != null && item.SubCategories!.Any())
+                            {
+                                @await Html.PartialAsync("Partial/_CategoryMenu", item.SubCategories)
+                            }
+                        </div>
+                    }
                 }
-            </li>
-        }
-    }
-  
-}
+                else
+                {
+                    @foreach (Application.Queries.ProductCategory.ViewModels.CategoryMenuViewModel item in Model
+                   .Where(w => w.ParentProductCategoryId == null))
+                    {
+                        <div class="space-y-4 " style="text-align:@align">
+                            <h3 style="color:#252D69" class="text-lg font-semibold text-gray-900 mb-4">
+                                <a class="@font" asp-controller="Category" asp-action="Detail" asp-route-pattern="@item.Id">
+                                    @item.TitleFa
+
+                                </a>
+                            </h3>
+                            @if (item.SubCategories != null && item.SubCategories!.Any())
+                            {
+                                @await Html.PartialAsync("Partial/_CategoryMenu", item.SubCategories)
+                            }
+
+                        </div>
+                    }
+                }
+
+            }
 
 
+        </div>
+    </div>
+</div>

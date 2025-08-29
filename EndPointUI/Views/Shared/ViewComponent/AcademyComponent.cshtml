@@ -12,13 +12,13 @@
                      class="img-fluid w-100" />
 
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 mt-4">
                 @if (CultureInfo.CurrentUICulture.Name == "fa-IR")
                 {
                     <div class="text-right" style="direction:rtl">
                         <h2 class="section-title> @Model.AcademyTitleFa</h2>
-                      
-                        @Model.AcademyTextFa
+
+                    @Html.Raw(Model.AcademyTextFa)
 
 
                     </div>
@@ -28,8 +28,8 @@
                 {
                     <div class="text-right" style="direction:rtl">
                         <h2 class="section-title @font"> @Model.AcademyTitleEn</h2>
-
-                        @Model.AcademyTextEn 
+                            @Html.Raw(Model.AcademyTextEn)
+                      
 
 
                     </div>

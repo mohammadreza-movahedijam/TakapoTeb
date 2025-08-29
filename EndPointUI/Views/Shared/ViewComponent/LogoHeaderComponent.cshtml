@@ -1,13 +1,19 @@
 ﻿@model Application.Queries.Setting.ViewModels.LogoViewModel
 
-@if (CultureInfo.CurrentUICulture.Name == "fa-IR")
-{
-    <img src="~/gallery/setting/@Model.LogoFa" class="img-fluid" alt="TakapoTeb">
+<div class="flex-shrink-0">
+    <div class="flex items-center">
+        <a href="/">
+        @if (CultureInfo.CurrentUICulture.Name == "fa-IR")
+        {
+            <img src="~/gallery/setting/@Model.LogoFa" width="150" height="50" class="img-fluid" alt="TakapoTeb">
 
 
-}
-else
-{
-    <img src="~/gallery/setting/@Model.LogoEn" class="img-fluid" alt="TakapoTeb">
+        }
+        else
+        {
+            <img src="~/gallery/setting/@Model.LogoEn" width="150" height="50" class="img-fluid" alt="TakapoTeb">
 
-}
+            }
+        </a>
+    </div>
+</div>

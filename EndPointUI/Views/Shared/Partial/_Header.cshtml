@@ -3,179 +3,569 @@
     string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
     string margin = CultureInfo.CurrentUICulture.Name! == "en-US" ? "mritem-en" : "mritem-fa"!;
 }
+<script>
+    let activeMegaMenu = null;
+    let activeDropdown = null;
 
+    function toggleMegaMenu(menuId) {
+        const megaMenu = document.getElementById(menuId + '-mega');
+
+        // Close any open dropdown
+        if (activeDropdown) {
+            activeDropdown.classList.remove('active');
+            activeDropdown = null;
+        }
+
+        // Close any currently open mega menu
+        if (activeMegaMenu && activeMegaMenu !== megaMenu) {
+            activeMegaMenu.classList.remove('active');
+        }
+
+        // Toggle the clicked menu
+        if (megaMenu.classList.contains('active')) {
+            megaMenu.classList.remove('active');
+            activeMegaMenu = null;
+        } else {
+            megaMenu.classList.add('active');
+            activeMegaMenu = megaMenu;
+        }
+    }
+
+    function toggleDropdown(dropdownId) {
+        const dropdown = document.getElementById(dropdownId + '-dropdown');
+        debugger
+        // Close any open mega menu
+        if (activeMegaMenu) {
+            activeMegaMenu.classList.remove('active');
+            activeMegaMenu = null;
+        }
+
+        // Close any currently open dropdown
+        if (activeDropdown && activeDropdown !== dropdown) {
+            activeDropdown.classList.remove('active');
+        }
+
+        // Toggle the clicked dropdown
+        if (dropdown.classList.contains('active')) {
+            dropdown.classList.remove('active');
+            activeDropdown = null;
+        } else {
+            dropdown.classList.add('active');
+            activeDropdown = dropdown;
+        }
+    }
+
+    function toggleMobileMenu() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+
+        mobileMenu.classList.toggle('active');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+    }
+
+    function toggleMobileSubmenu(submenuId) {
+        const submenu = document.getElementById(submenuId);
+        submenu.classList.toggle('active');
+    }
+
+    // Close menus when clicking outside
+    document.addEventListener('click', function (event) {
+        const nav = document.querySelector('nav');
+        if (!nav.contains(event.target)) {
+            if (activeMegaMenu) {
+                activeMegaMenu.classList.remove('active');
+                activeMegaMenu = null;
+            }
+            if (activeDropdown) {
+                activeDropdown.classList.remove('active');
+                activeDropdown = null;
+            }
+        }
+    });
+
+    // Close menus on escape key
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+            if (activeMegaMenu) {
+                activeMegaMenu.classList.remove('active');
+                activeMegaMenu = null;
+            }
+            if (activeDropdown) {
+                activeDropdown.classList.remove('active');
+                activeDropdown = null;
+            }
+        }
+    });
+</script>
+
+
+<style>
+    .mega-menu {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+    }
+
+        .mega-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+    .mobile-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+        .mobile-menu.active {
+            max-height: 2000px;
+        }
+
+    .dropdown-menu {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: auto;
+    }
+
+        .dropdown-menu.active {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+</style>
+
+<!-- Navigation -->
 <header class=" custom-header" style="direction:@direction;">
-    <nav class="navbar navbar-expand-lg header-nav d-flex justify-content-between zindex-3">
-        <div class="navbar-header">
-            <a id="mobile_btn" href="javascript:void(0);">
-                <span class="bar-icon">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </span>
-            </a>
-            <a href="/" class="navbar-brand logo">
+
+    <nav class="bg-white shadow-lg relative z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
                 @await Component.InvokeAsync("LogoHeaderComponent")
-            </a>
-        </div>
-        <div class="main-menu-wrapper ">
-            <div class="menu-header">
-                <a href="/" class="menu-logo">
-                    @await Component.InvokeAsync("LogoHeaderComponent")
-                </a>
-                <a id="menu_close" class="menu-close" href="javascript:void(0);">
-                    <i class="fas fa-times"></i>
-                </a>
-            </div>
-            <ul class="main-nav @margin zindex2">
-                @*  <li class=" mx-3">
-                <a href="/">@Localizer["HomeMenu"]</a>
-                </li> *@
 
-                <li class="has-submenu mx-3">
-                    <a class="@font" href="#">
-                        ‌
-                        @Localizer["Product"]
-                        @* <i class="fas fa-chevron-down"></i> *@
-                    </a>
-                    <ul class="submenu ">
-                        @await Component.InvokeAsync("MenuComponent")
+                <!-- Desktop Menu -->
+                <div class="hidden lg:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <!-- Products Menu -->
+                        <div class="relative group mb-4">
+                            <button class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors duration-200 flex items-center" onclick="toggleMegaMenu('products')">
+                                @Localizer["Product"]
+
+                            </button>
+                        </div>
 
 
 
-                    </ul>
-                </li>
+                        <!-- COMPANIES Dropdown -->
+                        <div class="relative group mb-4">
+                            <button class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors duration-200 flex items-center" onclick="toggleDropdown('resources')">
+                                @Localizer["COMPANIES"]
 
-                <li class="has-submenu mx-3">
-                    <a class="@font" href="#">
-                        ‌
-                        @Localizer["COMPANIES"]
-                        @* <i class="fas fa-chevron-down"></i> *@
-                    </a>
-                    <ul class="submenu ">
+                            </button>  @await Component.InvokeAsync("PartnerItemMenuComponent")
 
-                        @await Component.InvokeAsync("PartnerItemMenuComponent")
-                    </ul>
-                </li>
+                        </div>
+
+                        <!-- Support Dropdown -->
+                        <div class="relative group mb-4">
+                            <button class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors duration-200 flex items-center" onclick="toggleDropdown('support')">
+                                @Localizer["Support"]
+
+                            </button>
+                            <div id="support-dropdown" class="dropdown-menu absolute top-full right-0 w-56 bg-white shadow-xl border rounded-lg z-50">
+                                <div class="py-2 text-center">
 
 
-                <li class="has-submenu mx-3">
-                    <a class="@font">
-                        ‌
-                        @Localizer["Support"]
-                        @* <i class="fas fa-chevron-down"></i> *@
-                    </a>
-                    <ul class="submenu ">
-                        <li>
-                            <a class="@font" asp-controller="Home" asp-action="RequestService">
-                                @Localizer["ServiceRequest"]
+                                    <a class="@font block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                                       asp-controller="Home" asp-action="RequestService">
+                                        @Localizer["ServiceRequest"]
+                                    </a>
+
+                                    <a class="@font block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                                       asp-controller="Home" asp-action="RequestEducation">
+                                        @Localizer["TrainingRequest"]
+                                    </a>
+
+                                    <a class="@font block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                                       asp-controller="Home" asp-action="Book">
+                                        @Localizer["OperationManual"]
+                                    </a>
+
+                                    <a class="@font block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                                       asp-controller="Home" asp-action="Catalog">
+                                        @Localizer["Brochure"]
+                                    </a>
+
+
+
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="relative group mb-4">
+                            <button class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors duration-200 flex items-center" onclick="toggleDropdown('about')">
+                                @Localizer["About"]
+
+                            </button>
+                            <!-- about Dropdown -->
+                            <div id="about-dropdown" class="dropdown-menu absolute top-full right-0 w-64 bg-white shadow-xl border rounded-lg z-50">
+                                <div class="py-2 text-center">
+
+
+                                    <a href="About" class="@font block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                                        @Localizer["AboutTakapo"]
+                                    </a>
+
+                                    <a href="Media" class="@font block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                                        @Localizer["Events"]
+                                    </a>
+
+                                    <a class="@font block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors" asp-controller="News" asp-action="Index">
+                                        @Localizer["Newsroom"]
+                                    </a>
+
+                                    <a class="@font block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors" href="/Blog">@Localizer["BlogMenu"]</a>
+
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="relative group mb-4">
+                            <a class="@font block text-gray-700 hover:text-blue-600 font-medium py-2" asp-controller="Home" asp-action="ContactUs">
+                                @Localizer["ContactUs"]
                             </a>
-                        </li>
-                        <li>
-                            <a class="@font" asp-controller="Home" asp-action="RequestEducation">
-                                @Localizer["TrainingRequest"]
+                        </div>
+
+                        @await Component.InvokeAsync("PageComponent")
+
+
+                        <div class="relative group">
+                            <a asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="en-US"
+                               class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors duration-200 flex items-center">
+                                <img class="mt-3" src="~/gallery/united kingdom.svg" width="20" height="20" />
+
                             </a>
-                        </li>
-                        <li>
-                            <a class="@font" asp-controller="Home" asp-action="Book">
-                                @Localizer["OperationManual"]
+                        </div>
+                        <div class="relative group ">
+                            <a asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="fa-IR"
+                               class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors duration-200 flex items-center">
+                                <img class="mt-3" src="~/gallery/iran.svg" width="20" height="20" />
                             </a>
-                        </li>
-                        <li>
-                            <a class="@font" asp-controller="Home" asp-action="Catalog">
-                                @Localizer["Brochure"]
+                        </div>
+
+
+                        <div class="relative group ">
+                            <a id="searchToggle" class="icon-btn"
+                               aria-label="Open search" aria-expanded="false" aria-controls="searchBox" title="Search">
+                                <i class="fa fa-search"></i>
                             </a>
-                        </li>
+                        </div>
+
+                        <div class="mx-3" id="search-menu-mobile">
+                            <form method="get" class="search-wrapper p-1 mb-2" action="/Search">
+                                <input id="input-search-mobile" type="text" name="text">
+                                <i class="fa fa-search"></i>
+                            </form>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div id="searchBox" class="search-box" hidden aria-label="Search box">
+                    <form action="/search" method="get" class="search-form">
+                        <label for="searchInput" class="sr-only">Search</label>
+
+
+                        <input id="searchInput" name="text" placeholder="@(direction == "ltr" ? "search":"جستجو")" type="search" autocomplete="off" />
 
 
 
-
-                    </ul>
-                </li>
-
-
-                <li class="has-submenu mx-3">
-                    <a href="About" class="@font">
-                        ‌
-                        @Localizer["About"]
-                        @* <i class="fas fa-chevron-down"></i> *@
-                    </a>
-                    <ul class="submenu ">
-                        <li>
-                            <a href="About" class="@font">
-                                @Localizer["AboutTakapo"]
-                            </a>
-                        </li>
-                        <li>
-                            <a class="@font">
-                                @Localizer["Events"]
-                            </a>
-                        </li>
-                        <li>
-                            <a class="@font" asp-controller="News" asp-action="Index">
-                                @Localizer["Newsroom"]
-                            </a>
-                        </li>
-
-
-                        <li>
-                            <a class="@font" href="/Blog">@Localizer["BlogMenu"]</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a class="@font" asp-controller="Home" asp-action="ContactUs">
-                        @Localizer["ContactUs"]
-                    </a>
-                </li>
-                @await Component.InvokeAsync("PageComponent")
-                <li class=" mx-3">
-                    <a class="@font" asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="en-US">
-                        <img src="~/gallery/en.png" width="35" height="25" />
-                        @* @Localizer["Language1"]   *@
-                    </a>
-                </li>
-                <li class=" mx-3">
-                    <a class="@font" asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="fa-IR">
-                        <img src="~/gallery/fa.png" width="35" height="25" />
-                        @* @Localizer["Language2"]    *@
-
-                    </a>
-                </li>
-
-
-                <li class="mx-3" id="search-menu">
-                    <a id="searchToggle" class="icon-btn" aria-label="Open search" aria-expanded="false" aria-controls="searchBox" title="Search">
-                        <i class="fa fa-search"></i>
-                    </a>
-
-                </li>
-                <li class="mx-3" id="search-menu-mobile">
-                    <form method="get" class="search-wrapper p-1 mb-2" action="/Search">
-                        <input id="input-search-mobile" type="text" name="text">
-                        <i class="fa fa-search"></i>
+                        <button type="submit" class="icon-btn" aria-label="Submit search">
+                            <i class="fa fa-search"></i>
+                        </button>
                     </form>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="lg:hidden">
+                    <button onclick="toggleMobileMenu()" class="text-gray-700 hover:text-blue-600 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                            <path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
 
-                </li>
-            </ul>
+        <!-- Mega Menu Dropdowns -->
+        <!-- Products Mega Menu -->
+        @await Component.InvokeAsync("MenuComponent")
+
+
+        <!-- Services Mega Menu -->
+        <div id="services-mega" class="mega-menu absolute top-full left-0 w-full bg-white shadow-xl border-t">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Consulting</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">Strategy Planning</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">Digital Transformation</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">Process Optimization</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Support</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">24/7 Technical Support</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">Training Programs</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">Documentation</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Maintenance</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">System Updates</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">Security Monitoring</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">Performance Tuning</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Company Mega Menu -->
+        <div id="company-mega" class="mega-menu absolute top-full left-0 w-full bg-white shadow-xl border-t">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">About Us</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">Our Story</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">Leadership Team</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">Careers</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">Press & Media</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Resources</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">Blog</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">Case Studies</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">White Papers</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">Events</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dropdown Menus -->
+        <!-- COMPANIES Dropdown -->
+        <!-- Support Dropdown -->
+        @*  <!-- about Dropdown -->
+        <div id="about-dropdown" class="dropdown-menu absolute top-full right-0 w-64 bg-white shadow-xl border rounded-lg z-50">
+        <div class="py-2 text-center">
+
+
+        <a href="About" class="@font block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
+        @Localizer["AboutTakapo"]
+        </a>
+
+        <a class="@font block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
+        @Localizer["Events"]
+        </a>
+
+        <a class="@font block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors" asp-controller="News" asp-action="Index">
+        @Localizer["Newsroom"]
+        </a>
+
+        <a class="@font block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors" href="/Blog">@Localizer["BlogMenu"]</a>
+
 
         </div>
-       
+        </div>
+
+        *@
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu lg:hidden bg-white border-t">
+            <div class="px-4 py-4 space-y-4">
+                <!-- Mobile Products -->
+                <div>
+                    <button onclick="toggleMobileSubmenu('mobile-products')" class="w-full text-left text-gray-700 hover:text-blue-600 font-medium py-2 flex items-center justify-between">
+                        @Localizer["Product"]
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    @await Component.InvokeAsync("MobileMenuComponent")
+                </div>
+                @*
+                <!-- Mobile Services -->
+                <div>
+                <button onclick="toggleMobileSubmenu('mobile-services')" class="w-full text-left text-gray-700 hover:text-blue-600 font-medium py-2 flex items-center justify-between">
+                Services
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+                </button>
+                <div id="mobile-services" class="mobile-menu pl-4 mt-2 space-y-3">
+                <div>
+                <h4 class="font-semibold text-gray-900 mb-2">Consulting</h4>
+                <div class="space-y-1 pl-2">
+                <a href="#" class="block text-gray-600 hover:text-blue-600 py-1">Strategy Planning</a>
+                <a href="#" class="block text-gray-600 hover:text-blue-600 py-1">Digital Transformation</a>
+                <a href="#" class="block text-gray-600 hover:text-blue-600 py-1">Process Optimization</a>
+                </div>
+                </div>
+                <div>
+                <h4 class="font-semibold text-gray-900 mb-2">Support</h4>
+                <div class="space-y-1 pl-2">
+                <a href="#" class="block text-gray-600 hover:text-blue-600 py-1">24/7 Technical Support</a>
+                <a href="#" class="block text-gray-600 hover:text-blue-600 py-1">Training Programs</a>
+                <a href="#" class="block text-gray-600 hover:text-blue-600 py-1">Documentation</a>
+                </div>
+                </div>
+                <div>
+                <h4 class="font-semibold text-gray-900 mb-2">Maintenance</h4>
+                <div class="space-y-1 pl-2">
+                <a href="#" class="block text-gray-600 hover:text-blue-600 py-1">System Updates</a>
+                <a href="#" class="block text-gray-600 hover:text-blue-600 py-1">Security Monitoring</a>
+                <a href="#" class="block text-gray-600 hover:text-blue-600 py-1">Performance Tuning</a>
+                </div>
+                </div>
+                </div>
+                </div>
+                *@
+
+
+
+                <div>
+                    <button onclick="toggleMobileSubmenu('mobile-COMPANIES')" class="w-full text-left text-gray-700 hover:text-blue-600 font-medium py-2 flex items-center justify-between">
+                        @Localizer["COMPANIES"]
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div id="mobile-COMPANIES" class="mobile-menu pl-4 mt-2 space-y-1">
+
+                        @await Component.InvokeAsync("PartnerItemMobileMenuComponent")
+                    </div>
+                </div>
+
+
+                <div>
+                    <button onclick="toggleMobileSubmenu('mobile-support')" class="w-full text-left text-gray-700 hover:text-blue-600 font-medium py-2 flex items-center justify-between">
+                        @Localizer["Support"]
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div id="mobile-support" class="mobile-menu pl-4 mt-2 space-y-1">
+
+                        <a class="@font block text-gray-600 hover:text-blue-600 py-1"
+                           asp-controller="Home" asp-action="RequestService">
+                            @Localizer["ServiceRequest"]
+                        </a>
+
+                        <a class="@font block text-gray-600 hover:text-blue-600 py-1"
+                           asp-controller="Home" asp-action="RequestEducation">
+                            @Localizer["TrainingRequest"]
+                        </a>
+
+                        <a class="@font block text-gray-600 hover:text-blue-600 py-1"
+                           asp-controller="Home" asp-action="Book">
+                            @Localizer["OperationManual"]
+                        </a>
+
+                        <a class="@font block text-gray-600 hover:text-blue-600 py-1"
+                           asp-controller="Home" asp-action="Catalog">
+                            @Localizer["Brochure"]
+                        </a>
+
+                    </div>
+                </div>
+                <!-- Mobile Support -->
+                <div>
+                    <button onclick="toggleMobileSubmenu('mobile-about')" class="w-full text-left text-gray-700 hover:text-blue-600 font-medium py-2 flex items-center justify-between">
+                        @Localizer["About"]
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div id="mobile-about" class="mobile-menu pl-4 mt-2 space-y-1">
+
+
+
+                        <a href="About" class="@font block text-gray-600 hover:text-blue-600 py-1">
+                            @Localizer["AboutTakapo"]
+                        </a>
+
+                        <a class="@font block text-gray-600 hover:text-blue-600 py-1">
+                            @Localizer["Events"]
+                        </a>
+
+                        <a class="@font block text-gray-600 hover:text-blue-600 py-1" asp-controller="News" asp-action="Index">
+                            @Localizer["Newsroom"]
+                        </a>
+
+                        <a class="@font block text-gray-600 hover:text-blue-600 py-1" href="/Blog">@Localizer["BlogMenu"]</a>
+
+
+                    </div>
+                </div>
+                <a class="@font block text-gray-700 hover:text-blue-600 font-medium py-2" asp-controller="Home" asp-action="ContactUs">
+                    @Localizer["ContactUs"]
+                </a>
+
+
+                <a class="@font block text-gray-700 hover:text-blue-600 font-medium py-2"
+                   asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="en-US">
+                    @Localizer["Language1"]
+                </a>
+
+                <a class="@font block text-gray-700 hover:text-blue-600 font-medium py-2"
+                   asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="fa-IR">
+                     @Localizer["Language2"]
+                </a>
+                <form method="get" class="search-wrapper p-1 mb-2 w-100" action="/Search">
+                    <input id="input-search-mobile" class="w-100 " type="text" name="text">
+                    <i class="fa fa-search"></i>
+                </form>
+
+
+
+            </div>
+        </div>
     </nav>
-    <div id="searchBox" class="search-box" hidden aria-label="Search box">
-        <form action="/search" method="get" class="search-form">
-            <label for="searchInput" class="sr-only">Search</label>
-
-
-            <input id="searchInput" name="text" placeholder="@(direction == "ltr" ? "search":"جستجو")" type="search" autocomplete="off" />
-
-
-
-            <button type="submit" class="icon-btn" aria-label="Submit search">
-                <i class="fa fa-search"></i>
-            </button>
-        </form>
-    </div>
 </header>
 
 <style>
@@ -202,6 +592,9 @@
 
     /* Search box container (desktop: collapsible panel below header) */
     .search-box {
+        left: 600px;
+        position: absolute;
+        margin-top: 130px !important;
         width: 30%;
         max-width: 960px;
         margin: 0 auto;
@@ -235,26 +628,26 @@
     #search-menu {
         display: block !important;
     }
-    
+
     #search-menu-mobile {
         display: none !important;
     }
 
     @@media (max-width: 992px) {
         /* On mobile, the search box becomes a single input bar under header */
-       
 
-        #search-menu{
-            display:none !important;
+
+        #search-menu {
+            display: none !important;
         }
 
         #search-menu-mobile {
             display: block !important;
         }
-        #input-search-mobile{
+
+        #input-search-mobile {
             padding: 8px 14px 8px 10px;
         }
-       
     }
 </style>
 

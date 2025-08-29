@@ -1,0 +1,309 @@
+﻿@{
+    string direction = CultureInfo.CurrentUICulture.Name == "en-US" ? "ltr" : "rtl";
+    string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
+    string margin = CultureInfo.CurrentUICulture.Name! == "en-US" ? "mritem-en" : "mritem-fa"!;
+}
+
+ <header class=" custom-header" style="direction:@direction;">
+    <nav class="navbar navbar-expand-lg header-nav d-flex justify-content-between zindex-3">
+        <div class="navbar-header">
+            <a id="mobile_btn" href="javascript:void(0);">
+                <span class="bar-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </a>
+            <a href="/" class="navbar-brand logo">
+                @await Component.InvokeAsync("LogoHeaderComponent")
+            </a>
+        </div>
+        <div class="main-menu-wrapper ">
+            <div class="menu-header">
+                <a href="/" class="menu-logo">
+                    @await Component.InvokeAsync("LogoHeaderComponent")
+                </a>
+                <a id="menu_close" class="menu-close" href="javascript:void(0);">
+                    <i class="fas fa-times"></i>
+                </a>
+            </div>
+            <ul class="main-nav @margin zindex2">
+                @*  <li class=" mx-3">
+                <a href="/">@Localizer["HomeMenu"]</a>
+                </li> *@
+
+                <li class="has-submenu mx-3">
+                    <a class="@font" href="#">
+                        ‌
+                        @Localizer["Product"]
+                        @* <i class="fas fa-chevron-down"></i> *@
+                    </a>
+                    <ul class="submenu ">
+                        @await Component.InvokeAsync("MenuComponent")
+
+
+
+                    </ul>
+                </li>
+
+                <li class="has-submenu mx-3">
+                    <a class="@font" href="#">
+                        ‌
+                        @Localizer["COMPANIES"]
+                        @* <i class="fas fa-chevron-down"></i> *@
+                    </a>
+                    <ul class="submenu ">
+
+                        @await Component.InvokeAsync("PartnerItemMenuComponent")
+                    </ul>
+                </li>
+
+
+                <li class="has-submenu mx-3">
+                    <a class="@font">
+                        ‌
+                        @Localizer["Support"]
+                        @* <i class="fas fa-chevron-down"></i> *@
+                    </a>
+                    <ul class="submenu ">
+                        <li>
+                            <a class="@font" asp-controller="Home" asp-action="RequestService">
+                                @Localizer["ServiceRequest"]
+                            </a>
+                        </li>
+                        <li>
+                            <a class="@font" asp-controller="Home" asp-action="RequestEducation">
+                                @Localizer["TrainingRequest"]
+                            </a>
+                        </li>
+                        <li>
+                            <a class="@font" asp-controller="Home" asp-action="Book">
+                                @Localizer["OperationManual"]
+                            </a>
+                        </li>
+                        <li>
+                            <a class="@font" asp-controller="Home" asp-action="Catalog">
+                                @Localizer["Brochure"]
+                            </a>
+                        </li>
+
+
+
+
+                    </ul>
+                </li>
+
+
+                <li class="has-submenu mx-3">
+                    <a href="About" class="@font">
+                        ‌
+                        @Localizer["About"]
+                        @* <i class="fas fa-chevron-down"></i> *@
+                    </a>
+                    <ul class="submenu ">
+                        <li>
+                            <a href="About" class="@font">
+                                @Localizer["AboutTakapo"]
+                            </a>
+                        </li>
+                        <li>
+                            <a class="@font">
+                                @Localizer["Events"]
+                            </a>
+                        </li>
+                        <li>
+                            <a class="@font" asp-controller="News" asp-action="Index">
+                                @Localizer["Newsroom"]
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a class="@font" href="/Blog">@Localizer["BlogMenu"]</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="@font" asp-controller="Home" asp-action="ContactUs">
+                        @Localizer["ContactUs"]
+                    </a>
+                </li>
+                @await Component.InvokeAsync("PageComponent")
+                <li class=" mx-3">
+                    <a class="@font" asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="en-US">
+                        <img src="~/gallery/en.png" width="35" height="25" />
+                        @* @Localizer["Language1"]   *@
+                    </a>
+                </li>
+                <li class=" mx-3">
+                    <a class="@font" asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="fa-IR">
+                        <img src="~/gallery/fa.png" width="35" height="25" />
+                        @* @Localizer["Language2"]    *@
+
+                    </a>
+                </li>
+
+
+                <li class="mx-3" id="search-menu">
+                    <a id="searchToggle" class="icon-btn" aria-label="Open search" aria-expanded="false" aria-controls="searchBox" title="Search">
+                        <i class="fa fa-search"></i>
+                    </a>
+
+                </li>
+                <li class="mx-3" id="search-menu-mobile">
+                    <form method="get" class="search-wrapper p-1 mb-2" action="/Search">
+                        <input id="input-search-mobile" type="text" name="text">
+                        <i class="fa fa-search"></i>
+                    </form>
+
+                </li>
+            </ul>
+
+        </div>
+       
+    </nav>
+    <div id="searchBox" class="search-box" hidden aria-label="Search box">
+        <form action="/search" method="get" class="search-form">
+            <label for="searchInput" class="sr-only">Search</label>
+
+
+            <input id="searchInput" name="text" placeholder="@(direction == "ltr" ? "search":"جستجو")" type="search" autocomplete="off" />
+
+
+
+            <button type="submit" class="icon-btn" aria-label="Submit search">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+</header>
+
+<style>
+    :root {
+        --header-height: 64px;
+        --search-box-height: 60px; /* desktop height; will adapt on mobile */
+        --bg: #fff;
+        --border: #fff;
+        --fg: #111;
+    }
+
+    /* Ensure the search toggle looks like a small icon button */
+    .icon-btn {
+        background: transparent;
+        border: 1px solid transparent;
+        border-radius: 6px;
+        padding: 8px;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--fg);
+    }
+
+    /* Search box container (desktop: collapsible panel below header) */
+    .search-box {
+        width: 30%;
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 8px 16px;
+        border-bottom: 1px solid var(--border);
+        background: #fff;
+        box-shadow: 0 8px 24px rgba(0,0,0,.05);
+    }
+
+    .search-form {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+    }
+
+        .search-form input[type="search"] {
+            flex: 1;
+            min-width: 0;
+            padding: 12px 14px;
+            border: 1px solid #fff;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+        }
+
+            .search-form input[type="search"]:focus {
+                border-color: #fff;
+                box-shadow: 0 0 0 3px #fff;
+            }
+
+    #search-menu {
+        display: block !important;
+    }
+    
+    #search-menu-mobile {
+        display: none !important;
+    }
+
+    @@media (max-width: 992px) {
+        /* On mobile, the search box becomes a single input bar under header */
+       
+
+        #search-menu{
+            display:none !important;
+        }
+
+        #search-menu-mobile {
+            display: block !important;
+        }
+        #input-search-mobile{
+            padding: 8px 14px 8px 10px;
+        }
+       
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const toggleBtn = document.getElementById('searchToggle');
+        const searchBox = document.getElementById('searchBox');
+        const searchInput = document.getElementById('searchInput');
+
+        if (!toggleBtn || !searchBox || !searchInput) return;
+
+        function openSearch() {
+            searchBox.hidden = false;
+            toggleBtn.setAttribute('aria-expanded', 'true');
+            searchInput.focus();
+        }
+
+        function closeSearch() {
+            searchBox.hidden = true;
+            toggleBtn.setAttribute('aria-expanded', 'false');
+            searchInput.value = '';
+        }
+
+        function toggleSearch() {
+            if (searchBox.hidden) {
+                openSearch();
+            } else {
+                closeSearch();
+            }
+        }
+
+        searchBox.hidden = true;
+
+        toggleBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            toggleSearch();
+        });
+
+        document.addEventListener('mousedown', function (e) {
+            if (!searchBox.contains(e.target) && !toggleBtn.contains(e.target)) {
+                closeSearch();
+            }
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeSearch();
+                toggleBtn.focus();
+            }
+        });
+    });
+</script>

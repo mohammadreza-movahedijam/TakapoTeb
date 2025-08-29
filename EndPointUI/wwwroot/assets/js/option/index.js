@@ -14,7 +14,7 @@
         confirmButtonText: "بله حذف شود"
     }).then((result) => {
         if (result.isConfirmed) {
-            rest.postAsync("/Admin/ProductOption/Delete", null, body, function (isSuccess, response) {
+            rest.postAsync("/Admin/Option/Delete", null, body, function (isSuccess, response) {
                 let role = document.getElementById("item_" + id);
                 if (response.isSuccess) {
 

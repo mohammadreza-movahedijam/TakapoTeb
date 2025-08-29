@@ -1,23 +1,32 @@
 ﻿@using Application.Queries.Page
 @model IReadOnlyList<PageViewModel>
+@{
+    string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
 
+}
 @if(Model!=null && Model.Any())
 {
     @foreach(var item in Model)
     {
-        <li>
+        <div class="relative group mb-4">
+          
+        
+      
             @if (CultureInfo.CurrentUICulture.Name == "en-US")
             {
-                <a class="English" asp-controller="Home" asp-action="Page" asp-route-Id="@item.Id">
+                <a 
+                   class="English block text-gray-700 hover:text-blue-600 font-medium py-2"
+                   asp-controller="Home" asp-action="Page" asp-route-Id="@item.Id">
                     @item.TitleEn
                 </a>
             }
             else
             {
-                <a asp-controller="Home" asp-action="Page" asp-route-Id="@item.Id">
+                <a class=" block text-gray-700 hover:text-blue-600 font-medium py-2"
+                    asp-controller="Home" asp-action="Page" asp-route-Id="@item.Id">
                     @item.TitleFa
                 </a>
             }
-        </li>
+        </div>
     }
 }

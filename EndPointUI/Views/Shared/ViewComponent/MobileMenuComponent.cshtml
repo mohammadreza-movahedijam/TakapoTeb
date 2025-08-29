@@ -1,0 +1,61 @@
+﻿@model IReadOnlyList<Application.Queries.ProductCategory.ViewModels.CategoryMenuViewModel>
+@{
+    string align = CultureInfo.CurrentUICulture.Name! == "en-US" ? "left" : "right"!;
+    string dir = CultureInfo.CurrentUICulture.Name! == "en-US" ? "ltr" : "rtl"!;
+
+    string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
+}
+<div id="mobile-products" 
+style="text-align:@align"
+class="mobile-menu pl-4 mt-2 space-y-4 " dir="@dir">
+
+
+    @if (Model.Any())
+    {
+        if (CultureInfo.CurrentUICulture.Name == "en-US")
+        {
+            @foreach (Application.Queries.ProductCategory.ViewModels.CategoryMenuViewModel item in Model
+           .Where(w => w.ParentProductCategoryId == null))
+            {
+               
+                <div style="text-align:@align">
+                    <strong style="color:#252D69"  class="@font text-gray-900 mb-2">
+                        <a class="@font" asp-controller="Category" asp-action="Detail" asp-route-pattern="@item.Id">
+                            @item.TitleEn
+
+                        </a>
+
+                    </strong>  <hr class="mt-3" />
+                    @if (item.SubCategories != null && item.SubCategories!.Any())
+                    {
+                        @await Html.PartialAsync("Partial/_CategoryMobileMenu", item.SubCategories)
+                    }
+                </div>
+            }
+        }
+        else
+        {
+            @foreach (Application.Queries.ProductCategory.ViewModels.CategoryMenuViewModel item in Model
+           .Where(w => w.ParentProductCategoryId == null))
+            {
+                <div style="text-align:@align!">
+                    <strong style="color:#252D69" class="@font text-gray-900 mb-2">
+                        <a class="@font" asp-controller="Category" asp-action="Detail" asp-route-pattern="@item.Id">
+                            @item.TitleFa
+
+                        </a>
+
+                    </strong>
+                    <hr class="mt-3"/>
+                    @if (item.SubCategories != null && item.SubCategories!.Any())
+                    {
+                        @await Html.PartialAsync("Partial/_CategoryMobileMenu", item.SubCategories)
+                    }
+                </div>
+            }
+        }
+
+    }
+
+  
+</div>
