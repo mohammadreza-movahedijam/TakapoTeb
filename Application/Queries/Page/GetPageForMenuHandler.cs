@@ -29,6 +29,8 @@ internal sealed class GetPageForMenuHandler
             IsShowOnMenu = s.IsShowOnMenu,
             TitleFa=s.TitleFa,
             TitleEn=s.TitleEn,
+            ParentPageId=s.ParentPageId,
+            IsActivePage=s.IsActivePage,
         }).ToListAsync();   
     }
 }

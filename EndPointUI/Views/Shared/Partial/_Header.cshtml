@@ -150,7 +150,7 @@
 
     <nav class="bg-white shadow-lg relative z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
+            <div class="flex justify-between items-center h-16 p-10">
                 <!-- Logo -->
                 @await Component.InvokeAsync("LogoHeaderComponent")
 
@@ -546,6 +546,7 @@
                     @Localizer["ContactUs"]
                 </a>
 
+                @await Component.InvokeAsync("PageMobileComponent")
 
                 <a class="@font block text-gray-700 hover:text-blue-600 font-medium py-2"
                    asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="en-US">

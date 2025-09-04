@@ -17,4 +17,7 @@ public sealed record PageDto
     public string? TitleFa { get; set; }
     public string? DescriptionFa { get; set; }
     public bool IsShowOnMenu { get; set; }
+    public Guid? ParentPageId { get; set; }
+    public bool IsActivePage { get; set; }
+
 }

@@ -2,7 +2,7 @@
 
 namespace Application.Commands.ProductCategory;
 
-public sealed record UpdateProductCategoryCommand : IRequest
+public sealed record UpdateProductCategoryCommand : IRequest<bool>
 {
     public ProductCategoryDto ProductCategory { get; set; }
     public UpdateProductCategoryCommand(ProductCategoryDto ProductCategory)

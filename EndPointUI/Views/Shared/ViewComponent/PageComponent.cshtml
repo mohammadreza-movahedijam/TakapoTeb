@@ -1,30 +1,52 @@
 ﻿@using Application.Queries.Page
 @model IReadOnlyList<PageViewModel>
 @{
-    string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
+    string cultureName = CultureInfo.CurrentUICulture.Name ?? "en-US";
 
+    string GetTitle(PageViewModel page) => cultureName == "en-US" ? page.TitleEn : page.TitleFa;
+
+    string GetLink(PageViewModel page)
+        => page.IsActivePage == true
+            ? Url.Action("Page", "Home", new { Id = page.Id })
+            : "#";
+
+    string GetCssClass() => cultureName == "en-US" ? "English" : "";
+
+    bool HasChildren(PageViewModel page) => Model.Any(m => m.ParentPageId == page.Id && m.IsShowOnMenu);
 }
-@if(Model!=null && Model.Any())
+
+@if (Model != null && Model.Any())
 {
-    @foreach(var item in Model)
+    @foreach (var item in Model.Where(p => p.ParentPageId == null))
     {
         <div class="relative group mb-4">
-          
-        
-      
-            @if (CultureInfo.CurrentUICulture.Name == "en-US")
+            @if (HasChildren(item))
             {
-                <a 
-                   class="English block text-gray-700 hover:text-blue-600 font-medium py-2"
-                   asp-controller="Home" asp-action="Page" asp-route-Id="@item.Id">
-                    @item.TitleEn
-                </a>
+                <button class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors duration-200 flex items-center" onclick="toggleDropdown('@item.Id')">
+                    <a class="@GetCssClass() block text-gray-700 hover:text-blue-600 font-medium py-2"
+                       href="@GetLink(item)">
+                        @GetTitle(item)
+                    </a>
+                </button>
+
+                <!-- Dropdown -->
+                <div id="@item.Id-dropdown" class="dropdown-menu absolute top-full right-0 w-64 bg-white shadow-xl border rounded-lg z-50">
+                    <div class="py-2 text-center">
+                        @foreach (var sub in Model.Where(s => s.ParentPageId == item.Id && s.IsShowOnMenu == true))
+                        {
+                            <a class="@GetCssClass() block text-gray-700 hover:text-blue-600 font-medium py-2"
+                               href="@GetLink(sub)">
+                                @GetTitle(sub)
+                            </a>
+                        }
+                    </div>
+                </div>
             }
             else
             {
-                <a class=" block text-gray-700 hover:text-blue-600 font-medium py-2"
-                    asp-controller="Home" asp-action="Page" asp-route-Id="@item.Id">
-                    @item.TitleFa
+                <a class="@GetCssClass() block text-gray-700 hover:text-blue-600 font-medium py-2"
+                   href="@GetLink(item)">
+                    @GetTitle(item)
                 </a>
             }
         </div>

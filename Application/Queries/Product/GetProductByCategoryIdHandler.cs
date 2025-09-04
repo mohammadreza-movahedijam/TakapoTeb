@@ -31,7 +31,7 @@ internal sealed class GetProductByCategoryIdHandler
             .Compile();
 
         IQueryable<ProductEntity> query = _repository.GetByQuery();
-        query = query.Include(i => i.Category);
+        query = query.Include(i => i.Category).OrderByDescending(o=>o.DateCreated);
         PaginatedList<ProductViewModel> model = new();
         if (request.CategoryIds!.Any())
         {

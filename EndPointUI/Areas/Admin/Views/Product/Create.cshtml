@@ -3,7 +3,7 @@
     ViewData["Title"] = "ایجاد محصول";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
-@section Style{
+@section Style {
     <link rel="stylesheet" href="~/assets/vendor/libs/select2/select2.css">
     <script src="~/ckeditor/ckeditor.js"></script>
 
@@ -28,7 +28,7 @@
 </nav>
 
 <div class="row">
-    <div class="col-8 offset-2">
+    <div class="col-12">
         <div class="card mb-4">
             <div class="card-header">
 
@@ -42,69 +42,209 @@
             </div>
             <form asp-area="Admin" asp-controller="Product" asp-action="Create"
                   method="post" class="card-body" enctype="multipart/form-data">
-                <div class="row">
-                    <div class="col-12">
-                        <img id="imagePath_1" width="100" height="80" src="~/Gallery/default.jpg" />
+                <div class="accordion-item card active p-3 rounded-3" style="background-color:#f2f0e9">
+                    <h2 class="accordion-header">
+                        <button type="button" class="accordion-button"
+                                data-bs-toggle="collapse" data-bs-target="#one" aria-expanded="true">
+                            اطلاعات پایه
+                        </button>
+                    </h2>
+
+
+                    <div id="one" class="accordion-collapse collapse show"
+                         data-bs-parent="#one" style="">
+                        <div class="accordion-body lh-2">
+                            <div class="row">
+                                <div class="col-12">
+                                    <img id="imagePath_1" width="100" height="80" src="~/Gallery/default.jpg" />
+                                </div>
+                                <div class="col-3">
+                                    <label class="form-label">تصویر</label>
+                                    <input asp-for="ImageFile" onchange="ChangeImage(this,1)" class="form-control" type="file" />
+                                </div>
+                            </div>
+
+                            <div class="row mt-3">
+                                <div class="col-12">
+                                    <img id="imagePath_2" width="100" height="80" src="~/Gallery/default.jpg" />
+                                </div>
+                                <div class="col-3">
+                                    <label class="form-label">تصویر سربرگ</label>
+                                    <input asp-for="ImageHeaderFile" onchange="ChangeImage(this,2)" class="form-control" type="file" />
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-6">
+                                    <label class="form-label">نام فارسی</label>
+                                    <input asp-for="TitleFa" type="text" class="form-control" />
+                                    <span class="text-danger" asp-validation-for="TitleFa"></span>
+                                </div>
+
+                                <div class="col-6">
+                                    <label class="form-label">نام انگلیسی</label>
+                                    <input asp-for="TitleEn" type="text" class="form-control" />
+                                    <span class="text-danger" asp-validation-for="TitleEn"></span>
+                                </div>
+
+                                <div class="col-4">
+                                    <label class="form-label">عنوان دکمه فارسی</label>
+                                    <input asp-for="ButtonFa" type="text" class="form-control" />
+                                </div>
+                                <div class="col-4">
+                                    <label class="form-label">عنوان دکمه انگلیسی</label>
+                                    <input asp-for="ButtonEn" type="text" class="form-control" />
+                                </div>
+
+                                <div class="col-4">
+                                    <label class="form-label">لینک دکمه </label>
+                                    <input asp-for="ButtonLink" type="text" class="form-control" />
+                                </div>
+
+                                <div class="col-6">
+                                    <label class="form-label">رنگ شروع </label>
+                                    <input asp-for="ColorFrom" type="color" class="form-control" />
+                                </div>
+                                <div class="col-6">
+                                    <label class="form-label">رنگ پایان </label>
+                                    <input asp-for="ColorTo" type="color" class="form-control" />
+                                </div>
+
+
+
+
+                                <div class="col-6">
+                                    <label class="form-label">لینک ویدئو</label>
+                                    <input asp-for="VideoLink" type="text" class="form-control" />
+                                </div>
+                                <div class="col-6">
+                                    <label class="form-label">انتخاب دسته بندی</label>
+                                    <select asp-for="CategoryId" id="category" class="select2 form-select">
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">انتخاب محصولات مرتبط</label>
+                                    <select name="RelatedProducts" id="RelatedProduct" multiple="multiple" class="select2 form-select">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-3">
-                        <label class="form-label">تصویر</label>
-                        <input asp-for="ImageFile" onchange="ChangeImage(this,1)" class="form-control" type="file" />
+
+
+
+                </div>
+              
+
+                <div class="accordion-item card active p-3 rounded-3 mt-3" style="background-color:#f2f0e9">
+                    <h2 class="accordion-header">
+                        <button type="button" class="accordion-button"
+                                data-bs-toggle="collapse" data-bs-target="#two" aria-expanded="true">
+                           خلاصه
+                        </button>
+                    </h2>
+
+
+                    <div id="two" class="accordion-collapse collapse show"
+                         data-bs-parent="#two" style="">
+                        <div class="accordion-body lh-2">
+                            <div class="row">
+                                <div class="col-12">
+                                    <label class="form-label">خلاصه فارسی</label>
+                                    <textarea class="form-control" id="SummaryFa" asp-for="SummaryFa" rows="5"></textarea>
+
+                                    <span class="text-danger" asp-validation-for="SummaryFa"></span>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">خلاصه انگلیسی</label>
+                                    <textarea class="form-control" id="SummaryEn" asp-for="SummaryEn" rows="5"></textarea>
+                                    <span class="text-danger" asp-validation-for="SummaryEn"></span>
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+
+
                 </div>
 
-                <div class="row">
-                    <div class="col-12">
-                        <img id="imagePath_2" width="100" height="80" src="~/Gallery/default.jpg" />
-                    </div>
-                    <div class="col-3">
-                        <label class="form-label">تصویر سربرگ</label>
-                        <input asp-for="ImageHeaderFile" onchange="ChangeImage(this,2)" class="form-control" type="file" />
-                    </div>
-                </div>
-                <div class="row">
-                    
-                    <div class="col-6">
-                        <label class="form-label">نام فارسی</label>
-                        <input asp-for="TitleFa" type="text" class="form-control" />
-                        <span class="text-danger" asp-validation-for="TitleFa"></span>
+                <div class="accordion-item card active p-3 rounded-3 mt-3" style="background-color:#f2f0e9">
+                    <h2 class="accordion-header">
+                        <button type="button" class="accordion-button"
+                                data-bs-toggle="collapse" data-bs-target="#three" aria-expanded="true">
+                            توضیحات بخش اول
+                        </button>
+                    </h2>
+
+
+                    <div id="three" class="accordion-collapse collapse show"
+                         data-bs-parent="#three" style="">
+                        <div class="accordion-body lh-2">
+                            <div class="row">
+                                <div class="col-12">
+                                    <label class="form-label">توضیحات فارسی</label>
+                                    <textarea class="form-control" id="TextFa" asp-for="DescrptionFa" rows="5"></textarea>
+
+                                    <span class="text-danger" asp-validation-for="DescrptionFa"></span>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">توضیحات انگلیسی</label>
+                                    <textarea class="form-control" id="TextEn" asp-for="DescrptionEn" rows="5"></textarea>
+                                    <span class="text-danger" asp-validation-for="DescrptionEn"></span>
+
+                                </div>
+                            </div>
+                           
+                        </div>
                     </div>
 
-                    <div class="col-6">
-                        <label class="form-label">نام انگلیسی</label>
-                        <input asp-for="TitleEn" type="text" class="form-control" />
-                        <span class="text-danger" asp-validation-for="TitleEn"></span>
-                    </div>
-                    <div class="col-6">
-                        <label class="form-label">لینک ویدئو</label>
-                        <input asp-for="VideoLink" type="text" class="form-control" />
-                    </div>
-                    <div class="col-6">
-                        <label class="form-label">انتخاب دسته بندی</label>
-                        <select asp-for="CategoryId" id="category" class="select2 form-select" >
-                        </select>
-                    </div>
-                    <div class="col-12">
-                        <label class="form-label">انتخاب محصولات مرتبط</label>
-                        <select name="RelatedProducts" id="RelatedProduct" multiple="multiple" class="select2 form-select">
-                        </select>
-                    </div>
-                    <div class="col-12">
-                        <label class="form-label">توضیحات فارسی</label>
-                        <textarea class="form-control" id="TextFa" asp-for="DescrptionFa" rows="5"></textarea>
-
-                        <span class="text-danger" asp-validation-for="DescrptionFa"></span>
-                    </div>
-
-                    <div class="col-12">
-                        <label class="form-label">توضیحات انگلیسی</label>
-                        <textarea class="form-control" id="TextEn" asp-for="DescrptionEn" rows="5"></textarea>
-                        <span class="text-danger" asp-validation-for="DescrptionEn"></span>
-
-                    </div>
-                    
 
 
                 </div>
+
+                <div class="accordion-item card active p-3 rounded-3 mt-3" style="background-color:#f2f0e9">
+                    <h2 class="accordion-header">
+                        <button type="button" class="accordion-button"
+                                data-bs-toggle="collapse" data-bs-target="#four" aria-expanded="true">
+                            توضیحات بخش دوم
+                        </button>
+                    </h2>
+
+
+                    <div id="four" class="accordion-collapse collapse show"
+                         data-bs-parent="#four" style="">
+                        <div class="accordion-body lh-2">
+                            <div class="row">
+                                <div class="col-12">
+                                    <label class="form-label">توضیحات فارسی</label>
+                                    <textarea class="form-control" id="DescrptionSectionTwoFa" asp-for="DescrptionSectionTwoFa" rows="5"></textarea>
+
+                                    <span class="text-danger" asp-validation-for="DescrptionSectionTwoFa"></span>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">توضیحات انگلیسی</label>
+                                    <textarea class="form-control" id="DescrptionSectionTwoEn" asp-for="DescrptionSectionTwoEn" rows="5"></textarea>
+                                    <span class="text-danger" asp-validation-for="DescrptionSectionTwoEn"></span>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+
 
 
                 <div class="mt-3">

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.ProductCategory;
 
-public sealed record InsertProductCategoryCommand:IRequest
+public sealed record InsertProductCategoryCommand:IRequest<bool>
 {
     public ProductCategoryDto ProductCategory {  get; set; }
     public InsertProductCategoryCommand(ProductCategoryDto ProductCategory)

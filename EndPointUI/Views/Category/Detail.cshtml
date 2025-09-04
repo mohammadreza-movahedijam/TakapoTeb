@@ -1,5 +1,7 @@
 ﻿@model Application.Queries.ProductCategory.ViewModels.CategoryDetailViewModel
 @{
+    string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
+
     string title = CultureInfo.CurrentUICulture.Name! == "en-US" ? Model.TitleEn! : Model.TitleFa!;
     string align = CultureInfo.CurrentUICulture.Name! == "en-US" ? "ltr" : "rtl"!;
     ViewData["Title"] = title;
@@ -10,22 +12,29 @@
         <img class="category-image" src="~/gallery/ProductCategory/@Model.ImagePath" />
     </div>
 
-    <div class="col-lg-6 col-xl-6 col-md-12 col-sm-12 bg-category col-without-space" style="direction:@align">
-
+    <div class="col-lg-6 col-xl-6 col-md-12 col-sm-12 bg-category col-without-space"
+         style="direction:@align;    background: linear-gradient(to right, @Model.ColorFrom, @Model.ColorTo);">
+        
         @if (CultureInfo.CurrentUICulture.Name == "en-US")
         {
-            <h2 class="text-white English">@Model.TitleEn</h2>
 
-            <br />
-            <h4 class="text-white English">@Model.DescriptionEn</h4>
+            <div class="mx-5 summary-product">
+                <h2 class="text-white  @font">@Model.TitleEn</h2>
+                @Html.Raw(Model.DescriptionEn)
+              
+            </div>
         }
         else
         {
-            <h2 class="text-white">@Model.TitleFa</h2>
 
-            <br />
-            <h4 class="text-white">@Model.DescriptionFa</h4>
+            <div class="mx-5 summary-product">
+                <h2 class="text-white title-product @font">@Model.TitleFa</h2>
+                @Html.Raw(Model.DescriptionFa)
+
+            </div>
+
         }
+       
         <div>
         </div>
     </div>

@@ -35,8 +35,8 @@ internal sealed class GetArticleDetailHandler :
                 TitleFa = s.TitleFa,
                 TitleEn = s.TitleEn,
                 ImagePath = s.ImagePath,
-                TextEn = s.SummaryEn,
-                TextFa = s.SummaryFa,
+                TextEn = s.TextEn,
+                TextFa = s.TextFa,
                 PublishDateFa = s.PublishDate.PersianDate()!,
                 PublishDateEn = s.PublishDate.GregorianDate(),
 

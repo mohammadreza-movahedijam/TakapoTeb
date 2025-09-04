@@ -5,10 +5,11 @@
     string direction = CultureInfo.CurrentUICulture.Name == "en-US" ? "ltr" : "rtl";
 }
 <div class="banner-bottom">
-    <div class="container">
-        <div class="row">
 
-            <div class="col-md-3">
+    <div class="container">
+        <div class="row" dir="@direction">
+
+            <div class="col-md-3 ">
                 <a href="@Model.LinkOne" class="card feature-bg feature" dir="@direction">
                     <div>
                         @if (Model.ImageOne == "default.jpg")

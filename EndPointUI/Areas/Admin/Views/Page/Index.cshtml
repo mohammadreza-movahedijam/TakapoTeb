@@ -55,7 +55,7 @@
 
                             <th>عنوان فارسی</th>
                             <th>نمایش در منو</th>
-                          
+                            <th>لینک</th>
 
                             <th>عملیات</th>
                         </tr>
@@ -78,6 +78,22 @@
                                         {
                                             <span class="badge bg-info text-white">عدم نمایش در منو</span>
                                         }
+                                    </td>
+                                    <td>
+
+                                        @if (item.IsActivePage)
+                                        {
+                                            <span>
+                                                /Page?Id=@item.Id
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span>
+                                                #
+                                            </span>
+                                        }
+                                       
                                     </td>
                                     <td>
 

@@ -20,6 +20,11 @@ public sealed record ProductCategoryDto:IValidatableObject
     [Required(ErrorMessage = "عنوان انگلیسی الزامی است")]
     public string? TitleEn { get; set; }
     public string? DescriptionEn { get; set; }
+    public string? ColorFrom { get; set; }
+    public string? ColorTo { get; set; }
+    [Required(ErrorMessage = "ترتیب نمایش الزامی است")]
+    public int DisplayPriority { get; set; }
+
 
     public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
     {

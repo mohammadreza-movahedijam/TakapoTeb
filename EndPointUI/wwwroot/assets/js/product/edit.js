@@ -36,6 +36,12 @@
 $(document).ready(function () {
     CKEDITOR.replace('TextFa');
     CKEDITOR.replace('TextEn');
+
+    CKEDITOR.replace('SummaryFa');
+    CKEDITOR.replace('SummaryEn');
+
+    CKEDITOR.replace('DescrptionSectionTwoFa');
+    CKEDITOR.replace('DescrptionSectionTwoEn');
 });
 $(document).ready(function () {
     let productId = document.getElementById("ProductId").value;

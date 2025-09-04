@@ -12,5 +12,6 @@ public sealed record CategoryMenuViewModel
     public Guid? ParentProductCategoryId { get; set; }
     public string? TitleFa { get; set; }
     public string? TitleEn { get; set; }
+    public int DisplayPriority { get; set; }
     public List<CategoryMenuViewModel>? SubCategories { get; set; } = [];
 }

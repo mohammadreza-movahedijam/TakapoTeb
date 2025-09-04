@@ -213,6 +213,12 @@ namespace Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("ColorFrom")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ColorTo")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DescriptionEn")
                         .HasMaxLength(6000)
                         .HasColumnType("nvarchar(max)");
@@ -220,6 +226,11 @@ namespace Infrastructure.Migrations
                     b.Property<string>("DescriptionFa")
                         .HasMaxLength(6000)
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DisplayPriority")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
 
                     b.Property<string>("ImagePath")
                         .HasColumnType("nvarchar(max)");
@@ -341,8 +352,26 @@ namespace Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("ButtonEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ButtonFa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ButtonLink")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<Guid?>("CategoryId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ColorFrom")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ColorTo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DateCreated")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("DescrptionEn")
                         .IsRequired()
@@ -350,6 +379,12 @@ namespace Infrastructure.Migrations
 
                     b.Property<string>("DescrptionFa")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DescrptionSectionTwoEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DescrptionSectionTwoFa")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageHeaderPath")
@@ -362,6 +397,12 @@ namespace Infrastructure.Migrations
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
+
+                    b.Property<string>("SummaryEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SummaryFa")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TitleEn")
                         .IsRequired()
@@ -841,11 +882,17 @@ namespace Infrastructure.Migrations
                     b.Property<string>("ImagePath")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsActivePage")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<bool>("IsShowOnMenu")
                         .HasColumnType("bit");
+
+                    b.Property<Guid?>("ParentPageId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("TitleEn")
                         .HasColumnType("nvarchar(max)");
@@ -854,6 +901,8 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ParentPageId");
 
                     b.ToTable("Page", "dbo");
                 });
@@ -1351,7 +1400,19 @@ namespace Infrastructure.Migrations
                     b.Property<string>("AboutTitleFa")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("AcademyButtonTextEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AcademyButtonTextFa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AcademyColor")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("AcademyImagePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AcademyLink")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("AcademyTextEn")
@@ -1931,6 +1992,16 @@ namespace Infrastructure.Migrations
                     b.Navigation("NewsCategory");
                 });
 
+            modelBuilder.Entity("Domain.Entities.System.PageEntity", b =>
+                {
+                    b.HasOne("Domain.Entities.System.PageEntity", "ParentPage")
+                        .WithMany("SubPages")
+                        .HasForeignKey("ParentPageId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("ParentPage");
+                });
+
             modelBuilder.Entity("Domain.Entities.System.PictureEntity", b =>
                 {
                     b.HasOne("Domain.Entities.System.EventEntity", "Event")
@@ -2067,6 +2138,11 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Domain.Entities.System.NewsCategoryEntity", b =>
                 {
                     b.Navigation("News");
+                });
+
+            modelBuilder.Entity("Domain.Entities.System.PageEntity", b =>
+                {
+                    b.Navigation("SubPages");
                 });
 
             modelBuilder.Entity("Domain.Entities.System.RequestEducationEntity", b =>

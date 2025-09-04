@@ -22,6 +22,7 @@ public class ProductCategoryController(IMediator mediator) : Controller
     [HttpGet]
     public async Task<IActionResult> Create()
     {
+        ViewBag.Alert=null;
         await FetchParent();
         return View();
     }
@@ -29,7 +30,13 @@ public class ProductCategoryController(IMediator mediator) : Controller
     [HttpPost]
     public async Task<IActionResult> Create(ProductCategoryDto ProductCategory)
     {
-        await _mediator.Send(new InsertProductCategoryCommand(ProductCategory));
+        bool result= await _mediator.Send(new InsertProductCategoryCommand(ProductCategory));
+        if(result is false)
+        {
+            await FetchParent();
+            ViewBag.Alert = "ترتیب نمایش تکراری است";
+            return View(ProductCategory);
+        }
         return RedirectToAction(nameof(Index));
     }
     [HttpGet]
@@ -42,7 +49,13 @@ public class ProductCategoryController(IMediator mediator) : Controller
     [HttpPost]
     public async Task<IActionResult> Edit(ProductCategoryDto ProductCategory)
     {
-        await _mediator.Send(new UpdateProductCategoryCommand(ProductCategory));
+        bool result = await _mediator.Send(new UpdateProductCategoryCommand(ProductCategory));
+        if (result is false)
+        {
+            await FetchParent();
+            ViewBag.Alert = "ترتیب نمایش تکراری است";
+            return View(ProductCategory);
+        }
         return RedirectToAction(nameof(Index));
     }
     [HttpPost]

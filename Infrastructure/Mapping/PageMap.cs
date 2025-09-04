@@ -15,6 +15,11 @@ internal sealed class PageMap :
     public void Configure(EntityTypeBuilder<PageEntity> builder)
     {
         builder.ToTable("Page","dbo");
+        builder.HasOne(x => x.ParentPage)
+            .WithMany(x => x.SubPages)
+            .HasForeignKey(x => x.ParentPageId)
+            .IsRequired(false)
+            .OnDelete(DeleteBehavior.Restrict);
         builder.HasQueryFilter(f => f.IsDeleted == false);
     }
 }

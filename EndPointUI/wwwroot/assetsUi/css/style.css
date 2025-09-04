@@ -2435,7 +2435,15 @@ html.menu-opened body {
 }
 .banner-bottom {
 	position: relative;
-	padding: 60px 0px 30px;
+	/*padding: 60px 0px 30px;*/
+}
+@media(max-width: 768px) {
+	.banner-bottom .card {
+		
+		flex-direction: row;
+		align-items: center;
+		border: none;
+	}
 }
 .banner-bottom .card {
     display: inline-flex;
@@ -2475,7 +2483,7 @@ html.menu-opened body {
 	font-size: 36px;
 	color: #47466c;
     font-weight: 600;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
 }
 .section-title:before {
 	content: '';

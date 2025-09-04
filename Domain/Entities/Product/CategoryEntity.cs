@@ -8,6 +8,9 @@ public class CategoryEntity : BaseEntity,IDelete
 
     public string? TitleEn { get; set; }
     public string? DescriptionEn { get; set; }
+    public string? ColorFrom { get; set; }
+    public string? ColorTo { get; set; }
+    public int DisplayPriority {  get; set; }
 
     #region Relation 
     public CategoryEntity? ParentCategory { get; set; }

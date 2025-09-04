@@ -10,7 +10,7 @@
 
         @if (CultureInfo.CurrentUICulture.Name == "en-US")
         {
-            @foreach (var category in Model)
+        @foreach (var category in Model.OrderBy(o => o.DisplayPriority))
             {
                 <h5 dir="ltr" class="text-sm font-semibold text-gray-800 mb-3" style="margin-left:30px;">
 
@@ -27,7 +27,7 @@
         }
         else
         {
-            @foreach (var category in Model)
+        @foreach (var category in Model.OrderBy(o => o.DisplayPriority))
             {
 
             <h5 dir="ltr" class="text-sm font-semibold text-gray-800 mb-3" style="margin-right:30px;">

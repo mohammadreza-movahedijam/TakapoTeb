@@ -77,15 +77,15 @@
                         <input asp-for="TitleEn" type="text" class="form-control" />
                         <span class="text-danger" asp-validation-for="TitleEn"></span>
                     </div>
-                    <div class="col-6">
+                    <div class="col-12">
                         <label class="form-label">خلاصه فارسی</label>
-                        <textarea rows="6" asp-for="SummaryFa" class="form-control"></textarea>
+                        <textarea rows="6" asp-for="SummaryFa" id="SummaryFa" class="form-control"></textarea>
                         <span class="text-danger" asp-validation-for="SummaryFa"></span>
                     </div>
 
-                    <div class="col-6">
+                    <div class="col-12">
                         <label class="form-label">خلاصه انگلیسی</label>
-                        <textarea rows="6" asp-for="SummaryEn" class="form-control"></textarea>
+                        <textarea rows="6" asp-for="SummaryEn" id="SummaryEn" class="form-control"></textarea>
                         <span class="text-danger" asp-validation-for="SummaryEn"></span>
                     </div>
                 </div>

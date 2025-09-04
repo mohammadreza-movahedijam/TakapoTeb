@@ -9,4 +9,13 @@ public sealed record ProductDetailViewModel
     public string? TitleEn { get; set; }
     public string? DescrptionEn { get; set; }
     public string? VideoLink { get; set; }
+    public string? DescrptionSectionTwoFa { get; set; }
+    public string? DescrptionSectionTwoEn { get; set; }
+    public string? SummaryFa { get; set; }
+    public string? SummaryEn { get; set; }
+    public string? ColorFrom { get; set; }
+    public string? ColorTo { get; set; }
+    public string? ButtonFa { get; set; }
+    public string? ButtonEn { get; set; }
+    public string? ButtonLink { get; set; }
 }

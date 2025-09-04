@@ -6,6 +6,19 @@ namespace Application.Commands.Product;
 public sealed record ProductDto:IValidatableObject
 {
     public Guid? Id { get; set; }
+
+    public string? DescrptionSectionTwoFa { get; set; }
+    public string? DescrptionSectionTwoEn { get; set; }
+    public string? SummaryFa { get; set; }
+    public string? SummaryEn { get; set; }
+
+
+
+    public string? ColorFrom { get; set; }
+    public string? ColorTo { get; set; }
+    public string? ButtonFa { get; set; }
+    public string? ButtonEn { get; set; }
+    public string? ButtonLink { get; set; }
     public string? ImageHeaderPath { get; set; }
     public string? ImagePath { get; set; }
     public IFormFile? ImageFile { get; set; }

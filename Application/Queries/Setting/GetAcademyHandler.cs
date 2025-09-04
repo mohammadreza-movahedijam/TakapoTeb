@@ -32,6 +32,10 @@ internal sealed class GetAcademyHandler :
           AcademyTextFa = s.AcademyTextFa,
           AcademyTitleEn = s.AcademyTitleEn,
           AcademyTitleFa = s.AcademyTitleFa,
+          AcademyButtonTextEn = s.AcademyButtonTextEn,
+          AcademyButtonTextFa = s.AcademyButtonTextFa,
+          AcademyColor=s.AcademyColor,
+          AcademyLink=s.AcademyLink,
         }).FirstOrDefaultAsync();
         return model!;
     }

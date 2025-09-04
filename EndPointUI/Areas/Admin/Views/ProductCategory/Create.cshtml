@@ -4,8 +4,12 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
+@section Style {
+    <script src="~/ckeditor/ckeditor.js"></script>
 
+}
 @section Script {
+    <script src="~/assets/js/productCategory/create.js"></script>
     <script src="~/assets/js/upload.js"></script>
     <partial name="_ValidationScriptsPartial.cshtml" />
 }
@@ -22,7 +26,11 @@
     </ol>
 </nav>
 <div class="row">
-    <div class="col-4 offset-4">
+    <div class="col-8 offset-2">
+        @if (ViewBag.Alert != null)
+        {
+            <div class="alert alert-danger mx-3">@ViewBag.Alert</div>
+        }
         <div class="card mb-4">
             <h5 class="card-header heading-color">ایجاد دسته بندی</h5>
             <form asp-area="Admin" asp-controller="ProductCategory"
@@ -37,30 +45,9 @@
                     <input asp-for="ImageFile" onchange="ChangeImage(this,1)" class="form-control" type="file" />
                 </div>
                 <div>
-                    <label class="form-label">عنوان فارسی </label>
-                    <input asp-for="TitleFa" type="text" class="form-control" />
-                    <span class="text-danger" asp-validation-for="TitleFa"></span>
-                </div>
-              
-                <div>
-                    <label  class="form-label">توضیحات فارسی</label>
-                    <textarea class="form-control" asp-for="DescriptionFa" rows="3"></textarea>
-                    <span class="text-danger" asp-validation-for="DescriptionFa"></span>
-                </div>
-                <div>
-                    <label class="form-label">عنوان انگلیسی </label>
-                    <input asp-for="TitleEn" type="text" class="form-control" />
-                    <span class="text-danger" asp-validation-for="TitleEn"></span>
-                </div>
-                <div>
-                    <label  class="form-label">توضیحات انگلیسی</label>
-                    <textarea class="form-control" asp-for="DescriptionEn" rows="3"></textarea>
-                    <span class="text-danger" asp-validation-for="DescriptionEn"></span>
-                </div>
-                <div >
                     <label class="form-label">انتخاب دسته بندی</label>
                     <select class="form-select" asp-for="ParentProductCategoryId">
-                        <option  disabled="" selected="">یک گزینه انتخاب کنید</option>
+                        <option disabled="" selected="">یک گزینه انتخاب کنید</option>
                         @if (ViewBag.Parents != null)
                         {
                             foreach (var item in ViewBag.Parents as List<ItemGeneric<Guid, string>>)
@@ -68,8 +55,44 @@
                                 <option value="@item.Id">@item.Title</option>
                             }
                         }
-                     
+
                     </select>
+                </div>
+                <div>
+                    <label class="form-label">عنوان فارسی </label>
+                    <input asp-for="TitleFa" type="text" class="form-control" />
+                    <span class="text-danger" asp-validation-for="TitleFa"></span>
+                </div>
+              
+                <div>
+                    <label  class="form-label">توضیحات فارسی</label>
+                    <textarea class="form-control" id="TextFa" asp-for="DescriptionFa" rows="3"></textarea>
+                    <span class="text-danger" asp-validation-for="DescriptionFa"></span>
+                </div>
+                <div>
+                    <label class="form-label">عنوان انگلیسی </label>
+                    <input asp-for="TitleEn"  type="text" class="form-control" />
+                    <span class="text-danger" asp-validation-for="TitleEn"></span>
+                </div>
+                <div>
+                    <label  class="form-label">توضیحات انگلیسی</label>
+                    <textarea class="form-control" id="TextEn" asp-for="DescriptionEn" rows="3"></textarea>
+                    <span class="text-danger" asp-validation-for="DescriptionEn"></span>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <label class="form-label">ترتیب نمایش </label>
+                        <input asp-for="DisplayPriority" type="number" class="form-control" />
+                        <span class="text-danger" asp-validation-for="DisplayPriority"></span>
+                    </div>
+                    <div class="col-4">
+                        <label class="form-label">رنگ شروع </label>
+                        <input asp-for="ColorFrom" type="color" class="form-control" />
+                    </div>
+                    <div class="col-4">
+                        <label class="form-label">رنگ پایان </label>
+                        <input asp-for="ColorTo" type="color" class="form-control" />
+                    </div>
                 </div>
                 <div class="mt-3">
                     <button type="submit" class="btn btn-sm text-white btn-success">ثبت</button>

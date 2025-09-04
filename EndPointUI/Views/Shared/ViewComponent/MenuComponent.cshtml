@@ -14,7 +14,7 @@
                 if (CultureInfo.CurrentUICulture.Name == "en-US")
                 {
                     @foreach (Application.Queries.ProductCategory.ViewModels.CategoryMenuViewModel item in Model
-                   .Where(w => w.ParentProductCategoryId == null))
+                   .Where(w => w.ParentProductCategoryId == null).OrderBy(o=>o.DisplayPriority))
                     {
                         <div class="space-y-4 " style="text-align:@align">
                             <h3 style="color:#252D69" class="text-lg font-semibold text-gray-900 mb-4">
@@ -34,7 +34,7 @@
                 else
                 {
                     @foreach (Application.Queries.ProductCategory.ViewModels.CategoryMenuViewModel item in Model
-                   .Where(w => w.ParentProductCategoryId == null))
+                   .Where(w => w.ParentProductCategoryId == null).OrderBy(o => o.DisplayPriority))
                     {
                         <div class="space-y-4 " style="text-align:@align">
                             <h3 style="color:#252D69" class="text-lg font-semibold text-gray-900 mb-4">

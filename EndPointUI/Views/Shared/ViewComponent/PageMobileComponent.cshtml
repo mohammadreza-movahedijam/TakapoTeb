@@ -1,0 +1,81 @@
+﻿@using Application.Queries.Page
+@model IReadOnlyList<PageViewModel>
+
+@{
+    string cultureName = CultureInfo.CurrentUICulture.Name ?? "en-US";
+    string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
+
+    string? GetTitle(PageViewModel page) => cultureName == "en-US" ? page.TitleEn : page.TitleFa;
+
+    string? GetLink(PageViewModel page)
+        => page.IsActivePage == true
+            ? Url.Action("Page", "Home", new { Id = page.Id })
+            : "#";
+
+    string GetCssClass() => cultureName == "en-US" ? "English" : "";
+
+    bool HasChildren(PageViewModel page) => Model.Any(m => m.ParentPageId == page.Id && m.IsShowOnMenu);
+}
+
+@if (Model != null && Model.Any())
+{
+    @foreach (var item in Model.Where(p => p.ParentPageId == null))
+    {
+        <div class="relative group mb-4">
+            @if (HasChildren(item))
+            {
+
+                <button onclick="toggleMobileSubmenu('mobile-@item.Id')" class="@GetCssClass() w-full text-left text-gray-700 hover:text-blue-600 font-medium py-2 flex items-center justify-between">
+                    <a class=" block text-gray-700 hover:text-blue-600 font-medium py-2"
+                       href="@GetLink(item)">
+                        @GetTitle(item)
+                       
+                    </a>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+
+                </button>
+
+
+                <!-- Dropdown -->
+                <div id="mobile-@item.Id" class="mobile-menu pl-4 mt-2 space-y-1">
+
+                    @foreach (var sub in Model.Where(s => s.ParentPageId == item.Id && s.IsShowOnMenu == true))
+                    {
+
+                        <a class="@GetCssClass() block text-gray-600 hover:text-blue-600 py-1"
+                           href="@GetLink(sub)">
+                            @GetTitle(sub)
+                        </a>
+                    }
+
+                </div>
+            }
+            else
+            {
+
+                <a class="@GetCssClass() block text-gray-700 hover:text-blue-600 font-medium py-2"
+                   href="@GetLink(item)">
+                    @GetTitle(item)
+                </a>
+
+
+            }
+        </div>
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

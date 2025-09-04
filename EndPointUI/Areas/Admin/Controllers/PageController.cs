@@ -1,5 +1,6 @@
 ﻿using Application.Commands.Page;
 using Application.Queries.Page;
+using Application.Queries.ProductCategory;
 using EndPointUI.Areas.Admin.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -24,8 +25,9 @@ public class PageController (IMediator mediator): Controller
         return View(pageModel);
     }
     [HttpGet]
-    public IActionResult Create()
+    public async Task<IActionResult> Create()
     {
+        await FetchParent();
         return View();
     }
 
@@ -41,6 +43,7 @@ public class PageController (IMediator mediator): Controller
     [HttpGet]
     public async Task<IActionResult> Edit(Guid Id)
     {
+        await FetchParent();
         PageDto Page = await _mediator.Send
             (new GetPageQuery()
             {
@@ -80,6 +83,12 @@ public class PageController (IMediator mediator): Controller
                 ex.Message,
             });
         }
+    }
+    async Task FetchParent()
+    {
+        IReadOnlyList<ItemGeneric<Guid, string>>
+            list = await _mediator.Send(new GetPageItemQuery());
+        ViewBag.Parents = list;
     }
 
 }

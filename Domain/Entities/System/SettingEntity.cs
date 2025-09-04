@@ -99,5 +99,10 @@ public class SettingEntity : BaseEntity
     public string? AcademyTextFa { get; set; }
     public string? AcademyTextEn { get; set; }
     public string? AcademyImagePath { get; set; }
+    public string? AcademyLink { get; set; }
+    public string? AcademyColor { get; set; }
+    public string? AcademyButtonTextFa { get; set; }
+    public string? AcademyButtonTextEn { get; set; }
+
 
 }

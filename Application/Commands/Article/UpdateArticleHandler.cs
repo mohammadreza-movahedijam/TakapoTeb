@@ -23,12 +23,14 @@ internal sealed class UpdateArticleHandler :
         {
             throw new InternalException(CustomMessage.NotFoundOnDb);
         }
+        request.Article.Adapt(article);
         if (request.Article.ImageFile != null)
         {
-            article.ImagePath = request.Article.ImageFile.UploadImage("Article");
+            var ImagePath = request.Article.ImageFile.UploadImage("Article");
             request.Article.ImagePath!.RemoveImage("Article");
+        article.ImagePath = ImagePath;
         }
-        request.Article.Adapt(article);
+      
         await _repository.UpdateAsync(article, cancellationToken);
     }
 }

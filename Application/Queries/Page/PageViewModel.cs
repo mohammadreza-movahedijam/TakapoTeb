@@ -12,4 +12,7 @@ public sealed record PageViewModel
     public string? TitleFa { get; set; }
     public string? TitleEn { get; set; }
     public bool IsShowOnMenu { get; set; }
+    public Guid? ParentPageId { get; set; }
+    public bool IsActivePage { get; set; }
+
 }

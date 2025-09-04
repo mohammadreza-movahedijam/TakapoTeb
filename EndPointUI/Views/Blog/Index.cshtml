@@ -78,13 +78,13 @@
                                 @if (CultureInfo.CurrentUICulture.Name == "en-US")
                                 {
                                     <p class="mb-0 English">
-                                        @blog.SummaryEn
+                                        @Html.Raw(blog.SummaryEn)
                                     </p>
                                 }
                                 else
                                 {
                                     <p class="mb-0">
-                                        @blog.SummaryFa
+                                        @Html.Raw(blog.SummaryFa)
                                     </p>
                                 }
 

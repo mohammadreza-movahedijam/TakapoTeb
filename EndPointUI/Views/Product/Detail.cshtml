@@ -21,21 +21,32 @@
         <img class="category-image" src="~/gallery/Product/@Model.ImageHeaderPath" />
     </div>
 
-    <div class="col-lg-6 col-xl-6 col-md-12 col-sm-12 bg-product col-without-space" style="direction:@align">
+    <div class="col-lg-6 col-xl-6 col-md-12 col-sm-12 bg-product col-without-space"
+         style="direction:@align;    background: linear-gradient(to right, @Model.ColorFrom, @Model.ColorTo);">
 
         @if (CultureInfo.CurrentUICulture.Name == "en-US")
         {
-            <h2 class="text-white title-product @font">@Model.TitleEn</h2>
 
+            <div class="mx-5 summary-product">
+                <h2 class="text-white title-product @font">@Model.TitleEn</h2>
+                @Html.Raw(Model.SummaryEn)
+                <br />
+                <a href="@Model.ButtonLink" class="btn-more-product text-primary @font">@Model.ButtonEn</a>
+
+            </div>
         }
         else
         {
-            <h2 class="text-white title-product">@Model.TitleFa</h2>
+            <div class="mx-5 summary-product">
+                <h2 class="text-white title-product">@Model.TitleFa</h2>
+                @Html.Raw(Model.SummaryFa)
+                <br />
+                <a href="@Model.ButtonLink" class="btn-more-product text-primary @font">@Model.ButtonFa</a>
 
-
+            </div>
+           
         }
-        <br />
-        <a class="btn-more-product @font">@Localizer["BtnMore"]</a>
+       
         <div>
         </div>
     </div>
@@ -74,6 +85,22 @@
                     </div>
                 </div>
                 @await Component.InvokeAsync("ProductOptionComponent", Model.Id)
+
+                <div class="row p-3 mt-3">
+                    <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 offset-xl-2 offset-lg-2">
+                        <p class="@font" style="direction:@align">
+                            @if (CultureInfo.CurrentUICulture.Name == "en-US")
+                            {
+                                @Html.Raw(Model.DescrptionSectionTwoEn)
+                            }
+                            else
+                            {
+                                @Html.Raw(Model.DescrptionSectionTwoFa)
+
+                            }
+                        </p>
+                    </div>
+                </div>
                 <div class="row p-3">
                     <div class="col-xl-6
                                col-lg-6

@@ -2,7 +2,7 @@
 @{
     string font = CultureInfo.CurrentUICulture.Name! == "en-US" ? "English" : ""!;
 
-    string icon = string.Empty;
+   
 }
 <section class="mt-5 mb-3">
     <div class="container">
@@ -16,21 +16,32 @@
                 @if (CultureInfo.CurrentUICulture.Name == "fa-IR")
                 {
                     <div class="text-right" style="direction:rtl">
-                        <h2 class="section-title> @Model.AcademyTitleFa</h2>
+                        <h2 class="section-title mb-5" style="color:@Model.AcademyColor"> @Model.AcademyTitleFa</h2>
 
                     @Html.Raw(Model.AcademyTextFa)
-
-
+                    
+                        @if (!string.IsNullOrEmpty(Model.AcademyTextFa))
+                        {
+                            <a href="@Model.AcademyLink" class="btn text-white mt-3  btn-primary">
+                                <i class="fas fa-arrow-circle-left ms-2"></i>
+                                @Model.AcademyButtonTextFa</a>
+                        }
                     </div>
 
                 }
                 else
                 {
-                    <div class="text-right" style="direction:rtl">
-                        <h2 class="section-title @font"> @Model.AcademyTitleEn</h2>
+                    <div class="text-left" style="direction:ltr">
+                        <h2 class="section-title mb-5 @font" style="color:@Model.AcademyColor"> @Model.AcademyTitleEn</h2>
                             @Html.Raw(Model.AcademyTextEn)
-                      
+                       
 
+                        @if (!string.IsNullOrEmpty(Model.AcademyTextEn))
+                        {
+                            <a href="@Model.AcademyLink" class="btn text-white mt-3 btn-primary">
+                                <i class="fas fa-arrow-circle-right ms-2"></i>
+                                @Model.AcademyButtonTextEn</a>
+                        }
 
                     </div>
 

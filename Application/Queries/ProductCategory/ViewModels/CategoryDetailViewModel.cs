@@ -8,5 +8,7 @@ public sealed record CategoryDetailViewModel
     public string? DescriptionFa { get; set; }
     public string? TitleEn { get; set; }
     public string? DescriptionEn { get; set; }
+    public string? ColorFrom { get; set; }
+    public string? ColorTo { get; set; }
 
 }
