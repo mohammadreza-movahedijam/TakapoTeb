@@ -27,7 +27,7 @@
         @if (CultureInfo.CurrentUICulture.Name == "en-US")
         {
 
-            <div class="mx-5 summary-product">
+            <div class="mx-5 summary-product English">
                 <h2 class="text-white title-product @font">@Model.TitleEn</h2>
                 @Html.Raw(Model.SummaryEn)
                 <br />
@@ -70,36 +70,46 @@
         <div class="tab-content pt-0">
             <div role="tabpanel" id="overview" class="tab-pane fade show active">
                 <div class="row p-3">
-                    <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 offset-xl-2 offset-lg-2">
-                        <p class="@font" style="direction:@align">
+                   
                             @if (CultureInfo.CurrentUICulture.Name == "en-US")
                             {
+                                <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 offset-xl-2 offset-lg-2 English">
+                                    <p class="@font" style="direction:@align">
                                 @Html.Raw(Model.DescrptionEn)
+                                    </p>
+                                </div>
                             }
                             else
                             {
+                                <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 offset-xl-2 offset-lg-2">
+                                    <p class="@font" style="direction:@align">
                                 @Html.Raw(Model.DescrptionFa)
-                               
-                            }
-                        </p>
+                                 </p>
                     </div>
+                            }
+                     
                 </div>
                 @await Component.InvokeAsync("ProductOptionComponent", Model.Id)
 
                 <div class="row p-3 mt-3">
-                    <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 offset-xl-2 offset-lg-2">
-                        <p class="@font" style="direction:@align">
+               
                             @if (CultureInfo.CurrentUICulture.Name == "en-US")
                             {
+                        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 offset-xl-2 offset-lg-2 English">
+                            <p class="@font" style="direction:@align">
                                 @Html.Raw(Model.DescrptionSectionTwoEn)
+                            </p>
+                        </div>
                             }
                             else
                             {
+                                <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 offset-xl-2 offset-lg-2">
+                                    <p class="@font" style="direction:@align">
                                 @Html.Raw(Model.DescrptionSectionTwoFa)
-
+                                    </p>
+                                </div>
                             }
-                        </p>
-                    </div>
+                   
                 </div>
                 <div class="row p-3">
                     <div class="col-xl-6

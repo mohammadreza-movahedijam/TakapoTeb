@@ -5,43 +5,93 @@
 
 @if (CultureInfo.CurrentUICulture.Name == "en-US")
 {
+  
     <div class="row counts ">
-        <div class="col-sm-6 col-md-3 mt-5 text-center">
-            <h1 class="@font font-big">@Model.NumberOne</h1>
-            <h4 class="@font">@Model.TitleEnOne</h4>
+
+
+        <!-- Counters Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto mt-5">
+
+            <div class=" rounded-2xl   transition-all duration-300 p-8 text-center group hover:scale-105 mt-5">
+                <div class="counter-animation flex items-center justify-center mb-4">
+                    <img src="~/gallery/4.png"
+                    alt="Users Icon" class="w-12 h-12 ml-3" onerror="this.src=''; this.alt='Icon failed to load'; this.style.display='none';">
+                    <h3 class="@font font-big text-4xl font-bold text-gray-800" id="counter1">@Model.NumberOne</h3>
+                </div>
+                <p class="text-gray-600 font-medium">@Model.TitleEnOne</p>
+            </div>
+
+            <div class=" rounded-2xl   transition-all duration-300 p-8 text-center group hover:scale-105 mt-5">
+                <div class="counter-animation flex items-center justify-center mb-4">
+                    <img src="~/gallery/1.png" alt="Users Icon"
+                         class="w-12 h-12 ml-3" onerror="this.src=''; this.alt='Icon failed to load'; this.style.display='none';">
+                    <h3 class="@font font-big text-4xl font-bold text-gray-800" id="counter2">@Model.NumberTwo</h3>
+                </div>
+                <p class="text-gray-600 font-medium">@Model.TitleEnTwo</p>
+            </div>
+
+            <div class=" rounded-2xl   transition-all duration-300 p-8 text-center group hover:scale-105 mt-5">
+                <div class="counter-animation flex items-center justify-center mb-4">
+                    <img src="~/gallery/3.png" alt="Users Icon"
+                         class="w-12 h-12 ml-3" onerror="this.src=''; this.alt='Icon failed to load'; this.style.display='none';">
+                    <h3 class="@font font-big text-4xl font-bold text-gray-800" id="counter3">@Model.NumberThree</h3>
+                </div>
+                <p class="text-gray-600 font-medium">@Model.TitleEnThree</p>
+            </div>
+
+            <div class=" rounded-2xl   transition-all duration-300 p-8 text-center group hover:scale-105 mt-5">
+                <div class="counter-animation flex items-center justify-center mb-4">
+                    <img src="~/gallery/2.png" alt="Users Icon"
+                         class="w-12 h-12 ml-3" onerror="this.src=''; this.alt='Icon failed to load'; this.style.display='none';">
+                    <h3 class="@font font-big text-4xl font-bold text-gray-800" id="counter4">@Model.NumberFour</h3>
+                </div>
+                <p class="text-gray-600 font-medium">@Model.TitleEnFour</p>
+            </div>
         </div>
-        <div class="col-sm-6 col-md-3 mt-5 text-center">
-            <h1 class="@font font-big">@Model.NumberTwo</h1>
-            <h4 class="@font">@Model.TitleEnTwo</h4>
-        </div>
-        <div class="col-sm-6 col-md-3 mt-5 text-center">
-            <h1 class="@font font-big">@Model.NumberThree</h1>
-            <h4 class="@font">@Model.TitleEnThree</h4>
-        </div>
-        <div class="col-sm-6 col-md-3 mt-5 text-center">
-            <h1 class="@font font-big">@Model.NumberFour</h1>
-            <h4 class="@font">@Model.TitleEnFour</h4>
-        </div>
+
     </div>
 }
 else
 {
-     <div class="row counts">
-        <div class="col-sm-6 col-md-3 mt-5 text-center">
-            <h1 class="font-big">@Model.NumberOne</h1>
-            <h4>@Model.TitleFaOne</h4>
-        </div>
-        <div class="col-sm-6 col-md-3 mt-5 text-center">
-            <h1 class="font-big">@Model.NumberTwo</h1>
-            <h4>@Model.TitleFaTwo</h4>
-        </div>
-        <div class="col-sm-6 col-md-3 mt-5 text-center">
-            <h1 class="font-big">@Model.NumberThree</h1>
-            <h4>@Model.TitleFaThree</h4>
-        </div>
-        <div class="col-sm-6 col-md-3 mt-5 text-center">
-            <h1 class="font-big">@Model.NumberFour</h1>
-            <h4>@Model.TitleFaFour</h4>
+    <div class="row counts">
+        <!-- Counters Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto mt-5">
+
+            <div class=" rounded-2xl   transition-all duration-300 p-8 text-center group hover:scale-105 mt-5">
+                <div class="counter-animation flex items-center justify-center mb-4">
+                    <img src="~/gallery/4.png"
+                         alt="Users Icon" class="w-12 h-12 ml-3" onerror="this.src=''; this.alt='Icon failed to load'; this.style.display='none';">
+                    <h3 class="@font font-big text-4xl font-bold text-gray-800" id="counter1">@Model.NumberOne</h3>
+                </div>
+                <p class="text-gray-600 font-medium">@Model.TitleFaOne</p>
+            </div>
+
+            <div class=" rounded-2xl   transition-all duration-300 p-8 text-center group hover:scale-105 mt-5">
+                <div class="counter-animation flex items-center justify-center mb-4">
+                    <img src="~/gallery/1.png" alt="Users Icon"
+                         class="w-12 h-12 ml-3" onerror="this.src=''; this.alt='Icon failed to load'; this.style.display='none';">
+                    <h3 class="@font font-big text-4xl font-bold text-gray-800" id="counter2">@Model.NumberTwo</h3>
+                </div>
+                <p class="text-gray-600 font-medium">@Model.TitleFaTwo</p>
+            </div>
+
+            <div class=" rounded-2xl   transition-all duration-300 p-8 text-center group hover:scale-105 mt-5">
+                <div class="counter-animation flex items-center justify-center mb-4">
+                    <img src="~/gallery/3.png" alt="Users Icon"
+                         class="w-12 h-12 ml-3" onerror="this.src=''; this.alt='Icon failed to load'; this.style.display='none';">
+                    <h3 class="@font font-big text-4xl font-bold text-gray-800" id="counter3">@Model.NumberThree</h3>
+                </div>
+                <p class="text-gray-600 font-medium">@Model.TitleFaThree</p>
+            </div>
+
+            <div class=" rounded-2xl   transition-all duration-300 p-8 text-center group hover:scale-105 mt-5">
+                <div class="counter-animation flex items-center justify-center mb-4">
+                    <img src="~/gallery/2.png" alt="Users Icon"
+                         class="w-12 h-12 ml-3" onerror="this.src=''; this.alt='Icon failed to load'; this.style.display='none';">
+                    <h3 class="@font font-big text-4xl font-bold text-gray-800" id="counter4">@Model.NumberFour</h3>
+                </div>
+                <p class="text-gray-600 font-medium">@Model.TitleFaFour</p>
+            </div>
         </div>
     </div>
 }

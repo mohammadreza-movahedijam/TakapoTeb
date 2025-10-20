@@ -17,7 +17,7 @@
 
     var swiper = new Swiper(".mySwiperPartner", {
         slidesPerView: 'auto',
-        spaceBetween: 30,
+        spaceBetween: 200,
         centeredSlides: false,
         loop: true,
         grabCursor: true,

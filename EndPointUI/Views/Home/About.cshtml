@@ -12,18 +12,22 @@
        
         <div class="container">
             <div class="row" dir="@dir">
-                <div class="col-lg-6 col-md-12" dir="@dir">
+                
                     @if (CultureInfo.CurrentUICulture.Name == "en-US")
-                    {
+                {
+                      <div class="col-lg-6 col-md-12 English" dir="@dir">
                         <h3 class="mb-4 English">@Model.AboutTitleEn</h3>
                         <p class="English">@Html.Raw(Model.AboutDescriptionEn)</p>
+                    </div>
                     }
                     else
                     {
+                    <div class="col-lg-6 col-md-12 " dir="@dir">
                         <h3 class="mb-4">@Model.AboutTitleFa</h3>
                         <p>@Html.Raw(Model.AboutDescriptionFa)</p>
+                    </div>
                     }
-                </div>
+                
                 <div class="col-md-6">
                     @if (Model.AboutImage == "default.jpg" || string.IsNullOrEmpty(Model.AboutImage))
                     {

@@ -58,12 +58,12 @@ function loadNews(type, part) {
 
                 // Generate the news HTML
                 let news = `  <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12"><a href="/News/Detail/${item.id}">
-                <div class="card shadow" style="width: 100%">
+                <div class="card English shadow" style="width: 100%">
                     ${image}
                     <div class="card-body body-last-news">
                         <p class="card-text" style="text-align:${textAlign}">${title}</p>
                     </div>
-                    <p class="card-text p-3" style="text-align:${textAlign}"> <small class="text-info">${topic} - ${dateTime}</small></p>
+                    <p class="card-text p-3" style="text-align:${textAlign}"> <small class="text-info ">${topic} - ${dateTime}</small></p>
                 </div> </a> </div>
             `;
                 activeTab.innerHTML += news;

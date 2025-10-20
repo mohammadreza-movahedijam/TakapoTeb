@@ -27,6 +27,9 @@ internal sealed class GetContactInfoHandler : IRequestHandler<GetContactInfoQuer
            LocationEn   =s.LocationEn,
            LocationFa =s.LocationFa,
         }).FirstOrDefaultAsync();
+
+     
+
         return model!;
     }
 }

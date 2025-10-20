@@ -29,7 +29,7 @@
                                         <a class="link-sub-category" asp-controller="Product" asp-action="ProductCategory" asp-route-patterns="@item.Id">
                                   
                                             <h5 class="card-title @font">@item.TitleEn</h5>
-                                            <p class="card-text limited-text @font">@item.DescriptionEn</p>
+                                            <p class="card-text limited-text @font">@Html.Raw(item.DescriptionEn)</p>
                                             <p class="card-text">
                                                 <small class="text-body-secondary @font">
                                                     Product   <i class="fas fa-arrow-right"></i>
@@ -62,7 +62,7 @@
                                         <a class="link-sub-category" asp-controller="Product" asp-action="ProductCategory" asp-route-patterns="@item.Id">
                                
                                         <h5 class="card-title">@item.TitleFa</h5>
-                                        <p class="card-text limited-text">@item.DescriptionFa</p>
+                                            <div class="card-text limited-text">@Html.Raw(item.DescriptionFa)</div>
                                         <p class="card-text">
                                             <small class="text-body-secondary">
                                                 <i class="fas fa-arrow-right"></i> محصولات

@@ -42,11 +42,21 @@
             <div class="card booking-schedule schedule-widget">
                 <div class="schedule-header">
                     <div class="row">
-                        <div class="col-md-12" dir="@dir">
-                           
-                                @Html.Raw(CultureInfo.CurrentUICulture.Name == "en-US" ? Model.DescriptionEn : Model.DescriptionFa)
-                           
-                        </div>
+
+
+                        @if (CultureInfo.CurrentUICulture.Name == "en-US")
+                        {
+                            <div class="col-md-12 English" dir="@dir">
+                                @Html.Raw(Model.DescriptionEn)
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col-md-12" dir="@dir">
+                                @Html.Raw( Model.DescriptionFa)
+                            </div>
+                        }
+                        
                     </div>
                 </div>
                
